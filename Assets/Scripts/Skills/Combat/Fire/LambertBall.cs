@@ -1,19 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CastLambertBall : MonoBehaviour
+public class LambertBall : MonoBehaviour
 {
     private Vector3 direction;
     private bool isColliding;
 
 
-    public void Initialize(Vector3 target, Vector3 initialDirection, float ballSpeed)
+    public void Initialize(Vector3 origin, Vector3 target, Vector3 initialDirection, float ballSpeed)
     {
-        Vector3 origin;
         float flyTime;
 
         // Setting flight variables
-        origin = SPlayer.transform.position + initialDirection.normalized * 2;
         flyTime = Vector3.Distance(origin, target) / ballSpeed;
 
         // Initial direction

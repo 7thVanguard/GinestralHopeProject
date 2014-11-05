@@ -11,7 +11,7 @@ public class SCamera
     public static float maxAngleSight = 90;
 
     //distance to the player
-    public static float distance = 4;
+    public static float distance = 3.5f;
 
     // Mouse sensitivity for camera input
     public static float mouseSensitivityX = 5;

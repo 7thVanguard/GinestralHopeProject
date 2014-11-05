@@ -3,8 +3,6 @@ using System.Collections;
 
 public static class LTerrainVoxelTool
 {
-    private static RaycastHit impact;
-
     // Number of the vertex: 0 - backLeft, 1 - backRight, 2 - frontRight, 3 - frontLeft
     private static int voxelVertex;
 
@@ -16,7 +14,7 @@ public static class LTerrainVoxelTool
     {
         if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
-            if (impact.transform.tag == "Chunk")
+            if (CameraRaycast.impact.transform.tag == "Chunk")
             {
                 // Remove height to terrain voxels
                 switch (voxelVertex)
@@ -60,7 +58,7 @@ public static class LTerrainVoxelTool
     {
         if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
-            if (impact.transform.tag == "Chunk")
+            if (CameraRaycast.impact.transform.tag == "Chunk")
             {
                 // Add height to terrain voxels
                 switch (voxelVertex)
@@ -110,16 +108,16 @@ public static class LTerrainVoxelTool
     {
         if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
-            if (impact.transform.tag == "Chunk")
+            if (CameraRaycast.impact.transform.tag == "Chunk")
             {
                 float height = 0;
 
                 // Detecting the chunk, voxel and vertex we are aiming at
-                DevConstructionSkills.detVertex = new Vector2(Mathf.Round(impact.point.x), Mathf.Round(impact.point.z));
+                DevConstructionSkills.detVertex = new Vector2(Mathf.Round(CameraRaycast.impact.point.x), Mathf.Round(CameraRaycast.impact.point.z));
 
                 // Detects the vertex we are aiming at and it's height
-                if (impact.point.x < DevConstructionSkills.detVertex.x)
-                    if (impact.point.z < DevConstructionSkills.detVertex.y)
+                if (CameraRaycast.impact.point.x < DevConstructionSkills.detVertex.x)
+                    if (CameraRaycast.impact.point.z < DevConstructionSkills.detVertex.y)
                     {
                         DetectChunkAndVoxel(-1, -1);
                         height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.frontRightVertex / SWorld.maxSediment;
@@ -132,7 +130,7 @@ public static class LTerrainVoxelTool
                         voxelVertex = 1;
                     }
                 else
-                    if (impact.point.z < DevConstructionSkills.detVertex.y)
+                    if (CameraRaycast.impact.point.z < DevConstructionSkills.detVertex.y)
                     {
                         DetectChunkAndVoxel(0, -1);
                         height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.frontLeftVertex / SWorld.maxSediment;
@@ -156,11 +154,11 @@ public static class LTerrainVoxelTool
     {
         // Detects the chunk and voxel we are aiming at
         DevConstructionSkills.chunk = SWorld.chunk[(int)Mathf.Round(DevConstructionSkills.detVertex.x + x) / SWorld.chunkSize.x,
-                                                   (int)Mathf.Floor(impact.point.y / SWorld.chunkSize.y),
+                                                   (int)Mathf.Floor(CameraRaycast.impact.point.y / SWorld.chunkSize.y),
                                                    (int)Mathf.Round(DevConstructionSkills.detVertex.y + z) / SWorld.chunkSize.z];
 
         DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)Mathf.Round(DevConstructionSkills.detVertex.x + x) % SWorld.chunkSize.x,
-                                                                        (int)Mathf.Floor(impact.point.y % SWorld.chunkSize.y),
+                                                                        (int)Mathf.Floor(CameraRaycast.impact.point.y % SWorld.chunkSize.y),
                                                                         (int)Mathf.Round(DevConstructionSkills.detVertex.y + z) % SWorld.chunkSize.z];
 
         DevConstructionSkills.detChunk = DevConstructionSkills.chunk;

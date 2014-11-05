@@ -30,7 +30,7 @@ public class UPlayer : MonoBehaviour
 
         transform.position = new Vector3(4, 35, 4);
         transform.eulerAngles = Vector3.zero;
-        transform.localScale = new Vector3(0.8f, 0.85f, 0.8f);
+        transform.localScale = new Vector3(0.675f, 0.7f, 0.675f);
         SPlayer.transform = transform;
 
         movement.Start(gameObject);

@@ -22,6 +22,7 @@ public static class ObjectCreator
     {
         // Player
         GameObject player = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+        Transform.Destroy(player.GetComponent<CapsuleCollider>());
 
         player.name = "Player";
         player.tag = "Player";
@@ -29,9 +30,15 @@ public static class ObjectCreator
 
         // Player components creation
         player.AddComponent<CharacterController>();
+        player.AddComponent<SphereCollider>();
         player.AddComponent("UPlayer");
 
-        player.GetComponent<CharacterController>().slopeLimit = 67;
+        // Component variables
+        player.GetComponent<CharacterController>().slopeLimit = 46;
+
+        player.GetComponent<SphereCollider>().isTrigger = true;
+        player.GetComponent<SphereCollider>().radius = 30;
+        player.GetComponent<SphereCollider>().center = Vector3.zero;
 
 
         // Camera
