@@ -11,10 +11,10 @@ using System.Collections;
 public class UNSlime : MonoBehaviour 
 {
     // Movement relative
-    NSlimeMovement movement;
+    private NSlimeMovement movement;
 
     // Combat relative
-    NSlimeCombat combat;
+    private NSlimeCombat combat;
     
 
 	void Awake ()
@@ -33,20 +33,12 @@ public class UNSlime : MonoBehaviour
 	}
 	
 
-	void Update () 
+	void FixedUpdate ()
     {
-        InvokeRepeating("Detection", 0, 0.5f);
-
         if (!EGameFlow.pause && UWorldGenerator.gameLoaded)
         {
             movement.Update();
-            combat.Update();
+            combat.Update(gameObject);
         }
 	}
-
-
-    public void Detection()
-    {
-        Debug.Log("pass");
-    }
 }
