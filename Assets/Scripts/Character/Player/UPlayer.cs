@@ -13,6 +13,7 @@ public class UPlayer : MonoBehaviour
     public PlayerCombat combat;
 
     // Skills relative
+    private CombatSkills combatSkills;
     private DevCombatSkills devCombatSkills;
     private DevConstructionSkills devConstructionSkills;
 
@@ -36,6 +37,7 @@ public class UPlayer : MonoBehaviour
         movement.Start(gameObject);
 
         // Skills relative
+        combatSkills = new CombatSkills();
         devCombatSkills = new DevCombatSkills();
         devConstructionSkills = new DevConstructionSkills();
 	}
@@ -65,7 +67,7 @@ public class UPlayer : MonoBehaviour
             switch (EGameFlow.gameMode)
             {
                 case EGameFlow.GameMode.COMBAT:
-                    devCombatSkills.Update();
+                    combatSkills.Update();
                     break;
                 case EGameFlow.GameMode.CONTRUCTION:
                     devConstructionSkills.Update();

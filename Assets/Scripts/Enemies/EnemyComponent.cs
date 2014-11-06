@@ -6,7 +6,14 @@ public class EnemyComponent : MonoBehaviour
     [HideInInspector] public Color originalColor;
     [HideInInspector] public float life;
 
+    public int maxLife;
     private int animCounter;
+
+
+    void Start()
+    {
+        originalColor = gameObject.renderer.material.color;
+    }
 
 
     void Update ()

@@ -26,7 +26,7 @@ public class UNSlime : MonoBehaviour
         combat = new NSlimeCombat();
 
         this.gameObject.GetComponent<EnemyComponent>().life = SNSlime.maxLife;
-        this.gameObject.GetComponent<EnemyComponent>().originalColor = gameObject.renderer.material.color;
+        this.gameObject.GetComponent<EnemyComponent>().maxLife = SNSlime.maxLife;
 
         movement.Start(gameObject);
         combat.Start(gameObject);

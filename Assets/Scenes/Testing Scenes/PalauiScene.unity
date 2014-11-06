@@ -123,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalColor: {r: 0, g: 0, b: 0, a: 0}
   life: 0
+  maxLife: 0
 --- !u!114 &253822298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalColor: {r: 0, g: 0, b: 0, a: 0}
   life: 0
+  maxLife: 0
 --- !u!114 &1047617019
 MonoBehaviour:
   m_ObjectHideFlags: 0

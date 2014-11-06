@@ -33,7 +33,7 @@ public class HUD : MonoBehaviour
 
 	void OnGUI () 
     {
-        // Gizmos
+        //+ Gizmos
         GUI.DrawTexture(new Rect(Screen.width / 2 - gizmoCross.width / 2, Screen.height / 2 - gizmoCross.width / 2, gizmoCross.width, gizmoCross.height), gizmoCross);
         
         if (PlayerCombat.target == null)
@@ -41,8 +41,27 @@ public class HUD : MonoBehaviour
         else
             GUI.DrawTexture(new Rect(PlayerCombat.circleGizmoScreenPos.x - gizmoCircle.width / 2, (Screen.height - PlayerCombat.circleGizmoScreenPos.y) - gizmoCircle.width / 2, gizmoCircle.width, gizmoCircle.height), gizmoCircle);
 
-        //Player Life Bar
+
+        //+ Game bars
+        // Player Life Bar
         GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200, 20), lifeBarBack);
         GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200 * SPlayer.currentLife / SPlayer.maxLife, 20), lifeBar);
+
+        // Enemy life bar
+        if (PlayerCombat.target != null)
+        {
+            GUI.DrawTexture(new Rect(Screen.width * 7 / 8, Screen.height / 2, Screen.width * 0.9f / 8, 15), lifeBarBack);
+            GUI.DrawTexture(new Rect(Screen.width * 7 / 8, Screen.height / 2,
+                (Screen.width * 0.9f / 8) * (PlayerCombat.target.GetComponent<EnemyComponent>().life / PlayerCombat.target.GetComponent<EnemyComponent>().maxLife), 15), lifeBar);
+        }
+
+
+        //+ Skills casting
+        if (CombatSkills.casting)
+        {
+            GUI.DrawTexture(new Rect(Screen.width * 3 / 8 - 3, Screen.height * 4 / 5 - 10, Screen.width * 2 / 8 + 6, 20), lifeBarBack);
+            GUI.DrawTexture(new Rect(Screen.width * 3 / 8, Screen.height * 4 / 5 - 7,
+                (Screen.width * 2 / 8) * (CombatSkills.actualCastingTime / CombatSkills.totalCastingTime), 14), lifeBar);
+        }
     }
 }
