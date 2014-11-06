@@ -74,6 +74,21 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!114 &68108518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c5ce5398604e746b1648baacea36f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Nails
+  description: 
+  cost: 0
+  count: 0
 --- !u!1 &403768760
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,8 +98,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 403768762}
   - 114: {fileID: 403768761}
+  - 114: {fileID: 403768765}
+  - 114: {fileID: 403768764}
+  - 114: {fileID: 403768763}
   m_Layer: 0
-  m_Name: Meow
+  m_Name: World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,18 +116,91 @@ MonoBehaviour:
   m_GameObject: {fileID: 403768760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a63a3a3f0e3affe448a590846aed392b, type: 3}
+  m_Script: {fileID: 11500000, guid: e2b989e650a8958449bc295c273e5157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 0}
+  sunFlare: {fileID: 12100000, guid: 54fbbf098d116effa00081aba8ad6659, type: 2}
+  mat: {fileID: 2100000, guid: 585f795cf36d90d47a85b6bb45a6d0a6, type: 2}
+  saveName: AxelSave
 --- !u!4 &403768762
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 403768760}
-  m_LocalRotation: {x: .00898832548, y: 0, z: 0, w: .999959648}
-  m_LocalPosition: {x: .5, y: 7, z: 1.48693085}
-  m_LocalScale: {x: 69.8799973, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &403768763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 403768760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa098fbac8ad374d9fe47c72538412f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VoxelsList:
+  - {fileID: 1268891242}
+--- !u!114 &403768764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 403768760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feea1a29b4cf9fc43b58b30f759a4804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemsList:
+  - {fileID: 1374065663}
+  - {fileID: 68108518}
+--- !u!114 &403768765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 403768760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63bc3f79d22646d4085e3dc049e6a520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1268891242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e068fac41f05d4aa32b66fc393a75e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Wooden Plank
+  blastResistance: 0
+  transparent: 0
+  count: 0
+  sizeX: 1
+  sizeY: .100000001
+  sizeZ: 6
+--- !u!114 &1374065663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c5ce5398604e746b1648baacea36f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Wood Pieces
+  description: 
+  cost: 0
+  count: 0
