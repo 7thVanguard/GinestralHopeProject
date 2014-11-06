@@ -19,10 +19,10 @@ public class InventoryManager : EditorWindow
         EditorGUILayout.BeginVertical();
         EditorGUILayout.BeginHorizontal();
 
-        //+ Items
+        //+ GameComponents
 
-        foreach (KeyValuePair<string, Item> entry in InventoryDictionary.GlobalItemInventory)
-            EditorGUILayout.LabelField("Name: " + entry.Value.name + "  " + entry.Value.count);
+        foreach (KeyValuePair<string, GameComponent> entry in GameComponentDictionary.GameComponentsDictionary)
+            EditorGUILayout.LabelField("Name: " + entry.Value.nameKey + "  " + entry.Value.count);
 
         if (GUILayout.Button("Craft"))
             SInventory.CraftWoodPlank();
@@ -31,12 +31,12 @@ public class InventoryManager : EditorWindow
 
         EditorGUILayout.EndHorizontal();
 
-        //+ Voxels
+        //+ Gadgets
 
         EditorGUILayout.BeginHorizontal();
 
-        foreach (KeyValuePair<string, Voxel> entry in InventoryDictionary.GlobalVoxelInventory)
-            EditorGUILayout.LabelField("Name: " + entry.Value.name + "  " + entry.Value.count);
+        foreach (KeyValuePair<string, Gadget> entry in GadgetDictionary.GadgetsDictionary)
+            EditorGUILayout.LabelField("Name: " + entry.Value.nameKey + "  " + entry.Value.count);
 
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.EndVertical();

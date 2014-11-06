@@ -9,7 +9,7 @@ public class LGadgetsTool
         if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
             if (CameraRaycast.impact.transform.gameObject.tag == "Gadget")
             {
-                InventoryDictionary.GlobalVoxelInventory[CameraRaycast.impact.transform.gameObject.name].count++;
+                GadgetDictionary.GadgetsDictionary[CameraRaycast.impact.transform.gameObject.name].count++;
                 Object.Destroy(CameraRaycast.impact.transform.gameObject);
             }
     }

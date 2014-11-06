@@ -3,8 +3,8 @@ using System.Collections;
 using UnityEditor;
 
 
-[CustomEditor(typeof(ItemDictionary))]
-internal class ItemManagerInspector : Editor 
+[CustomEditor(typeof(GameComponentDictionary))]
+internal class GameComponentManagerInspector : Editor 
 {
     public override void OnInspectorGUI()
     {

@@ -3,8 +3,8 @@ using System.Collections;
 using UnityEditor;
 
 
-[CustomEditor(typeof(VoxelDictionary))]
-internal class VoxelManagerInspector : Editor 
+[CustomEditor(typeof(GadgetDictionary))]
+internal class GadgetManagerInspector : Editor 
 {
     public override void OnInspectorGUI()
     {
