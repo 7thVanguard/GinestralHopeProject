@@ -26,12 +26,12 @@ public static class ObjectCreator
 
         player.name = "Player";
         player.tag = "Player";
-        player.layer = LayerMask.NameToLayer("Ignore Raycast");
 
         // Player components creation
         player.AddComponent<CharacterController>();
         player.AddComponent<SphereCollider>();
         player.AddComponent("UPlayer");
+        player.AddComponent("PlayerComponent");
 
         // Component variables
         player.GetComponent<CharacterController>().slopeLimit = 46;
@@ -39,6 +39,8 @@ public static class ObjectCreator
         player.GetComponent<SphereCollider>().isTrigger = true;
         player.GetComponent<SphereCollider>().radius = 30;
         player.GetComponent<SphereCollider>().center = Vector3.zero;
+
+        player.renderer.material = new Material(Shader.Find("Diffuse"));
 
 
         // Camera

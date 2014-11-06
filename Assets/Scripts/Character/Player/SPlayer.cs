@@ -7,7 +7,7 @@ public static class SPlayer
 {
     //PlayerStatistics
     public static float maxLife = 20;
-    public static float currentLife = 4;
+    public static float currentLife = 20;
     
     // Movement
     public static float acceleration = 0.2f;

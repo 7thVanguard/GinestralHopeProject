@@ -12,6 +12,7 @@ public static class CreateLambertBall
 
         // Create ball
         GameObject ball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        ball.tag = "Skill";
 
         // Set transforms
         ball.transform.position = SPlayer.transform.position;
@@ -45,7 +46,7 @@ public static class CreateLambertBall
 
         else
         {
-            targetPosition = Vector3.zero;
+            targetPosition = SPlayer.transform.position;
         }
 
         //+ Fire
@@ -59,6 +60,6 @@ public static class CreateLambertBall
         originPosition = origin + ballDirection.normalized * 2;
 
         // Launch
-        ball.GetComponent<LambertBall>().Initialize(originPosition, targetPosition, ballDirection, ballSpeed);
+        ball.GetComponent<LambertBall>().Fire(originPosition, targetPosition, ballDirection, ballSpeed);
     }
 }

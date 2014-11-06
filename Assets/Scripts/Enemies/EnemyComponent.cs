@@ -9,12 +9,6 @@ public class EnemyComponent : MonoBehaviour
     private int animCounter;
 
 
-    void Start()
-    {
-        animCounter = 0;
-    }
-
-
     void Update ()
     {
         // Counter update

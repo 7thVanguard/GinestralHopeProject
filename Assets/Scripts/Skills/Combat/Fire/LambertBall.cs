@@ -7,7 +7,7 @@ public class LambertBall : MonoBehaviour
     private bool isColliding;
 
 
-    public void Initialize(Vector3 origin, Vector3 target, Vector3 initialDirection, float ballSpeed)
+    public void Fire(Vector3 origin, Vector3 target, Vector3 initialDirection, float ballSpeed)
     {
         float flyTime;
 
@@ -42,16 +42,19 @@ public class LambertBall : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        // testc if already collided
-        if (isColliding)
-            return;
-        isColliding = true;
+        if (other.gameObject.tag != "Skill")
+        {
+            // testc if already collided
+            if (isColliding)
+                return;
+            isColliding = true;
 
-        if (other.gameObject.tag == "Enemy")
-            other.gameObject.GetComponent<EnemyComponent>().Damage(1);
-        else if (other.gameObject.tag == "Player")
-            other.gameObject.GetComponent<UPlayer>().combat.Damage(1);
+            if (other.gameObject.tag == "Enemy")
+                other.gameObject.GetComponent<EnemyComponent>().Damage(1);
+            else if (other.gameObject.tag == "Player")
+                other.gameObject.GetComponent<PlayerComponent>().Damage(1);
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
