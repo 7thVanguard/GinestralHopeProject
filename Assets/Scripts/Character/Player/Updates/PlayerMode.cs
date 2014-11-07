@@ -39,6 +39,8 @@ public class PlayerMode
             EGameFlow.selectedTool = EGameFlow.SelectedTool.MINE;
         else if (Input.GetKey(KeyCode.Alpha3))
             EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
+		else if (Input.GetKey(KeyCode.Alpha4))
+			EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
 
         // SubTool
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
@@ -49,36 +51,41 @@ public class PlayerMode
         {
             if (Input.GetKey(KeyCode.UpArrow))
                 EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.SINGLE;
-            if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow))
                 EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.ORTOEDRIC;
         }
 
 
         // Texture selection / Gadget selection
-        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
-        {
-            if (Input.GetKey(KeyCode.I))
-                SWorld.selectedTerrain = "Grass";
-            else if (Input.GetKey(KeyCode.J))
-                SWorld.selectedTerrain = "DirtGrass";
-        }
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
-        {
-            if (Input.GetKey(KeyCode.I))
-                SWorld.selectedMine = "Rock";
-            else if (Input.GetKey(KeyCode.J))
-                SWorld.selectedMine = "BreakRock";
-            else if (Input.GetKey(KeyCode.K))
-                SWorld.selectedMine = "Wood";
-        }
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-        {
-            if (Input.GetKey(KeyCode.I))
-                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.PLANK;
-            else if (Input.GetKey(KeyCode.J))
-                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.WOOD;
-            else if (Input.GetKey(KeyCode.K))
-                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.NAILS;
-        }
+        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN) 
+		{
+			if (Input.GetKey (KeyCode.I))
+				SWorld.selectedTerrain = "Grass";
+			else if (Input.GetKey (KeyCode.J))
+				SWorld.selectedTerrain = "DirtGrass";
+		} 
+		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE) 
+		{
+			if (Input.GetKey (KeyCode.I))
+				SWorld.selectedMine = "Rock";
+			else if (Input.GetKey (KeyCode.J))
+				SWorld.selectedMine = "BreakRock";
+			else if (Input.GetKey (KeyCode.K))
+				SWorld.selectedMine = "Wood";
+		} 
+		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET) 
+		{
+			if (Input.GetKey (KeyCode.I))
+				EGameFlow.selectedGadget = EGameFlow.SelectedGadget.PLANK;
+			else if (Input.GetKey (KeyCode.J))
+				EGameFlow.selectedGadget = EGameFlow.SelectedGadget.WOOD;
+			else if (Input.GetKey (KeyCode.K))
+				EGameFlow.selectedGadget = EGameFlow.SelectedGadget.NAILS;
+		}
+		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY) 
+		{
+			if (Input.GetKey (KeyCode.I))
+				EGameFlow.selectedEnemy = EGameFlow.SelectedEnemy.NORMALSLIME;
+		}
 	}
 }

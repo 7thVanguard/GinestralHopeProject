@@ -12,7 +12,7 @@ public static class EGameFlow
 
 
     // Tools
-    public enum SelectedTool { TERRAIN, MINE, GADGET}
+    public enum SelectedTool { TERRAIN, MINE, GADGET, ENEMY }
     public static SelectedTool selectedTool = SelectedTool.MINE;
 
     public enum DeveloperTerrainTools { VERTEX, MULTIVERTEX }
@@ -26,6 +26,13 @@ public static class EGameFlow
     public enum SelectedGadget { PLANK, WOOD, NAILS, LADDER }
     public static SelectedGadget selectedGadget = SelectedGadget.PLANK;
 
+
+	// Enemies
+	public enum SelectedEnemy { NORMALSLIME }
+	public static SelectedEnemy selectedEnemy = SelectedEnemy.NORMALSLIME;
+
+
+	// Flow
     public static bool pause = false;
     public static bool loading = false;
 }

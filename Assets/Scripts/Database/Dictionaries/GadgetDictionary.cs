@@ -46,10 +46,4 @@ public class GadgetDictionary : MonoBehaviour
 
         GadgetsDictionary.Add(nails.nameKey, nails);
     }
-
-
-    public void Remove()
-    {
-
-    }
 }

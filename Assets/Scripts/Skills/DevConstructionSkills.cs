@@ -45,6 +45,8 @@ public class DevConstructionSkills
             LMineVoxelTool.Remove();
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
             LGadgetsTool.Remove();
+		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
+			LEnemyTool.Remove();
     }
 
 
@@ -56,6 +58,8 @@ public class DevConstructionSkills
             LMineVoxelTool.Place();
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
             LGadgetsTool.Place();
+		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
+			LEnemyTool.Place();
     }
 
 
@@ -67,6 +71,8 @@ public class DevConstructionSkills
             LMineVoxelTool.Cancel();
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
             LGadgetsTool.Cancel();
+		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
+			LEnemyTool.Cancel();
     }
 
 
@@ -78,5 +84,7 @@ public class DevConstructionSkills
             LMineVoxelTool.Detect();
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
             LGadgetsTool.Detect();
+		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
+			LEnemyTool.Detect();
     }
 }
