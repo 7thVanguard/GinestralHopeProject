@@ -75,6 +75,10 @@ public class PlayerMode
         {
             if (Input.GetKey(KeyCode.I))
                 EGameFlow.selectedGadget = EGameFlow.SelectedGadget.PLANK;
+            else if (Input.GetKey(KeyCode.J))
+                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.WOOD;
+            else if (Input.GetKey(KeyCode.K))
+                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.NAILS;
         }
 	}
 }

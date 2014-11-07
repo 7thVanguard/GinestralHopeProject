@@ -18,6 +18,14 @@ public class SWorld
         // Control the chunks we are going to reset
         public static List<IntVector3> chunksToReset = new List<IntVector3>();
 
+    // 3D models relative
+        // Enemies
+        public static Transform normalSlime;
+
+        // Gadgets
+        public static Transform woodPieces;
+        public static Transform nails;
+
     // Material and texture relative
         public static float textureSize = 128 / 1024.0f;
 

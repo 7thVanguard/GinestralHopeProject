@@ -23,7 +23,7 @@ public static class EGameFlow
 
 
     // Gadgets
-    public enum SelectedGadget { PLANK, LADDER }
+    public enum SelectedGadget { PLANK, WOOD, NAILS, LADDER }
     public static SelectedGadget selectedGadget = SelectedGadget.PLANK;
 
     public static bool pause = false;

@@ -16,11 +16,9 @@ public class GadgetDictionary : MonoBehaviour
         woodenPlank.nameKey = "Wooden Plank";
         woodenPlank.blastResistance = 0;
         woodenPlank.size = new Vector3(1, 0.1f, 6);
-        woodenPlank.voxelDrop = "Wooden Plank";
-        woodenPlank.voxelDropCount = 1;
-        woodenPlank.componentDrop = "Nothing";
-        woodenPlank.componentDropCount = 0;
         woodenPlank.count = 0;
+        woodenPlank.givesComponents = false;
+        woodenPlank.dropCount = 1;
 
         GadgetsDictionary.Add(woodenPlank.nameKey, woodenPlank);
 
@@ -30,11 +28,9 @@ public class GadgetDictionary : MonoBehaviour
         woodPieces.nameKey = "Wood Pieces";
         woodPieces.blastResistance = 0;
         woodPieces.size = Vector3.one;
-        woodPieces.voxelDrop = "Nothing";
-        woodPieces.voxelDropCount = 0;
-        woodPieces.componentDrop = "Wood Pieces";
-        woodPieces.componentDropCount = 1;
         woodPieces.count = 0;
+        woodPieces.givesComponents = true;
+        woodPieces.dropCount = 1;
 
         GadgetsDictionary.Add(woodPieces.nameKey, woodPieces);
 
@@ -44,12 +40,16 @@ public class GadgetDictionary : MonoBehaviour
         nails.nameKey = "Nails";
         nails.blastResistance = 0;
         nails.size = Vector3.one;
-        nails.voxelDrop = "Nothing";
-        nails.voxelDropCount = 0;
-        nails.componentDrop = "Nails";
-        nails.componentDropCount = 4;
         nails.count = 0;
+        nails.givesComponents = true;
+        nails.dropCount = 4;
 
         GadgetsDictionary.Add(nails.nameKey, nails);
+    }
+
+
+    public void Remove()
+    {
+
     }
 }

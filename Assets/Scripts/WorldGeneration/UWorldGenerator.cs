@@ -4,6 +4,7 @@ using System.Collections;
 public class UWorldGenerator : MonoBehaviour 
 {
     public Flare sunFlare;
+    public Transform prefabs;
     public Material mat;
     public string saveName;
 
@@ -31,6 +32,14 @@ public class UWorldGenerator : MonoBehaviour
         SWorld.chunk = new ChunkGenerator[SWorld.chunkNumber.x, SWorld.chunkNumber.y, SWorld.chunkNumber.z];
 
         SWorld.saveName = this.saveName;
+
+        // 3D models
+        // Enemies
+        SWorld.normalSlime = prefabs.FindChild("Normal SLime");
+
+        // Gadgets
+        SWorld.woodPieces = prefabs.FindChild("Wood Pieces");
+        SWorld.nails = prefabs.FindChild("Nails");
 	}
 	
 

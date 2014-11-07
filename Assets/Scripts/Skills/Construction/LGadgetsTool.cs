@@ -9,7 +9,17 @@ public class LGadgetsTool
         if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
             if (CameraRaycast.impact.transform.gameObject.tag == "Gadget")
             {
-                GadgetDictionary.GadgetsDictionary[CameraRaycast.impact.transform.gameObject.name].count++;
+                Debug.Log(CameraRaycast.impact.transform.gameObject.name);
+                Gadget gadget = GadgetDictionary.GadgetsDictionary[CameraRaycast.impact.transform.gameObject.name];
+
+                // returns the gadged if it's not a component giver, else gives it's components
+                if (gadget.givesComponents)
+                {
+                    GameComponentDictionary.GameComponentsDictionary[gadget.nameKey].count += gadget.dropCount;
+                }
+                else
+                    gadget.count += gadget.dropCount;
+
                 Object.Destroy(CameraRaycast.impact.transform.gameObject);
             }
     }
@@ -36,6 +46,12 @@ public class LGadgetsTool
                 {
                     case EGameFlow.SelectedGadget.PLANK:
                         LVGadget.placePlank(new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)), yRotation);
+                        break;
+                    case EGameFlow.SelectedGadget.WOOD:
+                        LVGadget.placeWoodPiecesGadget(new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)));
+                        break;
+                    case EGameFlow.SelectedGadget.NAILS:
+                        LVGadget.placeNailsGadget(new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)));
                         break;
                     case EGameFlow.SelectedGadget.LADDER:
                         break;

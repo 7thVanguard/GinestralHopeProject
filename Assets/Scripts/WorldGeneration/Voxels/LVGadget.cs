@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
+
 
 public static class LVGadget
 {
@@ -7,7 +9,7 @@ public static class LVGadget
     {
         if (GadgetDictionary.GadgetsDictionary.ContainsKey("Wooden Plank"))
         {
-            if (GadgetDictionary.GadgetsDictionary["Wooden Plank"].count >= 1)
+            if (GadgetDictionary.GadgetsDictionary["Wooden Plank"].count >= 1 || EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
             {
                 GameObject plank = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 Gadget gadget = GadgetDictionary.GadgetsDictionary["Wooden Plank"];
@@ -39,11 +41,36 @@ public static class LVGadget
 
                 plank.transform.eulerAngles = new Vector3(0, rotation, 0);
 
-                // Remove the plank from the inventory
-                GadgetDictionary.GadgetsDictionary["Wooden Plank"].count--;
+                if (EGameFlow.generalMode == EGameFlow.GeneralMode.PLAYER)
+                {
+                    // Remove the plank from the inventory
+                    GadgetDictionary.GadgetsDictionary["Wooden Plank"].count--;
+                }
             }
         }
-        GameComponentDictionary.GameComponentsDictionary["Wood Pieces"].count++;
-        GameComponentDictionary.GameComponentsDictionary["Nails"].count += 4;
+    }
+
+
+    public static void placeWoodPiecesGadget(Vector3 position)
+    {
+        if (EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
+        {
+            Transform woodPieces = SWorld.woodPieces;
+
+            woodPieces = Object.Instantiate(woodPieces, position, Quaternion.identity) as Transform;
+            woodPieces.name = "Wood Pieces";
+        }
+    }
+
+
+    public static void placeNailsGadget(Vector3 position)
+    {
+        if (EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
+        {
+            Transform nails = SWorld.nails;
+
+            nails = Object.Instantiate(nails, position, Quaternion.identity) as Transform;
+            nails.name = "Nails";
+        }
     }
 }
