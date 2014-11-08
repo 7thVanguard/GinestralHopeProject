@@ -1,5 +1,5 @@
 Game
-	GameObject<UWorldGenerator>.saveName "save file name"
+	GameObject World: Component<UWorldGenerator>.saveName "save file name"
 	f5 : save file
 	f9 : load file
 
