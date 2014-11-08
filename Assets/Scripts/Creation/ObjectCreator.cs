@@ -18,7 +18,7 @@ public static class ObjectCreator
     }
 
 
-    public static void PlayerCreation()
+    public static GameObject PlayerCreation()
     {
         // Player
         GameObject player = GameObject.CreatePrimitive(PrimitiveType.Capsule);
@@ -42,6 +42,12 @@ public static class ObjectCreator
 
         player.renderer.material = new Material(Shader.Find("Diffuse"));
 
+        return player;
+    }
+
+
+    public static GameObject CameraCreation()
+    {
 
         // Camera
         GameObject mainCamera = new GameObject();
@@ -55,6 +61,8 @@ public static class ObjectCreator
         mainCamera.AddComponent("UCamera");
 
         mainCamera.AddComponent("FlareLayer");
+
+        return mainCamera;
     }
 
 

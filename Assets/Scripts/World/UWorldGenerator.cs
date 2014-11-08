@@ -3,7 +3,6 @@ using System.Collections;
 
 public class UWorldGenerator : MonoBehaviour 
 {
-    public Flare sunFlare;
     public Transform prefabs;
     public Material mat;
     public string saveName;
@@ -25,9 +24,6 @@ public class UWorldGenerator : MonoBehaviour
     {
         // World
         SWorld.world = this.gameObject;
-        ObjectCreator.WorldSet(SWorld.world);
-        ObjectCreator.PlayerCreation();
-        ObjectCreator.SunCreation(sunFlare);
 
         SWorld.chunk = new ChunkGenerator[SWorld.chunkNumber.x, SWorld.chunkNumber.y, SWorld.chunkNumber.z];
 

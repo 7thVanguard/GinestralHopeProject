@@ -3,6 +3,14 @@ using System.Collections;
 
 public class UPlayer : MonoBehaviour
 {
+    private AbstractInputsController activedPlayerController;
+
+    private PlayerBuildInputController PCBuildMode;
+    private PlayerCombatInputController PCCombatMode;
+
+
+
+
     // Mode change relative
     private PlayerMode mode;
 
@@ -23,9 +31,6 @@ public class UPlayer : MonoBehaviour
         // Mode change relative
         mode = new PlayerMode();
 
-        // Movement relative
-        movement = new PlayerMovement();
-
         // Combat relative
         combat = new PlayerCombat();
 
@@ -33,8 +38,6 @@ public class UPlayer : MonoBehaviour
         transform.eulerAngles = Vector3.zero;
         transform.localScale = new Vector3(0.675f, 0.7f, 0.675f);
         SPlayer.transform = transform;
-
-        movement.Start(gameObject);
 
         // Skills relative
         combatSkills = new CombatSkills();
@@ -46,9 +49,6 @@ public class UPlayer : MonoBehaviour
 
 	void Update ()
     {
-        // Mode change relative
-        mode.Update();
-
         // Pause
         if (Input.GetKeyUp(KeyCode.P))
             EGameFlow.pause = !EGameFlow.pause;
@@ -56,7 +56,6 @@ public class UPlayer : MonoBehaviour
         // Movement relative
         if ((!EGameFlow.pause && UWorldGenerator.gameLoaded) || EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
         {
-            movement.Update();
             combat.Update();
             SPlayer.transform = transform;
         }
