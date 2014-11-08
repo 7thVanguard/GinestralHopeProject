@@ -21,10 +21,12 @@ public class SWorld
     // 3D models relative
         // Enemies
         public static Transform normalSlime;
+        public static string selectedEnemy = "Normal Slime";
 
         // Gadgets
         public static Transform woodPieces;
         public static Transform nails;
+        public static string selectedGadget = "Wood Pieces";
 
     // Material and texture relative
         public static float textureSize = 128 / 1024.0f;

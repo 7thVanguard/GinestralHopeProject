@@ -35,7 +35,7 @@ public class UWorldGenerator : MonoBehaviour
 
         // 3D models
         // Enemies
-        SWorld.normalSlime = prefabs.FindChild("Normal SLime");
+        SWorld.normalSlime = prefabs.FindChild("Normal Slime");
 
         // Gadgets
         SWorld.woodPieces = prefabs.FindChild("Wood Pieces");

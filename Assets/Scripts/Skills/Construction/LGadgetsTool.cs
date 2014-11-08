@@ -9,14 +9,11 @@ public class LGadgetsTool
         if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
             if (CameraRaycast.impact.transform.gameObject.tag == "Gadget")
             {
-                Debug.Log(CameraRaycast.impact.transform.gameObject.name);
                 Gadget gadget = GadgetDictionary.GadgetsDictionary[CameraRaycast.impact.transform.gameObject.name];
 
                 // returns the gadged if it's not a component giver, else gives it's components
                 if (gadget.givesComponents)
-                {
                     GameComponentDictionary.GameComponentsDictionary[gadget.nameKey].count += gadget.dropCount;
-                }
                 else
                     gadget.count += gadget.dropCount;
 
@@ -74,9 +71,9 @@ public class LGadgetsTool
         if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
             // Check if we are aiming at the top face of a voxel
-            if (CameraRaycast.impact.normal == Vector3.up)
+            if (CameraRaycast.impact.normal.y >= 0.75f)
             {
-                // Detects the vertex we are aiming at
+                // Detects the voxel
                 DevConstructionSkills.chunk = SWorld.chunk[(int)((CameraRaycast.impact.point.x) / SWorld.chunkSize.x),
                                                            (int)((CameraRaycast.impact.point.y + 0.5f) / SWorld.chunkSize.y),
                                                            (int)((CameraRaycast.impact.point.z) / SWorld.chunkSize.z)];
