@@ -59,9 +59,19 @@ public class World
 
     public void Init(Material atlas, float textureSize)
     {
-        ObjectCreator.WorldSet(world);
+        //+ World setting
+        world.name = "World";
 
-        // Create the world
+        // Set world transforms
+        world.transform.position = Vector3.zero;
+        world.transform.eulerAngles = Vector3.zero;
+        world.transform.localScale = Vector3.one;
+
+        world.AddComponent("GUISystem");
+        world.AddComponent("HUD");
+
+
+        //+ World creation
         for(int cx = 0; cx < chunkNumber.x; cx++)
             for(int cy = 0; cy < chunkNumber.y; cy++)
                 for (int cz = 0; cz < chunkNumber.z; cz++)

@@ -3,9 +3,12 @@ using System.Collections;
 
 public class PlayerCombatInputController : AbstractInputsController
 {
+    CombatSkills skills;
+
+
     public override void Start()
     {
-        
+        skills = new CombatSkills();
     }
 
 
@@ -14,5 +17,7 @@ public class PlayerCombatInputController : AbstractInputsController
         EGameFlow.gameMode = EGameFlow.GameMode.COMBAT;
         EGameFlow.generalMode = EGameFlow.GeneralMode.PLAYER;
         SPlayer.constructionDetection = 5;
+
+        skills.Update();
     }
 }

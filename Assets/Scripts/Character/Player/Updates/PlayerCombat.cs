@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerCombat
 {
-    private GameObject player;
+    private Player player;
 
     // Detection relative
     public static GameObject target;
@@ -11,7 +11,7 @@ public class PlayerCombat
     private int detectionDistance = 30;
 
 
-    public void Start(GameObject player)
+    public PlayerCombat(Player player)
     {
         this.player = player;
 

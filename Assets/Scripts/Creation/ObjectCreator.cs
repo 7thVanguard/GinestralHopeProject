@@ -3,49 +3,16 @@ using System.Collections;
 
 public static class ObjectCreator
 {
-    public static void WorldSet(GameObject world)
-    {
-        // World
-        world.name = "World";
-
-        // Set world transforms
-        world.transform.position = Vector3.zero;
-        world.transform.eulerAngles = Vector3.zero;
-        world.transform.localScale = Vector3.one;
-
-        world.AddComponent("GUISystem");
-        world.AddComponent("HUD");
-    }
+    //public static void WorldSet(GameObject world)
+    //{
+        
+    //}
 
 
-    public static GameObject PlayerCreation(World world)
-    {
-        // Player
-        GameObject player = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        Transform.Destroy(player.GetComponent<CapsuleCollider>());
-
-        player.name = "Player";
-        player.tag = "Player";
-
-        // Player components creation
-        player.AddComponent<CharacterController>();
-        player.AddComponent<SphereCollider>();
-        player.AddComponent("UPlayer");
-        player.AddComponent("PlayerComponent");
-
-        // Component variables
-        player.GetComponent<CharacterController>().slopeLimit = 46;
-
-        player.GetComponent<SphereCollider>().isTrigger = true;
-        player.GetComponent<SphereCollider>().radius = 30;
-        player.GetComponent<SphereCollider>().center = Vector3.zero;
-
-        player.GetComponent<UPlayer>().world = world;
-
-        player.renderer.material = new Material(Shader.Find("Diffuse"));
-
-        return player;
-    }
+    //public static GameObject PlayerCreation(World world)
+    //{
+    //    return player;
+    //}
 
 
     public static GameObject CameraCreation()

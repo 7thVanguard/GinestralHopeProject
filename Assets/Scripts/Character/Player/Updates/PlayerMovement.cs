@@ -4,17 +4,15 @@ using System.Collections;
 
 public class PlayerMovement
 {
-    private GameObject player;
-    private CharacterController playerController;
+    private Player player;
 
     private Vector3 objectiveDirection;
     private Vector3 interpolateDirection;
 
 
-    public PlayerMovement(GameObject player)
+    public PlayerMovement(Player player)
     {
         this.player = player;
-        playerController = player.GetComponent<CharacterController>();
     }
 
 
@@ -32,7 +30,7 @@ public class PlayerMovement
         HorizontalMovement(SPlayer.runSpeed, root);
 
         // Jump
-        if (playerController.isGrounded)
+        if (player.controller.isGrounded)
         {
             if (Input.GetKey(KeyCode.Space))
                 objectiveDirection = new Vector3(objectiveDirection.x, SPlayer.jumpInitialSpeed, objectiveDirection.z);
@@ -41,7 +39,7 @@ public class PlayerMovement
             objectiveDirection += new Vector3(0, -EGamePhysics.gravity * 1.5f, 0) * Time.deltaTime;
 
         // Assign movement
-        playerController.Move(interpolateDirection * Time.deltaTime);
+        player.controller.Move(interpolateDirection * Time.deltaTime);
     }
 
 
@@ -67,7 +65,7 @@ public class PlayerMovement
             objectiveDirection = new Vector3(objectiveDirection.x, 0, objectiveDirection.z);
 
         // Assign movement
-        playerController.Move(interpolateDirection * Time.deltaTime);
+        player.controller.Move(interpolateDirection * Time.deltaTime);
     }
 
 
@@ -96,7 +94,7 @@ public class PlayerMovement
                 objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
         }
 
-        player.transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-        objectiveDirection = player.transform.TransformDirection(objectiveDirection);
+        player.playerObj.transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+        objectiveDirection = player.playerObj.transform.TransformDirection(objectiveDirection);
     }
 }

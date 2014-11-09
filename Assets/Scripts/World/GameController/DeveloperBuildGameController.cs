@@ -3,18 +3,20 @@ using System.Collections;
 
 public class DeveloperBuildGameController : GameController 
 {
-    World world;
+    private World world;
+    private Player player;
 
 
-    public DeveloperBuildGameController(World world, GameObject player, GameObject mainCamera) : base(world, player, mainCamera)
+    public DeveloperBuildGameController(World world, Player player, GameObject mainCamera) : base(world, player, mainCamera)
     {
         this.world = world;
+        this.player = player;
     }
 
 
     public override void Start()
     {
-        inputController = new DeveloperBuildInputController(world);
+        inputController = new DeveloperBuildInputController(world, player);
         base.Start();
     }
 

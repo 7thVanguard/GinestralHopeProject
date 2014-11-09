@@ -4,18 +4,20 @@ using System.Collections;
 public class DeveloperBuildInputController : AbstractInputsController
 {
     private World world;
-    private DevConstructionSkills skils;
+    private Player player;
+    private DevConstructionSkills skills;
 
 
-    public DeveloperBuildInputController(World world)
+    public DeveloperBuildInputController(World world, Player player)
     {
         this.world = world;
+        this.player = player;
     }
 
 
     public override void Start()
     {
-        skils = new DevConstructionSkills();
+        skills = new DevConstructionSkills();
     }
 
 
@@ -76,6 +78,6 @@ public class DeveloperBuildInputController : AbstractInputsController
         }
 
         // Mouse click
-        skils.Update(world);
+        skills.Update(world, player);
 	}
 }

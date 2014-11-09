@@ -5,11 +5,13 @@ public class GameController
 {
     protected AbstractInputsController inputController;
     protected PlayerMovement movement;
+    protected PlayerCombat combat;
 
 
-    public GameController(World world, GameObject player, GameObject mainCamera)
+    public GameController(World world, Player player, GameObject mainCamera)
     {
         movement = new PlayerMovement(player);
+        combat = new PlayerCombat(player);
     }
 
 

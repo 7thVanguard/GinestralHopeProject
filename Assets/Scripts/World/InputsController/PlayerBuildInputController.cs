@@ -3,9 +3,19 @@ using System.Collections;
 
 public class PlayerBuildInputController : AbstractInputsController 
 {
+    private World world;
+    private ConstructionSkills skills;
+
+
+    public PlayerBuildInputController(World world)
+    {
+        this.world = world;
+    }
+
+
     public override void Start()
     {
-        
+        skills = new ConstructionSkills();
     }
 
 
@@ -30,5 +40,7 @@ public class PlayerBuildInputController : AbstractInputsController
             else if (Input.GetKey(KeyCode.K))
                 EGameFlow.selectedGadget = EGameFlow.SelectedGadget.NAILS;
         }
+
+        skills.Update(world);
     }
 }

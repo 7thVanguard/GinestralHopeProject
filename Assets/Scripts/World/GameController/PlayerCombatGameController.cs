@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerCombatGameController : GameController 
 {
-    public PlayerCombatGameController(World world, GameObject player, GameObject mainCamera) : base(world, player, mainCamera)
+    public PlayerCombatGameController(World world, Player player, GameObject mainCamera) : base(world, player, mainCamera)
     {
 
     }
@@ -21,5 +21,6 @@ public class PlayerCombatGameController : GameController
     {
         base.Update();
         movement.NormalMovementUpdate();
+        combat.Update();
     }
 }

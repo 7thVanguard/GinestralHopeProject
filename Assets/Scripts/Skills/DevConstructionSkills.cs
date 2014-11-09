@@ -24,7 +24,7 @@ public class DevConstructionSkills
     private static int sedimentExcess;
     private static int sedimentPerClick = 3;
 
-    public void Update(World world)
+    public void Update(World world, Player player)
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
             Remove(world);
