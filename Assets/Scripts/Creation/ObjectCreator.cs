@@ -18,7 +18,7 @@ public static class ObjectCreator
     }
 
 
-    public static GameObject PlayerCreation()
+    public static GameObject PlayerCreation(World world)
     {
         // Player
         GameObject player = GameObject.CreatePrimitive(PrimitiveType.Capsule);
@@ -39,6 +39,8 @@ public static class ObjectCreator
         player.GetComponent<SphereCollider>().isTrigger = true;
         player.GetComponent<SphereCollider>().radius = 30;
         player.GetComponent<SphereCollider>().center = Vector3.zero;
+
+        player.GetComponent<UPlayer>().world = world;
 
         player.renderer.material = new Material(Shader.Find("Diffuse"));
 

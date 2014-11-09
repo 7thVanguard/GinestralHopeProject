@@ -31,80 +31,82 @@ public class LVMine
 
     // Check if the voxel is visible
     // Faces 1 - Right, 2 - Front, 3 - Left, 4 - Back, 5 - Top, 6 - Bot
-    public static void DetectSorroundings(IntVector3 chunkID, IntVector3 voxelID)
+    public static void DetectSorroundings(World world, IntVector3 chunkID, IntVector3 voxelID)
     {
         // Setting
-        chunk = SWorld.chunk[chunkID.x, chunkID.y, chunkID.z];
+        //chunk = SWorld.chunk[chunkID.x, chunkID.y, chunkID.z];
+        chunk = world.chunk[chunkID.x, chunkID.y, chunkID.z];
         voxel = chunk.voxel[voxelID.x, voxelID.y, voxelID.z];
 
         detChunk = chunk;
         detVoxel = voxel;
 
         // Detect the sorrounding blocks
-        rightFull = VisibilityCalculation(1, 0, 0);
-        frontFull = VisibilityCalculation(0, 0, 1);
-        leftFull = VisibilityCalculation(-1, 0, 0);
-        backFull = VisibilityCalculation(0, 0, -1);
-        topFull = VisibilityCalculation(0, 1, 0);
-        botFull = VisibilityCalculation(0, -1, 0);
+        rightFull = VisibilityCalculation(world, 1, 0, 0);
+        frontFull = VisibilityCalculation(world, 0, 0, 1);
+        leftFull = VisibilityCalculation(world, -1, 0, 0);
+        backFull = VisibilityCalculation(world, 0, 0, -1);
+        topFull = VisibilityCalculation(world, 0, 1, 0);
+        botFull = VisibilityCalculation(world, 0, -1, 0);
     }
 
 
     public static void FaceVertices
-        (IntVector3 chunkID, IntVector3 voxelID, List<Vector3> Vertices, List<Vector2> UV, List<int> Triangles)
+        (World world, IntVector3 chunkID, IntVector3 voxelID, List<Vector3> Vertices, List<Vector2> UV, List<int> Triangles, 
+        ref int vertexCount)
     {
         // Setting
-        chunk = SWorld.chunk[chunkID.x, chunkID.y, chunkID.z];
+        chunk = world.chunk[chunkID.x, chunkID.y, chunkID.z];
         voxel = chunk.voxel[voxelID.x, voxelID.y, voxelID.z];
 
         detChunk = chunk;
         detVoxel = voxel;
 
         // Get the center of the voxel
-        Vector3 generalLoaction = new Vector3(SWorld.chunkSize.x * chunkID.x + voxelID.x + 0.5f,
-                                              SWorld.chunkSize.y * chunkID.y + voxelID.y + 0.5f,
-                                              SWorld.chunkSize.z * chunkID.z + voxelID.z + 0.5f);
+        Vector3 generalLoaction = new Vector3(world.chunkSize.x * chunkID.x + voxelID.x + 0.5f,
+                                              world.chunkSize.y * chunkID.y + voxelID.y + 0.5f,
+                                              world.chunkSize.z * chunkID.z + voxelID.z + 0.5f);
 
         // Check the positions of the vertices we are going to create
-        topFrontRightVertex = VertexPosition(1, 1, 1, rightFull, topFull, frontFull);
-        topFrontLeftVertex = VertexPosition(-1, 1, 1, leftFull, topFull, frontFull);
-        topBackRightVertex = VertexPosition(1, 1, -1, rightFull, topFull, backFull);
-        topBackLeftVertex = VertexPosition(-1, 1, -1, leftFull, topFull, backFull);
-        botFrontRightVertex = VertexPosition(1, -1, 1, rightFull, botFull, frontFull);
-        botFrontLeftVertex = VertexPosition(-1, -1, 1, leftFull, botFull, frontFull);
-        botBackRightVertex = VertexPosition(1, -1, -1, rightFull, botFull, backFull);
-        botBackLeftVertex = VertexPosition(-1, -1, -1, leftFull, botFull, backFull);
+        topFrontRightVertex = VertexPosition(world, 1, 1, 1, rightFull, topFull, frontFull);
+        topFrontLeftVertex = VertexPosition(world, -1, 1, 1, leftFull, topFull, frontFull);
+        topBackRightVertex = VertexPosition(world, 1, 1, -1, rightFull, topFull, backFull);
+        topBackLeftVertex = VertexPosition(world, -1, 1, -1, leftFull, topFull, backFull);
+        botFrontRightVertex = VertexPosition(world, 1, -1, 1, rightFull, botFull, frontFull);
+        botFrontLeftVertex = VertexPosition(world, -1, -1, 1, leftFull, botFull, frontFull);
+        botBackRightVertex = VertexPosition(world, 1, -1, -1, rightFull, botFull, backFull);
+        botBackLeftVertex = VertexPosition(world, -1, -1, -1, leftFull, botFull, backFull);
 
 
         // Check if the voxel beside is a visible terrain voxel and after that check if covers this voxel
         if (rightFull)
-            rightFull = NerbyTerrainCalculation(1, 0, 0);
+            rightFull = NerbyTerrainCalculation(world, 1, 0, 0);
         if (frontFull)
-            frontFull = NerbyTerrainCalculation(0, 0, 1);
+            frontFull = NerbyTerrainCalculation(world, 0, 0, 1);
         if (leftFull)
-            leftFull = NerbyTerrainCalculation(-1, 0, 0);
+            leftFull = NerbyTerrainCalculation(world, -1, 0, 0);
         if (backFull)
-            backFull = NerbyTerrainCalculation(0, 0, -1);
+            backFull = NerbyTerrainCalculation(world, 0, 0, -1);
         if (topFull)
-            topFull = NerbyTerrainCalculation(0, 1, 0);
+            topFull = NerbyTerrainCalculation(world, 0, 1, 0);
         if (botFull)
-            botFull = NerbyTerrainCalculation(0, -1, 0);
+            botFull = NerbyTerrainCalculation(world, 0, -1, 0);
 
 
         // Create the voxel depending ont he vertices we found before
-        PlaceVertices(Vertices, UV, Triangles, generalLoaction, botBackRightVertex, botFrontRightVertex, topFrontRightVertex, topBackRightVertex, rightFull);
-        PlaceVertices(Vertices, UV, Triangles, generalLoaction, botFrontRightVertex, botFrontLeftVertex, topFrontLeftVertex, topFrontRightVertex, frontFull);
-        PlaceVertices(Vertices, UV, Triangles, generalLoaction, botFrontLeftVertex, botBackLeftVertex, topBackLeftVertex, topFrontLeftVertex, leftFull);
-        PlaceVertices(Vertices, UV, Triangles, generalLoaction, botBackLeftVertex, botBackRightVertex, topBackRightVertex, topBackLeftVertex, backFull);
-        PlaceVertices(Vertices, UV, Triangles, generalLoaction, topBackLeftVertex, topBackRightVertex, topFrontRightVertex, topFrontLeftVertex, topFull);
-        PlaceVertices(Vertices, UV, Triangles, generalLoaction, botFrontLeftVertex, botFrontRightVertex, botBackRightVertex, botBackLeftVertex, botFull);
+        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botBackRightVertex, botFrontRightVertex, topFrontRightVertex, topBackRightVertex, ref vertexCount, rightFull);
+        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botFrontRightVertex, botFrontLeftVertex, topFrontLeftVertex, topFrontRightVertex, ref vertexCount, frontFull);
+        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botFrontLeftVertex, botBackLeftVertex, topBackLeftVertex, topFrontLeftVertex, ref vertexCount, leftFull);
+        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botBackLeftVertex, botBackRightVertex, topBackRightVertex, topBackLeftVertex, ref vertexCount, backFull);
+        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, topBackLeftVertex, topBackRightVertex, topFrontRightVertex, topFrontLeftVertex, ref vertexCount, topFull);
+        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botFrontLeftVertex, botFrontRightVertex, botBackRightVertex, botBackLeftVertex, ref vertexCount, botFull);
     }
 
 
     public static void FaceNormals
-        (IntVector3 chunkID, IntVector3 voxelID, List<Vector3> Normals)
+        (World world, IntVector3 chunkID, IntVector3 voxelID, List<Vector3> Normals)
     {
-        chunk = SWorld.chunk[chunkID.x, chunkID.y, chunkID.z];
+        chunk = world.chunk[chunkID.x, chunkID.y, chunkID.z];
         voxel = chunk.voxel[voxelID.x, voxelID.y, voxelID.z];
 
         detChunk = chunk;
@@ -112,15 +114,15 @@ public class LVMine
     }
 
 
-    private static bool VisibilityCalculation(int x, int y, int z)
+    private static bool VisibilityCalculation(World world, int x, int y, int z)
     {
         bool transparency = false;
         detChunk = chunk;
         detVoxel = voxel;
 
-        if (LVoxel.VoxelExists(detChunk, detVoxel, x, y, z) == true)
+        if (LVoxel.VoxelExists(world, detChunk, detVoxel, x, y, z) == true)
         {
-            LVoxel.GetVoxel(ref detChunk, ref detVoxel, x, y, z);
+            LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
 
             if (x > 0)
                 transparency = detVoxel.leftTransparent;
@@ -145,7 +147,7 @@ public class LVMine
     }
 
 
-    private static Vector3 VertexPosition(int x, int y, int z, bool voxelFullX, bool voxelFullY, bool voxelFullZ)
+    private static Vector3 VertexPosition(World world, int x, int y, int z, bool voxelFullX, bool voxelFullY, bool voxelFullZ)
     {
         Vector3 vertexPosition = Vector3.one;
         vertexPosition.x = x;
@@ -177,9 +179,9 @@ public class LVMine
         }
 
         if (xDone != yDone)
-            if (LVoxel.VoxelExists(detChunk, detVoxel, x, y, 0))
+            if (LVoxel.VoxelExists(world, detChunk, detVoxel, x, y, 0))
             {
-                LVoxel.GetVoxel(ref detChunk, ref detVoxel, x, y, 0);
+                LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, y, 0);
 
                 if (detVoxel.voxelState == VoxelGenerator.VoxelState.SOLID)
                 {
@@ -194,9 +196,9 @@ public class LVMine
             }
 
         if (xDone != zDone)
-            if (LVoxel.VoxelExists(detChunk, detVoxel, x, 0, z))
+            if (LVoxel.VoxelExists(world, detChunk, detVoxel, x, 0, z))
             {
-                LVoxel.GetVoxel(ref detChunk, ref detVoxel, x, 0, z);
+                LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, 0, z);
 
                 if (detVoxel.voxelState == VoxelGenerator.VoxelState.SOLID)
                 {
@@ -211,9 +213,9 @@ public class LVMine
             }
 
         if (yDone != zDone)
-            if (LVoxel.VoxelExists(detChunk, detVoxel, 0, y, z))
+            if (LVoxel.VoxelExists(world, detChunk, detVoxel, 0, y, z))
             {
-                LVoxel.GetVoxel(ref detChunk, ref detVoxel, 0, y, z);
+                LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, 0, y, z);
 
                 if (detVoxel.voxelState == VoxelGenerator.VoxelState.SOLID)
                 {
@@ -228,9 +230,9 @@ public class LVMine
             }
 
         if (xDone != yDone || xDone != zDone || yDone != zDone)
-            if (LVoxel.VoxelExists(detChunk, detVoxel, x, y, z))
+            if (LVoxel.VoxelExists(world, detChunk, detVoxel, x, y, z))
             {
-                LVoxel.GetVoxel(ref detChunk, ref detVoxel, x, y, z);
+                LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
 
                 if (detVoxel.voxelState == VoxelGenerator.VoxelState.SOLID)
                 {
@@ -247,17 +249,17 @@ public class LVMine
     }
 
 
-    private static bool NerbyTerrainCalculation(int x, int y, int z)
+    private static bool NerbyTerrainCalculation(World world, int x, int y, int z)
     {
         detChunk = chunk;
         detVoxel = voxel;
 
-        LVoxel.GetVoxel(ref detChunk, ref detVoxel, x, y, z);
+        LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
         if (detVoxel.voxelType == VoxelGenerator.VoxelType.VTERRAIN)
         {
-            if (LVoxel.VoxelExists(detChunk, detVoxel, 0, 1, 0) == true)
+            if (LVoxel.VoxelExists(world, detChunk, detVoxel, 0, 1, 0) == true)
             {
-                LVoxel.GetVoxel(ref detChunk, ref detVoxel, 0, 1, 0);
+                LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, 0, 1, 0);
 
                 if (detVoxel.botTransparent)
                     return false;
@@ -271,8 +273,8 @@ public class LVMine
     }
 
 
-    private static void PlaceVertices(List<Vector3> Vertices, List<Vector2> UV, List<int> Triangles, Vector3 genLoc,
-                                           Vector3 addPos1, Vector3 addPos2, Vector3 addPos3, Vector3 addPos4, bool voxelFull)
+    private static void PlaceVertices(World world, List<Vector3> Vertices, List<Vector2> UV, List<int> Triangles, Vector3 genLoc,
+                                    Vector3 addPos1, Vector3 addPos2, Vector3 addPos3, Vector3 addPos4, ref int vertexCount, bool voxelFull)
     {
         detChunk = chunk;
         detVoxel = voxel;
@@ -287,20 +289,20 @@ public class LVMine
             Vertices.Add(new Vector3(genLoc.x + addPos4.x * 0.25f, genLoc.y + addPos4.y * 0.25f, genLoc.z + addPos4.z * 0.25f));
 
             // UV
-            UV.Add(new Vector2(detVoxel.UVStart.x, detVoxel.UVStart.y + SWorld.textureSize));
-            UV.Add(new Vector2(detVoxel.UVStart.x + SWorld.textureSize, detVoxel.UVStart.y + SWorld.textureSize));
-            UV.Add(new Vector2(detVoxel.UVStart.x + SWorld.textureSize, detVoxel.UVStart.y));
+            UV.Add(new Vector2(detVoxel.UVStart.x, detVoxel.UVStart.y + world.textureSize));
+            UV.Add(new Vector2(detVoxel.UVStart.x + world.textureSize, detVoxel.UVStart.y + world.textureSize));
+            UV.Add(new Vector2(detVoxel.UVStart.x + world.textureSize, detVoxel.UVStart.y));
             UV.Add(new Vector2(detVoxel.UVStart.x, detVoxel.UVStart.y));
 
-            Triangles.Add(SWorld.vertexCount + 0);
-            Triangles.Add(SWorld.vertexCount + 2);
-            Triangles.Add(SWorld.vertexCount + 1);
+            Triangles.Add(vertexCount + 0);
+            Triangles.Add(vertexCount + 2);
+            Triangles.Add(vertexCount + 1);
 
-            Triangles.Add(SWorld.vertexCount + 0);
-            Triangles.Add(SWorld.vertexCount + 3);
-            Triangles.Add(SWorld.vertexCount + 2);
+            Triangles.Add(vertexCount + 0);
+            Triangles.Add(vertexCount + 3);
+            Triangles.Add(vertexCount + 2);
 
-            SWorld.vertexCount += 4;
+            vertexCount += 4;
         }
     }
 }

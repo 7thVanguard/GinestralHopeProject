@@ -7,10 +7,7 @@ public class GameController
     protected PlayerMovement movement;
 
 
-
-
-
-    public GameController(GameObject player, GameObject mainCamera)
+    public GameController(World world, GameObject player, GameObject mainCamera)
     {
         movement = new PlayerMovement(player);
     }

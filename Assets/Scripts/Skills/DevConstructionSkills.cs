@@ -24,25 +24,25 @@ public class DevConstructionSkills
     private static int sedimentExcess;
     private static int sedimentPerClick = 3;
 
-    public void Update()
+    public void Update(World world)
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
-            Remove();
+            Remove(world);
         else if (Input.GetKeyDown(KeyCode.Mouse1))
-            Place();
+            Place(world);
         else if (Input.GetKeyDown(KeyCode.Mouse2))
             Cancel();
         else
-            Detect();
+            Detect(world);
     }
 
 
-    private void Remove()
+    private void Remove(World world)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
-            LTerrainVoxelTool.Remove();
+            LTerrainVoxelTool.Remove(world);
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
-            LMineVoxelTool.Remove();
+            LMineVoxelTool.Remove(world);
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
             LGadgetsTool.Remove();
 		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
@@ -50,16 +50,16 @@ public class DevConstructionSkills
     }
 
 
-    private void Place()
+    private void Place(World world)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
-            LTerrainVoxelTool.Place();
+            LTerrainVoxelTool.Place(world);
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
-            LMineVoxelTool.Place();
+            LMineVoxelTool.Place(world);
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Place();
+            LGadgetsTool.Place(world);
 		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
-			LEnemyTool.Place();
+			LEnemyTool.Place(world);
     }
 
 
@@ -76,15 +76,15 @@ public class DevConstructionSkills
     }
 
 
-    private void Detect()
+    private void Detect(World world)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
-            LTerrainVoxelTool.Detect();
+            LTerrainVoxelTool.Detect(world);
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
-            LMineVoxelTool.Detect();
+            LMineVoxelTool.Detect(world);
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Detect();
+            LGadgetsTool.Detect(world);
 		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
-			LEnemyTool.Detect();
+			LEnemyTool.Detect(world);
     }
 }

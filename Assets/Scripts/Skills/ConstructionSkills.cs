@@ -14,16 +14,16 @@ public class ConstructionSkills
     public static Vector2 detVertex;
 
 
-    public void Update()
+    public void Update(World world)
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
             Remove();
         else if (Input.GetKeyDown(KeyCode.Mouse1))
-            Place();
+            Place(world);
         else if (Input.GetKeyDown(KeyCode.Mouse2))
             Cancel();
         else
-            Detect();
+            Detect(world);
     }
 
 
@@ -34,10 +34,10 @@ public class ConstructionSkills
     }
 
 
-    private void Place()
+    private void Place(World world)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Place();
+            LGadgetsTool.Place(world);
     }
 
 
@@ -48,9 +48,9 @@ public class ConstructionSkills
     }
 
 
-    private void Detect()
+    private void Detect(World world)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Detect();
+            LGadgetsTool.Detect(world);
     }
 }

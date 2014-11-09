@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DeveloperCombatGameController : GameController
 {
-    public DeveloperCombatGameController(GameObject player, GameObject mainCamera) : base(player, mainCamera)
+    public DeveloperCombatGameController(World world, GameObject player, GameObject mainCamera) : base(world, player, mainCamera)
     {
 
     }

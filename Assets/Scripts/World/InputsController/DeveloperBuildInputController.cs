@@ -3,9 +3,19 @@ using System.Collections;
 
 public class DeveloperBuildInputController : AbstractInputsController
 {
+    private World world;
+    private DevConstructionSkills skils;
+
+
+    public DeveloperBuildInputController(World world)
+    {
+        this.world = world;
+    }
+
+
     public override void Start()
     {
-
+        skils = new DevConstructionSkills();
     }
 
 
@@ -27,14 +37,14 @@ public class DeveloperBuildInputController : AbstractInputsController
         else if (Input.GetKey(KeyCode.Alpha4))
             EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
 
-
+        
         // SubTool
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
         {
             if (Input.GetKey(KeyCode.I))
-                SWorld.selectedTerrain = "Grass";
+                world.selectedTerrain = "Grass";
             else if (Input.GetKey(KeyCode.J))
-                SWorld.selectedTerrain = "DirtGrass";
+                world.selectedTerrain = "DirtGrass";
         }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
         {
@@ -44,11 +54,11 @@ public class DeveloperBuildInputController : AbstractInputsController
                 EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.ORTOEDRIC;
 
             if (Input.GetKey(KeyCode.I))
-                SWorld.selectedMine = "Rock";
+                world.selectedMine = "Rock";
             else if (Input.GetKey(KeyCode.J))
-                SWorld.selectedMine = "BreakRock";
+                world.selectedMine = "BreakRock";
             else if (Input.GetKey(KeyCode.K))
-                SWorld.selectedMine = "Wood";
+                world.selectedMine = "Wood";
         }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
         {
@@ -64,5 +74,8 @@ public class DeveloperBuildInputController : AbstractInputsController
             if (Input.GetKey(KeyCode.I))
                 EGameFlow.selectedEnemy = EGameFlow.SelectedEnemy.NORMALSLIME;
         }
+
+        // Mouse click
+        skils.Update(world);
 	}
 }

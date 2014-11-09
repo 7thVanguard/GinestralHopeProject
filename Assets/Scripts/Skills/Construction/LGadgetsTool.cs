@@ -22,7 +22,7 @@ public class LGadgetsTool
     }
 
 
-    public static void Place()
+    public static void Place(World world)
     {
         if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
@@ -45,10 +45,10 @@ public class LGadgetsTool
                         LVGadget.placePlank(new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)), yRotation);
                         break;
                     case EGameFlow.SelectedGadget.WOOD:
-                        LVGadget.placeWoodPiecesGadget(new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)));
+                        LVGadget.placeWoodPiecesGadget(world, new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)));
                         break;
                     case EGameFlow.SelectedGadget.NAILS:
-                        LVGadget.placeNailsGadget(new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)));
+                        LVGadget.placeNailsGadget(world, new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)));
                         break;
                     case EGameFlow.SelectedGadget.LADDER:
                         break;
@@ -66,7 +66,7 @@ public class LGadgetsTool
     }
 
 
-    public static void Detect()
+    public static void Detect(World world)
     {
         if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
@@ -74,13 +74,13 @@ public class LGadgetsTool
             if (CameraRaycast.impact.normal.y >= 0.75f)
             {
                 // Detects the voxel
-                DevConstructionSkills.chunk = SWorld.chunk[(int)((CameraRaycast.impact.point.x) / SWorld.chunkSize.x),
-                                                           (int)((CameraRaycast.impact.point.y + 0.5f) / SWorld.chunkSize.y),
-                                                           (int)((CameraRaycast.impact.point.z) / SWorld.chunkSize.z)];
+                DevConstructionSkills.chunk = world.chunk[(int)((CameraRaycast.impact.point.x) / world.chunkSize.x),
+                                                           (int)((CameraRaycast.impact.point.y + 0.5f) / world.chunkSize.y),
+                                                           (int)((CameraRaycast.impact.point.z) / world.chunkSize.z)];
 
-                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((CameraRaycast.impact.point.x) % SWorld.chunkSize.x),
-                                                                                (int)((CameraRaycast.impact.point.y + 0.5f) % SWorld.chunkSize.y),
-                                                                                (int)((CameraRaycast.impact.point.z) % SWorld.chunkSize.z)];
+                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((CameraRaycast.impact.point.x) % world.chunkSize.x),
+                                                                                (int)((CameraRaycast.impact.point.y + 0.5f) % world.chunkSize.y),
+                                                                                (int)((CameraRaycast.impact.point.z) % world.chunkSize.z)];
             }
         }
     }

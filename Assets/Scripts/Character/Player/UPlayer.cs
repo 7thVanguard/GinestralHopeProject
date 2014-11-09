@@ -3,12 +3,7 @@ using System.Collections;
 
 public class UPlayer : MonoBehaviour
 {
-    private AbstractInputsController activedPlayerController;
-
-    private PlayerBuildInputController PCBuildMode;
-    private PlayerCombatInputController PCCombatMode;
-
-
+    public World world;
 
 
     // Mode change relative
@@ -58,28 +53,6 @@ public class UPlayer : MonoBehaviour
         {
             combat.Update();
             SPlayer.transform = transform;
-        }
-
-        // Skills relative (GameMode relative)
-        if (!EGameFlow.pause && UWorldGenerator.gameLoaded)
-        {
-            switch (EGameFlow.gameMode)
-            {
-                case EGameFlow.GameMode.COMBAT:
-                    combatSkills.Update();
-                    break;
-                case EGameFlow.GameMode.CONTRUCTION:
-                    devConstructionSkills.Update();
-                    break;
-                case EGameFlow.GameMode.DEVCOMBAT:
-                    devCombatSkills.Update();
-                    break;
-                case EGameFlow.GameMode.DEVCONSTRUCTION:
-                    devConstructionSkills.Update();
-                    break;
-                default:
-                    break;
-            }
         }
 
         // Save relative

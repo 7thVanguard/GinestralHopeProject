@@ -51,11 +51,11 @@ public static class LVGadget
     }
 
 
-    public static void placeWoodPiecesGadget(Vector3 position)
+    public static void placeWoodPiecesGadget(World world, Vector3 position)
     {
         if (EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
         {
-            Transform woodPieces = SWorld.woodPieces;
+            Transform woodPieces = world.woodPieces;
 
             woodPieces = Object.Instantiate(woodPieces, position, Quaternion.identity) as Transform;
             woodPieces.name = "Wood Pieces";
@@ -63,11 +63,11 @@ public static class LVGadget
     }
 
 
-    public static void placeNailsGadget(Vector3 position)
+    public static void placeNailsGadget(World world, Vector3 position)
     {
         if (EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
         {
-            Transform nails = SWorld.nails;
+            Transform nails = world.nails;
 
             nails = Object.Instantiate(nails, position, Quaternion.identity) as Transform;
             nails.name = "Nails";

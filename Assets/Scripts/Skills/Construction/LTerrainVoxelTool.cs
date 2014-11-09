@@ -10,7 +10,7 @@ public static class LTerrainVoxelTool
     private static int sedimentExcess;
     private static int sedimentPerClick = 3;
 
-    public static void Remove()
+    public static void Remove(World world)
     {
         if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
@@ -21,40 +21,40 @@ public static class LTerrainVoxelTool
                 {
                     case 0:
                         {
-                            Terraform(ref DevConstructionSkills.detVoxel.backLeftVertex, -sedimentPerClick);
-                            PostTerraform(ref DevConstructionSkills.detVoxel.backLeftVertex);
+                            Terraform(world, ref DevConstructionSkills.detVoxel.backLeftVertex, -sedimentPerClick);
+                            PostTerraform(world, ref DevConstructionSkills.detVoxel.backLeftVertex);
                         }
                         break;
                     case 1:
                         {
-                            Terraform(ref DevConstructionSkills.detVoxel.backRightVertex, -sedimentPerClick);
-                            PostTerraform(ref DevConstructionSkills.detVoxel.backRightVertex);
+                            Terraform(world, ref DevConstructionSkills.detVoxel.backRightVertex, -sedimentPerClick);
+                            PostTerraform(world, ref DevConstructionSkills.detVoxel.backRightVertex);
                         }
                         break;
                     case 2:
                         {
-                            Terraform(ref DevConstructionSkills.detVoxel.frontRightVertex, -sedimentPerClick);
-                            PostTerraform(ref DevConstructionSkills.detVoxel.frontRightVertex);
+                            Terraform(world, ref DevConstructionSkills.detVoxel.frontRightVertex, -sedimentPerClick);
+                            PostTerraform(world, ref DevConstructionSkills.detVoxel.frontRightVertex);
                         }
                         break;
                     case 3:
                         {
-                            Terraform(ref DevConstructionSkills.detVoxel.frontLeftVertex, -sedimentPerClick);
-                            PostTerraform(ref DevConstructionSkills.detVoxel.frontLeftVertex);
+                            Terraform(world, ref DevConstructionSkills.detVoxel.frontLeftVertex, -sedimentPerClick);
+                            PostTerraform(world, ref DevConstructionSkills.detVoxel.frontLeftVertex);
                         }
                         break;
                     default:
                         break;
                 }
 
-                DevConstructionSkills.detChunk.BuildChunkVertices();
-                DevConstructionSkills.detChunk.BuildChunkMesh();
+                //DevConstructionSkills.detChunk.BuildChunkVertices();
+                //DevConstructionSkills.detChunk.BuildChunkMesh();
             }
         }
     }
 
 
-    public static void Place()
+    public static void Place(World world)
     {
         if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
@@ -65,34 +65,34 @@ public static class LTerrainVoxelTool
                 {
                     case 0:
                         {
-                            Terraform(ref DevConstructionSkills.detVoxel.backLeftVertex, sedimentPerClick);
-                            PostTerraform(ref DevConstructionSkills.detVoxel.backLeftVertex);
+                            Terraform(world, ref DevConstructionSkills.detVoxel.backLeftVertex, sedimentPerClick);
+                            PostTerraform(world, ref DevConstructionSkills.detVoxel.backLeftVertex);
                         }
                         break;
                     case 1:
                         {
-                            Terraform(ref DevConstructionSkills.detVoxel.backRightVertex, sedimentPerClick);
-                            PostTerraform(ref DevConstructionSkills.detVoxel.backRightVertex);
+                            Terraform(world, ref DevConstructionSkills.detVoxel.backRightVertex, sedimentPerClick);
+                            PostTerraform(world, ref DevConstructionSkills.detVoxel.backRightVertex);
                         }
                         break;
                     case 2:
                         {
-                            Terraform(ref DevConstructionSkills.detVoxel.frontRightVertex, sedimentPerClick);
-                            PostTerraform(ref DevConstructionSkills.detVoxel.frontRightVertex);
+                            Terraform(world, ref DevConstructionSkills.detVoxel.frontRightVertex, sedimentPerClick);
+                            PostTerraform(world, ref DevConstructionSkills.detVoxel.frontRightVertex);
                         }
                         break;
                     case 3:
                         {
-                            Terraform(ref DevConstructionSkills.detVoxel.frontLeftVertex, sedimentPerClick);
-                            PostTerraform(ref DevConstructionSkills.detVoxel.frontLeftVertex);
+                            Terraform(world, ref DevConstructionSkills.detVoxel.frontLeftVertex, sedimentPerClick);
+                            PostTerraform(world, ref DevConstructionSkills.detVoxel.frontLeftVertex);
                         }
                         break;
                     default:
                         break;
                 }
 
-                DevConstructionSkills.detChunk.BuildChunkVertices();
-                DevConstructionSkills.detChunk.BuildChunkMesh();
+                //DevConstructionSkills.detChunk.BuildChunkVertices();
+                //DevConstructionSkills.detChunk.BuildChunkMesh();
             }
         }
     }
@@ -104,7 +104,7 @@ public static class LTerrainVoxelTool
     }
 
 
-    public static void Detect()
+    public static void Detect(World world)
     {
         if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
@@ -119,27 +119,27 @@ public static class LTerrainVoxelTool
                 if (CameraRaycast.impact.point.x < DevConstructionSkills.detVertex.x)
                     if (CameraRaycast.impact.point.z < DevConstructionSkills.detVertex.y)
                     {
-                        DetectChunkAndVoxel(-1, -1);
-                        height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.frontRightVertex / SWorld.maxSediment;
+                        DetectChunkAndVoxel(world, -1, -1);
+                        height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.frontRightVertex / world.maxSediment;
                         voxelVertex = 2;
                     }
                     else
                     {
-                        DetectChunkAndVoxel(-1, 0);
-                        height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.backRightVertex / SWorld.maxSediment;
+                        DetectChunkAndVoxel(world, -1, 0);
+                        height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.backRightVertex / world.maxSediment;
                         voxelVertex = 1;
                     }
                 else
                     if (CameraRaycast.impact.point.z < DevConstructionSkills.detVertex.y)
                     {
-                        DetectChunkAndVoxel(0, -1);
-                        height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.frontLeftVertex / SWorld.maxSediment;
+                        DetectChunkAndVoxel(world, 0, -1);
+                        height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.frontLeftVertex / world.maxSediment;
                         voxelVertex = 3;
                     }
                     else
                     {
-                        DetectChunkAndVoxel(0, 0);
-                        height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.backLeftVertex / SWorld.maxSediment;
+                        DetectChunkAndVoxel(world, 0, 0);
+                        height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.backLeftVertex / world.maxSediment;
                         voxelVertex = 0;
                     }
 
@@ -150,38 +150,38 @@ public static class LTerrainVoxelTool
     }
 
 
-    private static void DetectChunkAndVoxel(int x, int z)
+    private static void DetectChunkAndVoxel(World world, int x, int z)
     {
         // Detects the chunk and voxel we are aiming at
-        DevConstructionSkills.chunk = SWorld.chunk[(int)Mathf.Round(DevConstructionSkills.detVertex.x + x) / SWorld.chunkSize.x,
-                                                   (int)Mathf.Floor(CameraRaycast.impact.point.y / SWorld.chunkSize.y),
-                                                   (int)Mathf.Round(DevConstructionSkills.detVertex.y + z) / SWorld.chunkSize.z];
+        DevConstructionSkills.chunk = world.chunk[(int)Mathf.Round(DevConstructionSkills.detVertex.x + x) / world.chunkSize.x,
+                                                   (int)Mathf.Floor(CameraRaycast.impact.point.y / world.chunkSize.y),
+                                                   (int)Mathf.Round(DevConstructionSkills.detVertex.y + z) / world.chunkSize.z];
 
-        DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)Mathf.Round(DevConstructionSkills.detVertex.x + x) % SWorld.chunkSize.x,
-                                                                        (int)Mathf.Floor(CameraRaycast.impact.point.y % SWorld.chunkSize.y),
-                                                                        (int)Mathf.Round(DevConstructionSkills.detVertex.y + z) % SWorld.chunkSize.z];
+        DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)Mathf.Round(DevConstructionSkills.detVertex.x + x) % world.chunkSize.x,
+                                                                        (int)Mathf.Floor(CameraRaycast.impact.point.y % world.chunkSize.y),
+                                                                        (int)Mathf.Round(DevConstructionSkills.detVertex.y + z) % world.chunkSize.z];
 
         DevConstructionSkills.detChunk = DevConstructionSkills.chunk;
         DevConstructionSkills.detVoxel = DevConstructionSkills.voxel;
 
         // We make sure, we are changing the highest voxel
-        while (LVoxel.VoxelExists(DevConstructionSkills.detChunk, DevConstructionSkills.detVoxel, 0, 1, 0))
+        while (LVoxel.VoxelExists(world, DevConstructionSkills.detChunk, DevConstructionSkills.detVoxel, 0, 1, 0))
         {
-            LVoxel.GetVoxel(ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 1, 0);
+            LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 1, 0);
             if (DevConstructionSkills.detVoxel.voxelType != VoxelGenerator.VoxelType.VTERRAIN)
             {
-                LVoxel.GetVoxel(ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, -1, 0);
+                LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, -1, 0);
                 break;
             }
         }
         // Detects when all the vertices of the voxel are at max height, but we detect the upper one
-        if (LVoxel.VoxelExists(DevConstructionSkills.detChunk, DevConstructionSkills.detVoxel, 0, -1, 0))
+        if (LVoxel.VoxelExists(world, DevConstructionSkills.detChunk, DevConstructionSkills.detVoxel, 0, -1, 0))
             if (DevConstructionSkills.detVoxel.voxelType != VoxelGenerator.VoxelType.VTERRAIN)
-                LVoxel.GetVoxel(ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, -1, 0);
+                LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, -1, 0);
     }
 
 
-    private static void Terraform(ref float vertexHeight, int sediment)
+    private static void Terraform(World world, ref float vertexHeight, int sediment)
     {
         // Adds or removes height from the selected vertex
         vertexHeight += sediment;
@@ -189,51 +189,51 @@ public static class LTerrainVoxelTool
         if (vertexHeight < 0)
         {
             // We delete the current voxel and detect the excess of sediment
-            SWorld.chunk[DevConstructionSkills.detChunk.numID.x, DevConstructionSkills.detChunk.numID.y, DevConstructionSkills.detChunk.numID.z].voxel[DevConstructionSkills.detVoxel.numID.x, DevConstructionSkills.detVoxel.numID.y, DevConstructionSkills.detVoxel.numID.z]
-                    = new VoxelGenerator(DevConstructionSkills.detVoxel.numID, DevConstructionSkills.detChunk.numID, "Air");
+            world.chunk[DevConstructionSkills.detChunk.numID.x, DevConstructionSkills.detChunk.numID.y, DevConstructionSkills.detChunk.numID.z].voxel[DevConstructionSkills.detVoxel.numID.x, DevConstructionSkills.detVoxel.numID.y, DevConstructionSkills.detVoxel.numID.z]
+                    = new VoxelGenerator(world, DevConstructionSkills.detVoxel.numID, DevConstructionSkills.detChunk.numID, "Air");
             sedimentExcess = (int)vertexHeight;
 
             // We get the voxel below for futher terraformation
-            if (LVoxel.VoxelExists(DevConstructionSkills.detChunk, DevConstructionSkills.detVoxel, 0, -1, 0))
-                LVoxel.GetVoxel(ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, -1, 0);
+            if (LVoxel.VoxelExists(world, DevConstructionSkills.detChunk, DevConstructionSkills.detVoxel, 0, -1, 0))
+                LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, -1, 0);
         }
-        else if (vertexHeight > SWorld.maxSediment)
+        else if (vertexHeight > world.maxSediment)
         {
             // We get the voxel above for actual and futher terraformation
-            if (LVoxel.VoxelExists(DevConstructionSkills.detChunk, DevConstructionSkills.detVoxel, 0, 1, 0))
-                LVoxel.GetVoxel(ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 1, 0);
+            if (LVoxel.VoxelExists(world, DevConstructionSkills.detChunk, DevConstructionSkills.detVoxel, 0, 1, 0))
+                LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 1, 0);
 
             // We place a terrain voxel above and detect the excess of sediment
-            SWorld.chunk[DevConstructionSkills.detChunk.numID.x, DevConstructionSkills.detChunk.numID.y, DevConstructionSkills.detChunk.numID.z].voxel[DevConstructionSkills.detVoxel.numID.x, DevConstructionSkills.detVoxel.numID.y, DevConstructionSkills.detVoxel.numID.z]
-                    = new VoxelGenerator(DevConstructionSkills.detVoxel.numID, DevConstructionSkills.detChunk.numID, SWorld.selectedTerrain);
+            world.chunk[DevConstructionSkills.detChunk.numID.x, DevConstructionSkills.detChunk.numID.y, DevConstructionSkills.detChunk.numID.z].voxel[DevConstructionSkills.detVoxel.numID.x, DevConstructionSkills.detVoxel.numID.y, DevConstructionSkills.detVoxel.numID.z]
+                    = new VoxelGenerator(world, DevConstructionSkills.detVoxel.numID, DevConstructionSkills.detChunk.numID, world.selectedTerrain);
             sedimentExcess = (int)vertexHeight;
 
-            LVoxel.GetVoxel(ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 0, 0);
+            LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 0, 0);
         }
     }
 
 
-    private static void PostTerraform(ref float vertexHeight)
+    private static void PostTerraform(World world, ref float vertexHeight)
     {
         if (sedimentExcess < 0)
         {
-            DevConstructionSkills.detVoxel.backLeftVertex = (int)SWorld.maxSediment;
-            DevConstructionSkills.detVoxel.backRightVertex = (int)SWorld.maxSediment;
-            DevConstructionSkills.detVoxel.frontLeftVertex = (int)SWorld.maxSediment;
-            DevConstructionSkills.detVoxel.frontRightVertex = (int)SWorld.maxSediment;
+            DevConstructionSkills.detVoxel.backLeftVertex = (int)world.maxSediment;
+            DevConstructionSkills.detVoxel.backRightVertex = (int)world.maxSediment;
+            DevConstructionSkills.detVoxel.frontLeftVertex = (int)world.maxSediment;
+            DevConstructionSkills.detVoxel.frontRightVertex = (int)world.maxSediment;
 
-            vertexHeight = (int)(SWorld.maxSediment + sedimentExcess);
+            vertexHeight = (int)(world.maxSediment + sedimentExcess);
 
             sedimentExcess = 0;
         }
-        else if (sedimentExcess > SWorld.maxSediment)
+        else if (sedimentExcess > world.maxSediment)
         {
             DevConstructionSkills.detVoxel.backLeftVertex = 0;
             DevConstructionSkills.detVoxel.backRightVertex = 0;
             DevConstructionSkills.detVoxel.frontLeftVertex = 0;
             DevConstructionSkills.detVoxel.frontRightVertex = 0;
 
-            vertexHeight = (int)(sedimentExcess - SWorld.maxSediment);
+            vertexHeight = (int)(sedimentExcess - world.maxSediment);
 
             sedimentExcess = 0;
         }

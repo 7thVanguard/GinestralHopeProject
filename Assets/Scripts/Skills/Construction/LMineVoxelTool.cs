@@ -8,7 +8,7 @@ public class LMineVoxelTool
     private static VoxelGenerator preDetVoxel;
 
 
-    public static void Remove()
+    public static void Remove(World world)
     {
         // Single
         if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.SINGLE)
@@ -21,12 +21,12 @@ public class LMineVoxelTool
                     DevConstructionSkills.detVoxel = DevConstructionSkills.voxel;
 
                     // Destroy the selected voxel
-                    SWorld.chunk[DevConstructionSkills.detChunk.numID.x, DevConstructionSkills.detChunk.numID.y, DevConstructionSkills.detChunk.numID.z]
+                    world.chunk[DevConstructionSkills.detChunk.numID.x, DevConstructionSkills.detChunk.numID.y, DevConstructionSkills.detChunk.numID.z]
                         .voxel[DevConstructionSkills.detVoxel.numID.x, DevConstructionSkills.detVoxel.numID.y, DevConstructionSkills.detVoxel.numID.z]
-                        = new VoxelGenerator(DevConstructionSkills.detVoxel.numID, DevConstructionSkills.detChunk.numID, "Air");
+                        = new VoxelGenerator(world, DevConstructionSkills.detVoxel.numID, DevConstructionSkills.detChunk.numID, "Air");
 
                     // Reset
-                    LChunk.Reset(DevConstructionSkills.detChunk, DevConstructionSkills.detVoxel);
+                    LChunk.Reset(world, DevConstructionSkills.detChunk, DevConstructionSkills.detVoxel);
                 }
             }
         }
@@ -54,7 +54,7 @@ public class LMineVoxelTool
                         DevConstructionSkills.detVoxel = DevConstructionSkills.voxel;
 
                         // Places the selectet voxel in the selected ones
-                        OrtoedricResolution("Air");
+                        OrtoedricResolution(world, "Air");
 
                         // End of fase 2 of multi selection tool
                         DevConstructionSkills.selected = false;
@@ -65,7 +65,7 @@ public class LMineVoxelTool
     }
 
 
-    public static void Place()
+    public static void Place(World world)
     {
         // Single
         if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.SINGLE)
@@ -79,26 +79,26 @@ public class LMineVoxelTool
 
                     // Detect the face impacted by the ray, and and place the block in front of that face
                     if (CameraRaycast.impact.normal.x > 0.75f)
-                        LVoxel.GetVoxel(ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 1, 0, 0);
+                        LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 1, 0, 0);
                     else if (CameraRaycast.impact.normal.x < -0.75f)
-                        LVoxel.GetVoxel(ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, -1, 0, 0);
+                        LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, -1, 0, 0);
 
                     else if (CameraRaycast.impact.normal.y > 0.75f)
-                        LVoxel.GetVoxel(ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 1, 0);
+                        LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 1, 0);
                     else if (CameraRaycast.impact.normal.y < -0.75f)
-                        LVoxel.GetVoxel(ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, -1, 0);
+                        LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, -1, 0);
 
                     else if (CameraRaycast.impact.normal.z > 0.75f)
-                        LVoxel.GetVoxel(ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 0, 1);
+                        LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 0, 1);
                     else if (CameraRaycast.impact.normal.z < -0.75f)
-                        LVoxel.GetVoxel(ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 0, -1);
+                        LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 0, -1);
 
-                    SWorld.chunk[DevConstructionSkills.detChunk.numID.x, DevConstructionSkills.detChunk.numID.y, DevConstructionSkills.detChunk.numID.z]
+                    world.chunk[DevConstructionSkills.detChunk.numID.x, DevConstructionSkills.detChunk.numID.y, DevConstructionSkills.detChunk.numID.z]
                         .voxel[DevConstructionSkills.detVoxel.numID.x, DevConstructionSkills.detVoxel.numID.y, DevConstructionSkills.detVoxel.numID.z]
-                        = new VoxelGenerator(DevConstructionSkills.detVoxel.numID, DevConstructionSkills.detChunk.numID, SWorld.selectedMine);
+                        = new VoxelGenerator(world, DevConstructionSkills.detVoxel.numID, DevConstructionSkills.detChunk.numID, world.selectedMine);
 
                     // Reset
-                    LChunk.Reset(DevConstructionSkills.detChunk, DevConstructionSkills.detVoxel);
+                    LChunk.Reset(world, DevConstructionSkills.detChunk, DevConstructionSkills.detVoxel);
                 }
             }
         }
@@ -126,7 +126,7 @@ public class LMineVoxelTool
                         DevConstructionSkills.detVoxel = DevConstructionSkills.voxel;
 
                         // Places the selectet voxel in the selected ones
-                        OrtoedricResolution(SWorld.selectedMine);
+                        OrtoedricResolution(world, world.selectedMine);
 
                         // End of fase 2 of multi selection tool
                         DevConstructionSkills.selected = false;
@@ -143,7 +143,7 @@ public class LMineVoxelTool
     }
 
 
-    public static void Detect()
+    public static void Detect(World world)
     {
         if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
@@ -160,19 +160,19 @@ public class LMineVoxelTool
                     voxelDisplacementZ = 0.25f;
 
                 // Detects the vertex we are aiming at
-                DevConstructionSkills.chunk = SWorld.chunk[(int)((CameraRaycast.impact.point.x - voxelDisplacementX) / SWorld.chunkSize.x),
-                                                           (int)((CameraRaycast.impact.point.y - voxelDisplacementY) / SWorld.chunkSize.y),
-                                                           (int)((CameraRaycast.impact.point.z - voxelDisplacementZ) / SWorld.chunkSize.z)];
+                DevConstructionSkills.chunk = world.chunk[(int)((CameraRaycast.impact.point.x - voxelDisplacementX) / world.chunkSize.x),
+                                                           (int)((CameraRaycast.impact.point.y - voxelDisplacementY) / world.chunkSize.y),
+                                                           (int)((CameraRaycast.impact.point.z - voxelDisplacementZ) / world.chunkSize.z)];
 
-                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((CameraRaycast.impact.point.x - voxelDisplacementX) % SWorld.chunkSize.x),
-                                                                                (int)((CameraRaycast.impact.point.y - voxelDisplacementY) % SWorld.chunkSize.y),
-                                                                                (int)((CameraRaycast.impact.point.z - voxelDisplacementZ) % SWorld.chunkSize.z)];
+                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((CameraRaycast.impact.point.x - voxelDisplacementX) % world.chunkSize.x),
+                                                                                (int)((CameraRaycast.impact.point.y - voxelDisplacementY) % world.chunkSize.y),
+                                                                                (int)((CameraRaycast.impact.point.z - voxelDisplacementZ) % world.chunkSize.z)];
             }
         }
     }
 
 
-    private static void OrtoedricResolution(string voxelName)
+    private static void OrtoedricResolution(World world, string voxelName)
     {
         // Theese variables will store the chunks we will need to reset
         int chunkInitX, chunkInitY, chunkInitZ;
@@ -187,52 +187,52 @@ public class LMineVoxelTool
 
 
         // Detect where the selection begins and where it ends
-        initX = preDetChunk.numID.x * SWorld.chunkSize.x + preDetVoxel.numID.x;
-        endX = DevConstructionSkills.detChunk.numID.x * SWorld.chunkSize.x + DevConstructionSkills.detVoxel.numID.x;
+        initX = preDetChunk.numID.x * world.chunkSize.x + preDetVoxel.numID.x;
+        endX = DevConstructionSkills.detChunk.numID.x * world.chunkSize.x + DevConstructionSkills.detVoxel.numID.x;
 
         if (initX <= endX)
         {
             xSign = 1;
-            chunkInitX = initX / SWorld.chunkSize.x;
-            chunkEndX = endX / SWorld.chunkSize.x;
+            chunkInitX = initX / world.chunkSize.x;
+            chunkEndX = endX / world.chunkSize.x;
         }
         else
         {
             xSign = -1;
-            chunkInitX = endX / SWorld.chunkSize.x;
-            chunkEndX = initX / SWorld.chunkSize.x;
+            chunkInitX = endX / world.chunkSize.x;
+            chunkEndX = initX / world.chunkSize.x;
         }
 
-        initY = preDetChunk.numID.y * SWorld.chunkSize.y + preDetVoxel.numID.y;
-        endY = DevConstructionSkills.detChunk.numID.y * SWorld.chunkSize.y + DevConstructionSkills.detVoxel.numID.y;
+        initY = preDetChunk.numID.y * world.chunkSize.y + preDetVoxel.numID.y;
+        endY = DevConstructionSkills.detChunk.numID.y * world.chunkSize.y + DevConstructionSkills.detVoxel.numID.y;
 
         if (initY <= endY)
         {
             ySign = 1;
-            chunkInitY = initY / SWorld.chunkSize.y;
-            chunkEndY = endY / SWorld.chunkSize.y;
+            chunkInitY = initY / world.chunkSize.y;
+            chunkEndY = endY / world.chunkSize.y;
         }
         else
         {
             ySign = -1;
-            chunkInitY = endY / SWorld.chunkSize.y;
-            chunkEndY = initY / SWorld.chunkSize.y;
+            chunkInitY = endY / world.chunkSize.y;
+            chunkEndY = initY / world.chunkSize.y;
         }
 
-        initZ = preDetChunk.numID.z * SWorld.chunkSize.z + preDetVoxel.numID.z;
-        endZ = DevConstructionSkills.detChunk.numID.z * SWorld.chunkSize.z + DevConstructionSkills.detVoxel.numID.z;
+        initZ = preDetChunk.numID.z * world.chunkSize.z + preDetVoxel.numID.z;
+        endZ = DevConstructionSkills.detChunk.numID.z * world.chunkSize.z + DevConstructionSkills.detVoxel.numID.z;
 
         if (initZ <= endZ)
         {
             zSign = 1;
-            chunkInitZ = initZ / SWorld.chunkSize.z;
-            chunkEndZ = endZ / SWorld.chunkSize.z;
+            chunkInitZ = initZ / world.chunkSize.z;
+            chunkEndZ = endZ / world.chunkSize.z;
         }
         else
         {
             zSign = -1;
-            chunkInitZ = endZ / SWorld.chunkSize.z;
-            chunkEndZ = initZ / SWorld.chunkSize.z;
+            chunkInitZ = endZ / world.chunkSize.z;
+            chunkEndZ = initZ / world.chunkSize.z;
         }
 
         
@@ -242,10 +242,10 @@ public class LMineVoxelTool
                 for (int z = initZ; z != endZ + zSign; z += zSign)
                 {
                     // Creates the voxels
-                    SWorld.chunk[x / SWorld.chunkSize.x, y / SWorld.chunkSize.y, z / SWorld.chunkSize.z]
-                          .voxel[x % SWorld.chunkSize.x, y % SWorld.chunkSize.y, z % SWorld.chunkSize.z]
-                        = new VoxelGenerator(new IntVector3(x % SWorld.chunkSize.x, y % SWorld.chunkSize.y, z % SWorld.chunkSize.z),
-                                    new IntVector3(x / SWorld.chunkSize.x, y / SWorld.chunkSize.y, z / SWorld.chunkSize.z),
+                    world.chunk[x / world.chunkSize.x, y / world.chunkSize.y, z / world.chunkSize.z]
+                          .voxel[x % world.chunkSize.x, y % world.chunkSize.y, z % world.chunkSize.z]
+                        = new VoxelGenerator(world, new IntVector3(x % world.chunkSize.x, y % world.chunkSize.y, z % world.chunkSize.z),
+                                    new IntVector3(x / world.chunkSize.x, y / world.chunkSize.y, z / world.chunkSize.z),
                                     voxelName);
                 }
 
@@ -254,7 +254,7 @@ public class LMineVoxelTool
             for (int y = chunkInitY; y <= chunkEndY; y++)
                 for (int z = chunkInitX; z <= chunkEndZ; z++)
                 {
-                    SWorld.chunksToReset.Add(new IntVector3(x, y, z));
+                    world.chunksToReset.Add(new IntVector3(x, y, z));
                 }
     }
 }
