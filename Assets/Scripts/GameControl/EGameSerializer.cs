@@ -103,6 +103,10 @@ public class EGameSerializer
                 }   // for loop cz end, end of chunk
 
         // Reset world
-        UWorldGenerator.TotalReset();
+        foreach (ChunkGenerator chunk in world.chunk)
+        {
+            chunk.BuildChunkVertices(world);
+            chunk.BuildChunkMesh();
+        }
     }
 }
