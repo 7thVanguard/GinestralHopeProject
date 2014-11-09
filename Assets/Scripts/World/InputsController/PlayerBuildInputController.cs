@@ -4,12 +4,14 @@ using System.Collections;
 public class PlayerBuildInputController : AbstractInputsController 
 {
     private World world;
+    private Player player;
     private ConstructionSkills skills;
 
 
-    public PlayerBuildInputController(World world)
+    public PlayerBuildInputController(World world, Player player)
     {
         this.world = world;
+        this.player = player;
     }
 
 
@@ -23,7 +25,7 @@ public class PlayerBuildInputController : AbstractInputsController
     {
         EGameFlow.gameMode = EGameFlow.GameMode.CONTRUCTION;
         EGameFlow.generalMode = EGameFlow.GeneralMode.PLAYER;
-        SPlayer.constructionDetection = 5;
+        player.constructionDetection = 5;
 
         // Tools
         if (Input.GetKey(KeyCode.Alpha3))
@@ -41,6 +43,6 @@ public class PlayerBuildInputController : AbstractInputsController
                 EGameFlow.selectedGadget = EGameFlow.SelectedGadget.NAILS;
         }
 
-        skills.Update(world);
+        skills.Update(world, player);
     }
 }

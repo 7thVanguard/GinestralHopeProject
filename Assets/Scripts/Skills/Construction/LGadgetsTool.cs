@@ -3,10 +3,10 @@ using System.Collections;
 
 public class LGadgetsTool
 {
-    public static void Remove()
+    public static void Remove(Player player)
     {
         // Picks back the gadget
-        if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
             if (CameraRaycast.impact.transform.gameObject.tag == "Gadget")
             {
                 Gadget gadget = GadgetDictionary.GadgetsDictionary[CameraRaycast.impact.transform.gameObject.name];
@@ -22,9 +22,9 @@ public class LGadgetsTool
     }
 
 
-    public static void Place(World world)
+    public static void Place(World world, Player player)
     {
-        if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
             if (CameraRaycast.impact.normal.y >= 0.75f)
             {
@@ -66,9 +66,9 @@ public class LGadgetsTool
     }
 
 
-    public static void Detect(World world)
+    public static void Detect(World world, Player player)
     {
-        if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
             // Check if we are aiming at the top face of a voxel
             if (CameraRaycast.impact.normal.y >= 0.75f)

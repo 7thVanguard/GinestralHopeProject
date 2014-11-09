@@ -10,9 +10,9 @@ public static class LTerrainVoxelTool
     private static int sedimentExcess;
     private static int sedimentPerClick = 3;
 
-    public static void Remove(World world)
+    public static void Remove(World world, Player player)
     {
-        if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
             if (CameraRaycast.impact.transform.tag == "Chunk")
             {
@@ -54,9 +54,9 @@ public static class LTerrainVoxelTool
     }
 
 
-    public static void Place(World world)
+    public static void Place(World world, Player player)
     {
-        if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
             if (CameraRaycast.impact.transform.tag == "Chunk")
             {
@@ -104,9 +104,9 @@ public static class LTerrainVoxelTool
     }
 
 
-    public static void Detect(World world)
+    public static void Detect(World world, Player player)
     {
-        if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
             if (CameraRaycast.impact.transform.tag == "Chunk")
             {

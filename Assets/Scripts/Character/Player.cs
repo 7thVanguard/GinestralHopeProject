@@ -8,6 +8,8 @@ public class Player
     public GameObject playerObj;
     public CharacterController controller;
 
+    public int constructionDetection = 300;
+
 
     public Player(World world)
     {

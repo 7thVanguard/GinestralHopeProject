@@ -8,12 +8,12 @@ public class LMineVoxelTool
     private static VoxelGenerator preDetVoxel;
 
 
-    public static void Remove(World world)
+    public static void Remove(World world, Player player)
     {
         // Single
         if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.SINGLE)
         {
-            if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+            if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
             {
                 if (CameraRaycast.impact.transform.tag == "Chunk")
                 {
@@ -48,7 +48,7 @@ public class LMineVoxelTool
                 // Ortoedric
                 if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.ORTOEDRIC)
                 {
-                    if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+                    if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
                     {
                         DevConstructionSkills.detChunk = DevConstructionSkills.chunk;
                         DevConstructionSkills.detVoxel = DevConstructionSkills.voxel;
@@ -65,12 +65,12 @@ public class LMineVoxelTool
     }
 
 
-    public static void Place(World world)
+    public static void Place(World world, Player player)
     {
         // Single
         if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.SINGLE)
         {
-            if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+            if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
             {
                 if (CameraRaycast.impact.transform.tag == "Chunk")
                 {
@@ -120,7 +120,7 @@ public class LMineVoxelTool
                 // Ortoedric
                 if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.ORTOEDRIC)
                 {
-                    if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+                    if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
                     {
                         DevConstructionSkills.detChunk = DevConstructionSkills.chunk;
                         DevConstructionSkills.detVoxel = DevConstructionSkills.voxel;
@@ -143,9 +143,9 @@ public class LMineVoxelTool
     }
 
 
-    public static void Detect(World world)
+    public static void Detect(World world, Player player)
     {
-        if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
             if (CameraRaycast.impact.transform.tag == "Chunk")
             {

@@ -21,12 +21,11 @@ public class DeveloperBuildInputController : AbstractInputsController
     }
 
 
-
     public override void Update()
     {
         EGameFlow.gameMode = EGameFlow.GameMode.DEVCONSTRUCTION;
         EGameFlow.generalMode = EGameFlow.GeneralMode.DEVELOPER;
-        SPlayer.constructionDetection = 300;
+        player.constructionDetection = 300;
 
 
         // Tool

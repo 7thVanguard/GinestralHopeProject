@@ -23,8 +23,4 @@ public static class SPlayer
 
     // Damage
     public static int damageAnimTime = 5;
-
-    // Detection
-    public static int constructionDetection = 300;
-    
 }

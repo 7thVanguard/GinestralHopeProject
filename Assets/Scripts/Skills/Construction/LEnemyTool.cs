@@ -9,10 +9,10 @@ public class LEnemyTool
 	}
 	
 	
-	public static void Place(World world)
+	public static void Place(World world, Player player)
 	{
 		if (EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
-			if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0) 
+            if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0) 
 				if (CameraRaycast.impact.normal.y >= 0.75f)
 				{
 					switch (EGameFlow.selectedEnemy) 
@@ -33,9 +33,9 @@ public class LEnemyTool
 	}
 	
 	
-	public static void Detect(World world)
+	public static void Detect(World world, Player player)
 	{
-        if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
             // Check if we are aiming at the top face of a voxel
             if (CameraRaycast.impact.normal.y >= 0.75f)

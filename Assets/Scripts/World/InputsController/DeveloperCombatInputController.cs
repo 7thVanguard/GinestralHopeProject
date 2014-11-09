@@ -3,7 +3,14 @@ using System.Collections;
 
 public class DeveloperCombatInputController : AbstractInputsController 
 {
+    private Player player;
     private DevCombatSkills skills;
+
+
+    public DeveloperCombatInputController(Player player)
+    {
+        this.player = player;
+    }
 
 
 	public override void Start()
@@ -17,7 +24,7 @@ public class DeveloperCombatInputController : AbstractInputsController
     {
         EGameFlow.gameMode = EGameFlow.GameMode.DEVCOMBAT;
         EGameFlow.generalMode = EGameFlow.GeneralMode.DEVELOPER;
-        SPlayer.constructionDetection = 300;
+        player.constructionDetection = 300;
 
         skills.Update();
 	}
