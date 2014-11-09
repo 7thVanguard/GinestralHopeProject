@@ -3,36 +3,20 @@ using System.Collections;
 
 public static class ObjectCreator
 {
-    public static void WorldSet(GameObject world)
+    //public static void WorldSet(GameObject world)
+    //{
+        
+    //}
+
+
+    //public static GameObject PlayerCreation(World world)
+    //{
+    //    return player;
+    //}
+
+
+    public static GameObject CameraCreation()
     {
-        // World
-        world.name = "World";
-
-        // Set world transforms
-        world.transform.position = Vector3.zero;
-        world.transform.eulerAngles = Vector3.zero;
-        world.transform.localScale = Vector3.one;
-
-        world.AddComponent("GUISystem");
-        world.AddComponent("HUD");
-    }
-
-
-    public static void PlayerCreation()
-    {
-        // Player
-        GameObject player = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-
-        player.name = "Player";
-        player.tag = "Player";
-        player.layer = LayerMask.NameToLayer("Ignore Raycast");
-
-        // Player components creation
-        player.AddComponent<CharacterController>();
-        player.AddComponent("UPlayer");
-
-        player.GetComponent<CharacterController>().slopeLimit = 67;
-
 
         // Camera
         GameObject mainCamera = new GameObject();
@@ -46,6 +30,8 @@ public static class ObjectCreator
         mainCamera.AddComponent("UCamera");
 
         mainCamera.AddComponent("FlareLayer");
+
+        return mainCamera;
     }
 
 

@@ -1,0 +1,30 @@
+Game
+	GameObject World: Component<UWorldGenerator>.saveName "save file name"
+	f5 : save file
+	f9 : load file
+
+movement
+w : front
+s : rear
+a : left
+d : right
+q : down
+e : up
+
+Development 
+f1 : combat player mode 
+f2 : build player mode
+f3 : combat developer moder
+f4 : build God mode
+
+
+1 : terrain tools selection 
+	i, j , k : texture selection
+
+2 : Mine tool selection
+	i, j, k : texture selection
+
+3 : gadget mode
+	i, j, k : gadget selection
+
+4 : enemy tool mode

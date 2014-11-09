@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
+
 
 public static class LVGadget
 {
     public static void placePlank(Vector3 position, int rotation)
     {
-        if (VoxelDictionary.GlobalVoxelsDictionary.ContainsKey("Wooden Plank"))
+        if (GadgetDictionary.GadgetsDictionary.ContainsKey("Wooden Plank"))
         {
-            if (InventoryDictionary.GlobalVoxelInventory["Wooden Plank"].count >= 1)
+            if (GadgetDictionary.GadgetsDictionary["Wooden Plank"].count >= 1 || EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
             {
                 GameObject plank = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                Gadget gadget = (Gadget)VoxelDictionary.GlobalVoxelsDictionary["Wooden Plank"];
+                Gadget gadget = GadgetDictionary.GadgetsDictionary["Wooden Plank"];
 
                 plank.name = "Wooden Plank";
                 plank.tag = "Gadget";
@@ -18,32 +20,57 @@ public static class LVGadget
                 // Set the transform of the plank
                 if (rotation == 0)
                 {
-                    plank.transform.position = new Vector3(position.x + gadget.sizeX / 2.0f, position.y + gadget.sizeY / 2.0f, position.z + gadget.sizeZ / 2.0f);
-                    plank.transform.localScale = new Vector3(gadget.sizeX, gadget.sizeY, gadget.sizeZ);
+                    plank.transform.position = new Vector3(position.x + gadget.size.x / 2.0f, position.y + gadget.size.y / 2.0f, position.z + gadget.size.z / 2.0f);
+                    plank.transform.localScale = gadget.size;
                 }
                 else if (rotation == 90)
                 {
-                    plank.transform.position = new Vector3(position.x + gadget.sizeZ / 2.0f, position.y + gadget.sizeY / 2.0f, position.z + gadget.sizeX / 2.0f);
-                    plank.transform.localScale = new Vector3(gadget.sizeX, gadget.sizeY, gadget.sizeZ);
+                    plank.transform.position = new Vector3(position.x + gadget.size.z / 2.0f, position.y + gadget.size.y / 2.0f, position.z + gadget.size.x / 2.0f);
+                    plank.transform.localScale = gadget.size;
                 }
                 else if (rotation == 180)
                 {
-                    plank.transform.position = new Vector3(position.x + gadget.sizeX / 2.0f, position.y + gadget.sizeY / 2.0f, 1 + position.z - gadget.sizeZ / 2.0f);
-                    plank.transform.localScale = new Vector3(gadget.sizeX, gadget.sizeY, gadget.sizeZ);
+                    plank.transform.position = new Vector3(position.x + gadget.size.x / 2.0f, position.y + gadget.size.y / 2.0f, 1 + position.z - gadget.size.z / 2.0f);
+                    plank.transform.localScale = gadget.size;
                 }
                 else
                 {
-                    plank.transform.position = new Vector3(1 + position.x - gadget.sizeZ / 2.0f, position.y + gadget.sizeY / 2.0f, position.z + gadget.sizeX / 2.0f);
-                    plank.transform.localScale = new Vector3(gadget.sizeX, gadget.sizeY, gadget.sizeZ);
+                    plank.transform.position = new Vector3(1 + position.x - gadget.size.z / 2.0f, position.y + gadget.size.y / 2.0f, position.z + gadget.size.x / 2.0f);
+                    plank.transform.localScale = gadget.size;
                 }
 
                 plank.transform.eulerAngles = new Vector3(0, rotation, 0);
 
-                // Remove the plank from the inventory
-                InventoryDictionary.GlobalVoxelInventory["Wooden Plank"].count--;
+                if (EGameFlow.generalMode == EGameFlow.GeneralMode.PLAYER)
+                {
+                    // Remove the plank from the inventory
+                    GadgetDictionary.GadgetsDictionary["Wooden Plank"].count--;
+                }
             }
         }
-        InventoryDictionary.GlobalItemInventory["Wood Pieces"].count++;
-        InventoryDictionary.GlobalItemInventory["Nails"].count += 4;
+    }
+
+
+    public static void placeWoodPiecesGadget(World world, Vector3 position)
+    {
+        if (EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
+        {
+            Transform woodPieces = world.woodPieces;
+
+            woodPieces = Object.Instantiate(woodPieces, position, Quaternion.identity) as Transform;
+            woodPieces.name = "Wood Pieces";
+        }
+    }
+
+
+    public static void placeNailsGadget(World world, Vector3 position)
+    {
+        if (EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
+        {
+            Transform nails = world.nails;
+
+            nails = Object.Instantiate(nails, position, Quaternion.identity) as Transform;
+            nails.name = "Nails";
+        }
     }
 }

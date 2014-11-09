@@ -19,6 +19,8 @@ public class ChunkGenerator
     private List<int> Triangles;
     private List<Vector3> Normals;
 
+    private int vertexCount;
+
     //Attribute List
     public bool empty;
     public bool nullify;
@@ -42,7 +44,7 @@ public class ChunkGenerator
     }
 
 
-    public void InstantiateChunk()
+    public void InstantiateChunk(World world)
     {
         // Create the chunk as a GameObject
         chunkObject = new GameObject();
@@ -54,7 +56,7 @@ public class ChunkGenerator
         chunkObject.transform.eulerAngles = Vector3.zero;
         chunkObject.transform.localScale = Vector3.one;
 
-        chunkObject.transform.parent = SWorld.world.transform;
+        chunkObject.transform.parent = world.world.transform;
 
         // Chunk components
         chunkObject.AddComponent<MeshRenderer>();
@@ -68,58 +70,58 @@ public class ChunkGenerator
     }
 
 
-    public void DefaultChunkFilling()       // Called only for default plain map
+    public void DefaultChunkFilling(World world)       // Called only for default plain map
     {
-        voxel = new VoxelGenerator[SWorld.chunkSize.x, SWorld.chunkSize.y, SWorld.chunkSize.z];
+        voxel = new VoxelGenerator[world.chunkSize.x, world.chunkSize.y, world.chunkSize.z];
 
         // Default chunk filling, half grass, half air
-        for (int x = 0; x < SWorld.chunkSize.x; x++)
-            for (int y = 0; y < SWorld.chunkSize.y; y++)
-                for (int z = 0; z < SWorld.chunkSize.z; z++)
+        for (int x = 0; x < world.chunkSize.x; x++)
+            for (int y = 0; y < world.chunkSize.y; y++)
+                for (int z = 0; z < world.chunkSize.z; z++)
                 {
                     if((numID.x == 0 && x == 0) || (numID.y == 0 && y == 0) || (numID.z == 0 && z == 0) || 
-                                 ((numID.x == SWorld.chunkNumber.x - 1 && x == SWorld.chunkSize.x - 1)) ||
-                                 ((numID.z == SWorld.chunkNumber.z - 1 && z == SWorld.chunkSize.z - 1)))
-                        voxel[x, y, z] = new VoxelGenerator(new IntVector3(x, y, z), numID, "Rock");
+                                 ((numID.x == world.chunkNumber.x - 1 && x == world.chunkSize.x - 1)) ||
+                                 ((numID.z == world.chunkNumber.z - 1 && z == world.chunkSize.z - 1)))
+                        voxel[x, y, z] = new VoxelGenerator(world, new IntVector3(x, y, z), numID, "Rock");
                     else
-                        voxel[x, y, z] = new VoxelGenerator(new IntVector3(x, y, z), numID, "Air");
+                        voxel[x, y, z] = new VoxelGenerator(world, new IntVector3(x, y, z), numID, "Air");
                 }
     }
 
 
-    public void BuildChunkVertices()
+    public void BuildChunkVertices(World world)
     {
         // If chunk is empty, we fill it with air and set it to active
         if (empty == true)
         {
-            for (int x = 0; x < SWorld.chunkSize.x; x ++)
-                for (int y = 0; y < SWorld.chunkSize.y; y++)
-                    for (int z = 0; z < SWorld.chunkSize.z; z ++)
-                        voxel[x, y, z] = new VoxelGenerator(new IntVector3(x, y, z), numID, "Air");
+            for (int x = 0; x < world.chunkSize.x; x ++)
+                for (int y = 0; y < world.chunkSize.y; y++)
+                    for (int z = 0; z < world.chunkSize.z; z ++)
+                        voxel[x, y, z] = new VoxelGenerator(world, new IntVector3(x, y, z), numID, "Air");
 
             empty = false;
             chunkObject.SetActive(true);
         }
 
         // Resets de vertices counter for building the chunk again again
-        SWorld.vertexCount = 0;
+        vertexCount = 0;
 
         // Connect chunk with it's slices
         // vpx and vpz = voxel package x and z
-        for (int x = 0; x < SWorld.chunkSize.x; x++)
-            for (int z = 0; z < SWorld.chunkSize.z; z++)
-                for (int y = 0; y < SWorld.chunkSize.y; y++)
-                    voxel[x, y, z].BuildVoxelVertices(Vertices, UV, Triangles);
+        for (int x = 0; x < world.chunkSize.x; x++)
+            for (int z = 0; z < world.chunkSize.z; z++)
+                for (int y = 0; y < world.chunkSize.y; y++)
+                    voxel[x, y, z].BuildVoxelVertices(world, Vertices, UV, Triangles, ref vertexCount);
     }
 
 
-    public void BuildChunkNormals()
+    public void BuildChunkNormals(World world)
     {
         // Connect chunk with it's slices
-        for (int x = 0; x < SWorld.chunkSize.x; x ++)
-            for (int z = 0; z < SWorld.chunkSize.z; z ++)
-                for (int y = 0; y < SWorld.chunkSize.y; y++)
-                    voxel[x, y, z].BuildVoxelNormals(Normals);
+        for (int x = 0; x < world.chunkSize.x; x ++)
+            for (int z = 0; z < world.chunkSize.z; z ++)
+                for (int y = 0; y < world.chunkSize.y; y++)
+                    voxel[x, y, z].BuildVoxelNormals(world, Normals);
     }
 
 

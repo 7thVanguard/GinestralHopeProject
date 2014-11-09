@@ -4,34 +4,19 @@ using System.Collections;
 
 public class PlayerMovement
 {
-    private GameObject player;
-    private CharacterController playerController;
+    private Player player;
 
     private Vector3 objectiveDirection;
     private Vector3 interpolateDirection;
 
-    
 
-    public void Start(GameObject player)
+    public PlayerMovement(Player player)
     {
         this.player = player;
-        playerController = player.GetComponent<CharacterController>();
     }
 
 
-    public void Update()
-    {
-        if (EGameFlow.generalMode != EGameFlow.GeneralMode.DEVELOPER)       // Normal mode
-            NormalMovement();
-        else                                                                // God mode
-            GodModeMovement();
-
-        // Assign movement
-        playerController.Move(interpolateDirection * Time.deltaTime);
-    }
-
-
-    private void NormalMovement()
+    public void NormalMovementUpdate()
     {
         // Calculates the module of the speed
         float root = Mathf.Sqrt(SPlayer.runSpeed * SPlayer.runSpeed / 2);
@@ -45,17 +30,20 @@ public class PlayerMovement
         HorizontalMovement(SPlayer.runSpeed, root);
 
         // Jump
-        if (playerController.isGrounded)
+        if (player.controller.isGrounded)
         {
             if (Input.GetKey(KeyCode.Space))
                 objectiveDirection = new Vector3(objectiveDirection.x, SPlayer.jumpInitialSpeed, objectiveDirection.z);
         }
         else
             objectiveDirection += new Vector3(0, -EGamePhysics.gravity * 1.5f, 0) * Time.deltaTime;
+
+        // Assign movement
+        player.controller.Move(interpolateDirection * Time.deltaTime);
     }
 
 
-    private void GodModeMovement()
+    public void DeveloperMovementUpdate()
     {
         // Calculates the module of the speed
         float root = Mathf.Sqrt(SPlayer.godModeSpeed * SPlayer.godModeSpeed / 2);
@@ -75,6 +63,9 @@ public class PlayerMovement
             objectiveDirection = new Vector3(objectiveDirection.x, -SPlayer.godModeSpeed, objectiveDirection.z);
         else
             objectiveDirection = new Vector3(objectiveDirection.x, 0, objectiveDirection.z);
+
+        // Assign movement
+        player.controller.Move(interpolateDirection * Time.deltaTime);
     }
 
 
@@ -103,7 +94,7 @@ public class PlayerMovement
                 objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
         }
 
-        player.transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-        objectiveDirection = player.transform.TransformDirection(objectiveDirection);
+        player.playerObj.transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+        objectiveDirection = player.playerObj.transform.TransformDirection(objectiveDirection);
     }
 }

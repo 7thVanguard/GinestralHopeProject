@@ -3,21 +3,21 @@ using System.Collections;
 
 public static class LVoxel
 {
-    public static bool VoxelExists(ChunkGenerator detectionChunk, VoxelGenerator detectionVoxel, int x, int y, int z)
+    public static bool VoxelExists(World world, ChunkGenerator detectionChunk, VoxelGenerator detectionVoxel, int x, int y, int z)
     {
-        if (detectionChunk.numID.x * SWorld.chunkSize.x + detectionVoxel.numID.x + x >= 0 &&
-            detectionChunk.numID.x * SWorld.chunkSize.x + detectionVoxel.numID.x + x < SWorld.chunkNumber.x * SWorld.chunkSize.x &&
-            detectionChunk.numID.y * SWorld.chunkSize.y + detectionVoxel.numID.y + y >= 0 &&
-            detectionChunk.numID.y * SWorld.chunkSize.y + detectionVoxel.numID.y + y < SWorld.chunkNumber.y * SWorld.chunkSize.y &&
-            detectionChunk.numID.z * SWorld.chunkSize.z + detectionVoxel.numID.z + z >= 0 &&
-            detectionChunk.numID.z * SWorld.chunkSize.z + detectionVoxel.numID.z + z < SWorld.chunkNumber.z * SWorld.chunkSize.z)
+        if (detectionChunk.numID.x * world.chunkSize.x + detectionVoxel.numID.x + x >= 0 &&
+            detectionChunk.numID.x * world.chunkSize.x + detectionVoxel.numID.x + x < world.chunkNumber.x * world.chunkSize.x &&
+            detectionChunk.numID.y * world.chunkSize.y + detectionVoxel.numID.y + y >= 0 &&
+            detectionChunk.numID.y * world.chunkSize.y + detectionVoxel.numID.y + y < world.chunkNumber.y * world.chunkSize.y &&
+            detectionChunk.numID.z * world.chunkSize.z + detectionVoxel.numID.z + z >= 0 &&
+            detectionChunk.numID.z * world.chunkSize.z + detectionVoxel.numID.z + z < world.chunkNumber.z * world.chunkSize.z)
             return true;
         else
             return false;
     }
 
 
-    public static void GetVoxel(ref ChunkGenerator detectionChunk, ref VoxelGenerator detectionVoxel, int x, int y, int z)
+    public static void GetVoxel(World world, ref ChunkGenerator detectionChunk, ref VoxelGenerator detectionVoxel, int x, int y, int z)
     {
         int cx, cy, cz;
         int vx, vy, vz;
@@ -35,7 +35,7 @@ public static class LVoxel
 
 
         // slices
-        if (vx == SWorld.chunkSize.x)
+        if (vx == world.chunkSize.x)
         {
             cx++;
             vx = 0;
@@ -43,10 +43,10 @@ public static class LVoxel
         else if (vx < 0)
         {
             cx--;
-            vx = SWorld.chunkSize.x - 1;
+            vx = world.chunkSize.x - 1;
         }
 
-        if (vy == SWorld.chunkSize.y)
+        if (vy == world.chunkSize.y)
         {
             cy++;
             vy = 0;
@@ -54,10 +54,10 @@ public static class LVoxel
         else if (vy < 0)
         {
             cy--;
-            vy = SWorld.chunkSize.y - 1;
+            vy = world.chunkSize.y - 1;
         }
 
-        if (vz == SWorld.chunkSize.z)
+        if (vz == world.chunkSize.z)
         {
             cz++;
             vz = 0;
@@ -65,10 +65,10 @@ public static class LVoxel
         else if (vz < 0)
         {
             cz--;
-            vz = SWorld.chunkSize.z - 1;
+            vz = world.chunkSize.z - 1;
         }
 
-        detectionChunk = SWorld.chunk[cx, cy, cz];
+        detectionChunk = world.chunk[cx, cy, cz];
         detectionVoxel = detectionChunk.voxel[vx, vy, vz];
     }
 }

@@ -3,25 +3,30 @@ using System.Collections;
 
 public class LGadgetsTool
 {
-    private static RaycastHit impact;
-
-
-    public static void Remove()
+    public static void Remove(Player player)
     {
         // Picks back the gadget
-        if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
-            if (impact.transform.gameObject.tag == "Gadget")
+        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+            if (CameraRaycast.impact.transform.gameObject.tag == "Gadget")
             {
-                InventoryDictionary.GlobalVoxelInventory[impact.transform.gameObject.name].count++;
-                Object.Destroy(impact.transform.gameObject);
+                Gadget gadget = GadgetDictionary.GadgetsDictionary[CameraRaycast.impact.transform.gameObject.name];
+
+                // returns the gadged if it's not a component giver, else gives it's components
+                if (gadget.givesComponents)
+                    GameComponentDictionary.GameComponentsDictionary[gadget.nameKey].count += gadget.dropCount;
+                else
+                    gadget.count += gadget.dropCount;
+
+                Object.Destroy(CameraRaycast.impact.transform.gameObject);
             }
     }
 
 
-    public static void Place()
+    public static void Place(World world, Player player)
     {
-        if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
-            if (impact.normal == Vector3.up)
+        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        {
+            if (CameraRaycast.impact.normal.y >= 0.75f)
             {
                 // Claculates the initial position and the rotation of the Gadget we are going to place
                 int yRotation;
@@ -37,7 +42,13 @@ public class LGadgetsTool
                 switch (EGameFlow.selectedGadget)
                 {
                     case EGameFlow.SelectedGadget.PLANK:
-                        LVGadget.placePlank(new Vector3((int)(impact.point.x), impact.point.y, (int)(impact.point.z)), yRotation);
+                        LVGadget.placePlank(new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)), yRotation);
+                        break;
+                    case EGameFlow.SelectedGadget.WOOD:
+                        LVGadget.placeWoodPiecesGadget(world, new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)));
+                        break;
+                    case EGameFlow.SelectedGadget.NAILS:
+                        LVGadget.placeNailsGadget(world, new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)));
                         break;
                     case EGameFlow.SelectedGadget.LADDER:
                         break;
@@ -45,6 +56,7 @@ public class LGadgetsTool
                         break;
                 }
             }
+        }
     }
 
 
@@ -54,21 +66,21 @@ public class LGadgetsTool
     }
 
 
-    public static void Detect()
+    public static void Detect(World world, Player player)
     {
-        if (CameraRaycast.impact.distance < (SPlayer.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
         {
             // Check if we are aiming at the top face of a voxel
-            if (impact.normal == Vector3.up)
+            if (CameraRaycast.impact.normal.y >= 0.75f)
             {
-                // Detects the vertex we are aiming at
-                DevConstructionSkills.chunk = SWorld.chunk[(int)((impact.point.x) / SWorld.chunkSize.x),
-                                                           (int)((impact.point.y + 0.5f) / SWorld.chunkSize.y),
-                                                           (int)((impact.point.z) / SWorld.chunkSize.z)];
+                // Detects the voxel
+                DevConstructionSkills.chunk = world.chunk[(int)((CameraRaycast.impact.point.x) / world.chunkSize.x),
+                                                           (int)((CameraRaycast.impact.point.y + 0.5f) / world.chunkSize.y),
+                                                           (int)((CameraRaycast.impact.point.z) / world.chunkSize.z)];
 
-                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((impact.point.x) % SWorld.chunkSize.x),
-                                                                                (int)((impact.point.y + 0.5f) % SWorld.chunkSize.y),
-                                                                                (int)((impact.point.z) % SWorld.chunkSize.z)];
+                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((CameraRaycast.impact.point.x) % world.chunkSize.x),
+                                                                                (int)((CameraRaycast.impact.point.y + 0.5f) % world.chunkSize.y),
+                                                                                (int)((CameraRaycast.impact.point.z) % world.chunkSize.z)];
             }
         }
     }

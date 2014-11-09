@@ -4,35 +4,40 @@ using System.Collections.Generic;
 
 public class SWorld
 {
-    // World relative
-        public static GameObject world;
-        // Player
-        public static GameObject player;
+    //// World relative
+    //    public static GameObject world;
+    //    // Player
+    //    public static GameObject player;
 
-        // Initial number of chunks
-        public static IntVector3 chunkNumber = new IntVector3(8, 2, 8);
-        // Space occupied by a chunk
-        public static IntVector3 chunkSize = new IntVector3(16, 16, 16);
-        // Chunks declaration
-        public static ChunkGenerator[, ,] chunk;
-        // Control the chunks we are going to reset
-        public static List<IntVector3> chunksToReset = new List<IntVector3>();
+    //    // Initial number of chunks
+    //    public static IntVector3 chunkNumber = new IntVector3(8, 2, 8);
+    //    // Space occupied by a chunk
+    //    public static IntVector3 chunkSize = new IntVector3(16, 16, 16);
+    //    // Chunks declaration
+    //    public static ChunkGenerator[, ,] chunk;
+    //    // Control the chunks we are going to reset
+    //    public static List<IntVector3> chunksToReset = new List<IntVector3>();
 
-    // Material and texture relative
-        public static float textureSize = 128 / 1024.0f;
+    //// 3D models relative
+    //// Enemies
+    //public static Transform normalSlime;
+    //public static string selectedEnemy = "Normal Slime";
 
-        public static string selectedTerrain = "Grass";
-        public static string selectedMine = "Rock";
+    //// Gadgets
+    //public static Transform woodPieces;
+    //public static Transform nails;
+    //public static string selectedGadget = "Wood Pieces";
 
-    // Voxel relative
-        // The max sediments we can use before creating another voxel
-        public static float maxSediment = 12;
+    //// Material and texture relative
+    //public static float textureSize = 128 / 1024.0f;
 
-        // Global counter of the vertices that are being used
-        public static int vertexCount;
+    //public static string selectedTerrain = "Grass";
+    //public static string selectedMine = "Rock";
 
-    // Save relative
-        public static string saveName;
+    //// Voxel relative
+    //    // The max sediments we can use before creating another voxel
+    //    public static float maxSediment = 12;
 
-    
+    //// Save relative
+    //    public static string saveName;
 }

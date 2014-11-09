@@ -3,20 +3,22 @@ using System.Collections;
 
 public class EnemyComponent : MonoBehaviour
 {
-    public Color originalColor;
-    public float life;
+    [HideInInspector] public Color originalColor;
+    [HideInInspector] public float life;
 
+    public int maxLife;
     private int animCounter;
 
 
     void Start()
     {
-        animCounter = 0;
+        originalColor = gameObject.renderer.material.color;
     }
 
 
     void Update ()
     {
+        // Counter update
         if (animCounter > 0)
         {
             animCounter--;
@@ -28,6 +30,7 @@ public class EnemyComponent : MonoBehaviour
 
     public void Damage(float damage)
     {
+        // Damage recieved
         life -= damage;
         DamageAnim();
 
@@ -38,6 +41,7 @@ public class EnemyComponent : MonoBehaviour
 
     private void DamageAnim()
     {
+        // Changes the color when damaged
         animCounter = SNSlime.damageAnimTime;
 
         gameObject.renderer.material.color = Color.red;
