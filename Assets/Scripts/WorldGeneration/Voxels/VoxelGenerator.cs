@@ -20,10 +20,10 @@ public class VoxelGenerator
     public Vector2 UVStart;
 
     // Intermediate height level (Terrain)
-    public float backLeftVertex = world.maxSediment;
-    public float backRightVertex = world.maxSediment;
-    public float frontLeftVertex = world.maxSediment;
-    public float frontRightVertex = world.maxSediment;
+    public float backLeftVertex;
+    public float backRightVertex;
+    public float frontLeftVertex;
+    public float frontRightVertex;
 
     // Transparent faces
     public bool frontTransparent;
@@ -118,23 +118,15 @@ public class VoxelGenerator
                     botTransparent = true;
                 }
                 break;
-            case "Grass":
+            case "SandWay":
                 {
-                    voxelType = VoxelType.VTERRAIN;
+                    voxelType = VoxelType.VMINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 7 * world.textureSize);
                 }
                 break;
-            case "DirtGrass":
-                {
-                    voxelType = VoxelType.VTERRAIN;
-                    voxelState = VoxelState.SOLID;
-
-                    UVStart = new Vector2(1 * world.textureSize, 7 * world.textureSize);
-                }
-                break;
-            case "BreakRock":
+            case "LittleRocks":
                 {
                     voxelType = VoxelType.VMINE;
                     voxelState = VoxelState.SOLID;
@@ -150,12 +142,76 @@ public class VoxelGenerator
                     UVStart = new Vector2(1 * world.textureSize, 6 * world.textureSize);
                 }
                 break;
+            case "OtherRock":
+                {
+                    voxelType = VoxelType.VMINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(2 * world.textureSize, 6 * world.textureSize);
+                }
+                break;
+            case "BrokenRock":
+                {
+                    voxelType = VoxelType.VMINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(3 * world.textureSize, 6 * world.textureSize);
+                }
+                break;
+            case "RockFloor":
+                {
+                    voxelType = VoxelType.VMINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(4 * world.textureSize, 6 * world.textureSize);
+                }
+                break;
+            case "RockWall":
+                {
+                    voxelType = VoxelType.VMINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(5 * world.textureSize, 6 * world.textureSize);
+                }
+                break;
+            case "SmoothRock":
+                {
+                    voxelType = VoxelType.VMINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(6 * world.textureSize, 6 * world.textureSize);
+                }
+                break;
+            case "AmatistRock":
+                {
+                    voxelType = VoxelType.VMINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(7 * world.textureSize, 6 * world.textureSize);
+                }
+                break;
             case "Wood":
                 {
                     voxelType = VoxelType.VMINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 5 * world.textureSize);
+                }
+                break;
+            case "WoodLateralColumn":
+                {
+                    voxelType = VoxelType.VMINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(1 * world.textureSize, 5 * world.textureSize);
+                }
+                break;
+            case "WoodCentralColumn":
+                {
+                    voxelType = VoxelType.VMINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(2 * world.textureSize, 5 * world.textureSize);
                 }
                 break;
             default:

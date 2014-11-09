@@ -57,9 +57,19 @@ public class DeveloperBuildInputController : AbstractInputsController
             if (Input.GetKey(KeyCode.I))
                 world.selectedMine = "Rock";
             else if (Input.GetKey(KeyCode.J))
-                world.selectedMine = "BreakRock";
+                world.selectedMine = "BrokenRock";
             else if (Input.GetKey(KeyCode.K))
                 world.selectedMine = "Wood";
+            else if (Input.GetKey(KeyCode.M))
+                world.selectedMine = "RockFloor";
+            else if (Input.GetKey(KeyCode.N))
+                world.selectedMine = "RockWall";
+            else if (Input.GetKey(KeyCode.O))
+                world.selectedMine = "SmoothRock";
+            else if (Input.GetKey(KeyCode.B))
+                world.selectedMine = "LittleRocks";
+            else if (Input.GetKey(KeyCode.V))
+                world.selectedMine = "OtherRock";
         }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
         {
