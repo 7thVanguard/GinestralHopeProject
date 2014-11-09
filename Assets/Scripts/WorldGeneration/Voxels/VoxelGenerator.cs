@@ -20,10 +20,10 @@ public class VoxelGenerator
     public Vector2 UVStart;
 
     // Intermediate height level (Terrain)
-    public float backLeftVertex;
-    public float backRightVertex;
-    public float frontLeftVertex;
-    public float frontRightVertex;
+    public float backLeftVertex = world.maxSediment;
+    public float backRightVertex = world.maxSediment;
+    public float frontLeftVertex = world.maxSediment;
+    public float frontRightVertex = world.maxSediment;
 
     // Transparent faces
     public bool frontTransparent;
