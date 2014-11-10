@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Player
 {
-    private World world;
-
     public GameObject playerObj;
     public CharacterController controller;
 
@@ -20,9 +18,8 @@ public class Player
     public int constructionDetection = 300;
 
 
-    public Player(World world)
+    public Player()
     {
-        this.world = world;
         Init();
     }
 

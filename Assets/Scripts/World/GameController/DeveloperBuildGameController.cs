@@ -5,12 +5,14 @@ public class DeveloperBuildGameController : GameController
 {
     private World world;
     private Player player;
+    private MainCamera mainCamera;
 
 
-    public DeveloperBuildGameController(World world, Player player, GameObject mainCamera) : base(world, player, mainCamera)
+    public DeveloperBuildGameController(World world, Player player, MainCamera mainCamera) : base(world, player, mainCamera)
     {
         this.world = world;
         this.player = player;
+        this.mainCamera = mainCamera;
     }
 
 
@@ -25,6 +27,7 @@ public class DeveloperBuildGameController : GameController
     public override void Update()
     {
         base.Update();
-        movement.DeveloperMovementUpdate();
+        playerMovement.DeveloperMovementUpdate();
+        cameraMovement.Update();
     }
 }

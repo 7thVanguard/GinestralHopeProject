@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     // GameObjects
     private World world;
     private Player player;
-    private GameObject mainCamera;
+    private MainCamera mainCamera;
     
 
     // Save
@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
     {
         //+ Object Init
         world = new World(gameObject, prefabs, atlas);
-        player = new Player(world);
-        mainCamera = ObjectCreator.CameraCreation();
+        player = new Player();
+        mainCamera = new MainCamera();
         ObjectCreator.SunCreation(sunFlare);
 
 

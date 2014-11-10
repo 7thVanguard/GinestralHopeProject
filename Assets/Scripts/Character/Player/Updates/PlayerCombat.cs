@@ -34,7 +34,7 @@ public class PlayerCombat
             circleGizmoScreenPos = Camera.main.WorldToScreenPoint(target.transform.position);
 
             // Abandon target
-            if (Vector3.Distance(SPlayer.transform.position, target.transform.position) > detectionDistance)
+            if (Vector3.Distance(player.playerObj.transform.position, target.transform.position) > detectionDistance)
                 target = null;
 
             if (Vector2.Distance(new Vector2(circleGizmoScreenPos.x, circleGizmoScreenPos.y), new Vector2(Screen.width / 2, Screen.height / 2)) > Screen.height / 2.5f)

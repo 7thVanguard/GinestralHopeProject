@@ -15,24 +15,24 @@ public static class ObjectCreator
     //}
 
 
-    public static GameObject CameraCreation()
-    {
+    //public static GameObject CameraCreation()
+    //{
 
-        // Camera
-        GameObject mainCamera = new GameObject();
+    //    // Camera
+    //    GameObject mainCamera = new GameObject();
 
-        mainCamera.name = "MainCamera";
-        mainCamera.tag = "MainCamera";
+    //    mainCamera.name = "MainCamera";
+    //    mainCamera.tag = "MainCamera";
 
-        // Camera components creation
-        mainCamera.AddComponent<Camera>();
-        mainCamera.AddComponent<CharacterController>();
-        mainCamera.AddComponent("UCamera");
+    //    // Camera components creation
+    //    mainCamera.AddComponent<Camera>();
+    //    mainCamera.AddComponent<CharacterController>();
+    //    mainCamera.AddComponent("UCamera");
 
-        mainCamera.AddComponent("FlareLayer");
+    //    mainCamera.AddComponent("FlareLayer");
 
-        return mainCamera;
-    }
+    //    return mainCamera;
+    //}
 
 
     public static void SunCreation(Flare sunFlare)

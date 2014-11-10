@@ -4,14 +4,16 @@ using System.Collections;
 public class GameController 
 {
     protected AbstractInputsController inputController;
-    protected PlayerMovement movement;
-    protected PlayerCombat combat;
+    protected PlayerMovement playerMovement;
+    protected PlayerCombat playerCombat;
+    protected CameraMovement cameraMovement;
 
 
-    public GameController(World world, Player player, GameObject mainCamera)
+    public GameController(World world, Player player, MainCamera mainCamera)
     {
-        movement = new PlayerMovement(player);
-        combat = new PlayerCombat(player);
+        playerMovement = new PlayerMovement(player);
+        playerCombat = new PlayerCombat(player);
+        cameraMovement = new CameraMovement(player, mainCamera);
     }
 
 

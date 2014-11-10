@@ -3,47 +3,49 @@ using System.Collections;
 
 public class CameraMovement
 {
-    private CharacterController cameraController;
+    Player player;
+    MainCamera mainCamera;
 
-    Vector3 cameraOffset;
-    Vector3 cameraDirection;
-    private float objectivePosition;
-    private float interpolationPosition;
-    private float angleSight;
+
+    public CameraMovement(Player player, MainCamera mainCamera)
+    {
+        this.player = player;
+        this.mainCamera = mainCamera;
+    }
 
 
     public void Start(GameObject camera)
     {
-        cameraController = camera.GetComponent<CharacterController>();
+        mainCamera.controller = camera.GetComponent<CharacterController>();
     }
 
 
     public void Update()
     {
         // Camera aim that depends on the player
-        cameraOffset = SPlayer.transform.right * 0.5f + SPlayer.transform.forward * 0.3f + Vector3.up * (1.2f - angleSight / 45.0f);
+        mainCamera.offset = player.playerObj.transform.right * 0.5f + player.playerObj.transform.forward * 0.3f + Vector3.up * (1.2f - mainCamera.angleSight / 45.0f);
 
         // Mouse inputs
-        objectivePosition += Input.GetAxis("Mouse X") * SCamera.mouseSensitivityX;
-        angleSight -= Input.GetAxis("Mouse Y") * SCamera.mouseSensitivityY;
+        mainCamera.objectivePosition += Input.GetAxis("Mouse X") * SCamera.mouseSensitivityX;
+        mainCamera.angleSight -= Input.GetAxis("Mouse Y") * SCamera.mouseSensitivityY;
 
         // Set a maxium and minium pitch angle
-        angleSight = Mathf.Clamp(angleSight, SCamera.minAngleSight, SCamera.maxAngleSight);
+        mainCamera.angleSight = Mathf.Clamp(mainCamera.angleSight, SCamera.minAngleSight, SCamera.maxAngleSight);
 
         // Interpolates between the actual rotation and the rotation objective
-        interpolationPosition = Mathf.Lerp(interpolationPosition, objectivePosition, SCamera.rotationSensitivity);
+        mainCamera.interpolatedPosition = Mathf.Lerp(mainCamera.interpolatedPosition, mainCamera.objectivePosition, SCamera.rotationSensitivity);
 
         // Sets the rotation and the position, uses the camera offset as the central point
-        Quaternion rotation = Quaternion.Euler(angleSight, interpolationPosition, 0);
-        Vector3 position = rotation * (new Vector3(0, 0, -SCamera.distance)) + SPlayer.transform.position + cameraOffset;
+        mainCamera.rotation = Quaternion.Euler(mainCamera.angleSight, mainCamera.interpolatedPosition, 0);
+        Vector3 position = mainCamera.rotation * (new Vector3(0, 0, -SCamera.distance)) + player.playerObj.transform.position + mainCamera.offset;
 
         // Calculates the displacement
-        cameraDirection = position - Camera.main.transform.position;
+        mainCamera.direction = position - mainCamera.cameraObj.transform.position;
 
         // Assign the rotation
-        Camera.main.transform.rotation = rotation;
+        mainCamera.cameraObj.transform.rotation = mainCamera.rotation;
 
         // Assign the movement
-        cameraController.Move(cameraDirection);
+        mainCamera.controller.Move(mainCamera.direction);
     }
 }

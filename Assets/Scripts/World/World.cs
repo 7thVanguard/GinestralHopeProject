@@ -8,7 +8,7 @@ public class World
     public IntVector3 chunkNumber = new IntVector3(8, 2, 8);                    // Initial number of chunks
     public IntVector3 chunkSize = new IntVector3(16, 16, 16);                   // Space occupied by a chunk
     public ChunkGenerator[, ,] chunk;                                           // Chunks declaration
-    public List<IntVector3> chunksToReset = new List<IntVector3>();      // Control the chunks we are going to reset
+    public List<IntVector3> chunksToReset = new List<IntVector3>();             // Control the chunks we are going to reset
 
     // GameObjects
     public GameObject world;

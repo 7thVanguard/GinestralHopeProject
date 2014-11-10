@@ -3,12 +3,14 @@ using System.Collections;
 
 public class DeveloperCombatGameController : GameController
 {
-    Player player;
+    private Player player;
+    private MainCamera mainCamera;
 
 
-    public DeveloperCombatGameController(World world, Player player, GameObject mainCamera) : base(world, player, mainCamera)
+    public DeveloperCombatGameController(World world, Player player, MainCamera mainCamera) : base(world, player, mainCamera)
     {
         this.player = player;
+        this.mainCamera = mainCamera;
     }
 
 
@@ -23,7 +25,8 @@ public class DeveloperCombatGameController : GameController
     public override void Update()
     {
         base.Update();
-        movement.DeveloperMovementUpdate();
-        combat.Update();
+        playerMovement.DeveloperMovementUpdate();
+        playerCombat.Update();
+        cameraMovement.Update();
     }
 }
