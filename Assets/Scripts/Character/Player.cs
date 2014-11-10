@@ -8,6 +8,15 @@ public class Player
     public GameObject playerObj;
     public CharacterController controller;
 
+    // Movement
+    public float godModeSpeed = 25;
+    public float runSpeed = 4.5f;
+    public float walkSpeed = 2;
+    public float acceleration = 0.2f;
+
+    public float jumpInitialSpeed = 5;
+
+    // Detection
     public int constructionDetection = 300;
 
 
