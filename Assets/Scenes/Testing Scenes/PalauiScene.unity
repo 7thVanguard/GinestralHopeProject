@@ -254,7 +254,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 728816240}
-  - 114: {fileID: 728816239}
   - 114: {fileID: 728816241}
   - 114: {fileID: 728816242}
   - 114: {fileID: 728816243}
@@ -266,20 +265,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &728816239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 728816238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2b989e650a8958449bc295c273e5157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabs: {fileID: 400000, guid: eb7794d40c252dc4cad5d34eb23c61a2, type: 2}
-  mat: {fileID: 2100000, guid: 585f795cf36d90d47a85b6bb45a6d0a6, type: 2}
-  saveName: PalauiSave
 --- !u!4 &728816240
 Transform:
   m_ObjectHideFlags: 0
