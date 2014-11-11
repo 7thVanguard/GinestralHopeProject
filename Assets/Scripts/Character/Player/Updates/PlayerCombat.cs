@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerCombat
 {
     private Player player;
+    MainCamera mainCamera;
 
     // Detection relative
     public static GameObject target;
@@ -11,9 +12,10 @@ public class PlayerCombat
     private int detectionDistance = 30;
 
 
-    public PlayerCombat(Player player)
+    public PlayerCombat(Player player, MainCamera mainCamera)
     {
         this.player = player;
+        this.mainCamera = mainCamera;
 
         // Detection relative
         target = null;
@@ -24,9 +26,9 @@ public class PlayerCombat
     public void Update()
     {
         // Detection relative
-        if (CameraRaycast.impact.distance < detectionDistance && CameraRaycast.impact.distance != 0)
-            if (CameraRaycast.impact.transform.tag == "Enemy")
-                target = CameraRaycast.impact.transform.gameObject;
+        if (mainCamera.raycast.distance < detectionDistance && mainCamera.raycast.distance != 0)
+            if (mainCamera.raycast.transform.tag == "Enemy")
+                target = mainCamera.raycast.transform.gameObject;
 
 
         if (target != null)

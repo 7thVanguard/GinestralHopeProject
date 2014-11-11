@@ -9,16 +9,16 @@ public class LEnemyTool
 	}
 	
 	
-	public static void Place(World world, Player player)
+	public static void Place(World world, Player player, MainCamera mainCAmera)
 	{
 		if (EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
-            if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0) 
-				if (CameraRaycast.impact.normal.y >= 0.75f)
+            if (mainCAmera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCAmera.raycast.distance != 0)
+                if (mainCAmera.raycast.normal.y >= 0.75f)
 				{
 					switch (EGameFlow.selectedEnemy) 
 					{
 						case EGameFlow.SelectedEnemy.NORMALSLIME:
-                            LEnemy.placeNormalSlime(world, new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y + 0.5f, (int)(CameraRaycast.impact.point.z)));
+                            LEnemy.placeNormalSlime(world, new Vector3((int)(mainCAmera.raycast.point.x), mainCAmera.raycast.point.y + 0.5f, (int)(mainCAmera.raycast.point.z)));
 							break;
 						default:
 							break;
@@ -33,21 +33,21 @@ public class LEnemyTool
 	}
 	
 	
-	public static void Detect(World world, Player player)
+	public static void Detect(World world, Player player, MainCamera mainCamera)
 	{
-        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
         {
             // Check if we are aiming at the top face of a voxel
-            if (CameraRaycast.impact.normal.y >= 0.75f)
+            if (mainCamera.raycast.normal.y >= 0.75f)
             {
                 // Detects the voxel
-                DevConstructionSkills.chunk = world.chunk[(int)((CameraRaycast.impact.point.x) / world.chunkSize.x),
-                                                           (int)((CameraRaycast.impact.point.y + 0.5f) / world.chunkSize.y),
-                                                           (int)((CameraRaycast.impact.point.z) / world.chunkSize.z)];
+                DevConstructionSkills.chunk = world.chunk[(int)((mainCamera.raycast.point.x) / world.chunkSize.x),
+                                                           (int)((mainCamera.raycast.point.y + 0.5f) / world.chunkSize.y),
+                                                           (int)((mainCamera.raycast.point.z) / world.chunkSize.z)];
 
-                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((CameraRaycast.impact.point.x) % world.chunkSize.x),
-                                                                                (int)((CameraRaycast.impact.point.y + 0.5f) % world.chunkSize.y),
-                                                                                (int)((CameraRaycast.impact.point.z) % world.chunkSize.z)];
+                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((mainCamera.raycast.point.x) % world.chunkSize.x),
+                                                                                (int)((mainCamera.raycast.point.y + 0.5f) % world.chunkSize.y),
+                                                                                (int)((mainCamera.raycast.point.z) % world.chunkSize.z)];
             }
         }
 	}

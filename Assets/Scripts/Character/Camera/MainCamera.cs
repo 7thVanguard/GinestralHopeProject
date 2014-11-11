@@ -16,6 +16,9 @@ public class MainCamera
 
     public float angleSight;
 
+    // Camera raycast
+    public RaycastHit raycast;
+
 
     public MainCamera()
     {

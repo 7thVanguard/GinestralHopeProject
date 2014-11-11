@@ -8,7 +8,7 @@ public class CombatSkills
     public static string methodName = "";
     public static bool casting = false;
 
-    public void Update()
+    public void Update(MainCamera mainCamera)
     {
         // Make sure that pressing again a button won't reset the skill
         if (methodName != "LambertBall")
@@ -40,7 +40,7 @@ public class CombatSkills
                 switch (methodName)
                 {
                     case "LambertBall":
-                        CreateLambertBall.Cast(SPlayer.transform.position, 25, 30, true);
+                        CreateLambertBall.Cast(mainCamera, SPlayer.transform.position, 25, 30, true);
                         break;
                     default:
                         break;

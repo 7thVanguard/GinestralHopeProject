@@ -5,13 +5,15 @@ public class DeveloperBuildInputController : AbstractInputsController
 {
     private World world;
     private Player player;
+    private MainCamera mainCamera;
     private DevConstructionSkills skills;
 
 
-    public DeveloperBuildInputController(World world, Player player)
+    public DeveloperBuildInputController(World world, Player player, MainCamera mainCamera)
     {
         this.world = world;
         this.player = player;
+        this.mainCamera = mainCamera;
     }
 
 
@@ -87,6 +89,6 @@ public class DeveloperBuildInputController : AbstractInputsController
         }
 
         // Mouse click
-        skills.Update(world, player);
+        skills.Update(world, player, mainCamera);
 	}
 }

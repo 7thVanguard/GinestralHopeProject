@@ -3,9 +3,9 @@ using System.Collections;
 
 public class DevCombatSkills
 {
-    public void Update()
+    public void Update(MainCamera mainCamera)
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
-            CreateLambertBall.Cast(SPlayer.transform.position, 25, 30, true);
+            CreateLambertBall.Cast(mainCamera, SPlayer.transform.position, 25, 30, true);
     }
 }

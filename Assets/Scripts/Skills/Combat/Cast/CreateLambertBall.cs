@@ -3,7 +3,7 @@ using System.Collections;
 
 public static class CreateLambertBall
 {
-    public static void Cast(Vector3 origin, int ballSpeed, int maxDistance, bool launchedByPlayer)
+    public static void Cast(MainCamera mainCamera, Vector3 origin, int ballSpeed, int maxDistance, bool launchedByPlayer)
     {
         // variables
         Vector3 originPosition;
@@ -33,8 +33,8 @@ public static class CreateLambertBall
             // Target location
             if (PlayerCombat.target == null)
             {
-                if (CameraRaycast.impact.distance < maxDistance && CameraRaycast.impact.distance != 0)
-                    targetPosition = CameraRaycast.impact.point;
+                if (mainCamera.raycast.distance < maxDistance && mainCamera.raycast.distance != 0)
+                    targetPosition = mainCamera.raycast.point;
                 else
                     targetPosition = Camera.main.transform.position + Camera.main.transform.forward * maxDistance;
             }
@@ -57,7 +57,7 @@ public static class CreateLambertBall
         ballDirection *= ballSpeed;
 
         // We fire in front of the caster instead of inside him
-        originPosition = origin + ballDirection.normalized * 2;
+        originPosition = origin + ballDirection.normalized * 4 / 5;
 
         // Launch
         ball.GetComponent<LambertBall>().Fire(originPosition, targetPosition, ballDirection, ballSpeed);

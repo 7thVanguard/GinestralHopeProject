@@ -7,13 +7,15 @@ public class GameController
     protected PlayerMovement playerMovement;
     protected PlayerCombat playerCombat;
     protected CameraMovement cameraMovement;
+    protected CameraRaycast cameraRaycast;
 
 
     public GameController(World world, Player player, MainCamera mainCamera)
     {
         playerMovement = new PlayerMovement(player);
-        playerCombat = new PlayerCombat(player);
+        playerCombat = new PlayerCombat(player, mainCamera);
         cameraMovement = new CameraMovement(player, mainCamera);
+        cameraRaycast = new CameraRaycast(mainCamera);
     }
 
 

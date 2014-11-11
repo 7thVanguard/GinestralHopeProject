@@ -38,7 +38,8 @@ public class UNSlime : MonoBehaviour
         if (!EGameFlow.pause && UWorldGenerator.gameLoaded)
         {
             movement.Update();
-            combat.Update(gameObject);
+
+            //combat.Update(mainCamera, gameObject);
         }
 	}
 }

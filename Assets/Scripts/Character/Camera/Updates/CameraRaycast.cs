@@ -3,16 +3,22 @@ using System.Collections;
 
 public class CameraRaycast
 {
-    public static RaycastHit impact;
+    MainCamera mainCamera;
+
+
+    public CameraRaycast(MainCamera mainCamera)
+    {
+        this.mainCamera = mainCamera;
+    }
 
 
     public void Update()
     {
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out impact, 300))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out mainCamera.raycast, 300))
         {
             // Impact is static and is goind to be used in other scripts
         }
         else
-            impact = new RaycastHit();
+            mainCamera.raycast = new RaycastHit();
     }
 }

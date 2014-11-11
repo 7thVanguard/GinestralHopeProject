@@ -14,30 +14,30 @@ public class ConstructionSkills
     public static Vector2 detVertex;
 
 
-    public void Update(World world, Player player)
+    public void Update(World world, Player player, MainCamera mainCamera)
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
-            Remove(player);
+            Remove(player, mainCamera);
         else if (Input.GetKeyDown(KeyCode.Mouse1))
-            Place(world, player);
+            Place(world, player, mainCamera);
         else if (Input.GetKeyDown(KeyCode.Mouse2))
             Cancel();
         else
-            Detect(world, player);
+            Detect(world, player, mainCamera);
     }
 
 
-    private void Remove(Player player)
+    private void Remove(Player player, MainCamera mainCamera)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Remove(player);
+            LGadgetsTool.Remove(player, mainCamera);
     }
 
 
-    private void Place(World world, Player player)
+    private void Place(World world, Player player, MainCamera mainCamera)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Place(world, player);
+            LGadgetsTool.Place(world, player, mainCamera);
     }
 
 
@@ -48,9 +48,9 @@ public class ConstructionSkills
     }
 
 
-    private void Detect(World world, Player player)
+    private void Detect(World world, Player player, MainCamera mainCamera)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Detect(world, player);
+            LGadgetsTool.Detect(world, player, mainCamera);
     }
 }

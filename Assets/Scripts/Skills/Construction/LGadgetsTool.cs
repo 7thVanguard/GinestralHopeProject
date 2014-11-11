@@ -3,13 +3,13 @@ using System.Collections;
 
 public class LGadgetsTool
 {
-    public static void Remove(Player player)
+    public static void Remove(Player player, MainCamera mainCamera)
     {
         // Picks back the gadget
-        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
-            if (CameraRaycast.impact.transform.gameObject.tag == "Gadget")
+        if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
+            if (mainCamera.raycast.transform.gameObject.tag == "Gadget")
             {
-                Gadget gadget = GadgetDictionary.GadgetsDictionary[CameraRaycast.impact.transform.gameObject.name];
+                Gadget gadget = GadgetDictionary.GadgetsDictionary[mainCamera.raycast.transform.gameObject.name];
 
                 // returns the gadged if it's not a component giver, else gives it's components
                 if (gadget.givesComponents)
@@ -17,16 +17,16 @@ public class LGadgetsTool
                 else
                     gadget.count += gadget.dropCount;
 
-                Object.Destroy(CameraRaycast.impact.transform.gameObject);
+                Object.Destroy(mainCamera.raycast.transform.gameObject);
             }
     }
 
 
-    public static void Place(World world, Player player)
+    public static void Place(World world, Player player, MainCamera mainCamera)
     {
-        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
         {
-            if (CameraRaycast.impact.normal.y >= 0.75f)
+            if (mainCamera.raycast.normal.y >= 0.75f)
             {
                 // Claculates the initial position and the rotation of the Gadget we are going to place
                 int yRotation;
@@ -42,13 +42,13 @@ public class LGadgetsTool
                 switch (EGameFlow.selectedGadget)
                 {
                     case EGameFlow.SelectedGadget.PLANK:
-                        LVGadget.placePlank(new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)), yRotation);
+                        LVGadget.placePlank(new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)), yRotation);
                         break;
                     case EGameFlow.SelectedGadget.WOOD:
-                        LVGadget.placeWoodPiecesGadget(world, new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)));
+                        LVGadget.placeWoodPiecesGadget(world, new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)));
                         break;
                     case EGameFlow.SelectedGadget.NAILS:
-                        LVGadget.placeNailsGadget(world, new Vector3((int)(CameraRaycast.impact.point.x), CameraRaycast.impact.point.y, (int)(CameraRaycast.impact.point.z)));
+                        LVGadget.placeNailsGadget(world, new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)));
                         break;
                     case EGameFlow.SelectedGadget.LADDER:
                         break;
@@ -66,21 +66,21 @@ public class LGadgetsTool
     }
 
 
-    public static void Detect(World world, Player player)
+    public static void Detect(World world, Player player, MainCamera mainCamera)
     {
-        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
         {
             // Check if we are aiming at the top face of a voxel
-            if (CameraRaycast.impact.normal.y >= 0.75f)
+            if (mainCamera.raycast.normal.y >= 0.75f)
             {
                 // Detects the voxel
-                DevConstructionSkills.chunk = world.chunk[(int)((CameraRaycast.impact.point.x) / world.chunkSize.x),
-                                                           (int)((CameraRaycast.impact.point.y + 0.5f) / world.chunkSize.y),
-                                                           (int)((CameraRaycast.impact.point.z) / world.chunkSize.z)];
+                DevConstructionSkills.chunk = world.chunk[(int)((mainCamera.raycast.point.x) / world.chunkSize.x),
+                                                           (int)((mainCamera.raycast.point.y + 0.5f) / world.chunkSize.y),
+                                                           (int)((mainCamera.raycast.point.z) / world.chunkSize.z)];
 
-                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((CameraRaycast.impact.point.x) % world.chunkSize.x),
-                                                                                (int)((CameraRaycast.impact.point.y + 0.5f) % world.chunkSize.y),
-                                                                                (int)((CameraRaycast.impact.point.z) % world.chunkSize.z)];
+                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((mainCamera.raycast.point.x) % world.chunkSize.x),
+                                                                                (int)((mainCamera.raycast.point.y + 0.5f) % world.chunkSize.y),
+                                                                                (int)((mainCamera.raycast.point.z) % world.chunkSize.z)];
             }
         }
     }

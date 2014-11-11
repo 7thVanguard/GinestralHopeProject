@@ -5,13 +5,16 @@ public class PlayerBuildInputController : AbstractInputsController
 {
     private World world;
     private Player player;
+    private MainCamera mainCamera;
+
     private ConstructionSkills skills;
 
 
-    public PlayerBuildInputController(World world, Player player)
+    public PlayerBuildInputController(World world, Player player, MainCamera mainCamera)
     {
         this.world = world;
         this.player = player;
+        this.mainCamera = mainCamera;
     }
 
 
@@ -43,6 +46,6 @@ public class PlayerBuildInputController : AbstractInputsController
                 EGameFlow.selectedGadget = EGameFlow.SelectedGadget.NAILS;
         }
 
-        skills.Update(world, player);
+        skills.Update(world, player, mainCamera);
     }
 }

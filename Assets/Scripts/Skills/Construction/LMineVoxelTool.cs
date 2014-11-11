@@ -8,14 +8,14 @@ public class LMineVoxelTool
     private static VoxelGenerator preDetVoxel;
 
 
-    public static void Remove(World world, Player player)
+    public static void Remove(World world, Player player, MainCamera mainCamera)
     {
         // Single
         if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.SINGLE)
         {
-            if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+            if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
             {
-                if (CameraRaycast.impact.transform.tag == "Chunk")
+                if (mainCamera.raycast.transform.tag == "Chunk")
                 {
                     DevConstructionSkills.detChunk = DevConstructionSkills.chunk;
                     DevConstructionSkills.detVoxel = DevConstructionSkills.voxel;
@@ -48,7 +48,7 @@ public class LMineVoxelTool
                 // Ortoedric
                 if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.ORTOEDRIC)
                 {
-                    if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+                    if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
                     {
                         DevConstructionSkills.detChunk = DevConstructionSkills.chunk;
                         DevConstructionSkills.detVoxel = DevConstructionSkills.voxel;
@@ -65,32 +65,32 @@ public class LMineVoxelTool
     }
 
 
-    public static void Place(World world, Player player)
+    public static void Place(World world, Player player, MainCamera mainCamera)
     {
         // Single
         if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.SINGLE)
         {
-            if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+            if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
             {
-                if (CameraRaycast.impact.transform.tag == "Chunk")
+                if (mainCamera.raycast.transform.tag == "Chunk")
                 {
                     DevConstructionSkills.detChunk = DevConstructionSkills.chunk;
                     DevConstructionSkills.detVoxel = DevConstructionSkills.voxel;
 
                     // Detect the face impacted by the ray, and and place the block in front of that face
-                    if (CameraRaycast.impact.normal.x > 0.75f)
+                    if (mainCamera.raycast.normal.x > 0.75f)
                         LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 1, 0, 0);
-                    else if (CameraRaycast.impact.normal.x < -0.75f)
+                    else if (mainCamera.raycast.normal.x < -0.75f)
                         LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, -1, 0, 0);
 
-                    else if (CameraRaycast.impact.normal.y > 0.75f)
+                    else if (mainCamera.raycast.normal.y > 0.75f)
                         LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 1, 0);
-                    else if (CameraRaycast.impact.normal.y < -0.75f)
+                    else if (mainCamera.raycast.normal.y < -0.75f)
                         LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, -1, 0);
 
-                    else if (CameraRaycast.impact.normal.z > 0.75f)
+                    else if (mainCamera.raycast.normal.z > 0.75f)
                         LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 0, 1);
-                    else if (CameraRaycast.impact.normal.z < -0.75f)
+                    else if (mainCamera.raycast.normal.z < -0.75f)
                         LVoxel.GetVoxel(world, ref DevConstructionSkills.detChunk, ref DevConstructionSkills.detVoxel, 0, 0, -1);
 
                     world.chunk[DevConstructionSkills.detChunk.numID.x, DevConstructionSkills.detChunk.numID.y, DevConstructionSkills.detChunk.numID.z]
@@ -120,7 +120,7 @@ public class LMineVoxelTool
                 // Ortoedric
                 if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.ORTOEDRIC)
                 {
-                    if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+                    if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
                     {
                         DevConstructionSkills.detChunk = DevConstructionSkills.chunk;
                         DevConstructionSkills.detVoxel = DevConstructionSkills.voxel;
@@ -143,30 +143,35 @@ public class LMineVoxelTool
     }
 
 
-    public static void Detect(World world, Player player)
+    public static void Detect(World world, Player player, MainCamera mainCamera)
     {
-        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        //RaycastHit impact = mainCamera.raycast;
+        //if (impact.transform.gameObject != null)
+        //    Debug.Log(impact.transform.gameObject);
+            
+
+        if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
         {
-            if (CameraRaycast.impact.transform.tag == "Chunk")
+            if (mainCamera.raycast.transform.tag == "Chunk")
             {
                 float voxelDisplacementX = 0, voxelDisplacementY = 0, voxelDisplacementZ = 0;
 
                 // Controls when we are aiming at the limit of a voxel, we make sure to detect that voxel and not the next one
-                if (CameraRaycast.impact.normal.x > 0.75f)
+                if (mainCamera.raycast.normal.x > 0.75f)
                     voxelDisplacementX = 0.25f;
-                else if (CameraRaycast.impact.normal.y > 0.75f)
+                else if (mainCamera.raycast.normal.y > 0.75f)
                     voxelDisplacementY = 0.25f;
-                else if (CameraRaycast.impact.normal.z > 0.75f)
+                else if (mainCamera.raycast.normal.z > 0.75f)
                     voxelDisplacementZ = 0.25f;
 
                 // Detects the vertex we are aiming at
-                DevConstructionSkills.chunk = world.chunk[(int)((CameraRaycast.impact.point.x - voxelDisplacementX) / world.chunkSize.x),
-                                                           (int)((CameraRaycast.impact.point.y - voxelDisplacementY) / world.chunkSize.y),
-                                                           (int)((CameraRaycast.impact.point.z - voxelDisplacementZ) / world.chunkSize.z)];
+                DevConstructionSkills.chunk = world.chunk[(int)((mainCamera.raycast.point.x - voxelDisplacementX) / world.chunkSize.x),
+                                                           (int)((mainCamera.raycast.point.y - voxelDisplacementY) / world.chunkSize.y),
+                                                           (int)((mainCamera.raycast.point.z - voxelDisplacementZ) / world.chunkSize.z)];
 
-                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((CameraRaycast.impact.point.x - voxelDisplacementX) % world.chunkSize.x),
-                                                                                (int)((CameraRaycast.impact.point.y - voxelDisplacementY) % world.chunkSize.y),
-                                                                                (int)((CameraRaycast.impact.point.z - voxelDisplacementZ) % world.chunkSize.z)];
+                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((mainCamera.raycast.point.x - voxelDisplacementX) % world.chunkSize.x),
+                                                                                (int)((mainCamera.raycast.point.y - voxelDisplacementY) % world.chunkSize.y),
+                                                                                (int)((mainCamera.raycast.point.z - voxelDisplacementZ) % world.chunkSize.z)];
             }
         }
     }

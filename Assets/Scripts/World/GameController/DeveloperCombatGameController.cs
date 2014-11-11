@@ -16,7 +16,7 @@ public class DeveloperCombatGameController : GameController
 
     public override void Start()
     {
-        inputController = new DeveloperCombatInputController(player);
+        inputController = new DeveloperCombatInputController(player, mainCamera);
         base.Start();
     }
 
@@ -28,5 +28,6 @@ public class DeveloperCombatGameController : GameController
         playerMovement.DeveloperMovementUpdate();
         playerCombat.Update();
         cameraMovement.Update();
+        cameraRaycast.Update();
     }
 }

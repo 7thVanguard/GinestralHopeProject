@@ -3,13 +3,10 @@ using System.Collections;
 
 public class UCamera : MonoBehaviour
 {
-    private CameraRaycast raycast;
 
 
 	void Start ()
     {
-        raycast = new CameraRaycast();
-
         //transform.localPosition = SPlayer.transform.position + new Vector3(0, 0, -10);
         transform.localEulerAngles = Vector3.zero;
 
@@ -19,9 +16,6 @@ public class UCamera : MonoBehaviour
 
 	void LateUpdate ()
     {
-        if ((!EGameFlow.pause && UWorldGenerator.gameLoaded) || EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
-        {
-            raycast.Update();
-        }
+
 	}
 }

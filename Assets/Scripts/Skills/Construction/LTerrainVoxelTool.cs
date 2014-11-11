@@ -10,11 +10,11 @@ public static class LTerrainVoxelTool
     private static int sedimentExcess;
     private static int sedimentPerClick = 3;
 
-    public static void Remove(World world, Player player)
+    public static void Remove(World world, Player player, MainCamera mainCamera)
     {
-        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
         {
-            if (CameraRaycast.impact.transform.tag == "Chunk")
+            if (mainCamera.raycast.transform.tag == "Chunk")
             {
                 // Remove height to terrain voxels
                 switch (voxelVertex)
@@ -54,11 +54,11 @@ public static class LTerrainVoxelTool
     }
 
 
-    public static void Place(World world, Player player)
+    public static void Place(World world, Player player, MainCamera mainCamera)
     {
-        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
         {
-            if (CameraRaycast.impact.transform.tag == "Chunk")
+            if (mainCamera.raycast.transform.tag == "Chunk")
             {
                 // Add height to terrain voxels
                 switch (voxelVertex)
@@ -104,41 +104,41 @@ public static class LTerrainVoxelTool
     }
 
 
-    public static void Detect(World world, Player player)
+    public static void Detect(World world, Player player, MainCamera mainCamera)
     {
-        if (CameraRaycast.impact.distance < (player.constructionDetection + SCamera.distance) && CameraRaycast.impact.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
         {
-            if (CameraRaycast.impact.transform.tag == "Chunk")
+            if (mainCamera.raycast.transform.tag == "Chunk")
             {
                 float height = 0;
 
                 // Detecting the chunk, voxel and vertex we are aiming at
-                DevConstructionSkills.detVertex = new Vector2(Mathf.Round(CameraRaycast.impact.point.x), Mathf.Round(CameraRaycast.impact.point.z));
+                DevConstructionSkills.detVertex = new Vector2(Mathf.Round(mainCamera.raycast.point.x), Mathf.Round(mainCamera.raycast.point.z));
 
                 // Detects the vertex we are aiming at and it's height
-                if (CameraRaycast.impact.point.x < DevConstructionSkills.detVertex.x)
-                    if (CameraRaycast.impact.point.z < DevConstructionSkills.detVertex.y)
+                if (mainCamera.raycast.point.x < DevConstructionSkills.detVertex.x)
+                    if (mainCamera.raycast.point.z < DevConstructionSkills.detVertex.y)
                     {
-                        DetectChunkAndVoxel(world, -1, -1);
+                        DetectChunkAndVoxel(world, mainCamera, -1, -1);
                         height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.frontRightVertex / world.maxSediment;
                         voxelVertex = 2;
                     }
                     else
                     {
-                        DetectChunkAndVoxel(world, -1, 0);
+                        DetectChunkAndVoxel(world, mainCamera, -1, 0);
                         height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.backRightVertex / world.maxSediment;
                         voxelVertex = 1;
                     }
                 else
-                    if (CameraRaycast.impact.point.z < DevConstructionSkills.detVertex.y)
+                    if (mainCamera.raycast.point.z < DevConstructionSkills.detVertex.y)
                     {
-                        DetectChunkAndVoxel(world, 0, -1);
+                        DetectChunkAndVoxel(world, mainCamera, 0, -1);
                         height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.frontLeftVertex / world.maxSediment;
                         voxelVertex = 3;
                     }
                     else
                     {
-                        DetectChunkAndVoxel(world, 0, 0);
+                        DetectChunkAndVoxel(world, mainCamera, 0, 0);
                         height = DevConstructionSkills.detVoxel.numID.y + DevConstructionSkills.detVoxel.backLeftVertex / world.maxSediment;
                         voxelVertex = 0;
                     }
@@ -150,15 +150,15 @@ public static class LTerrainVoxelTool
     }
 
 
-    private static void DetectChunkAndVoxel(World world, int x, int z)
+    private static void DetectChunkAndVoxel(World world, MainCamera mainCamera, int x, int z)
     {
         // Detects the chunk and voxel we are aiming at
         DevConstructionSkills.chunk = world.chunk[(int)Mathf.Round(DevConstructionSkills.detVertex.x + x) / world.chunkSize.x,
-                                                   (int)Mathf.Floor(CameraRaycast.impact.point.y / world.chunkSize.y),
+                                                   (int)Mathf.Floor(mainCamera.raycast.point.y / world.chunkSize.y),
                                                    (int)Mathf.Round(DevConstructionSkills.detVertex.y + z) / world.chunkSize.z];
 
         DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)Mathf.Round(DevConstructionSkills.detVertex.x + x) % world.chunkSize.x,
-                                                                        (int)Mathf.Floor(CameraRaycast.impact.point.y % world.chunkSize.y),
+                                                                        (int)Mathf.Floor(mainCamera.raycast.point.y % world.chunkSize.y),
                                                                         (int)Mathf.Round(DevConstructionSkills.detVertex.y + z) % world.chunkSize.z];
 
         DevConstructionSkills.detChunk = DevConstructionSkills.chunk;

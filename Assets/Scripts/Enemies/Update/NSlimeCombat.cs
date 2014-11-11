@@ -17,14 +17,14 @@ public class NSlimeCombat
     }
 
 
-    public void Update(GameObject enemy)
+    public void Update(MainCamera mainCamera, GameObject enemy)
     {
         if (Time.time % 1 == 0)
-            Detection();
+            Detection(mainCamera);
     }
 
 
-    private void Detection()
+    private void Detection(MainCamera mainCamera)
     {
         // Player is in enemy radius
         if (Vector3.Distance(SPlayer.transform.position, enemy.transform.position) < detectionDistance)
@@ -42,7 +42,7 @@ public class NSlimeCombat
                 // Check if player is visible
                 if (Physics.Raycast(enemy.transform.position, playerFocus, out impact, 30))
                     if (impact.transform.gameObject.tag == "Player")
-                        CreateLambertBall.Cast(enemy.transform.position, 25, 30, false);
+                        CreateLambertBall.Cast(mainCamera, enemy.transform.position, 25, 30, false);
             }
         }
     }

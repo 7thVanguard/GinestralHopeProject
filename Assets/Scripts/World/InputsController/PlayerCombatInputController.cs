@@ -4,12 +4,14 @@ using System.Collections;
 public class PlayerCombatInputController : AbstractInputsController
 {
     Player player;
+    MainCamera mainCamera;
     CombatSkills skills;
 
 
-    public PlayerCombatInputController(Player player)
+    public PlayerCombatInputController(Player player, MainCamera mainCamera)
     {
         this.player = player;
+        this.mainCamera = mainCamera;
     }
 
 
@@ -25,6 +27,6 @@ public class PlayerCombatInputController : AbstractInputsController
         EGameFlow.generalMode = EGameFlow.GeneralMode.PLAYER;
         player.constructionDetection = 5;
 
-        skills.Update();
+        skills.Update(mainCamera);
     }
 }
