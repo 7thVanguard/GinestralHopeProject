@@ -145,33 +145,34 @@ public class LMineVoxelTool
 
     public static void Detect(World world, Player player, MainCamera mainCamera)
     {
-        //RaycastHit impact = mainCamera.raycast;
-        //if (impact.transform.gameObject != null)
-        //    Debug.Log(impact.transform.gameObject);
-            
-
         if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
         {
-            if (mainCamera.raycast.transform.tag == "Chunk")
+            if (mainCamera.raycast.collider == null)
+                mainCamera.raycast = new RaycastHit();
+            else
             {
-                float voxelDisplacementX = 0, voxelDisplacementY = 0, voxelDisplacementZ = 0;
+                if (mainCamera.raycast.collider.tag == "Chunk")
+                {
+                    float voxelDisplacementX = 0, voxelDisplacementY = 0, voxelDisplacementZ = 0;
 
-                // Controls when we are aiming at the limit of a voxel, we make sure to detect that voxel and not the next one
-                if (mainCamera.raycast.normal.x > 0.75f)
-                    voxelDisplacementX = 0.25f;
-                else if (mainCamera.raycast.normal.y > 0.75f)
-                    voxelDisplacementY = 0.25f;
-                else if (mainCamera.raycast.normal.z > 0.75f)
-                    voxelDisplacementZ = 0.25f;
+                    // Controls when we are aiming at the limit of a voxel, we make sure to detect that voxel and not the next one
+                    if (mainCamera.raycast.normal.x > 0.75f)
+                        voxelDisplacementX = 0.25f;
+                    else if (mainCamera.raycast.normal.y > 0.75f)
+                        voxelDisplacementY = 0.25f;
+                    else if (mainCamera.raycast.normal.z > 0.75f)
+                        voxelDisplacementZ = 0.25f;
 
-                // Detects the vertex we are aiming at
-                DevConstructionSkills.chunk = world.chunk[(int)((mainCamera.raycast.point.x - voxelDisplacementX) / world.chunkSize.x),
-                                                           (int)((mainCamera.raycast.point.y - voxelDisplacementY) / world.chunkSize.y),
-                                                           (int)((mainCamera.raycast.point.z - voxelDisplacementZ) / world.chunkSize.z)];
+                    // Detects the vertex we are aiming at
+                    DevConstructionSkills.chunk = world.chunk[(int)((mainCamera.raycast.point.x - voxelDisplacementX) / world.chunkSize.x),
+                                                                (int)((mainCamera.raycast.point.y - voxelDisplacementY) / world.chunkSize.y),
+                                                                (int)((mainCamera.raycast.point.z - voxelDisplacementZ) / world.chunkSize.z)];
 
-                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((mainCamera.raycast.point.x - voxelDisplacementX) % world.chunkSize.x),
-                                                                                (int)((mainCamera.raycast.point.y - voxelDisplacementY) % world.chunkSize.y),
-                                                                                (int)((mainCamera.raycast.point.z - voxelDisplacementZ) % world.chunkSize.z)];
+                    DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((mainCamera.raycast.point.x - voxelDisplacementX) % world.chunkSize.x),
+                                                                                    (int)((mainCamera.raycast.point.y - voxelDisplacementY) % world.chunkSize.y),
+                                                                                    (int)((mainCamera.raycast.point.z - voxelDisplacementZ) % world.chunkSize.z)];
+                }
+
             }
         }
     }
