@@ -106,7 +106,5 @@ public class World
                         chunk[cx, cy, cz].BuildChunkNormals(this);
                         chunk[cx, cy, cz].BuildChunkMesh();
                     }
-
-        UWorldGenerator.gameLoaded = true;
     }
 }

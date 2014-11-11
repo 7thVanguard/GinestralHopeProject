@@ -14,12 +14,6 @@ public class CameraRaycast
 
     public void Update()
     {
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out mainCamera.raycast, 300))
-            mainCamera.objectHit = true;
-        else
-            mainCamera.objectHit = false;
-
-        //if (mainCamera.raycast.collider == null)
-        //    mainCamera.raycast = new RaycastHit();
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out mainCamera.raycast, 300)) { }
     }
 }

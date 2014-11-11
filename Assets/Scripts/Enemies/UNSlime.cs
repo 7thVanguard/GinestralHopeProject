@@ -35,7 +35,7 @@ public class UNSlime : MonoBehaviour
 
 	void FixedUpdate ()
     {
-        if (!EGameFlow.pause && UWorldGenerator.gameLoaded)
+        if (!EGameFlow.pause)
         {
             movement.Update();
 

@@ -18,7 +18,6 @@ public class MainCamera
 
     // Camera raycast
     public RaycastHit raycast;
-    public bool objectHit;
 
 
     public MainCamera()

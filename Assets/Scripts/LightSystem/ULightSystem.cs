@@ -40,7 +40,7 @@ public class ULightSystem : MonoBehaviour
                 gameObject.light.shadows = LightShadows.None;
         }
 
-        if (!EGameFlow.pause && UWorldGenerator.gameLoaded)
+        if (!EGameFlow.pause)
         {
             // Time passing calculation
             gameTime += Time.deltaTime;
