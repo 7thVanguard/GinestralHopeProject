@@ -27,7 +27,7 @@ public class PlayerCombat
     {
         // Detection relative
         if (mainCamera.raycast.distance < detectionDistance && mainCamera.raycast.distance != 0)
-            if (mainCamera.raycast.transform.tag == "Enemy")
+            if (mainCamera.raycast.collider.tag == "Enemy")
                 target = mainCamera.raycast.transform.gameObject;
 
 

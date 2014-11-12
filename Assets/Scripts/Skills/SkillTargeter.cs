@@ -5,22 +5,20 @@ public class SkillTargeter : Skill
 {
 
 
-    public SkillTargeter(string ID) : base(ID)
+    public SkillTargeter(string ID)
     {
         
     }
 
 
-    public override void Cast()
+    public virtual void Cast()
     {
-        base.Cast();
+
     }
 
 
-    public override void Fire()
+    public virtual void Fire()
     {
-        base.Fire();
-
 
     }
 }

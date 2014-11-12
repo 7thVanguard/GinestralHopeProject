@@ -3,82 +3,86 @@ using System.Collections;
 
 public class SkillDirected : Skill
 {
+    protected Vector3 originPosition;
+    protected Vector3 targetPosition;
+    protected Vector3 objectDirection;
 
 
-    public SkillDirected(string ID) : base(ID)
+    public SkillDirected(string ID)
     {
         
     }
 
 
 
-    public override void Cast()
+    public override GameObject CastDirected(MainCamera mainCamera, GameObject gameObject, Vector3 origin, int objectSpeed, int maxDistance, bool launchedByPlayer)
     {
-        //// variables
-        //Vector3 originPosition;
-        //Vector3 targetPosition;
-        //Vector3 ballDirection;
+        // Set tag
+        gameObject.tag = "Skill";
 
-        //// Create ball
-        //GameObject ball = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        //ball.tag = "Skill";
+        // Set transforms
+        gameObject.transform.position = SPlayer.transform.position;
 
-        //// Set transforms
-        //ball.transform.position = SPlayer.transform.position;
-        //ball.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        // Ignoring the raycasts
+        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
 
-        //// Ignoring the raycasts
-        //ball.layer = LayerMask.NameToLayer("Ignore Raycast");
+        // Add components
+        gameObject.AddComponent<Rigidbody>();
 
-        //// Add components
-        //ball.AddComponent<Rigidbody>();
-        //ball.AddComponent<LambertBall>();
-        //ball.GetComponent<Rigidbody>().useGravity = false;
+        //+ Player target selection
 
-        ////+ Player target selection
+        if (launchedByPlayer)
+        {
+            // Target location
+            if (PlayerCombat.target == null)
+            {
+                if (mainCamera.raycast.distance < maxDistance && mainCamera.raycast.distance != 0)
+                    targetPosition = mainCamera.raycast.point;
+                else
+                    targetPosition = Camera.main.transform.position + Camera.main.transform.forward * maxDistance;
+            }
+            else
+                targetPosition = PlayerCombat.target.transform.position;
+        }
 
-        //if (launchedByPlayer)
-        //{
-        //    // Target location
-        //    if (PlayerCombat.target == null)
-        //    {
-        //        if (mainCamera.raycast.distance < maxDistance && mainCamera.raycast.distance != 0)
-        //            targetPosition = mainCamera.raycast.point;
-        //        else
-        //            targetPosition = Camera.main.transform.position + Camera.main.transform.forward * maxDistance;
-        //    }
-        //    else
-        //        targetPosition = PlayerCombat.target.transform.position;
-        //}
+        //+ Enemy target selection
 
-        ////+ Enemy target selection
+        else
+        {
+            targetPosition = SPlayer.transform.position;
+        }
 
-        //else
-        //{
-        //    targetPosition = SPlayer.transform.position;
-        //}
+        //+ Fire
 
-        ////+ Fire
+        // Detecting initial direction
+        objectDirection = targetPosition - origin;
+        objectDirection.Normalize();
+        objectDirection *= objectSpeed;
 
-        //// Detecting initial direction
-        //ballDirection = targetPosition - origin;
-        //ballDirection.Normalize();
-        //ballDirection *= ballSpeed;
+        // We fire in front of the caster instead of inside him
+        originPosition = origin + objectDirection.normalized * 4 / 5;
 
-        //// We fire in front of the caster instead of inside him
-        //originPosition = origin + ballDirection.normalized * 4 / 5;
-
-        //// Launch
+        // Return
+        return gameObject;
         //ball.GetComponent<LambertBall>().Fire(originPosition, targetPosition, ballDirection, ballSpeed);
-
-        base.Cast();
     }
 
 
-    public override void Fire()
+    public override void FireDirected(GameObject gameObject, Vector3 originPosition, Vector3 targetPosition, Vector3 objectDirection, int objectSpeed)
     {
-        base.Fire();
+        Vector3 direction;
+        float flyTime;
 
+        // Setting flight variables
+        flyTime = Vector3.Distance(originPosition, targetPosition) / objectSpeed;
 
+        // Initial direction
+        direction.x = objectDirection.x;
+        direction.y = (targetPosition.y - originPosition.y + 0.5f * EGamePhysics.gravity * Mathf.Pow(flyTime, 2)) / flyTime;
+        direction.z = objectDirection.z;
+
+        gameObject.transform.position = originPosition;
+
+        gameObject.GetComponent<FireBallBehaviour>().Init(direction);
     }
 }

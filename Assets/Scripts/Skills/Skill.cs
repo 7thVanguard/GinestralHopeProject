@@ -5,20 +5,13 @@ public class Skill
 {
     protected string ID;
 
-
-    public Skill(string ID)
+    public virtual GameObject CastDirected(MainCamera mainCamera, GameObject gameObject, Vector3 origin, int ballSpeed, int maxDistance, bool launchedByPlayer)
     {
-
+        return null;
     }
 
 
-    public virtual void Cast()
-    {
-        
-    }
-
-
-    public virtual void Fire()
+    public virtual void FireDirected(GameObject gameObject, Vector3 originPosition, Vector3 targetPosition, Vector3 objectDirection, int objectSpeed)
     {
 
     }
