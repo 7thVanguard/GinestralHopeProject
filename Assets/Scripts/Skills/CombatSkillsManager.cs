@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CombatSkills
+public class CombatSkillsManager
 {
+    Skill selectedSkill;
+
     public static float totalCastingTime = 0;
     public static float actualCastingTime = 0;
     public static string methodName = "";
@@ -11,12 +13,12 @@ public class CombatSkills
     public void Update(MainCamera mainCamera)
     {
         // Make sure that pressing again a button won't reset the skill
-        if (methodName != "LambertBall")
+        if (methodName != "FireBall")
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 totalCastingTime = 120;
                 actualCastingTime = 0;
-                methodName = "LambertBall";
+                methodName = "FireBall";
                 casting = true;
             }
 
@@ -39,8 +41,11 @@ public class CombatSkills
             {
                 switch (methodName)
                 {
-                    case "LambertBall":
-                        CreateLambertBall.Cast(mainCamera, SPlayer.transform.position, 25, 30, true);
+                    case "FireBall":
+                        {
+                            selectedSkill = SkillDictionary.Skill["FireBall"];
+                            selectedSkill.CastDirected(mainCamera, null, SPlayer.transform.position, 25, 30, true);
+                        }
                         break;
                     default:
                         break;

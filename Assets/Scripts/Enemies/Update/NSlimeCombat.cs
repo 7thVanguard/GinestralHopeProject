@@ -41,8 +41,8 @@ public class NSlimeCombat
             {
                 // Check if player is visible
                 if (Physics.Raycast(enemy.transform.position, playerFocus, out impact, 30))
-                    if (impact.transform.gameObject.tag == "Player")
-                        CreateLambertBall.Cast(mainCamera, enemy.transform.position, 25, 30, false);
+                    if (impact.transform.gameObject.tag == "Player") { }
+                        //CreateLambertBall.Cast(mainCamera, enemy.transform.position, 25, 30, false);
             }
         }
     }

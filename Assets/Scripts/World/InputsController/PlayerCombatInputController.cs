@@ -5,7 +5,7 @@ public class PlayerCombatInputController : AbstractInputsController
 {
     Player player;
     MainCamera mainCamera;
-    CombatSkills skills;
+    CombatSkillsManager skills;
 
 
     public PlayerCombatInputController(Player player, MainCamera mainCamera)
@@ -17,7 +17,7 @@ public class PlayerCombatInputController : AbstractInputsController
 
     public override void Start()
     {
-        skills = new CombatSkills();
+        skills = new CombatSkillsManager();
     }
 
 

@@ -6,7 +6,7 @@ public class DeveloperCombatInputController : AbstractInputsController
     private Player player;
     private MainCamera mainCamera;
 
-    private DevCombatSkills skills;
+    private DevCombatSkillsManager skills;
 
 
     public DeveloperCombatInputController(Player player, MainCamera mainCamera)
@@ -18,7 +18,7 @@ public class DeveloperCombatInputController : AbstractInputsController
 
 	public override void Start()
     {
-        skills = new DevCombatSkills();
+        skills = new DevCombatSkillsManager();
 	}
 	
 

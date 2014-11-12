@@ -83,6 +83,6 @@ public class SkillDirected : Skill
 
         gameObject.transform.position = originPosition;
 
-        gameObject.GetComponent<FireBallBehaviour>().Init(direction);
+        gameObject.GetComponent<SDFireBallBehaviour>().Init(direction);
     }
 }

@@ -26,7 +26,7 @@ public class SDFireBall : SkillDirected
         fireBall.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
         // Set components
-        fireBall.AddComponent<FireBallBehaviour>();
+        fireBall.AddComponent<SDFireBallBehaviour>();
         fireBall.GetComponent<Rigidbody>().useGravity = false;
 
         base.FireDirected(fireBall, originPosition, targetPosition, ballDirection, ballSpeed);

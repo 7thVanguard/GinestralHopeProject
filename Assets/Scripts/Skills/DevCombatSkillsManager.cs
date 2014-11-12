@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DevCombatSkills
+public class DevCombatSkillsManager
 {
     Skill selectedSkill;
 

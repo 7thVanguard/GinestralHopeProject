@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ConstructionSkills
+public class ConstructionSkillsManager
 {
     // Detecting variables
     // Base detections

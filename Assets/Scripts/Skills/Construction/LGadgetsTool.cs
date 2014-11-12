@@ -74,11 +74,11 @@ public class LGadgetsTool
             if (mainCamera.raycast.normal.y >= 0.75f)
             {
                 // Detects the voxel
-                DevConstructionSkills.chunk = world.chunk[(int)((mainCamera.raycast.point.x) / world.chunkSize.x),
+                DevConstructionSkillsManager.chunk = world.chunk[(int)((mainCamera.raycast.point.x) / world.chunkSize.x),
                                                            (int)((mainCamera.raycast.point.y + 0.5f) / world.chunkSize.y),
                                                            (int)((mainCamera.raycast.point.z) / world.chunkSize.z)];
 
-                DevConstructionSkills.voxel = DevConstructionSkills.chunk.voxel[(int)((mainCamera.raycast.point.x) % world.chunkSize.x),
+                DevConstructionSkillsManager.voxel = DevConstructionSkillsManager.chunk.voxel[(int)((mainCamera.raycast.point.x) % world.chunkSize.x),
                                                                                 (int)((mainCamera.raycast.point.y + 0.5f) % world.chunkSize.y),
                                                                                 (int)((mainCamera.raycast.point.z) % world.chunkSize.z)];
             }
