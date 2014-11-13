@@ -56,7 +56,7 @@ public class ChunkGenerator
         chunkObject.transform.eulerAngles = Vector3.zero;
         chunkObject.transform.localScale = Vector3.one;
 
-        chunkObject.transform.parent = world.world.transform;
+        chunkObject.transform.parent = world.worldObj.transform;
 
         // Chunk components
         chunkObject.AddComponent<MeshRenderer>();

@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
         sun = new Sun(player, sunFlare);
 
         // post initialize
-        world.world.GetComponent<HUD>().Init(player);
+        world.worldObj.GetComponent<HUD>().Init(player);
+        sun.lightSystemBehaviour.Init(player, sun.sunObj, sun.lensFlare);
 
 
         //+ Controllers Init
@@ -98,8 +99,9 @@ public class GameManager : MonoBehaviour
             gameSerializer.Load(world, saveName);
 
 
-        //+ Controller
+        //+ Controllers
         activeController.Update();
+        sun.lightSystemBehaviour.Update();
 
 
         //+ Reset queue

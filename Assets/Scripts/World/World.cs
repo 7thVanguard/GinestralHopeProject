@@ -11,7 +11,7 @@ public class World
     public List<IntVector3> chunksToReset = new List<IntVector3>();             // Control the chunks we are going to reset
 
     // GameObjects
-    public GameObject world;
+    public GameObject worldObj;
 
 
     // Prefabs
@@ -37,7 +37,7 @@ public class World
 
     public World(GameObject world, Transform prefabs, Material atlas)
     {
-        this.world = world;
+        this.worldObj = world;
         chunk = new ChunkGenerator[chunkNumber.x, chunkNumber.y, chunkNumber.z];
 
         // Prefabs relative
@@ -56,15 +56,15 @@ public class World
     public void Init(Material atlas, float textureSize)
     {
         //+ World setting
-        world.name = "World";
+        worldObj.name = "World";
 
         // Set world transforms
-        world.transform.position = Vector3.zero;
-        world.transform.eulerAngles = Vector3.zero;
-        world.transform.localScale = Vector3.one;
+        worldObj.transform.position = Vector3.zero;
+        worldObj.transform.eulerAngles = Vector3.zero;
+        worldObj.transform.localScale = Vector3.one;
 
-        world.AddComponent<GUISystem>();
-        world.AddComponent<HUD>();
+        worldObj.AddComponent<GUISystem>();
+        worldObj.AddComponent<HUD>();
 
 
         //+ World creation
