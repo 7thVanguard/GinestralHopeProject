@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class EnemyDictionary : MonoBehaviour 
+public class EnemyDictionary 
 {
 	public static Dictionary<string, Enemy> Enemies = new Dictionary<string, Enemy>();
 	
