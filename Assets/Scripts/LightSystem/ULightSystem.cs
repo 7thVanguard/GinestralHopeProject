@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ULightSystem : MonoBehaviour 
 {
+    Player player;
+
     SunLightSystem sunLightSystem;
     FlareLightSystem flareLightSystem;
     RenderLightSystem renderLightSystem;
@@ -10,6 +12,12 @@ public class ULightSystem : MonoBehaviour
 
     LensFlare lensFlare;
     float gameTime = 95;
+
+
+    public void Init(Player player)
+    {
+        this.player = player;
+    }
 
 
 	void Awake ()
@@ -50,28 +58,28 @@ public class ULightSystem : MonoBehaviour
 
             if (SLightSystem.dayTime < 90)
             {
-                sunLightSystem.MidDay(gameObject);
+                sunLightSystem.MidDay(player, gameObject);
                 flareLightSystem.MidDay(lensFlare);
                 renderLightSystem.MidDay();
                 cameraLightSystem.MidDay();
             }
             else if (SLightSystem.dayTime < 180)
             {
-                sunLightSystem.Noon(gameObject);
+                sunLightSystem.Noon(player, gameObject);
                 flareLightSystem.Noon(lensFlare);
                 renderLightSystem.Noon();
                 cameraLightSystem.Noon();
             }
             else if (SLightSystem.dayTime < 270)
             {
-                sunLightSystem.Night(gameObject);
+                sunLightSystem.Night(player, gameObject);
                 flareLightSystem.Night(lensFlare);
                 renderLightSystem.Night();
                 cameraLightSystem.Night();
             }
             else
             {
-                sunLightSystem.Sunrise(gameObject);
+                sunLightSystem.Sunrise(player, gameObject);
                 flareLightSystem.Sunrise(lensFlare);
                 renderLightSystem.Sunrise();
                 cameraLightSystem.Sunrise();

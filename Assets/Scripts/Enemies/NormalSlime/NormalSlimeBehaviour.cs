@@ -8,29 +8,37 @@ using System.Collections;
  *  Drop            Nothing by now.
 */
 
-public class UNSlime : MonoBehaviour 
+public class NormalSlimeBehaviour : MonoBehaviour 
 {
+    Player player;
+    MainCamera mainCamera;
+
     // Movement relative
     private NSlimeMovement movement;
 
     // Combat relative
     private NSlimeCombat combat;
-    
 
-	void Awake ()
+
+    public void Init(Player player, MainCamera mainCamera)
     {
+        this.player = player;
+        this.mainCamera = mainCamera;
+
         // Movement relative
         movement = new NSlimeMovement();
 
         // Combat relative
+        int maxLife = 3;
+
         combat = new NSlimeCombat();
+        this.gameObject.GetComponent<EnemyComponent>().life = maxLife;
+        this.gameObject.GetComponent<EnemyComponent>().maxLife = maxLife;
 
-        this.gameObject.GetComponent<EnemyComponent>().life = SNSlime.maxLife;
-        this.gameObject.GetComponent<EnemyComponent>().maxLife = SNSlime.maxLife;
-
+        // Updates
         movement.Start(gameObject);
-        combat.Start(gameObject);
-	}
+        combat.Init(player, gameObject);
+    }
 	
 
 	void FixedUpdate ()
@@ -38,8 +46,7 @@ public class UNSlime : MonoBehaviour
         if (!EGameFlow.pause)
         {
             movement.Update();
-
-            //combat.Update(mainCamera, gameObject);
+            combat.Update(mainCamera, gameObject);
         }
 	}
 }

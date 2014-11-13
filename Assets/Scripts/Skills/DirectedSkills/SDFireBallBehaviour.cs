@@ -23,7 +23,7 @@ public class SDFireBallBehaviour : MonoBehaviour
             direction.y -= EGamePhysics.gravity * Time.deltaTime;
 
             // Destroy depending on distance to the player
-            if (Vector3.Distance(transform.position, SPlayer.transform.position) > 200)
+            if (transform.position.y < -10)
                 Destroy(gameObject);
         }
 	}

@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private World world;
     private Player player;
     private MainCamera mainCamera;
+    private Sun sun;
     
 
     // Save
@@ -35,7 +36,10 @@ public class GameManager : MonoBehaviour
         world = new World(gameObject, prefabs, atlas);
         player = new Player();
         mainCamera = new MainCamera();
-        ObjectCreator.SunCreation(sunFlare);
+        sun = new Sun(player, sunFlare);
+
+        // post initialize
+        world.world.GetComponent<HUD>().Init(player);
 
 
         //+ Controllers Init

@@ -27,6 +27,6 @@ public class PlayerCombatInputController : AbstractInputsController
         EGameFlow.generalMode = EGameFlow.GeneralMode.PLAYER;
         player.constructionDetection = 5;
 
-        skills.Update(mainCamera);
+        skills.Update(player, mainCamera);
     }
 }

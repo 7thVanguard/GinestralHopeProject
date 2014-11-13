@@ -3,21 +3,28 @@ using System.Collections;
 
 public class NSlimeCombat
 {
+    Player player;
     GameObject enemy;
     RaycastHit impact;
+
+    Skill selectedSkill;
     
     private Vector3 playerFocus;            // Vector that goes from enemy to player
     private float dotProduct;
-    private int detectionDistance = 30;
+    private int detectionDistance;
 
 
-    public void Start(GameObject enemy)
+    public void Init(Player player, GameObject enemy)
     {
+        this.player = player;
         this.enemy = enemy;
+
+        selectedSkill = SkillDictionary.Skills["FireBall"];
+        detectionDistance = 30;
     }
 
 
-    public void Update(MainCamera mainCamera, GameObject enemy)
+    public void Update( MainCamera mainCamera, GameObject enemy)
     {
         if (Time.time % 1 == 0)
             Detection(mainCamera);
@@ -27,10 +34,10 @@ public class NSlimeCombat
     private void Detection(MainCamera mainCamera)
     {
         // Player is in enemy radius
-        if (Vector3.Distance(SPlayer.transform.position, enemy.transform.position) < detectionDistance)
+        if (Vector3.Distance(player.playerObj.transform.position, enemy.transform.position) < detectionDistance)
         {
             // Calculates enemy vision
-            playerFocus = SPlayer.transform.position - enemy.transform.position;
+            playerFocus = player.playerObj.transform.position - enemy.transform.position;
             playerFocus.Normalize();
 
             // Calculates player position respect to this enemy
@@ -41,8 +48,8 @@ public class NSlimeCombat
             {
                 // Check if player is visible
                 if (Physics.Raycast(enemy.transform.position, playerFocus, out impact, 30))
-                    if (impact.transform.gameObject.tag == "Player") { }
-                        //CreateLambertBall.Cast(mainCamera, enemy.transform.position, 25, 30, false);
+                    if (impact.transform.gameObject.tag == "Player")
+                        selectedSkill.CastDirected(player, mainCamera, null, enemy.transform.position, false);
             }
         }
     }

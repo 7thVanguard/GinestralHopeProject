@@ -17,11 +17,11 @@ public class SDFireBall : SkillDirected
     }
 
 
-    public override GameObject CastDirected(MainCamera mainCamera, GameObject fireBall, Vector3 origin, bool launchedByPlayer)
+    public override GameObject CastDirected(Player player, MainCamera mainCamera, GameObject fireBall, Vector3 origin, bool launchedByPlayer)
     {
         fireBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 
-        fireBall = base.CastDirected(mainCamera, fireBall, origin, launchedByPlayer);
+        fireBall = base.CastDirected(player, mainCamera, fireBall, origin, launchedByPlayer);
         FireDirected(fireBall, base.originPosition, base.targetPosition, base.objectDirection, objectSpeed);
 
         return fireBall;

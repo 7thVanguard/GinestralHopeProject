@@ -42,7 +42,7 @@ public class EnemyComponent : MonoBehaviour
     private void DamageAnim()
     {
         // Changes the color when damaged
-        animCounter = SNSlime.damageAnimTime;
+        animCounter = 5;
 
         gameObject.renderer.material.color = Color.red;
     }

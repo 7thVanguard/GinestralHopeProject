@@ -8,7 +8,7 @@ public class Skill
     public int maxDistance;
 
 
-    public virtual GameObject CastDirected(MainCamera mainCamera, GameObject gameObject, Vector3 origin, bool launchedByPlayer)
+    public virtual GameObject CastDirected(Player player, MainCamera mainCamera, GameObject gameObject, Vector3 origin, bool launchedByPlayer)
     {
         return null;
     }

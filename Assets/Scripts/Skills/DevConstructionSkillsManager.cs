@@ -40,51 +40,51 @@ public class DevConstructionSkillsManager
     private void Remove(World world, Player player, MainCamera mainCamera)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
-            LTerrainVoxelTool.Remove(world, player, mainCamera);
+            TerrainVoxelsToolManager.Remove(world, player, mainCamera);
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
-            LMineVoxelTool.Remove(world, player, mainCamera);
+            MineVoxelsToolManager.Remove(world, player, mainCamera);
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Remove(player, mainCamera);
+            GadgetsToolManager.Remove(player, mainCamera);
 		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
-			LEnemyTool.Remove();
+			EnemiesToolManager.Remove();
     }
 
 
     private void Place(World world, Player player, MainCamera mainCamera)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
-            LTerrainVoxelTool.Place(world, player, mainCamera);
+            TerrainVoxelsToolManager.Place(world, player, mainCamera);
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
-            LMineVoxelTool.Place(world, player, mainCamera);
+            MineVoxelsToolManager.Place(world, player, mainCamera);
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Place(world, player, mainCamera);
+            GadgetsToolManager.Place(world, player, mainCamera);
 		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
-            LEnemyTool.Place(world, player, mainCamera);
+            EnemiesToolManager.Place(world, player, mainCamera);
     }
 
 
     private void Cancel()
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
-            LTerrainVoxelTool.Cancel();
+            TerrainVoxelsToolManager.Cancel();
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
-            LMineVoxelTool.Cancel();
+            MineVoxelsToolManager.Cancel();
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Cancel();
+            GadgetsToolManager.Cancel();
 		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
-			LEnemyTool.Cancel();
+			EnemiesToolManager.Cancel();
     }
 
 
     private void Detect(World world, Player player, MainCamera mainCamera)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
-            LTerrainVoxelTool.Detect(world, player, mainCamera);
+            TerrainVoxelsToolManager.Detect(world, player, mainCamera);
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
-            LMineVoxelTool.Detect(world, player, mainCamera);
+            MineVoxelsToolManager.Detect(world, player, mainCamera);
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Detect(world, player, mainCamera);
+            GadgetsToolManager.Detect(world, player, mainCamera);
 		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
-            LEnemyTool.Detect(world, player, mainCamera);
+            EnemiesToolManager.Detect(world, player, mainCamera);
     }
 }

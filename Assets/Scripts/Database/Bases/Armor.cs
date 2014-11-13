@@ -2,7 +2,7 @@
 using System.Collections;
 
 [System.Serializable]
-public class Armor : Item
+public class Armor
 {
     public int protection;
 }

@@ -10,7 +10,7 @@ public class CombatSkillsManager
     public static string methodName = "";
     public static bool casting = false;
 
-    public void Update(MainCamera mainCamera)
+    public void Update(Player player, MainCamera mainCamera)
     {
         // Make sure that pressing again a button won't reset the skill
         if (methodName != "FireBall")
@@ -44,7 +44,7 @@ public class CombatSkillsManager
                     case "FireBall":
                         {
                             selectedSkill = SkillDictionary.Skills["FireBall"];
-                            selectedSkill.CastDirected(mainCamera, null, SPlayer.transform.position, true);
+                            selectedSkill.CastDirected(player, mainCamera, null, player.playerObj.transform.position, true);
                         }
                         break;
                     default:

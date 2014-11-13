@@ -15,13 +15,13 @@ public class SkillDirected : Skill
 
 
 
-    public override GameObject CastDirected(MainCamera mainCamera, GameObject gameObject, Vector3 origin, bool launchedByPlayer)
+    public override GameObject CastDirected(Player player, MainCamera mainCamera, GameObject gameObject, Vector3 origin, bool launchedByPlayer)
     {
         // Set tag
         gameObject.tag = "Skill";
 
         // Set transforms
-        gameObject.transform.position = SPlayer.transform.position;
+        gameObject.transform.position = player.playerObj.transform.position;
 
         // Ignoring the raycasts
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
@@ -49,7 +49,7 @@ public class SkillDirected : Skill
 
         else
         {
-            targetPosition = SPlayer.transform.position;
+            targetPosition = player.playerObj.transform.position;
         }
 
         //+ Fire

@@ -63,8 +63,8 @@ public class World
         world.transform.eulerAngles = Vector3.zero;
         world.transform.localScale = Vector3.one;
 
-        world.AddComponent("GUISystem");
-        world.AddComponent("HUD");
+        world.AddComponent<GUISystem>();
+        world.AddComponent<HUD>();
 
 
         //+ World creation

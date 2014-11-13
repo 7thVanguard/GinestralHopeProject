@@ -30,27 +30,27 @@ public class ConstructionSkillsManager
     private void Remove(Player player, MainCamera mainCamera)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Remove(player, mainCamera);
+            GadgetsToolManager.Remove(player, mainCamera);
     }
 
 
     private void Place(World world, Player player, MainCamera mainCamera)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Place(world, player, mainCamera);
+            GadgetsToolManager.Place(world, player, mainCamera);
     }
 
 
     private void Cancel()
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Cancel();
+            GadgetsToolManager.Cancel();
     }
 
 
     private void Detect(World world, Player player, MainCamera mainCamera)
     {
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            LGadgetsTool.Detect(world, player, mainCamera);
+            GadgetsToolManager.Detect(world, player, mainCamera);
     }
 }

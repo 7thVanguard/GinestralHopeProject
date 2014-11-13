@@ -11,11 +11,18 @@ public class NormalSlime : Enemy
     }
 
 
-    public void PlaceEnemy(World world, Vector3 position)
+    public void PlaceEnemy(World world, Player player, MainCamera mainCamera, Vector3 position)
     {
         Transform enemy = world.normalSlime;
 
         enemy = Object.Instantiate(enemy, position, Quaternion.identity) as Transform;
+
+        // Head atributes
         enemy.name = "Normal Slime";
+
+        // Components
+        enemy.gameObject.AddComponent<EnemyComponent>();
+        enemy.gameObject.AddComponent<NormalSlimeBehaviour>();
+        enemy.gameObject.GetComponent<NormalSlimeBehaviour>().Init(player, mainCamera);
     }
 }

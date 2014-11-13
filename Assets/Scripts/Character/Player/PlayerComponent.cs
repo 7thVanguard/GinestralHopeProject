@@ -3,16 +3,23 @@ using System.Collections;
 
 public class PlayerComponent : MonoBehaviour 
 {
+    Player player;
+
     // Damage relative
     public Color originalColor;
     private int animCounter;
 
 
+    public void Init(Player player)
+    {
+        this.player = player;
+    }
+
+
     void Start()
     {
-        animCounter = 0;
-
         // Damage relative
+        player.currentLife = player.maxLife;
         originalColor = gameObject.renderer.material.color;
         animCounter = 0;
     }
@@ -32,18 +39,18 @@ public class PlayerComponent : MonoBehaviour
 
     public void Damage(float damage)
     {
-        SPlayer.currentLife -= damage;
+        player.currentLife -= damage;
         DamageAnim();
 
         // Player dead
-        if (SPlayer.currentLife <= 0)
+        if (player.currentLife <= 0)
             Object.Destroy(gameObject);
     }
 
 
     private void DamageAnim()
     {
-        animCounter = SPlayer.damageAnimTime;
+        animCounter = player.damageAnimTime;
 
         gameObject.renderer.material.color = Color.red;
     }
