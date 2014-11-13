@@ -15,7 +15,7 @@ public class SkillDirected : Skill
 
 
 
-    public override GameObject CastDirected(MainCamera mainCamera, GameObject gameObject, Vector3 origin, int objectSpeed, int maxDistance, bool launchedByPlayer)
+    public override GameObject CastDirected(MainCamera mainCamera, GameObject gameObject, Vector3 origin, bool launchedByPlayer)
     {
         // Set tag
         gameObject.tag = "Skill";

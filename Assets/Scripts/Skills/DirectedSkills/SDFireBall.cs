@@ -5,16 +5,24 @@ public class SDFireBall : SkillDirected
 {
     public SDFireBall(string ID)  : base(ID)
     {
-        base.ID = ID;
+        
     }
 
 
-    public override GameObject CastDirected(MainCamera mainCamera, GameObject fireBall, Vector3 origin, int ballSpeed, int maxDistance, bool launchedByPlayer)
+    public void Init()
+    {
+        ID = SkillDictionary.Skills["FireBall"].ID;
+        objectSpeed = SkillDictionary.Skills["FireBall"].objectSpeed;
+        maxDistance = SkillDictionary.Skills["FireBall"].maxDistance;
+    }
+
+
+    public override GameObject CastDirected(MainCamera mainCamera, GameObject fireBall, Vector3 origin, bool launchedByPlayer)
     {
         fireBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 
-        fireBall = base.CastDirected(mainCamera, fireBall, origin, ballSpeed, maxDistance, launchedByPlayer);
-        FireDirected(fireBall, base.originPosition, base.targetPosition, base.objectDirection, ballSpeed);
+        fireBall = base.CastDirected(mainCamera, fireBall, origin, launchedByPlayer);
+        FireDirected(fireBall, base.originPosition, base.targetPosition, base.objectDirection, objectSpeed);
 
         return fireBall;
     }

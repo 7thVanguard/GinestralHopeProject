@@ -22,17 +22,14 @@ public static class EGameFlow
     public static DeveloperMineTools developerMineTools = DeveloperMineTools.SINGLE;
 
 
-    // Gadgets
-    public enum SelectedGadget { PLANK, WOOD, NAILS, LADDER }
-    public static SelectedGadget selectedGadget = SelectedGadget.PLANK;
-
-
-	// Enemies
-	public enum SelectedEnemy { NORMALSLIME }
-	public static SelectedEnemy selectedEnemy = SelectedEnemy.NORMALSLIME;
-
-
 	// Flow
     public static bool pause = false;
     public static bool loading = false;
+
+
+    // Selection
+    public static string selectedGadget = "Wood Pieces";
+    public static string selectedTerrain = "Grass";
+    public static string selectedMine = "Rock";
+    public static string selectedEnemy = "Normal Slime";
 }

@@ -5,18 +5,26 @@ using System.Collections.Generic;
 
 public class EnemyDictionary : MonoBehaviour 
 {
-	public static Dictionary<string, Enemy> EnemiesDictionary = new Dictionary<string, Enemy>();
+	public static Dictionary<string, Enemy> Enemies = new Dictionary<string, Enemy>();
 	
 	
-	void Awake()
+    public EnemyDictionary()
+    {
+        Enemies = new Dictionary<string, Enemy>();
+        Init();
+    }
+
+
+	private void Init()
 	{
 		//+ Normal SLime
-		Enemy normalSlime = new Enemy();
+		NormalSlime normalSlime = new NormalSlime();
 		
-		normalSlime.nameKey = "Wooden Plank";
+		normalSlime.ID = "Normal Slime";
 		normalSlime.level = 1;
 		normalSlime.damage = 1;
 		
-		EnemiesDictionary.Add(normalSlime.nameKey, normalSlime);
+		Enemies.Add(normalSlime.ID, normalSlime);
+        normalSlime.Init();
 	}
 }

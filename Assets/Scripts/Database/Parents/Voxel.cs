@@ -5,7 +5,7 @@ using System.Collections;
 [System.Serializable]
 public class Voxel : ScriptableObject 
 {
-    public string name;
+    public string ID;
     public int blastResistance;
     public bool transparent;
 

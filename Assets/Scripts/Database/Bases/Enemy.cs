@@ -3,8 +3,7 @@ using System.Collections;
 
 public class Enemy
 {
-	public string nameKey;
-
+	public string ID;
 	public int level;
 	public int damage;
 }

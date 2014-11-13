@@ -39,11 +39,11 @@ public class PlayerBuildInputController : AbstractInputsController
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
         {
             if (Input.GetKey(KeyCode.I))
-                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.PLANK;
+                EGameFlow.selectedGadget = "Wooden Plank";
             else if (Input.GetKey(KeyCode.J))
-                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.WOOD;
+                EGameFlow.selectedGadget = "Wood Pieces";
             else if (Input.GetKey(KeyCode.K))
-                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.NAILS;
+                EGameFlow.selectedGadget = "Nails";
         }
 
         skills.Update(world, player, mainCamera);

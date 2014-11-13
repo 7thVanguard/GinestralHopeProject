@@ -95,7 +95,7 @@ public class LMineVoxelTool
 
                     world.chunk[DevConstructionSkillsManager.detChunk.numID.x, DevConstructionSkillsManager.detChunk.numID.y, DevConstructionSkillsManager.detChunk.numID.z]
                         .voxel[DevConstructionSkillsManager.detVoxel.numID.x, DevConstructionSkillsManager.detVoxel.numID.y, DevConstructionSkillsManager.detVoxel.numID.z]
-                        = new VoxelGenerator(world, DevConstructionSkillsManager.detVoxel.numID, DevConstructionSkillsManager.detChunk.numID, world.selectedMine);
+                        = new VoxelGenerator(world, DevConstructionSkillsManager.detVoxel.numID, DevConstructionSkillsManager.detChunk.numID, EGameFlow.selectedMine);
 
                     // Reset
                     LChunk.Reset(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel);
@@ -126,7 +126,7 @@ public class LMineVoxelTool
                         DevConstructionSkillsManager.detVoxel = DevConstructionSkillsManager.voxel;
 
                         // Places the selectet voxel in the selected ones
-                        OrtoedricResolution(world, world.selectedMine);
+                        OrtoedricResolution(world, EGameFlow.selectedMine);
 
                         // End of fase 2 of multi selection tool
                         DevConstructionSkillsManager.selected = false;
@@ -258,7 +258,7 @@ public class LMineVoxelTool
         // Reseting all chunks
         for (int x = chunkInitX; x <= chunkEndX; x++)
             for (int y = chunkInitY; y <= chunkEndY; y++)
-                for (int z = chunkInitX; z <= chunkEndZ; z++)
+                for (int z = chunkInitZ; z <= chunkEndZ; z++)
                 {
                     world.chunksToReset.Add(new IntVector3(x, y, z));
                 }

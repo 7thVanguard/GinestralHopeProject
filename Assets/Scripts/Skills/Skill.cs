@@ -3,9 +3,12 @@ using System.Collections;
 
 public class Skill
 {
-    protected string ID;
+    public string ID;
+    public int objectSpeed;
+    public int maxDistance;
 
-    public virtual GameObject CastDirected(MainCamera mainCamera, GameObject gameObject, Vector3 origin, int ballSpeed, int maxDistance, bool launchedByPlayer)
+
+    public virtual GameObject CastDirected(MainCamera mainCamera, GameObject gameObject, Vector3 origin, bool launchedByPlayer)
     {
         return null;
     }

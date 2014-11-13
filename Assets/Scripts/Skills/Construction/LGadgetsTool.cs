@@ -41,16 +41,16 @@ public class LGadgetsTool
 
                 switch (EGameFlow.selectedGadget)
                 {
-                    case EGameFlow.SelectedGadget.PLANK:
+                    case "Wooden Plank":
                         LVGadget.placePlank(new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)), yRotation);
                         break;
-                    case EGameFlow.SelectedGadget.WOOD:
+                    case "Wood Pieces":
                         LVGadget.placeWoodPiecesGadget(world, new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)));
                         break;
-                    case EGameFlow.SelectedGadget.NAILS:
+                    case "Nails":
                         LVGadget.placeNailsGadget(world, new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)));
                         break;
-                    case EGameFlow.SelectedGadget.LADDER:
+                    case "Wooden Ladder":
                         break;
                     default:
                         break;

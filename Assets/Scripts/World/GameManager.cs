@@ -16,14 +16,13 @@ public class GameManager : MonoBehaviour
 
     private GameController activeController;
     private SkillDictionary skillDictionary;
+    private EnemyDictionary enemyDictionary;
 
 
     // Main control classes
     private World world;
     private Player player;
     private MainCamera mainCamera;
-
-    private Skill skill;
     
 
     // Save
@@ -42,6 +41,7 @@ public class GameManager : MonoBehaviour
         //+ Controllers Init
         Controller = new Dictionary<string, GameController>();
         skillDictionary = new SkillDictionary();
+        enemyDictionary = new EnemyDictionary();
 
 
 

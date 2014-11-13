@@ -9,21 +9,22 @@ public class LEnemyTool
 	}
 	
 	
-	public static void Place(World world, Player player, MainCamera mainCAmera)
+	public static void Place(World world, Player player, MainCamera mainCamera)
 	{
-		if (EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
-            if (mainCAmera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCAmera.raycast.distance != 0)
-                if (mainCAmera.raycast.normal.y >= 0.75f)
+        if (mainCamera.raycast.distance < (player.constructionDetection + SCamera.distance) && mainCamera.raycast.distance != 0)
+            if (mainCamera.raycast.normal.y >= 0.75f)
+			{
+				switch (EGameFlow.selectedEnemy) 
 				{
-					switch (EGameFlow.selectedEnemy) 
-					{
-						case EGameFlow.SelectedEnemy.NORMALSLIME:
-                            LEnemy.placeNormalSlime(world, new Vector3((int)(mainCAmera.raycast.point.x), mainCAmera.raycast.point.y + 0.5f, (int)(mainCAmera.raycast.point.z)));
-							break;
-						default:
-							break;
-					}
+					case "Normal Slime":
+                        NormalSlime normalSlime = (NormalSlime)EnemyDictionary.Enemies["Normal Slime"];
+                        normalSlime.PlaceEnemy(world, new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y + 0.5f, (int)(mainCamera.raycast.point.z)));
+                        //LEnemy.placeNormalSlime(world, new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y + 0.5f, (int)(mainCamera.raycast.point.z)));
+						break;
+					default:
+						break;
 				}
+			}
 	}
 	
 	

@@ -13,10 +13,6 @@ public class World
     // GameObjects
     public GameObject world;
 
-    public string selectedGadget = "Wood Pieces";
-    public string selectedTerrain = "Grass";
-    public string selectedMine = "Rock";
-
 
     // Prefabs
     public Transform normalSlime;
