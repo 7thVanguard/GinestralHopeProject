@@ -15,8 +15,28 @@ public class Gadget
     public int dropCount;
 
 
-    public void PlaceGadgetFromSave(string ID, Vector3 position, Vector3 rotation)
+    public void PlaceGadget(World world, string ID, Vector3 pos, Vector3 rotation)
     {
-
+        switch(ID)
+        {
+            case "Wooden Plank":
+            {
+                WoodenPlank woodenPlamk = new WoodenPlank();
+                woodenPlamk.PlaceGadget(ID, pos, rotation);
+            }
+            break;
+            case "Wood Pieces":
+            {
+                WoodPieces woodPieces = new WoodPieces();
+                woodPieces.PlaceGadget(world, ID, pos, rotation);
+            }
+            break;
+            case "Nails":
+            {
+                Nails nails = new Nails();
+                nails.PlaceGadget(world, ID, pos, rotation);
+            }
+            break;
+        }
     }
 }

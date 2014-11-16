@@ -48,6 +48,7 @@ public class EGameSerializer
         dataString = new string[world.chunkSize.z];
 
         EnemySave = new List<EnemyStruct>();
+        GadgetSave = new List<GadgetStruct>();
 
         Encryptor(world, bf, file);
         file.Close();
@@ -64,6 +65,7 @@ public class EGameSerializer
             dataString = new string[world.chunkSize.z];
 
             EnemySave = new List<EnemyStruct>();
+            GadgetSave = new List<GadgetStruct>();
 
             Desencrypter(world, player, mainCamera, bf, file);
             file.Close();
@@ -109,20 +111,20 @@ public class EGameSerializer
 
         //+ Gadgets
         // Find all gadgets in game
-        //GameObject[] gadgetsInGame = GameObject.FindGameObjectsWithTag("Gadget");
+        GameObject[] gadgetsInGame = GameObject.FindGameObjectsWithTag("Gadget");
 
-        //foreach (GameObject gadget in gadgetsInGame)
-        //{
-        //    gadgetStruct.ID = gadget.name;
-        //    gadgetStruct.positionX = gadget.transform.position.x;
-        //    gadgetStruct.positionY = gadget.transform.position.y;
-        //    gadgetStruct.positionZ = gadget.transform.position.z;
-        //    gadgetStruct.rotationX = gadget.transform.eulerAngles.x;
-        //    gadgetStruct.rotationY = gadget.transform.eulerAngles.y;
-        //    gadgetStruct.rotationZ = gadget.transform.eulerAngles.z;
-        //    GadgetSave.Add(gadgetStruct);
-        //}
-        //bf.Serialize(file, GadgetSave);
+        foreach (GameObject gadget in gadgetsInGame)
+        {
+            gadgetStruct.ID = gadget.name;
+            gadgetStruct.positionX = gadget.transform.position.x;
+            gadgetStruct.positionY = gadget.transform.position.y;
+            gadgetStruct.positionZ = gadget.transform.position.z;
+            gadgetStruct.rotationX = gadget.transform.eulerAngles.x;
+            gadgetStruct.rotationY = gadget.transform.eulerAngles.y;
+            gadgetStruct.rotationZ = gadget.transform.eulerAngles.z;
+            GadgetSave.Add(gadgetStruct);
+        }
+        bf.Serialize(file, GadgetSave);
     }
 
 
@@ -168,7 +170,7 @@ public class EGameSerializer
         // Load enemies
         foreach (EnemyStruct enemy in EnemySave)
             EnemyDictionary.Enemies[enemy.ID]
-                .PlaceEnemy(world, player, mainCamera, new Vector3(enemy.positionX, enemy.positionY, enemy.positionZ), enemy.ID);
+                .PlaceEnemy(world, player, mainCamera, new Vector3(enemy.positionX - 0.5f, enemy.positionY, enemy.positionZ - 0.5f), enemy.ID);
 
         // Reset enemies list
         EnemySave.Clear();
@@ -176,19 +178,19 @@ public class EGameSerializer
 
         //+ Gadgets
         // Deserialize the gadgets listlist
-        //GadgetSave = (List<GadgetStruct>)bf.Deserialize(file);
+        GadgetSave = (List<GadgetStruct>)bf.Deserialize(file);
 
         // Destroy existing enemies
         GameObject[] gadgets = GameObject.FindGameObjectsWithTag("Gadget");
-        foreach (GameObject enemy in gadgets)
-            GameObject.Destroy(enemy);
+        foreach (GameObject gadget in gadgets)
+            GameObject.Destroy(gadget);
 
         // Load enemies
-        //foreach (GadgetStruct gadget in GadgetSave)
-        //    GadgetDictionary.GadgetsDictionary[gadget.ID]
-        //        .(world, player, mainCamera, new Vector3(gadget.positionX, gadget.positionY, gadget.positionZ), gadget.ID);
+        foreach (GadgetStruct gadget in GadgetSave)
+            GadgetDictionary.GadgetsDictionary[gadget.ID].PlaceGadget(world, gadget.ID, 
+                new Vector3(gadget.positionX, gadget.positionY, gadget.positionZ), new Vector3(gadget.rotationX, gadget.rotationY, gadget.rotationZ));
 
-        // Reset enemies list
-        //GadgetSave.Clear();
+        //Reset enemies list
+        GadgetSave.Clear();
     }
 }
