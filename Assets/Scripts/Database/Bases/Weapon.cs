@@ -2,7 +2,7 @@
 using System.Collections;
 
 [System.Serializable]
-public class Weapon : Item
+public class Weapon
 {
     public int damage;
 }

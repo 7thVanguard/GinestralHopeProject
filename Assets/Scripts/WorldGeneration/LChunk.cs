@@ -17,7 +17,7 @@ public class LChunk
     }
 
 
-    public static void Reset(World world, ChunkGenerator detectionChunk, VoxelGenerator detectionVoxel)
+    public static void Reset(World world, ChunkGenerator detectionChunk, Voxel detectionVoxel)
     {
         int xSign, ySign, zSign;
 

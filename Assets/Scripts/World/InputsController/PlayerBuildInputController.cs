@@ -5,19 +5,22 @@ public class PlayerBuildInputController : AbstractInputsController
 {
     private World world;
     private Player player;
-    private ConstructionSkills skills;
+    private MainCamera mainCamera;
+
+    private ConstructionSkillsManager skills;
 
 
-    public PlayerBuildInputController(World world, Player player)
+    public PlayerBuildInputController(World world, Player player, MainCamera mainCamera)
     {
         this.world = world;
         this.player = player;
+        this.mainCamera = mainCamera;
     }
 
 
     public override void Start()
     {
-        skills = new ConstructionSkills();
+        skills = new ConstructionSkillsManager();
     }
 
 
@@ -36,13 +39,13 @@ public class PlayerBuildInputController : AbstractInputsController
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
         {
             if (Input.GetKey(KeyCode.I))
-                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.PLANK;
+                EGameFlow.selectedGadget = "Wooden Plank";
             else if (Input.GetKey(KeyCode.J))
-                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.WOOD;
+                EGameFlow.selectedGadget = "Wood Pieces";
             else if (Input.GetKey(KeyCode.K))
-                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.NAILS;
+                EGameFlow.selectedGadget = "Nails";
         }
 
-        skills.Update(world, player);
+        skills.Update(world, player, mainCamera);
     }
 }

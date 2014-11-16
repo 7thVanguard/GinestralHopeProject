@@ -12,14 +12,18 @@ public class GameManager : MonoBehaviour
 
 
     // Controllers
-    private Dictionary<string, GameController> Controllers;
+    private Dictionary<string, GameController> Controller;
+
     private GameController activeController;
+    private SkillDictionary skillDictionary;
+    private EnemyDictionary enemyDictionary;
 
 
-    // GameObjects
+    // Main control classes
     private World world;
     private Player player;
-    private GameObject mainCamera;
+    private MainCamera mainCamera;
+    private Sun sun;
     
 
     // Save
@@ -30,33 +34,42 @@ public class GameManager : MonoBehaviour
     {
         //+ Object Init
         world = new World(gameObject, prefabs, atlas);
-        player = new Player(world);
-        mainCamera = ObjectCreator.CameraCreation();
-        ObjectCreator.SunCreation(sunFlare);
+        player = new Player();
+        mainCamera = new MainCamera();
+        sun = new Sun(player, sunFlare);
+
+        // post initialize
+        world.worldObj.GetComponent<HUD>().Init(player);
+        sun.lightSystemBehaviour.Init(player, sun.sunObj, sun.lensFlare);
+
+
+        //+ Controllers Init
+        Controller = new Dictionary<string, GameController>();
+        skillDictionary = new SkillDictionary();
+        enemyDictionary = new EnemyDictionary();
+
 
 
         //+ Game modes
-        Controllers = new Dictionary<string, GameController>();
-
         GameController aPC;
 
         aPC = new PlayerCombatGameController(world, player, mainCamera);
         aPC.Start();
-        Controllers.Add("PlayerCombatMode", aPC);
+        Controller.Add("PlayerCombatMode", aPC);
 
         aPC = new PlayerBuildGameController(world, player, mainCamera);
         aPC.Start();
-        Controllers.Add("PlayerBuildMode", aPC);
+        Controller.Add("PlayerBuildMode", aPC);
 
         aPC = new DeveloperCombatGameController(world, player, mainCamera);
         aPC.Start();
-        Controllers.Add("DeveloperCombatMode", aPC);
+        Controller.Add("DeveloperCombatMode", aPC);
 
         aPC = new DeveloperBuildGameController(world, player, mainCamera);
         aPC.Start();
-        Controllers.Add("DeveloperBuildMode", aPC);
+        Controller.Add("DeveloperBuildMode", aPC);
 
-        activeController = Controllers["DeveloperBuildMode"];
+        activeController = Controller["DeveloperBuildMode"];
 
         gameSerializer = new EGameSerializer();
     }
@@ -67,13 +80,13 @@ public class GameManager : MonoBehaviour
         //+ Global inputs
         // Game mode
         if (Input.GetKey(KeyCode.F1))
-            activeController = Controllers["PlayerCombatMode"];
+            activeController = Controller["PlayerCombatMode"];
         else if (Input.GetKey(KeyCode.F2))
-            activeController = Controllers["PlayerBuildMode"];
+            activeController = Controller["PlayerBuildMode"];
         else if (Input.GetKey(KeyCode.F3))
-            activeController = Controllers["DeveloperCombatMode"];
+            activeController = Controller["DeveloperCombatMode"];
         else if (Input.GetKey(KeyCode.F4))
-            activeController = Controllers["DeveloperBuildMode"];
+            activeController = Controller["DeveloperBuildMode"];
 
         // Pause
         if (Input.GetKeyUp(KeyCode.P))
@@ -83,11 +96,12 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.F5))
             gameSerializer.Save(world, saveName);
         else if (Input.GetKeyUp(KeyCode.F9))
-            gameSerializer.Load(world, saveName);
+            gameSerializer.Load(world, player, mainCamera, saveName);
 
 
-        //+ Controller
+        //+ Controllers
         activeController.Update();
+        sun.lightSystemBehaviour.Update();
 
 
         //+ Reset queue

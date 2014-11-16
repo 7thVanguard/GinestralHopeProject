@@ -3,6 +3,8 @@ using System.Collections;
 
 public class HUD : MonoBehaviour 
 {
+    Player player;
+
     public static Texture2D gizmoCircle;
     Texture2D gizmoCross;
     Texture2D translucentSelector;
@@ -13,6 +15,12 @@ public class HUD : MonoBehaviour
     public static GameObject quadMarker;
     public static GameObject cubeMarker;
     public static GameObject sphereMarker;
+
+
+    public void Init(Player player)
+    {
+        this.player = player;
+    }
 
 
 	void Awake () 
@@ -45,7 +53,7 @@ public class HUD : MonoBehaviour
         //+ Game bars
         // Player Life Bar
         GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200, 20), lifeBarBack);
-        GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200 * SPlayer.currentLife / SPlayer.maxLife, 20), lifeBar);
+        GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200 * player.currentLife / player.maxLife, 20), lifeBar);
 
         // Enemy life bar
         if (PlayerCombat.target != null)
@@ -57,11 +65,11 @@ public class HUD : MonoBehaviour
 
 
         //+ Skills casting
-        if (CombatSkills.casting)
+        if (CombatSkillsManager.casting)
         {
             GUI.DrawTexture(new Rect(Screen.width * 3 / 8 - 3, Screen.height * 4 / 5 - 10, Screen.width * 2 / 8 + 6, 20), lifeBarBack);
             GUI.DrawTexture(new Rect(Screen.width * 3 / 8, Screen.height * 4 / 5 - 7,
-                (Screen.width * 2 / 8) * (CombatSkills.actualCastingTime / CombatSkills.totalCastingTime), 14), lifeBar);
+                (Screen.width * 2 / 8) * (CombatSkillsManager.actualCastingTime / CombatSkillsManager.totalCastingTime), 14), lifeBar);
         }
     }
 }

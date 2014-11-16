@@ -1,14 +1,44 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 [System.Serializable]
+public struct EnemyStruct
+{
+    public string ID;
+    public float positionX;
+    public float positionY;
+    public float positionZ;
+}
+
+
+[System.Serializable]
+public struct GadgetStruct
+{
+    public string ID;
+    public float positionX;
+    public float positionY;
+    public float positionZ;
+    public float rotationX;
+    public float rotationY;
+    public float rotationZ;
+}
+
+
+[System.Serializable]
 public class EGameSerializer
 {
+    
+    private EnemyStruct enemyStruct;
+    private GadgetStruct gadgetStruct;
+
+    private static List<EnemyStruct> EnemySave;
+    private static List<GadgetStruct> GadgetSave;
     private static string[] dataString;
-    private static float[] dataFloat;
+
 
     public void Save(World world, string saveName)
     {
@@ -16,14 +46,16 @@ public class EGameSerializer
         FileStream file = File.Create("Assets/Saves/" + saveName + ".save");
 
         dataString = new string[world.chunkSize.z];
-        dataFloat = new float[world.chunkSize.z * 4];
+
+        EnemySave = new List<EnemyStruct>();
+        GadgetSave = new List<GadgetStruct>();
 
         Encryptor(world, bf, file);
         file.Close();
     }
 
 
-    public void Load(World world, string saveName)
+    public void Load(World world, Player player, MainCamera mainCamera, string saveName)
     {
         if (File.Exists("Assets/Saves/" + saveName + ".save"))
         {
@@ -31,9 +63,11 @@ public class EGameSerializer
             FileStream file = File.Open("Assets/Saves/" + saveName + ".save", FileMode.Open);
 
             dataString = new string[world.chunkSize.z];
-            dataFloat = new float[world.chunkSize.z * 4];
 
-            Desencrypter(world, bf, file);
+            EnemySave = new List<EnemyStruct>();
+            GadgetSave = new List<GadgetStruct>();
+
+            Desencrypter(world, player, mainCamera, bf, file);
             file.Close();
         }
     }
@@ -41,7 +75,7 @@ public class EGameSerializer
 
     private void Encryptor(World world, BinaryFormatter bf, FileStream file)
     {
-        // Save SWorld
+        //+ Voxels
         for (int cx = 0; cx < world.chunkNumber.x; cx++)
             for (int cy = 0; cy < world.chunkNumber.y; cy++)
                 for (int cz = 0; cz < world.chunkNumber.z; cz++)
@@ -52,28 +86,51 @@ public class EGameSerializer
                             {
                                 for (int z = 0; z < world.chunkSize.x; z++)
                                 {
-                                    // We allocate all z information in two simple arrays
-                                    dataString[z] = world.chunk[cx, cy, cz].voxel[x, y, z].hashName;
-                                    if (world.chunk[cx, cy, cz].voxel[x, y, z].voxelType == VoxelGenerator.VoxelType.VTERRAIN)
-                                    {
-                                        dataFloat[z * 4] = world.chunk[cx, cy, cz].voxel[x, y, z].backLeftVertex;
-                                        dataFloat[z * 4 + 1] = world.chunk[cx, cy, cz].voxel[x, y, z].backRightVertex;
-                                        dataFloat[z * 4 + 2] = world.chunk[cx, cy, cz].voxel[x, y, z].frontRightVertex;
-                                        dataFloat[z * 4 + 3] = world.chunk[cx, cy, cz].voxel[x, y, z].frontLeftVertex;
-                                    }
-                                }   // for lop z end
-
+                                    dataString[z] = world.chunk[cx, cy, cz].voxel[x, y, z].ID;
+                                }
                                 // Serialization of the arrays
                                 bf.Serialize(file, dataString);
-                                bf.Serialize(file, dataFloat);
-                            }   // for lop y end
-                }   // for loop cz end, end of chunk
+                            }
+                }
+
+
+        //+ Enemies
+        // Find all enemies in game
+        GameObject[] enemiesInGame = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemiesInGame)
+        {
+            enemyStruct.ID = enemy.name;
+            enemyStruct.positionX = enemy.transform.position.x;
+            enemyStruct.positionY = enemy.transform.position.y;
+            enemyStruct.positionZ = enemy.transform.position.z;
+            EnemySave.Add(enemyStruct);
+        }
+        bf.Serialize(file, EnemySave);
+
+
+        //+ Gadgets
+        // Find all gadgets in game
+        GameObject[] gadgetsInGame = GameObject.FindGameObjectsWithTag("Gadget");
+
+        foreach (GameObject gadget in gadgetsInGame)
+        {
+            gadgetStruct.ID = gadget.name;
+            gadgetStruct.positionX = gadget.transform.position.x;
+            gadgetStruct.positionY = gadget.transform.position.y;
+            gadgetStruct.positionZ = gadget.transform.position.z;
+            gadgetStruct.rotationX = gadget.transform.eulerAngles.x;
+            gadgetStruct.rotationY = gadget.transform.eulerAngles.y;
+            gadgetStruct.rotationZ = gadget.transform.eulerAngles.z;
+            GadgetSave.Add(gadgetStruct);
+        }
+        bf.Serialize(file, GadgetSave);
     }
 
 
-    private void Desencrypter(World world, BinaryFormatter bf, FileStream file)
+    private void Desencrypter(World world, Player player, MainCamera mainCamera, BinaryFormatter bf, FileStream file)
     {
-        // Load world
+        //+ Voxels
         for (int cx = 0; cx < world.chunkNumber.x; cx++)
             for (int cy = 0; cy < world.chunkNumber.y; cy++)
                 for (int cz = 0; cz < world.chunkNumber.z; cz++)
@@ -84,29 +141,56 @@ public class EGameSerializer
                             {
                                 // Deserialization of the arrays first
                                 dataString = (string[])bf.Deserialize(file);
-                                dataFloat = (float[])bf.Deserialize(file);
 
                                 for (int z = 0; z < world.chunkSize.x; z++)
                                 {
-                                    // We assign the variables to the voxels
-                                    world.chunk[cx, cy, cz].voxel[x, y, z] = new VoxelGenerator(world, new IntVector3(x, y, z), new IntVector3(cx, cy, cz), dataString[z]);
+                                    world.chunk[cx, cy, cz].voxel[x, y, z] =
+                                        new Voxel(world, new IntVector3(x, y, z), new IntVector3(cx, cy, cz), dataString[z]);
+                                }
+                            } 
+                } 
 
-                                    if (world.chunk[cx, cy, cz].voxel[x, y, z].voxelType == VoxelGenerator.VoxelType.VTERRAIN)
-                                    {
-                                        world.chunk[cx, cy, cz].voxel[x, y, z].backLeftVertex = dataFloat[z * 4];
-                                        world.chunk[cx, cy, cz].voxel[x, y, z].backRightVertex = dataFloat[z * 4 + 1];
-                                        world.chunk[cx, cy, cz].voxel[x, y, z].frontRightVertex = dataFloat[z * 4 + 2];
-                                        world.chunk[cx, cy, cz].voxel[x, y, z].frontLeftVertex = dataFloat[z * 4 + 3];
-                                    }
-                                }   // for lop z end
-                            }   // for lop y end
-                }   // for loop cz end, end of chunk
-
-        // Reset world
+        // Reset voxels
         foreach (ChunkGenerator chunk in world.chunk)
         {
             chunk.BuildChunkVertices(world);
             chunk.BuildChunkMesh();
         }
+
+
+        //+ Enemies
+        // Deserialize the enemies listlist
+        EnemySave = (List<EnemyStruct>)bf.Deserialize(file);
+
+        // Destroy existing enemies
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+            GameObject.Destroy(enemy);
+        
+        // Load enemies
+        foreach (EnemyStruct enemy in EnemySave)
+            EnemyDictionary.Enemies[enemy.ID]
+                .PlaceEnemy(world, player, mainCamera, new Vector3(enemy.positionX - 0.5f, enemy.positionY, enemy.positionZ - 0.5f), enemy.ID);
+
+        // Reset enemies list
+        EnemySave.Clear();
+
+
+        //+ Gadgets
+        // Deserialize the gadgets listlist
+        GadgetSave = (List<GadgetStruct>)bf.Deserialize(file);
+
+        // Destroy existing enemies
+        GameObject[] gadgets = GameObject.FindGameObjectsWithTag("Gadget");
+        foreach (GameObject gadget in gadgets)
+            GameObject.Destroy(gadget);
+
+        // Load enemies
+        foreach (GadgetStruct gadget in GadgetSave)
+            GadgetDictionary.GadgetsDictionary[gadget.ID].PlaceGadget(world, gadget.ID, 
+                new Vector3(gadget.positionX, gadget.positionY, gadget.positionZ), new Vector3(gadget.rotationX, gadget.rotationY, gadget.rotationZ));
+
+        //Reset enemies list
+        GadgetSave.Clear();
     }
 }

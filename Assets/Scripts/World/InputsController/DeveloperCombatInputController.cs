@@ -4,18 +4,21 @@ using System.Collections;
 public class DeveloperCombatInputController : AbstractInputsController 
 {
     private Player player;
-    private DevCombatSkills skills;
+    private MainCamera mainCamera;
+
+    private DevCombatSkillsManager skills;
 
 
-    public DeveloperCombatInputController(Player player)
+    public DeveloperCombatInputController(Player player, MainCamera mainCamera)
     {
         this.player = player;
+        this.mainCamera = mainCamera;
     }
 
 
 	public override void Start()
     {
-        skills = new DevCombatSkills();
+        skills = new DevCombatSkillsManager();
 	}
 	
 
@@ -26,6 +29,6 @@ public class DeveloperCombatInputController : AbstractInputsController
         EGameFlow.generalMode = EGameFlow.GeneralMode.DEVELOPER;
         player.constructionDetection = 300;
 
-        skills.Update();
+        skills.Update(player, mainCamera);
 	}
 }

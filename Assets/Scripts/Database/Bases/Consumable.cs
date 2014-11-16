@@ -2,7 +2,7 @@
 using System.Collections;
 
 [System.Serializable]
-public class Consumable : Item
+public class Consumable
 {
     public int health;
 }

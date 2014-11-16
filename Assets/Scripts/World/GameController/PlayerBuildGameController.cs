@@ -3,20 +3,22 @@ using System.Collections;
 
 public class PlayerBuildGameController : GameController
 {
-    World world;
-    Player player;
+    private World world;
+    private Player player;
+    private MainCamera mainCamera;
 
 
-    public PlayerBuildGameController(World world, Player player, GameObject mainCamera) : base(world, player, mainCamera)
+    public PlayerBuildGameController(World world, Player player, MainCamera mainCamera) : base(world, player, mainCamera)
     {
         this.world = world;
         this.player = player;
+        this.mainCamera = mainCamera;
     }
 
 
     public override void Start() 
     {
-        inputController = new PlayerBuildInputController(world, player);
+        inputController = new PlayerBuildInputController(world, player, mainCamera);
         base.Start();
 	}
 
@@ -25,6 +27,8 @@ public class PlayerBuildGameController : GameController
     public override void Update() 
     {
         base.Update();
-        movement.NormalMovementUpdate();
+        playerMovement.NormalMovementUpdate();
+        cameraMovement.Update();
+        cameraRaycast.Update();
 	}
 }

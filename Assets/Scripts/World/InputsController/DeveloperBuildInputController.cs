@@ -5,19 +5,21 @@ public class DeveloperBuildInputController : AbstractInputsController
 {
     private World world;
     private Player player;
-    private DevConstructionSkills skills;
+    private MainCamera mainCamera;
+    private DevConstructionSkillsManager skills;
 
 
-    public DeveloperBuildInputController(World world, Player player)
+    public DeveloperBuildInputController(World world, Player player, MainCamera mainCamera)
     {
         this.world = world;
         this.player = player;
+        this.mainCamera = mainCamera;
     }
 
 
     public override void Start()
     {
-        skills = new DevConstructionSkills();
+        skills = new DevConstructionSkillsManager();
     }
 
 
@@ -43,9 +45,9 @@ public class DeveloperBuildInputController : AbstractInputsController
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
         {
             if (Input.GetKey(KeyCode.I))
-                world.selectedTerrain = "Grass";
+                EGameFlow.selectedTerrain = "Grass";
             else if (Input.GetKey(KeyCode.J))
-                world.selectedTerrain = "DirtGrass";
+                EGameFlow.selectedTerrain = "DirtGrass";
         }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
         {
@@ -55,38 +57,38 @@ public class DeveloperBuildInputController : AbstractInputsController
                 EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.ORTOEDRIC;
 
             if (Input.GetKey(KeyCode.I))
-                world.selectedMine = "Rock";
+                EGameFlow.selectedMine = "Rock";
             else if (Input.GetKey(KeyCode.J))
-                world.selectedMine = "BrokenRock";
+                EGameFlow.selectedMine = "BrokenRock";
             else if (Input.GetKey(KeyCode.K))
-                world.selectedMine = "Wood";
+                EGameFlow.selectedMine = "Wood";
             else if (Input.GetKey(KeyCode.M))
-                world.selectedMine = "RockFloor";
+                EGameFlow.selectedMine = "RockFloor";
             else if (Input.GetKey(KeyCode.N))
-                world.selectedMine = "RockWall";
+                EGameFlow.selectedMine = "RockWall";
             else if (Input.GetKey(KeyCode.O))
-                world.selectedMine = "SmoothRock";
+                EGameFlow.selectedMine = "SmoothRock";
             else if (Input.GetKey(KeyCode.B))
-                world.selectedMine = "LittleRocks";
+                EGameFlow.selectedMine = "LittleRocks";
             else if (Input.GetKey(KeyCode.V))
-                world.selectedMine = "OtherRock";
+                EGameFlow.selectedMine = "OtherRock";
         }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
         {
             if (Input.GetKey(KeyCode.I))
-                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.PLANK;
+                EGameFlow.selectedGadget = "Wooden Plank";
             else if (Input.GetKey(KeyCode.J))
-                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.WOOD;
+                EGameFlow.selectedGadget = "Wood Pieces";
             else if (Input.GetKey(KeyCode.K))
-                EGameFlow.selectedGadget = EGameFlow.SelectedGadget.NAILS;
+                EGameFlow.selectedGadget = "Nails";
         }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
         {
             if (Input.GetKey(KeyCode.I))
-                EGameFlow.selectedEnemy = EGameFlow.SelectedEnemy.NORMALSLIME;
+                EGameFlow.selectedEnemy = "Normal Slime";
         }
 
         // Mouse click
-        skills.Update(world, player);
+        skills.Update(world, player, mainCamera);
 	}
 }

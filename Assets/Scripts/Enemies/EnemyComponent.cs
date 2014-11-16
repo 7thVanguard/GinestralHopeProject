@@ -4,9 +4,9 @@ using System.Collections;
 public class EnemyComponent : MonoBehaviour
 {
     [HideInInspector] public Color originalColor;
+    [HideInInspector] public int maxLife;
     [HideInInspector] public float life;
 
-    public int maxLife;
     private int animCounter;
 
 
@@ -35,14 +35,16 @@ public class EnemyComponent : MonoBehaviour
         DamageAnim();
 
         if (life <= 0)
+        {
             Destroy(gameObject);
+        }
     }
 
 
     private void DamageAnim()
     {
         // Changes the color when damaged
-        animCounter = SNSlime.damageAnimTime;
+        animCounter = 5;
 
         gameObject.renderer.material.color = Color.red;
     }

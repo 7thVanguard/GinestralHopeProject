@@ -3,7 +3,7 @@ using System.Collections;
 
 public static class LVoxel
 {
-    public static bool VoxelExists(World world, ChunkGenerator detectionChunk, VoxelGenerator detectionVoxel, int x, int y, int z)
+    public static bool VoxelExists(World world, ChunkGenerator detectionChunk, Voxel detectionVoxel, int x, int y, int z)
     {
         if (detectionChunk.numID.x * world.chunkSize.x + detectionVoxel.numID.x + x >= 0 &&
             detectionChunk.numID.x * world.chunkSize.x + detectionVoxel.numID.x + x < world.chunkNumber.x * world.chunkSize.x &&
@@ -17,7 +17,7 @@ public static class LVoxel
     }
 
 
-    public static void GetVoxel(World world, ref ChunkGenerator detectionChunk, ref VoxelGenerator detectionVoxel, int x, int y, int z)
+    public static void GetVoxel(World world, ref ChunkGenerator detectionChunk, ref Voxel detectionVoxel, int x, int y, int z)
     {
         int cx, cy, cz;
         int vx, vy, vz;
