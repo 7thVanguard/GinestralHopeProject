@@ -6,11 +6,11 @@ public class DevConstructionSkillsManager
     // Detecting variables
     // Base detections
     public static ChunkGenerator chunk;
-    public static VoxelGenerator voxel;
+    public static Voxel voxel;
 
     // Auxiliar
     public static ChunkGenerator detChunk;
-    public static VoxelGenerator detVoxel;
+    public static Voxel detVoxel;
     public static Vector2 detVertex;
 
     // Multi selection tools

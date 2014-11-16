@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class ChunkGenerator
 {
     public GameObject chunkObject;
-    public VoxelGenerator[, ,] voxel;        // Part of a chunk with no defined size
+    public Voxel[, ,] voxel;        // Part of a chunk with no defined size
 
     // Identifiers
     public IntVector3 numID;        // World identifier of every chunk. (Name of the chunk) and relative position
@@ -72,7 +72,7 @@ public class ChunkGenerator
 
     public void DefaultChunkFilling(World world)       // Called only for default plain map
     {
-        voxel = new VoxelGenerator[world.chunkSize.x, world.chunkSize.y, world.chunkSize.z];
+        voxel = new Voxel[world.chunkSize.x, world.chunkSize.y, world.chunkSize.z];
 
         // Default chunk filling, half grass, half air
         for (int x = 0; x < world.chunkSize.x; x++)
@@ -82,9 +82,9 @@ public class ChunkGenerator
                     if((numID.x == 0 && x == 0) || (numID.y == 0 && y == 0) || (numID.z == 0 && z == 0) || 
                                  ((numID.x == world.chunkNumber.x - 1 && x == world.chunkSize.x - 1)) ||
                                  ((numID.z == world.chunkNumber.z - 1 && z == world.chunkSize.z - 1)))
-                        voxel[x, y, z] = new VoxelGenerator(world, new IntVector3(x, y, z), numID, "Rock");
+                        voxel[x, y, z] = new Voxel(world, new IntVector3(x, y, z), numID, "Rock");
                     else
-                        voxel[x, y, z] = new VoxelGenerator(world, new IntVector3(x, y, z), numID, "Air");
+                        voxel[x, y, z] = new Voxel(world, new IntVector3(x, y, z), numID, "Air");
                 }
     }
 
@@ -97,7 +97,7 @@ public class ChunkGenerator
             for (int x = 0; x < world.chunkSize.x; x ++)
                 for (int y = 0; y < world.chunkSize.y; y++)
                     for (int z = 0; z < world.chunkSize.z; z ++)
-                        voxel[x, y, z] = new VoxelGenerator(world, new IntVector3(x, y, z), numID, "Air");
+                        voxel[x, y, z] = new Voxel(world, new IntVector3(x, y, z), numID, "Air");
 
             empty = false;
             chunkObject.SetActive(true);

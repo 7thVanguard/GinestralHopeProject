@@ -2,13 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class LVTerrain
+public class TerrainVoxel
 {
     private static ChunkGenerator chunk;
-    private static VoxelGenerator voxel;
+    private static Voxel voxel;
 
     private static ChunkGenerator detChunk;
-    private static VoxelGenerator detVoxel;
+    private static Voxel detVoxel;
 
     private static float mean;
 

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NSlimeCombat
+public class NSlimeEnemyCombat
 {
     Player player;
     GameObject enemy;

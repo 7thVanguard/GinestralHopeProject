@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NSlimeMovement
+public class NSlimeEnemyMovement
 {
     private GameObject enemy;
     private CharacterController enemyController;

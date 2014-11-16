@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.F5))
             gameSerializer.Save(world, saveName);
         else if (Input.GetKeyUp(KeyCode.F9))
-            gameSerializer.Load(world, saveName);
+            gameSerializer.Load(world, player, mainCamera, saveName);
 
 
         //+ Controllers

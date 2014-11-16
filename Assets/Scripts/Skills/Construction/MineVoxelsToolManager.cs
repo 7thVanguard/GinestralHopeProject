@@ -5,7 +5,7 @@ public class MineVoxelsToolManager
 {
     // Selected voxel in a multi selection tool
     private static ChunkGenerator preDetChunk;
-    private static VoxelGenerator preDetVoxel;
+    private static Voxel preDetVoxel;
 
 
     public static void Remove(World world, Player player, MainCamera mainCamera)
@@ -23,7 +23,7 @@ public class MineVoxelsToolManager
                     // Destroy the selected voxel
                     world.chunk[DevConstructionSkillsManager.detChunk.numID.x, DevConstructionSkillsManager.detChunk.numID.y, DevConstructionSkillsManager.detChunk.numID.z]
                         .voxel[DevConstructionSkillsManager.detVoxel.numID.x, DevConstructionSkillsManager.detVoxel.numID.y, DevConstructionSkillsManager.detVoxel.numID.z]
-                        = new VoxelGenerator(world, DevConstructionSkillsManager.detVoxel.numID, DevConstructionSkillsManager.detChunk.numID, "Air");
+                        = new Voxel(world, DevConstructionSkillsManager.detVoxel.numID, DevConstructionSkillsManager.detChunk.numID, "Air");
 
                     // Reset
                     LChunk.Reset(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel);
@@ -95,7 +95,7 @@ public class MineVoxelsToolManager
 
                     world.chunk[DevConstructionSkillsManager.detChunk.numID.x, DevConstructionSkillsManager.detChunk.numID.y, DevConstructionSkillsManager.detChunk.numID.z]
                         .voxel[DevConstructionSkillsManager.detVoxel.numID.x, DevConstructionSkillsManager.detVoxel.numID.y, DevConstructionSkillsManager.detVoxel.numID.z]
-                        = new VoxelGenerator(world, DevConstructionSkillsManager.detVoxel.numID, DevConstructionSkillsManager.detChunk.numID, EGameFlow.selectedMine);
+                        = new Voxel(world, DevConstructionSkillsManager.detVoxel.numID, DevConstructionSkillsManager.detChunk.numID, EGameFlow.selectedMine);
 
                     // Reset
                     LChunk.Reset(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel);
@@ -250,7 +250,7 @@ public class MineVoxelsToolManager
                     // Creates the voxels
                     world.chunk[x / world.chunkSize.x, y / world.chunkSize.y, z / world.chunkSize.z]
                           .voxel[x % world.chunkSize.x, y % world.chunkSize.y, z % world.chunkSize.z]
-                        = new VoxelGenerator(world, new IntVector3(x % world.chunkSize.x, y % world.chunkSize.y, z % world.chunkSize.z),
+                        = new Voxel(world, new IntVector3(x % world.chunkSize.x, y % world.chunkSize.y, z % world.chunkSize.z),
                                     new IntVector3(x / world.chunkSize.x, y / world.chunkSize.y, z / world.chunkSize.z),
                                     voxelName);
                 }

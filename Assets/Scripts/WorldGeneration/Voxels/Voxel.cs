@@ -2,14 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class VoxelGenerator
+public class Voxel : Entity
 {
     public enum VoxelState { SOLID, FLUID, GAS }
     public VoxelState voxelState;
-    public enum VoxelType { VTERRAIN, VMINE, VGADGET, VFLUID, AIR }
-    public VoxelType voxelType;
 
-    public string hashName;
+    public Vector3 position;
 
     // Identifiers
     public IntVector3 parentChunkID;
@@ -37,34 +35,34 @@ public class VoxelGenerator
     public int blastResistance;
 
 
-    public VoxelGenerator(World world, IntVector3 ID, IntVector3 chunkID, string name)
+    public Voxel(World world, IntVector3 numID, IntVector3 chunkID, string name)
     {
-        hashName = name;
+        ID = name;
 
         parentChunkID = chunkID;
-        numID = ID;
+        this.numID = numID;
 
-        SetVoxelProperties(world, hashName);
+        SetVoxelProperties(world, ID);
     }
 
 
     public void BuildVoxelVertices(World world, List<Vector3> Vertices, List<Vector2> UV, List<int> Triangles, ref int vertexCount)
     {
-        switch (voxelType)
+        switch (entityType)
         {
-            case VoxelType.VTERRAIN:
+            case EntityType.TERRAIN:
                 {
-                    if (LVTerrain.IsFaceVisible(world, parentChunkID, numID) == true)
-                        LVTerrain.FaceVertices(world, parentChunkID, numID, Vertices, UV, Triangles, ref vertexCount);
+                    if (TerrainVoxel.IsFaceVisible(world, parentChunkID, numID) == true)
+                        TerrainVoxel.FaceVertices(world, parentChunkID, numID, Vertices, UV, Triangles, ref vertexCount);
                 }
                 break;
-            case VoxelType.VMINE:
+            case EntityType.MINE:
                 {
-                    LVMine.DetectSorroundings(world, parentChunkID, numID);
-                    LVMine.FaceVertices(world, parentChunkID, numID, Vertices, UV, Triangles, ref vertexCount);
+                    MineVoxel.DetectSorroundings(world, parentChunkID, numID);
+                    MineVoxel.FaceVertices(world, parentChunkID, numID, Vertices, UV, Triangles, ref vertexCount);
                 }
                 break;
-            case VoxelType.VFLUID:
+            case EntityType.FLUID:
                 {
 
                 }
@@ -77,22 +75,17 @@ public class VoxelGenerator
 
     public void BuildVoxelNormals(World world, List<Vector3> Normals)
     {
-        switch (voxelType)
+        switch (entityType)
         {
-            case VoxelType.VTERRAIN:
+            case EntityType.TERRAIN:
                 {
-                    if (LVTerrain.IsFaceVisible(world, parentChunkID, numID) == true)
-                        LVTerrain.FaceNormals(world, parentChunkID, numID, Normals);
+                    if (TerrainVoxel.IsFaceVisible(world, parentChunkID, numID) == true)
+                        TerrainVoxel.FaceNormals(world, parentChunkID, numID, Normals);
                 }
                 break;
-            case VoxelType.VMINE:
+            case EntityType.MINE:
                 {
                     
-                }
-                break;
-            case VoxelType.VGADGET:
-                {
-
                 }
                 break;
             default:
@@ -107,7 +100,7 @@ public class VoxelGenerator
         {
             case "Air":
                 {
-                    voxelType = VoxelType.AIR;
+                    entityType = EntityType.AIR;
                     voxelState = VoxelState.GAS;
 
                     frontTransparent = true;
@@ -120,7 +113,7 @@ public class VoxelGenerator
                 break;
             case "SandWay":
                 {
-                    voxelType = VoxelType.VMINE;
+                    entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 7 * world.textureSize);
@@ -128,7 +121,7 @@ public class VoxelGenerator
                 break;
             case "LittleRocks":
                 {
-                    voxelType = VoxelType.VMINE;
+                    entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 6 * world.textureSize);
@@ -136,7 +129,7 @@ public class VoxelGenerator
                 break;
             case "Rock":
                 {
-                    voxelType = VoxelType.VMINE;
+                    entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(1 * world.textureSize, 6 * world.textureSize);
@@ -144,7 +137,7 @@ public class VoxelGenerator
                 break;
             case "OtherRock":
                 {
-                    voxelType = VoxelType.VMINE;
+                    entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(2 * world.textureSize, 6 * world.textureSize);
@@ -152,7 +145,7 @@ public class VoxelGenerator
                 break;
             case "BrokenRock":
                 {
-                    voxelType = VoxelType.VMINE;
+                    entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(3 * world.textureSize, 6 * world.textureSize);
@@ -160,7 +153,7 @@ public class VoxelGenerator
                 break;
             case "RockFloor":
                 {
-                    voxelType = VoxelType.VMINE;
+                    entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(4 * world.textureSize, 6 * world.textureSize);
@@ -168,7 +161,7 @@ public class VoxelGenerator
                 break;
             case "RockWall":
                 {
-                    voxelType = VoxelType.VMINE;
+                    entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(5 * world.textureSize, 6 * world.textureSize);
@@ -176,7 +169,7 @@ public class VoxelGenerator
                 break;
             case "SmoothRock":
                 {
-                    voxelType = VoxelType.VMINE;
+                    entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(6 * world.textureSize, 6 * world.textureSize);
@@ -184,7 +177,7 @@ public class VoxelGenerator
                 break;
             case "AmatistRock":
                 {
-                    voxelType = VoxelType.VMINE;
+                    entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(7 * world.textureSize, 6 * world.textureSize);
@@ -192,7 +185,7 @@ public class VoxelGenerator
                 break;
             case "Wood":
                 {
-                    voxelType = VoxelType.VMINE;
+                    entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 5 * world.textureSize);
@@ -200,7 +193,7 @@ public class VoxelGenerator
                 break;
             case "WoodLateralColumn":
                 {
-                    voxelType = VoxelType.VMINE;
+                    entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(1 * world.textureSize, 5 * world.textureSize);
@@ -208,7 +201,7 @@ public class VoxelGenerator
                 break;
             case "WoodCentralColumn":
                 {
-                    voxelType = VoxelType.VMINE;
+                    entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(2 * world.textureSize, 5 * world.textureSize);

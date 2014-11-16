@@ -2,13 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class LVMine
+public class MineVoxel
 {
     private static ChunkGenerator chunk;
-    private static VoxelGenerator voxel;
+    private static Voxel voxel;
 
     private static ChunkGenerator detChunk;
-    private static VoxelGenerator detVoxel;
+    private static Voxel detVoxel;
 
     private static bool rightFull = false;
     private static bool frontFull = false;
@@ -183,7 +183,7 @@ public class LVMine
             {
                 LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, y, 0);
 
-                if (detVoxel.voxelState == VoxelGenerator.VoxelState.SOLID)
+                if (detVoxel.voxelState == Voxel.VoxelState.SOLID)
                 {
                     vertexPosition.x = 2 * x;
                     vertexPosition.y = 2 * y;
@@ -200,7 +200,7 @@ public class LVMine
             {
                 LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, 0, z);
 
-                if (detVoxel.voxelState == VoxelGenerator.VoxelState.SOLID)
+                if (detVoxel.voxelState == Voxel.VoxelState.SOLID)
                 {
                     vertexPosition.x = 2 * x;
                     vertexPosition.z = 2 * z;
@@ -217,7 +217,7 @@ public class LVMine
             {
                 LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, 0, y, z);
 
-                if (detVoxel.voxelState == VoxelGenerator.VoxelState.SOLID)
+                if (detVoxel.voxelState == Voxel.VoxelState.SOLID)
                 {
                     vertexPosition.y = 2 * y;
                     vertexPosition.z = 2 * z;
@@ -234,7 +234,7 @@ public class LVMine
             {
                 LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
 
-                if (detVoxel.voxelState == VoxelGenerator.VoxelState.SOLID)
+                if (detVoxel.voxelState == Voxel.VoxelState.SOLID)
                 {
                     vertexPosition.x = 2 * x;
                     vertexPosition.y = 2 * y;
@@ -255,7 +255,7 @@ public class LVMine
         detVoxel = voxel;
 
         LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
-        if (detVoxel.voxelType == VoxelGenerator.VoxelType.VTERRAIN)
+        if (detVoxel.entityType == Voxel.EntityType.TERRAIN)
         {
             if (LVoxel.VoxelExists(world, detChunk, detVoxel, 0, 1, 0) == true)
             {

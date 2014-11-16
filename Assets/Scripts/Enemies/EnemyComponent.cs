@@ -4,9 +4,9 @@ using System.Collections;
 public class EnemyComponent : MonoBehaviour
 {
     [HideInInspector] public Color originalColor;
+    [HideInInspector] public int maxLife;
     [HideInInspector] public float life;
 
-    public int maxLife;
     private int animCounter;
 
 
@@ -35,7 +35,9 @@ public class EnemyComponent : MonoBehaviour
         DamageAnim();
 
         if (life <= 0)
+        {
             Destroy(gameObject);
+        }
     }
 
 

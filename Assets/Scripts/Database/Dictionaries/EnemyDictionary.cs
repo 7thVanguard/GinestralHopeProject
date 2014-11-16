@@ -18,7 +18,7 @@ public class EnemyDictionary
 	private void Init()
 	{
 		//+ Normal SLime
-		NormalSlime normalSlime = new NormalSlime();
+		NormalSlimeEnemy normalSlime = new NormalSlimeEnemy();
 		
 		normalSlime.ID = "Normal Slime";
 		normalSlime.level = 1;

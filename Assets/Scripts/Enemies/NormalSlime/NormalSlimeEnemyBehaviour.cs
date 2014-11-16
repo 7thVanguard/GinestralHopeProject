@@ -8,16 +8,16 @@ using System.Collections;
  *  Drop            Nothing by now.
 */
 
-public class NormalSlimeBehaviour : MonoBehaviour 
+public class NormalSlimeEnemyBehaviour : MonoBehaviour 
 {
     Player player;
     MainCamera mainCamera;
 
     // Movement relative
-    private NSlimeMovement movement;
+    private NSlimeEnemyMovement movement;
 
     // Combat relative
-    private NSlimeCombat combat;
+    private NSlimeEnemyCombat combat;
 
 
     public void Init(Player player, MainCamera mainCamera)
@@ -26,12 +26,12 @@ public class NormalSlimeBehaviour : MonoBehaviour
         this.mainCamera = mainCamera;
 
         // Movement relative
-        movement = new NSlimeMovement();
+        movement = new NSlimeEnemyMovement();
 
         // Combat relative
         int maxLife = 3;
 
-        combat = new NSlimeCombat();
+        combat = new NSlimeEnemyCombat();
         this.gameObject.GetComponent<EnemyComponent>().life = maxLife;
         this.gameObject.GetComponent<EnemyComponent>().maxLife = maxLife;
 

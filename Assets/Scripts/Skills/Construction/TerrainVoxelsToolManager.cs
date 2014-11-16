@@ -168,7 +168,7 @@ public static class TerrainVoxelsToolManager
         while (LVoxel.VoxelExists(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel, 0, 1, 0))
         {
             LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 1, 0);
-            if (DevConstructionSkillsManager.detVoxel.voxelType != VoxelGenerator.VoxelType.VTERRAIN)
+            if (DevConstructionSkillsManager.detVoxel.entityType != Voxel.EntityType.TERRAIN)
             {
                 LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, -1, 0);
                 break;
@@ -176,7 +176,7 @@ public static class TerrainVoxelsToolManager
         }
         // Detects when all the vertices of the voxel are at max height, but we detect the upper one
         if (LVoxel.VoxelExists(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel, 0, -1, 0))
-            if (DevConstructionSkillsManager.detVoxel.voxelType != VoxelGenerator.VoxelType.VTERRAIN)
+            if (DevConstructionSkillsManager.detVoxel.entityType != Voxel.EntityType.TERRAIN)
                 LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, -1, 0);
     }
 
@@ -190,7 +190,7 @@ public static class TerrainVoxelsToolManager
         {
             // We delete the current voxel and detect the excess of sediment
             world.chunk[DevConstructionSkillsManager.detChunk.numID.x, DevConstructionSkillsManager.detChunk.numID.y, DevConstructionSkillsManager.detChunk.numID.z].voxel[DevConstructionSkillsManager.detVoxel.numID.x, DevConstructionSkillsManager.detVoxel.numID.y, DevConstructionSkillsManager.detVoxel.numID.z]
-                    = new VoxelGenerator(world, DevConstructionSkillsManager.detVoxel.numID, DevConstructionSkillsManager.detChunk.numID, "Air");
+                    = new Voxel(world, DevConstructionSkillsManager.detVoxel.numID, DevConstructionSkillsManager.detChunk.numID, "Air");
             sedimentExcess = (int)vertexHeight;
 
             // We get the voxel below for futher terraformation
@@ -205,7 +205,7 @@ public static class TerrainVoxelsToolManager
 
             // We place a terrain voxel above and detect the excess of sediment
             world.chunk[DevConstructionSkillsManager.detChunk.numID.x, DevConstructionSkillsManager.detChunk.numID.y, DevConstructionSkillsManager.detChunk.numID.z].voxel[DevConstructionSkillsManager.detVoxel.numID.x, DevConstructionSkillsManager.detVoxel.numID.y, DevConstructionSkillsManager.detVoxel.numID.z]
-                    = new VoxelGenerator(world, DevConstructionSkillsManager.detVoxel.numID, DevConstructionSkillsManager.detChunk.numID, EGameFlow.selectedTerrain);
+                    = new Voxel(world, DevConstructionSkillsManager.detVoxel.numID, DevConstructionSkillsManager.detChunk.numID, EGameFlow.selectedTerrain);
             sedimentExcess = (int)vertexHeight;
 
             LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 0, 0);
