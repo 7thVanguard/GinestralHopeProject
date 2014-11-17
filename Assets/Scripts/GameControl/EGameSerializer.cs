@@ -169,8 +169,8 @@ public class EGameSerializer
         
         // Load enemies
         foreach (EnemyStruct enemy in EnemySave)
-            EnemyDictionary.Enemies[enemy.ID]
-                .PlaceEnemy(world, player, mainCamera, new Vector3(enemy.positionX - 0.5f, enemy.positionY, enemy.positionZ - 0.5f), enemy.ID);
+            Enemy.Dictionary[enemy.ID]
+                .Place(new Vector3(enemy.positionX - 0.5f, enemy.positionY, enemy.positionZ - 0.5f));
 
         // Reset enemies list
         EnemySave.Clear();
@@ -187,7 +187,7 @@ public class EGameSerializer
 
         // Load enemies
         foreach (GadgetStruct gadget in GadgetSave)
-            GadgetDictionary.GadgetsDictionary[gadget.ID].PlaceGadget(world, gadget.ID, 
+            Gadget.Dictionary[gadget.ID].Place(gadget.ID, 
                 new Vector3(gadget.positionX, gadget.positionY, gadget.positionZ), new Vector3(gadget.rotationX, gadget.rotationY, gadget.rotationZ));
 
         //Reset enemies list

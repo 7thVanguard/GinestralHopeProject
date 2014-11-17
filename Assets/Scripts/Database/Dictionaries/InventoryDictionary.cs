@@ -10,7 +10,6 @@ public class InventoryDictionary : MonoBehaviour
     Consumable consumable;
     GameComponent gameComponent;
 
-    // Voxels
     Gadget gadget;
     
 
@@ -26,7 +25,7 @@ public class InventoryDictionary : MonoBehaviour
         GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.75f, 200, 50), gameComponent.nameKey + "  " + gameComponent.count);
 
         // Show wooden planks
-        gadget = GadgetDictionary.GadgetsDictionary["Wooden Plank"];
-        GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.80f, 200, 50), gadget.nameKey + "  " + gadget.count);
+        gadget = Gadget.Dictionary["Wooden Plank"];
+        GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.80f, 200, 50), gadget.ID + "  " + gadget.count);
     }
 }

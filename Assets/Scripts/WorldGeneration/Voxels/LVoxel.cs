@@ -71,4 +71,22 @@ public static class LVoxel
         detectionChunk = world.chunk[cx, cy, cz];
         detectionVoxel = detectionChunk.voxel[vx, vy, vz];
     }
+
+
+    public static void GetVoxelWithPosition(World world, Vector3 position, ref ChunkGenerator chunk, ref Voxel voxel)
+    {
+        chunk = world.chunk[(int)position.x / world.chunkSize.x, (int)position.y / world.chunkSize.y, (int)position.z / world.chunkSize.z];
+        voxel = chunk.voxel[(int)position.x % world.chunkSize.x, (int)position.y % world.chunkSize.y, (int)position.z % world.chunkSize.z];
+    }
+
+
+    public static void Explosion(World world, Vector3 position, float damage, float blastRadius)
+    {
+        ChunkGenerator chunk = null;
+        Voxel voxel = null;
+
+        GetVoxelWithPosition(world, position, ref chunk, ref voxel);
+
+
+    }
 }

@@ -9,11 +9,11 @@ public class GadgetsToolManager
         if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
             if (mainCamera.raycast.transform.gameObject.tag == "Gadget")
             {
-                Gadget gadget = GadgetDictionary.GadgetsDictionary[mainCamera.raycast.transform.gameObject.name];
+                Gadget gadget = Gadget.Dictionary[mainCamera.raycast.transform.gameObject.name];
 
                 // returns the gadged if it's not a component giver, else gives it's components
                 if (gadget.givesComponents)
-                    GameComponentDictionary.GameComponentsDictionary[gadget.nameKey].count += gadget.dropCount;
+                    GameComponentDictionary.GameComponentsDictionary[gadget.ID].count += gadget.dropCount;
                 else
                     gadget.count += gadget.dropCount;
 

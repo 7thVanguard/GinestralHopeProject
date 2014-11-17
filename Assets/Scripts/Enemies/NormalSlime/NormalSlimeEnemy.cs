@@ -3,15 +3,19 @@ using System.Collections;
 
 public class NormalSlimeEnemy : Enemy
 {
-    public void Init()
+    public override void Init(World world, Player player, MainCamera mainCamera, Enemy enemy)
     {
-        ID = EnemyDictionary.Enemies["Normal Slime"].ID;
-        level = EnemyDictionary.Enemies["Normal Slime"].level;
-        damage = EnemyDictionary.Enemies["Normal Slime"].damage;
+        this.world = world;
+        this.player = player;
+        this.mainCamera = mainCamera;
+
+        ID = "Normal Slime";
+        level = 1;
+        damage = 1;
     }
 
 
-    public void PlaceEnemy(World world, Player player, MainCamera mainCamera, Vector3 pos)
+    public override void Place(Vector3 pos)
     {
         Transform enemy = world.normalSlime;
 
@@ -25,15 +29,5 @@ public class NormalSlimeEnemy : Enemy
         enemy.gameObject.AddComponent<EnemyComponent>();
         enemy.gameObject.AddComponent<NormalSlimeEnemyBehaviour>();
         enemy.gameObject.GetComponent<NormalSlimeEnemyBehaviour>().Init(player, mainCamera);
-
-
-        // Matrix update
-        //world.chunk[(int)pos.x / world.chunkSize.x, (int)(pos.y + 1) / world.chunkSize.y, (int)pos.z / world.chunkSize.z]
-        //    .voxel[(int)pos.x % world.chunkSize.x, (int)(pos.y + 1) % world.chunkSize.y, (int)pos.z % world.chunkSize.z].entityType = Voxel.EntityType.ENEMY;
-        //world.chunk[(int)pos.x / world.chunkSize.x, (int)(pos.y + 1) / world.chunkSize.y, (int)pos.z / world.chunkSize.z]
-        //    .voxel[(int)pos.x % world.chunkSize.x, (int)(pos.y + 1) % world.chunkSize.y, (int)pos.z % world.chunkSize.z].ID = ID;
-        //world.chunk[(int)pos.x / world.chunkSize.x, (int)(pos.y + 1) / world.chunkSize.y, (int)pos.z / world.chunkSize.z]
-        //    .voxel[(int)pos.x % world.chunkSize.x, (int)(pos.y + 1) % world.chunkSize.y, (int)pos.z % world.chunkSize.z].position = pos;
-
     }
 }

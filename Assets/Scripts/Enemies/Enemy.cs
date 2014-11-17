@@ -1,17 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class Enemy : Entity
+public class Enemy
 {
+    protected World world;
+    protected Player player;
+    protected MainCamera mainCamera;
+
+    public static Dictionary<string, Enemy> Dictionary;
+
+    public string ID;
 	public int level;
 	public int damage;
 
-    public void PlaceEnemy(World world, Player player, MainCamera mainCamera, Vector3 pos, string ID)
+
+    public virtual void Init(World world, Player player, MainCamera mainCamera, Enemy enemy)
     {
-        if (ID == "Normal Slime")
-        {
-            NormalSlimeEnemy normalSlime = new NormalSlimeEnemy();
-            normalSlime.PlaceEnemy(world, player, mainCamera, pos);
-        }
+        this.world = world;
+        this.player = player;
+        this.mainCamera = mainCamera;
+
+        Dictionary = new Dictionary<string, Enemy>();
+
+        //+ Normal Slime
+        enemy = new NormalSlimeEnemy();
+        enemy.Init(world, player, mainCamera, enemy);
+        Dictionary.Add("Normal Slime", enemy);
+
+        enemy = Dictionary["Normal Slime"];
+    }
+
+
+    public virtual void Place(Vector3 pos)
+    {
+
     }
 }

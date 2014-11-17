@@ -10,7 +10,7 @@ public static class SInventory
         {
             GameComponentDictionary.GameComponentsDictionary["Wood Pieces"].count -= 5;
             GameComponentDictionary.GameComponentsDictionary["Nails"].count -= 20;
-            GadgetDictionary.GadgetsDictionary["Wooden Plank"].count++;
+            Gadget.Dictionary["Wooden Plank"].count++;
         }
     }
 }

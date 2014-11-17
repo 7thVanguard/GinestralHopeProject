@@ -7,12 +7,12 @@ public static class LVGadget
 {
     public static void placePlank(Vector3 position, int rotation)
     {
-        if (GadgetDictionary.GadgetsDictionary.ContainsKey("Wooden Plank"))
+        if (Gadget.Dictionary.ContainsKey("Wooden Plank"))
         {
-            if (GadgetDictionary.GadgetsDictionary["Wooden Plank"].count >= 1 || EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
+            if (Gadget.Dictionary["Wooden Plank"].count >= 1 || EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
             {
                 GameObject plank = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                Gadget gadget = GadgetDictionary.GadgetsDictionary["Wooden Plank"];
+                Gadget gadget = Gadget.Dictionary["Wooden Plank"];
 
                 plank.name = "Wooden Plank";
                 plank.tag = "Gadget";
@@ -44,7 +44,7 @@ public static class LVGadget
                 if (EGameFlow.generalMode == EGameFlow.GeneralMode.PLAYER)
                 {
                     // Remove the plank from the inventory
-                    GadgetDictionary.GadgetsDictionary["Wooden Plank"].count--;
+                    Gadget.Dictionary["Wooden Plank"].count--;
                 }
             }
         }

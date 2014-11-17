@@ -19,7 +19,7 @@ public class NSlimeEnemyCombat
         this.player = player;
         this.enemy = enemy;
 
-        selectedSkill = SkillDictionary.Skills["FireBall"];
+        selectedSkill = Skill.Dictionary["FireBall"];
         detectionDistance = 30;
     }
 
@@ -49,7 +49,7 @@ public class NSlimeEnemyCombat
                 // Check if player is visible
                 if (Physics.Raycast(enemy.transform.position, playerFocus, out impact, 30))
                     if (impact.transform.gameObject.tag == "Player")
-                        selectedSkill.CastDirected(player, mainCamera, null, enemy.transform.position, false);
+                        selectedSkill.CastDirected(null, enemy.transform.position, false);
             }
         }
     }

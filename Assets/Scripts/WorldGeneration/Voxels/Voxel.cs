@@ -2,11 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Voxel : Entity
+public class Voxel
 {
+    public enum EntityType { TERRAIN, MINE, FLUID, GADGET, ENEMY, AIR }
+    public EntityType entityType;
+
     public enum VoxelState { SOLID, FLUID, GAS }
     public VoxelState voxelState;
 
+
+    public string ID;
     public Vector3 position;
 
     // Identifiers

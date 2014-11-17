@@ -35,8 +35,8 @@ public class InventoryManager : EditorWindow
 
         EditorGUILayout.BeginHorizontal();
 
-        foreach (KeyValuePair<string, Gadget> entry in GadgetDictionary.GadgetsDictionary)
-            EditorGUILayout.LabelField("Name: " + entry.Value.nameKey + "  " + entry.Value.count);
+        foreach (KeyValuePair<string, Gadget> entry in Gadget.Dictionary)
+            EditorGUILayout.LabelField("Name: " + entry.Value.ID + "  " + entry.Value.count);
 
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.EndVertical();

@@ -6,16 +6,16 @@ public class SkillDirected : Skill
     protected Vector3 originPosition;
     protected Vector3 targetPosition;
     protected Vector3 objectDirection;
+    protected Vector3 direction;
 
 
-    public SkillDirected(string ID)
+    public override void Init(World world, Player player, MainCamera mainCamera, Skill skill)
     {
         
     }
 
 
-
-    public override GameObject CastDirected(Player player, MainCamera mainCamera, GameObject gameObject, Vector3 origin, bool launchedByPlayer)
+    public override void CastDirected(GameObject gameObject, Vector3 origin, bool launchedByPlayer)
     {
         // Set tag
         gameObject.tag = "Skill";
@@ -30,7 +30,6 @@ public class SkillDirected : Skill
         gameObject.AddComponent<Rigidbody>();
 
         //+ Player target selection
-
         if (launchedByPlayer)
         {
             // Target location
@@ -44,16 +43,13 @@ public class SkillDirected : Skill
             else
                 targetPosition = PlayerCombat.target.transform.position;
         }
-
         //+ Enemy target selection
-
         else
         {
             targetPosition = player.playerObj.transform.position;
         }
 
         //+ Fire
-
         // Detecting initial direction
         objectDirection = targetPosition - origin;
         objectDirection.Normalize();
@@ -61,16 +57,11 @@ public class SkillDirected : Skill
 
         // We fire in front of the caster instead of inside him
         originPosition = origin + objectDirection.normalized * 4 / 5;
-
-        // Return
-        return gameObject;
-        //ball.GetComponent<LambertBall>().Fire(originPosition, targetPosition, ballDirection, ballSpeed);
     }
 
 
     public override void FireDirected(GameObject gameObject, Vector3 originPosition, Vector3 targetPosition, Vector3 objectDirection, int objectSpeed)
     {
-        Vector3 direction;
         float flyTime;
 
         // Setting flight variables
@@ -82,7 +73,5 @@ public class SkillDirected : Skill
         direction.z = objectDirection.z;
 
         gameObject.transform.position = originPosition;
-
-        gameObject.GetComponent<SDFireBallBehaviour>().Init(direction);
     }
 }

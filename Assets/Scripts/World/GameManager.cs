@@ -15,8 +15,6 @@ public class GameManager : MonoBehaviour
     private Dictionary<string, GameController> Controller;
 
     private GameController activeController;
-    private SkillDictionary skillDictionary;
-    private EnemyDictionary enemyDictionary;
 
 
     // Main control classes
@@ -24,6 +22,10 @@ public class GameManager : MonoBehaviour
     private Player player;
     private MainCamera mainCamera;
     private Sun sun;
+
+    private Enemy enemy;
+    private Gadget gadget;
+    private Skill skill;
     
 
     // Save
@@ -39,14 +41,13 @@ public class GameManager : MonoBehaviour
         sun = new Sun(player, sunFlare);
 
         // post initialize
-        world.worldObj.GetComponent<HUD>().Init(player);
-        sun.lightSystemBehaviour.Init(player, sun.sunObj, sun.lensFlare);
+        world.worldObj.GetComponent<HUD>().Init(player);                    // Initialize HUD
+        sun.lightSystemBehaviour.Init(player, sun.sunObj, sun.lensFlare);   // Initialize Light System
+
 
 
         //+ Controllers Init
         Controller = new Dictionary<string, GameController>();
-        skillDictionary = new SkillDictionary();
-        enemyDictionary = new EnemyDictionary();
 
 
 
@@ -70,6 +71,21 @@ public class GameManager : MonoBehaviour
         Controller.Add("DeveloperBuildMode", aPC);
 
         activeController = Controller["DeveloperBuildMode"];
+
+
+        //+ Enemies Init
+        enemy = new Enemy();
+        enemy.Init(world, player, mainCamera, enemy);
+
+
+        //+ Gadgets Init
+        gadget = new Gadget();
+        gadget.Init(world, player, mainCamera, gadget);
+
+
+        //+ Skills Init
+        skill = new Skill();
+        skill.Init(world, player, mainCamera, skill);
 
         gameSerializer = new EGameSerializer();
     }

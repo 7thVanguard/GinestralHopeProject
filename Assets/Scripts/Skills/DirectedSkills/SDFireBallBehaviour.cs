@@ -6,9 +6,14 @@ public class SDFireBallBehaviour : MonoBehaviour
     private Vector3 direction;
     private bool isColliding;
 
+    private float damage;
+    private float blastRadius;
 
-    public void Init(Vector3 direction)
+
+    public void Init(Vector3 direction, float damage, float blastRadius)
     {
+        this.damage = damage;
+        this.blastRadius = blastRadius;
         this.direction = direction;
         isColliding = false;
     }
@@ -43,6 +48,10 @@ public class SDFireBallBehaviour : MonoBehaviour
                 other.gameObject.GetComponent<EnemyComponent>().Damage(1);
             else if (other.gameObject.tag == "Player")
                 other.gameObject.GetComponent<PlayerComponent>().Damage(1);
+            else if (other.gameObject.tag == "Chunk")
+            {
+                Debug.Log(transform.position);
+            }
 
             Destroy(gameObject);
         }

@@ -43,8 +43,8 @@ public class CombatSkillsManager
                 {
                     case "FireBall":
                         {
-                            selectedSkill = SkillDictionary.Skills["FireBall"];
-                            selectedSkill.CastDirected(player, mainCamera, null, player.playerObj.transform.position, true);
+                            selectedSkill = Skill.Dictionary["FireBall"];
+                            selectedSkill.CastDirected(null, player.playerObj.transform.position, true);
                         }
                         break;
                     default:
