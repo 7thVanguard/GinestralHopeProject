@@ -11,6 +11,7 @@ public class NormalSlimeEnemy : Enemy
 
         ID = "Normal Slime";
         level = 1;
+        life = 9;
         damage = 1;
     }
 
@@ -28,6 +29,6 @@ public class NormalSlimeEnemy : Enemy
         // Components
         enemy.gameObject.AddComponent<EnemyComponent>();
         enemy.gameObject.AddComponent<NormalSlimeEnemyBehaviour>();
-        enemy.gameObject.GetComponent<NormalSlimeEnemyBehaviour>().Init(player, mainCamera);
+        enemy.gameObject.GetComponent<NormalSlimeEnemyBehaviour>().Init(player, mainCamera, life);
     }
 }

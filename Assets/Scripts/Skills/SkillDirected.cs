@@ -28,6 +28,8 @@ public class SkillDirected : Skill
 
         // Add components
         gameObject.AddComponent<Rigidbody>();
+        gameObject.AddComponent<SphereCollider>();
+        gameObject.GetComponent<SphereCollider>().radius *= 1.5f;
 
         //+ Player target selection
         if (launchedByPlayer)

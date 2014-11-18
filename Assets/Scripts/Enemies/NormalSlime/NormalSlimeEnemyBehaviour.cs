@@ -20,16 +20,13 @@ public class NormalSlimeEnemyBehaviour : MonoBehaviour
     private NSlimeEnemyCombat combat;
 
 
-    public void Init(Player player, MainCamera mainCamera)
+    public void Init(Player player, MainCamera mainCamera, int maxLife)
     {
         this.player = player;
         this.mainCamera = mainCamera;
 
         // Movement relative
         movement = new NSlimeEnemyMovement();
-
-        // Combat relative
-        int maxLife = 3;
 
         combat = new NSlimeEnemyCombat();
         this.gameObject.GetComponent<EnemyComponent>().life = maxLife;

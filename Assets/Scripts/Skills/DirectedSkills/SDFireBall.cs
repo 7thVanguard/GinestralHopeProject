@@ -21,7 +21,9 @@ public class SDFireBall : SkillDirected
     public override void CastDirected(GameObject fireBall, Vector3 origin, bool launchedByPlayer)
     {
         // Create the object
-        fireBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        Transform fireBallTransform = Object.Instantiate(world.skills.FindChild("Fireball1")) as Transform;
+        fireBall = fireBallTransform.gameObject;
+        fireBall.name = "Fire Ball";
 
         // Call base function
         base.CastDirected(fireBall, origin, launchedByPlayer);

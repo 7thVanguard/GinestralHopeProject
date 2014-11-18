@@ -12,6 +12,7 @@ public class Enemy
 
     public string ID;
 	public int level;
+    public int life;
 	public int damage;
 
 

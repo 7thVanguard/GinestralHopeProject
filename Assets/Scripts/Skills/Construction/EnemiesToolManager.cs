@@ -13,10 +13,7 @@ public class EnemiesToolManager
 	{
         if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
             if (mainCamera.raycast.normal.y >= 0.75f)
-            {
-                Debug.Log(EGameFlow.selectedEnemy);
                 Enemy.Dictionary[EGameFlow.selectedEnemy].Place(new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)));
-            }
 	}
 	
 	

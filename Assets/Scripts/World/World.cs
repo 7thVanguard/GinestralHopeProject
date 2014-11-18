@@ -15,6 +15,8 @@ public class World
 
 
     // Prefabs
+    public Transform skills;
+
     public Transform normalSlime;
     public Transform woodPieces;
     public Transform nails;
@@ -41,6 +43,8 @@ public class World
         chunk = new ChunkGenerator[chunkNumber.x, chunkNumber.y, chunkNumber.z];
 
         // Prefabs relative
+        skills = prefabs.FindChild("Skills");
+
         normalSlime = prefabs.FindChild("Normal Slime");
         woodPieces = prefabs.FindChild("Wood Pieces");
         nails = prefabs.FindChild("Nails");
