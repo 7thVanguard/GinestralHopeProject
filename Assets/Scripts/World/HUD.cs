@@ -71,5 +71,23 @@ public class HUD : MonoBehaviour
             GUI.DrawTexture(new Rect(Screen.width * 3 / 8, Screen.height * 4 / 5 - 7,
                 (Screen.width * 2 / 8) * (CombatSkillsManager.actualCastingTime / CombatSkillsManager.totalCastingTime), 14), lifeBar);
         }
+
+
+        switch (EGameFlow.gameMode)
+        {
+            case EGameFlow.GameMode.COMBAT:
+                break;
+            case EGameFlow.GameMode.CONTRUCTION:
+                break;
+            case EGameFlow.GameMode.DEVCOMBAT:
+                break;
+            case EGameFlow.GameMode.DEVCONSTRUCTION:
+                {
+
+                }
+                break;
+            default:
+                break;
+        }
     }
 }

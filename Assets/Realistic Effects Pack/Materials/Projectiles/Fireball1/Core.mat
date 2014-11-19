@@ -34,16 +34,16 @@ Material:
         second: 3
       data:
         first:
+          name: _CutOutLightCore
+        second: .5
+      data:
+        first:
           name: _ColorStrength
         second: 1
       data:
         first:
           name: _BumpAmt
         second: 10
-      data:
-        first:
-          name: _CutOutLightCore
-        second: .5
     m_Colors:
       data:
         first:
@@ -52,4 +52,4 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .477941155, g: .38836354, b: .0140571063, a: .501960814}
+        second: {r: .772058845, g: .352516145, b: .124891855, a: .501960814}

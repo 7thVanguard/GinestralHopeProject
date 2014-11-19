@@ -8,7 +8,7 @@ public class DevCombatSkillsManager
 
     public void Update(Player player, MainCamera mainCamera)
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             selectedSkill = Skill.Dictionary["FireBall"];
             selectedSkill.CastDirected(null, player.playerObj.transform.position, true);

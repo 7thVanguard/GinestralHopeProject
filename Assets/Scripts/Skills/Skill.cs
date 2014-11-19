@@ -13,6 +13,10 @@ public class Skill
     public int objectSpeed;
     public int maxDistance;
 
+    // Cast
+    public float castingTime; // In seconds
+
+    // Fire
     public float damage;
     public float blastRadius;
 

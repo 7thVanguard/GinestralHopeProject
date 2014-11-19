@@ -27,16 +27,16 @@ Material:
         second: 3
       data:
         first:
+          name: _CutOutLightCore
+        second: .125
+      data:
+        first:
           name: _TintStrength
         second: 3.9285717
       data:
         first:
           name: _CoreStrength
         second: 8
-      data:
-        first:
-          name: _CutOutLightCore
-        second: .125
     m_Colors:
       data:
         first:
@@ -45,8 +45,8 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: 1, g: .558620691, b: 0, a: 1}
+        second: {r: 1, g: .434482753, b: 0, a: 1}
       data:
         first:
           name: _CoreColor
-        second: {r: 1, g: .675456405, b: .264705896, a: 1}
+        second: {r: 1, g: .553752542, b: .264705896, a: 1}

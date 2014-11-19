@@ -13,6 +13,10 @@ public class SDFireBall : SkillDirected
         objectSpeed = 25;
         maxDistance = 30;
 
+        // CAst
+        castingTime = 2;
+
+        // Fire
         damage = 3;
         blastRadius = 3;
     }

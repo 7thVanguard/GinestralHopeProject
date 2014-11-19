@@ -3,8 +3,6 @@ using System.Collections;
 
 public class CombatSkillsManager
 {
-    Skill selectedSkill;
-
     public static float totalCastingTime = 0;
     public static float actualCastingTime = 0;
     public static string methodName = "";
@@ -13,14 +11,16 @@ public class CombatSkillsManager
     public void Update(Player player, MainCamera mainCamera)
     {
         // Make sure that pressing again a button won't reset the skill
-        if (methodName != "FireBall")
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (methodName != "FireBall")
             {
-                totalCastingTime = 120;
-                actualCastingTime = 0;
                 methodName = "FireBall";
+                actualCastingTime = 0;
+                totalCastingTime = Skill.Dictionary[methodName].castingTime;
                 casting = true;
             }
+        }
 
 
         // Cancel
@@ -35,21 +35,11 @@ public class CombatSkillsManager
         // Counter
         if (actualCastingTime < totalCastingTime)
         {
-            actualCastingTime++;
+            actualCastingTime += Time.deltaTime;
             // Counter ends and the selected skill is launched
-            if (actualCastingTime == totalCastingTime)
+            if (actualCastingTime >= totalCastingTime)
             {
-                switch (methodName)
-                {
-                    case "FireBall":
-                        {
-                            selectedSkill = Skill.Dictionary["FireBall"];
-                            selectedSkill.CastDirected(null, player.playerObj.transform.position, true);
-                        }
-                        break;
-                    default:
-                        break;
-                }
+                Skill.Dictionary[methodName].CastDirected(null, player.playerObj.transform.position, true);
 
                 // Reset method name
                 methodName = "";
