@@ -67,10 +67,22 @@ public class SkillDirected : Skill
         // Setting flight variables
         flyTime = Vector3.Distance(originPosition, targetPosition) / objectSpeed;
 
-        // Initial direction
-        direction.x = objectDirection.x;
-        direction.y = (targetPosition.y - originPosition.y + 0.5f * EGamePhysics.gravity * Mathf.Pow(flyTime, 2)) / flyTime;
-        direction.z = objectDirection.z;
+        if (skillTrajectory == SkillTrajectory.PARABOLIC)
+        {
+            // Initial direction
+            direction.x = objectDirection.x;
+            direction.z = objectDirection.z;
+            direction.y = (targetPosition.y - originPosition.y + 0.5f * EGamePhysics.gravity * Mathf.Pow(flyTime, 2)) / flyTime;
+        }
+        else if (skillTrajectory == SkillTrajectory.LINEAR)
+        {
+            direction.x = objectDirection.x;
+            direction.z = objectDirection.z;
+            direction.y = (targetPosition.y - originPosition.y) / flyTime;
+        }
+
+        
+        
 
         gameObject.transform.position = originPosition;
     }

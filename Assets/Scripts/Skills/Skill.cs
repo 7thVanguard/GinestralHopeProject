@@ -3,15 +3,21 @@ using System.Collections.Generic;
 
 public class Skill
 {
+    public enum SkillTrajectory { INSTANT, LINEAR, PARABOLIC }
+
     protected World world;
     protected Player player;
     protected MainCamera mainCamera;
 
     public static Dictionary<string, Skill> Dictionary;
 
+    // Global
     public string ID;
-    public int objectSpeed;
-    public int maxDistance;
+
+    // Flight
+    public SkillTrajectory skillTrajectory;
+    protected int objectSpeed;
+    protected int maxDistance;
 
     // Cast
     public float castingTime; // In seconds
@@ -32,9 +38,14 @@ public class Skill
         //+ Fire Ball
         skill = new SDFireBall();
         skill.Init(world, player, mainCamera, skill);
-        Dictionary.Add("FireBall", skill);
+        Dictionary.Add("Fire Ball", skill);
 
-        skill = Dictionary["FireBall"];
+        //+ Fire Mine
+        skill = new SDFireMine();
+        skill.Init(world, player, mainCamera, skill);
+        Dictionary.Add("Fire Mine", skill);
+
+        skill = Dictionary["Fire Ball"];
     }
 
 

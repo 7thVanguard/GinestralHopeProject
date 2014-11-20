@@ -45,7 +45,6 @@ public class SDFireBallBehaviour : MonoBehaviour
         {
             if (!isColliding)
             {
-
                 //+ Impact detection by raycast
                 if (Physics.Raycast(transform.position, direction, out impact, 0.5f))
                 {
@@ -69,7 +68,7 @@ public class SDFireBallBehaviour : MonoBehaviour
                 }
 
                 //+ Normal movement
-                // if the raycast don't detect a collision 
+                // if the raycast don't detect a collision
                 if (!isColliding)
                 {
                     // The position of the fireBall without the y component
@@ -83,7 +82,7 @@ public class SDFireBallBehaviour : MonoBehaviour
                         transform.FindChild("Trail").gameObject.SetActive(true);
                     }
 
-                    // Destroy depending on distance to the player
+                    // Destroy depending on the ball position
                     if (transform.position.y < -10)
                         Destroy(gameObject);
                 }

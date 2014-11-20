@@ -9,7 +9,11 @@ public class SDFireBall : SkillDirected
         base.player = player;
         base.mainCamera = mainCamera;
 
-        ID = "FireBall";
+        // Global
+        ID = "Fire Ball";
+
+        // Flight
+        skillTrajectory = Skill.SkillTrajectory.PARABOLIC;
         objectSpeed = 25;
         maxDistance = 30;
 
