@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DeveloperBuildGameController : GameController 
+public class DeveloperGameController : GameController 
 {
     private World world;
     private Player player;
     private MainCamera mainCamera;
 
 
-    public DeveloperBuildGameController(World world, Player player, MainCamera mainCamera) : base(world, player, mainCamera)
+    public DeveloperGameController(World world, Player player, MainCamera mainCamera) : base(world, player, mainCamera)
     {
         this.world = world;
         this.player = player;
@@ -18,7 +18,7 @@ public class DeveloperBuildGameController : GameController
 
     public override void Start()
     {
-        inputController = new DeveloperBuildInputController(world, player, mainCamera);
+        inputController = new DeveloperInputController(world, player, mainCamera);
         base.Start();
     }
 

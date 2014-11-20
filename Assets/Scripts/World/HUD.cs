@@ -5,21 +5,34 @@ public class HUD : MonoBehaviour
 {
     Player player;
 
+    // Developer mode
+    private Texture2D developerAtlas;
+    private Texture2D developerBox;
+
+    // gizmos
     public static Texture2D gizmoCircle;
-    Texture2D gizmoCross;
-    Texture2D translucentSelector;
+    private Texture2D gizmoCross;
+    private Texture2D translucentSelector;
 
-    Texture2D lifeBar;
-    Texture2D lifeBarBack;
+    // Bars
+    private Texture2D lifeBar;
+    private Texture2D lifeBarBack;
 
+    // GameObjects
     public static GameObject quadMarker;
     public static GameObject cubeMarker;
     public static GameObject sphereMarker;
 
 
-    public void Init(Player player)
+    // GUI booleans
+
+
+    public void Init(Player player, Texture2D developerAtlas, Texture2D developerBox)
     {
         this.player = player;
+
+        this.developerAtlas = developerAtlas;
+        this.developerBox = developerBox;
     }
 
 
@@ -75,15 +88,32 @@ public class HUD : MonoBehaviour
 
         switch (EGameFlow.gameMode)
         {
-            case EGameFlow.GameMode.COMBAT:
+            case EGameFlow.GameMode.PLAYER:
                 break;
-            case EGameFlow.GameMode.CONTRUCTION:
+            case EGameFlow.GameMode.GODMODE:
                 break;
-            case EGameFlow.GameMode.DEVCOMBAT:
-                break;
-            case EGameFlow.GameMode.DEVCONSTRUCTION:
+            case EGameFlow.GameMode.DEVELOPER:
                 {
-
+                    // Sun icon
+                    GUI.DrawTextureWithTexCoords
+                        (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                        developerAtlas,
+                        new Rect(1 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
+                    // Voxels icon
+                    GUI.DrawTextureWithTexCoords
+                        (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                        developerAtlas,
+                        new Rect(3 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
+                    // Gadgets icon
+                    GUI.DrawTextureWithTexCoords
+                        (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                        developerAtlas,
+                        new Rect(4 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
+                    // Enemies icon
+                    GUI.DrawTextureWithTexCoords
+                        (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                        developerAtlas,
+                        new Rect(5 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
                 }
                 break;
             default:

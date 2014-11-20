@@ -4,11 +4,8 @@ using System.Collections;
 public static class EGameFlow
 {
     // Game Modes
-    public enum GeneralMode { PLAYER, DEVELOPER }
-    public static GeneralMode generalMode = GeneralMode.DEVELOPER;
-
-    public enum GameMode { COMBAT, CONTRUCTION, DEVCOMBAT, DEVCONSTRUCTION }
-    public static GameMode gameMode = GameMode.DEVCONSTRUCTION;
+    public enum GameMode { PLAYER, GODMODE, DEVELOPER }
+    public static GameMode gameMode = GameMode.DEVELOPER;
 
 
     // Tools

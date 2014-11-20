@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DeveloperCombatInputController : AbstractInputsController 
+public class GodInputController : AbstractInputsController 
 {
     private Player player;
     private MainCamera mainCamera;
@@ -9,7 +9,7 @@ public class DeveloperCombatInputController : AbstractInputsController
     private DevCombatSkillsManager skills;
 
 
-    public DeveloperCombatInputController(Player player, MainCamera mainCamera)
+    public GodInputController(Player player, MainCamera mainCamera)
     {
         this.player = player;
         this.mainCamera = mainCamera;
@@ -25,8 +25,7 @@ public class DeveloperCombatInputController : AbstractInputsController
 
     public override void Update()
     {
-        EGameFlow.gameMode = EGameFlow.GameMode.DEVCOMBAT;
-        EGameFlow.generalMode = EGameFlow.GeneralMode.DEVELOPER;
+        EGameFlow.gameMode = EGameFlow.GameMode.GODMODE;
         player.constructionDetection = 300;
 
         skills.Update(player, mainCamera);

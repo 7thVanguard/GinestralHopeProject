@@ -206,6 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs: {fileID: 400000, guid: eb7794d40c252dc4cad5d34eb23c61a2, type: 2}
-  atlas: {fileID: 2100000, guid: 585f795cf36d90d47a85b6bb45a6d0a6, type: 2}
+  mineAtlas: {fileID: 2100000, guid: 585f795cf36d90d47a85b6bb45a6d0a6, type: 2}
+  developerAtlas: {fileID: 2800000, guid: 49329810f8ae410438bf5ba7b0332c95, type: 3}
+  developerBox: {fileID: 2800000, guid: bafeb03eb9a5e7e4d86228b4193cce2c, type: 3}
   sunFlare: {fileID: 12100000, guid: 54fbbf098d116effa00081aba8ad6659, type: 2}
   saveName: PalauiSave

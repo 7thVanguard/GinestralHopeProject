@@ -9,7 +9,7 @@ public static class LVGadget
     {
         if (Gadget.Dictionary.ContainsKey("Wooden Plank"))
         {
-            if (Gadget.Dictionary["Wooden Plank"].count >= 1 || EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
+            if (Gadget.Dictionary["Wooden Plank"].count >= 1 || EGameFlow.gameMode != EGameFlow.GameMode.PLAYER)
             {
                 GameObject plank = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 Gadget gadget = Gadget.Dictionary["Wooden Plank"];
@@ -41,7 +41,7 @@ public static class LVGadget
 
                 plank.transform.eulerAngles = new Vector3(0, rotation, 0);
 
-                if (EGameFlow.generalMode == EGameFlow.GeneralMode.PLAYER)
+                if (EGameFlow.gameMode == EGameFlow.GameMode.PLAYER)
                 {
                     // Remove the plank from the inventory
                     Gadget.Dictionary["Wooden Plank"].count--;
@@ -53,7 +53,7 @@ public static class LVGadget
 
     public static void placeWoodPiecesGadget(World world, Vector3 position)
     {
-        if (EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
+        if (EGameFlow.gameMode == EGameFlow.GameMode.DEVELOPER)
         {
             Transform woodPieces = world.woodPieces;
 
@@ -65,7 +65,7 @@ public static class LVGadget
 
     public static void placeNailsGadget(World world, Vector3 position)
     {
-        if (EGameFlow.generalMode == EGameFlow.GeneralMode.DEVELOPER)
+        if (EGameFlow.gameMode == EGameFlow.GameMode.DEVELOPER)
         {
             Transform nails = world.nails;
 

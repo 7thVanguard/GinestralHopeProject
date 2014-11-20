@@ -5,8 +5,17 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour 
 {
     // Inspector variables
+    // Prefabs
     public Transform prefabs;
-    public Material atlas;
+
+    // Materials
+    public Material mineAtlas;
+
+    // Textures
+    // Developer
+    public Texture2D developerAtlas;
+    public Texture2D developerBox;
+
     public Flare sunFlare;
     public string saveName;
 
@@ -35,14 +44,14 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         //+ Object Init
-        world = new World(gameObject, prefabs, atlas);
+        world = new World(gameObject, prefabs, mineAtlas);
         player = new Player();
         mainCamera = new MainCamera();
         sun = new Sun(player, sunFlare);
 
         // post initialize
-        world.worldObj.GetComponent<HUD>().Init(player);                    // Initialize HUD
-        sun.lightSystemBehaviour.Init(player, sun.sunObj, sun.lensFlare);   // Initialize Light System
+        world.worldObj.GetComponent<HUD>().Init(player, developerAtlas, developerBox);      // Initialize HUD
+        sun.lightSystemBehaviour.Init(player, sun.sunObj, sun.lensFlare);                   // Initialize Light System
 
 
 
@@ -54,23 +63,19 @@ public class GameManager : MonoBehaviour
         //+ Game modes
         GameController aPC;
 
-        aPC = new PlayerCombatGameController(world, player, mainCamera);
+        aPC = new PlayerGameController(world, player, mainCamera);
         aPC.Start();
-        Controller.Add("PlayerCombatMode", aPC);
+        Controller.Add("PlayerMode", aPC);
 
-        aPC = new PlayerBuildGameController(world, player, mainCamera);
+        aPC = new GodGameController(world, player, mainCamera);
         aPC.Start();
-        Controller.Add("PlayerBuildMode", aPC);
+        Controller.Add("GodMode", aPC);
 
-        aPC = new DeveloperCombatGameController(world, player, mainCamera);
+        aPC = new DeveloperGameController(world, player, mainCamera);
         aPC.Start();
-        Controller.Add("DeveloperCombatMode", aPC);
+        Controller.Add("DeveloperMode", aPC);
 
-        aPC = new DeveloperBuildGameController(world, player, mainCamera);
-        aPC.Start();
-        Controller.Add("DeveloperBuildMode", aPC);
-
-        activeController = Controller["DeveloperBuildMode"];
+        activeController = Controller["DeveloperMode"];
 
 
         //+ Enemies Init
@@ -96,13 +101,11 @@ public class GameManager : MonoBehaviour
         //+ Global inputs
         // Game mode
         if (Input.GetKey(KeyCode.F1))
-            activeController = Controller["PlayerCombatMode"];
+            activeController = Controller["PlayerMode"];
         else if (Input.GetKey(KeyCode.F2))
-            activeController = Controller["PlayerBuildMode"];
+            activeController = Controller["GodMode"];
         else if (Input.GetKey(KeyCode.F3))
-            activeController = Controller["DeveloperCombatMode"];
-        else if (Input.GetKey(KeyCode.F4))
-            activeController = Controller["DeveloperBuildMode"];
+            activeController = Controller["DeveloperMode"];
 
         // Pause
         if (Input.GetKeyUp(KeyCode.P))

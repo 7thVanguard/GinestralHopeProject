@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerBuildInputController : AbstractInputsController 
+public class PlayerInputController : AbstractInputsController 
 {
     private World world;
     private Player player;
     private MainCamera mainCamera;
 
-    private ConstructionSkillsManager skills;
+    private ConstructionSkillsManager constructionSkills;
+    private CombatSkillsManager combatSkills;
 
 
-    public PlayerBuildInputController(World world, Player player, MainCamera mainCamera)
+
+    public PlayerInputController(World world, Player player, MainCamera mainCamera)
     {
         this.world = world;
         this.player = player;
@@ -20,14 +22,14 @@ public class PlayerBuildInputController : AbstractInputsController
 
     public override void Start()
     {
-        skills = new ConstructionSkillsManager();
+        constructionSkills = new ConstructionSkillsManager();
+        combatSkills = new CombatSkillsManager();
     }
 
 
     public override void Update()
     {
-        EGameFlow.gameMode = EGameFlow.GameMode.CONTRUCTION;
-        EGameFlow.generalMode = EGameFlow.GeneralMode.PLAYER;
+        EGameFlow.gameMode = EGameFlow.GameMode.PLAYER;
         player.constructionDetection = 5;
 
         // Tools
@@ -40,12 +42,12 @@ public class PlayerBuildInputController : AbstractInputsController
         {
             if (Input.GetKey(KeyCode.I))
                 EGameFlow.selectedGadget = "Wooden Plank";
-            else if (Input.GetKey(KeyCode.J))
-                EGameFlow.selectedGadget = "Wood Pieces";
-            else if (Input.GetKey(KeyCode.K))
-                EGameFlow.selectedGadget = "Nails";
         }
 
-        skills.Update(world, player, mainCamera);
+        if (!EGameFlow.pause)
+        {
+            constructionSkills.Update(world, player, mainCamera);
+            combatSkills.Update(player, mainCamera);
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DeveloperBuildInputController : AbstractInputsController
+public class DeveloperInputController : AbstractInputsController
 {
     private World world;
     private Player player;
@@ -9,7 +9,7 @@ public class DeveloperBuildInputController : AbstractInputsController
     private DevConstructionSkillsManager skills;
 
 
-    public DeveloperBuildInputController(World world, Player player, MainCamera mainCamera)
+    public DeveloperInputController(World world, Player player, MainCamera mainCamera)
     {
         this.world = world;
         this.player = player;
@@ -25,8 +25,7 @@ public class DeveloperBuildInputController : AbstractInputsController
 
     public override void Update()
     {
-        EGameFlow.gameMode = EGameFlow.GameMode.DEVCONSTRUCTION;
-        EGameFlow.generalMode = EGameFlow.GeneralMode.DEVELOPER;
+        EGameFlow.gameMode = EGameFlow.GameMode.DEVELOPER;
         player.constructionDetection = 300;
 
 
