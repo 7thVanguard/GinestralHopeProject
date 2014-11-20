@@ -29,7 +29,7 @@ public class SDFireMine : SkillDirected
     public override void CastDirected(GameObject mineBall, Vector3 origin, bool launchedByPlayer)
     {
         // Create the object
-        Transform mineBallTransform = Object.Instantiate(world.skills.FindChild("Fireball1")) as Transform;
+        Transform mineBallTransform = Object.Instantiate(world.skills.FindChild("Fireball2")) as Transform;
         mineBall = mineBallTransform.gameObject;
         mineBall.name = "Fire Mine";
 
