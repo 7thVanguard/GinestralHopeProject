@@ -4,7 +4,7 @@ using System.Collections;
 public class MainCamera
 {
     public GameObject cameraObj;
-    //public CharacterController controller;
+    public CharacterController controller;
 
 
     // Camera movement
@@ -16,6 +16,9 @@ public class MainCamera
     public float interpolatedPosition;
 
     public float angleSight;
+
+    public Vector3 position;
+    public Vector3 previousPosition;
 
 
     // Camera raycast
@@ -32,6 +35,7 @@ public class MainCamera
     public float maxAngleSight = 90;
     public float maxDistance = 3.5f;
     public float objectiveDistance = 3.5f;
+    public bool isMoving;
 
 
     public MainCamera()
@@ -50,8 +54,9 @@ public class MainCamera
 
         // Camera components creation
         cameraObj.AddComponent<Camera>();
-        //controller = cameraObj.AddComponent<CharacterController>();
-        cameraObj.AddComponent<Rigidbody>();
+        controller = cameraObj.AddComponent<CharacterController>();
+        controller.height = 0.3f;
+        controller.radius = 0.3f;
 
         cameraObj.AddComponent("FlareLayer");
     }

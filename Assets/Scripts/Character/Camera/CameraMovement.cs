@@ -21,6 +21,8 @@ public class CameraMovement
         Vector3 beginingRotation = mainCamera.cameraObj.transform.eulerAngles;
         mainCamera.interpolatedPosition = beginingRotation.y;
         mainCamera.angleSight = beginingRotation.x;
+
+        Physics.IgnoreCollision(mainCamera.cameraObj.collider, player.playerObj.collider);
     }
 
 
@@ -33,6 +35,15 @@ public class CameraMovement
         mainCamera.interpolatedPosition += Input.GetAxis("Mouse X") * mainCamera.mouseSensitivityX;
         mainCamera.angleSight -= Input.GetAxis("Mouse Y") * mainCamera.mouseSensitivityY;
 
+        if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+            mainCamera.isMoving = true;
+        else
+            mainCamera.isMoving = false;
+
+        // Zoom adapt
+        if (mainCamera.objectiveDistance < mainCamera.maxDistance && mainCamera.isMoving)
+            mainCamera.objectiveDistance += Time.deltaTime;
+
         // Angle sight clamp
         mainCamera.angleSight = ClampAngle(mainCamera.angleSight, mainCamera.minAngleSight, mainCamera.maxAngleSight);
 
@@ -41,12 +52,13 @@ public class CameraMovement
         mainCamera.cameraObj.transform.rotation = rotation;
 
         // Camera position 
-        Vector3 position = player.playerObj.transform.position + mainCamera.offset - (rotation * Vector3.forward * mainCamera.objectiveDistance);
-        mainCamera.cameraObj.transform.position = position;
+        mainCamera.previousPosition = mainCamera.cameraObj.transform.position;
+        mainCamera.position = player.playerObj.transform.position + mainCamera.offset - (rotation * Vector3.forward * mainCamera.objectiveDistance);
+        mainCamera.controller.Move(mainCamera.position - mainCamera.previousPosition);
 
         // Blocked view detection
         Vector3 trueTargetPosition = player.playerObj.transform.position + mainCamera.offset;
-
+        
         // Raycast with an objective
         if (Physics.Linecast(trueTargetPosition, mainCamera.cameraObj.transform.position, out impact))
         {
@@ -54,8 +66,9 @@ public class CameraMovement
             {
                 // Reallocates the camera
                 float advancedDistance = Vector3.Distance(trueTargetPosition, impact.point) - 0.5f;
-                position = player.playerObj.transform.position + mainCamera.offset - (rotation * Vector3.forward * advancedDistance);
-                mainCamera.cameraObj.transform.position = position;
+                mainCamera.objectiveDistance = Vector3.Distance(trueTargetPosition, impact.point) - 0.5f;
+                mainCamera.cameraObj.transform.position = player.playerObj.transform.position + mainCamera.offset - (rotation * Vector3.forward * advancedDistance);
+                //mainCamera.cameraObj.transform.position = mainCamera.position;
             }
         }
     }

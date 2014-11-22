@@ -38,10 +38,7 @@ public class SkillDirected : Skill
                 if (mainCamera.raycast.distance < maxDistance && mainCamera.raycast.distance != 0)
                     targetPosition = mainCamera.raycast.point;
                 else
-                {
                     targetPosition = mainCamera.cameraObj.transform.position + mainCamera.cameraObj.transform.forward * (maxDistance + mainCamera.maxDistance);
-                    Debug.Log(Camera.main.transform.forward);
-                }
             }
             else
                 targetPosition = PlayerCombat.target.transform.position;
@@ -51,6 +48,8 @@ public class SkillDirected : Skill
         {
             targetPosition = player.playerObj.transform.position;
         }
+
+        Debug.Log(targetPosition);
 
         //+ Fire
         // Detecting initial direction
