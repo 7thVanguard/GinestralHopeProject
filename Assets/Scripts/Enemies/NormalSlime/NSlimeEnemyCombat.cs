@@ -19,7 +19,7 @@ public class NSlimeEnemyCombat
         this.player = player;
         this.enemy = enemy;
 
-        selectedSkill = Skill.Dictionary["FireBall"];
+        selectedSkill = Skill.Dictionary["Fire Ball"];
         detectionDistance = 30;
     }
 

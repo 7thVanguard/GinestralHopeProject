@@ -6,6 +6,8 @@ public class CameraMovement
     Player player;
     MainCamera mainCamera;
 
+    RaycastHit impact;
+
 
     public CameraMovement(Player player, MainCamera mainCamera)
     {
@@ -16,36 +18,55 @@ public class CameraMovement
 
     public void Start(GameObject camera)
     {
-        mainCamera.controller = camera.GetComponent<CharacterController>();
+        Vector3 beginingRotation = mainCamera.cameraObj.transform.eulerAngles;
+        mainCamera.interpolatedPosition = beginingRotation.y;
+        mainCamera.angleSight = beginingRotation.x;
     }
 
 
     public void Update()
     {
-        // Camera aim that depends on the player
+        // Camera aim depending on the player
         mainCamera.offset = player.playerObj.transform.right * 0.5f + player.playerObj.transform.forward * 0.3f + Vector3.up * (1.2f - mainCamera.angleSight / 45.0f);
 
         // Mouse inputs
-        mainCamera.objectivePosition += Input.GetAxis("Mouse X") * mainCamera.mouseSensitivityX;
+        mainCamera.interpolatedPosition += Input.GetAxis("Mouse X") * mainCamera.mouseSensitivityX;
         mainCamera.angleSight -= Input.GetAxis("Mouse Y") * mainCamera.mouseSensitivityY;
 
-        // Set a maxium and minium pitch angle
-        mainCamera.angleSight = Mathf.Clamp(mainCamera.angleSight, mainCamera.minAngleSight, mainCamera.maxAngleSight);
+        // Angle sight clamp
+        mainCamera.angleSight = ClampAngle(mainCamera.angleSight, mainCamera.minAngleSight, mainCamera.maxAngleSight);
 
-        // Interpolates between the actual rotation and the rotation objective
-        mainCamera.interpolatedPosition = Mathf.Lerp(mainCamera.interpolatedPosition, mainCamera.objectivePosition, mainCamera.rotationSensitivity);
+        // Camera rotation
+        Quaternion rotation = Quaternion.Euler(mainCamera.angleSight, mainCamera.interpolatedPosition, 0);
+        mainCamera.cameraObj.transform.rotation = rotation;
 
-        // Sets the rotation and the position, uses the camera offset as the central point
-        mainCamera.rotation = Quaternion.Euler(mainCamera.angleSight, mainCamera.interpolatedPosition, 0);
-        Vector3 position = mainCamera.rotation * (new Vector3(0, 0, -mainCamera.distance)) + player.playerObj.transform.position + mainCamera.offset;
+        // Camera position 
+        Vector3 position = player.playerObj.transform.position + mainCamera.offset - (rotation * Vector3.forward * mainCamera.objectiveDistance);
+        mainCamera.cameraObj.transform.position = position;
 
-        // Calculates the displacement
-        mainCamera.direction = position - mainCamera.cameraObj.transform.position;
+        // Blocked view detection
+        Vector3 trueTargetPosition = player.playerObj.transform.position + mainCamera.offset;
 
-        // Assign the rotation
-        mainCamera.cameraObj.transform.rotation = mainCamera.rotation;
+        // Raycast with an objective
+        if (Physics.Linecast(trueTargetPosition, mainCamera.cameraObj.transform.position, out impact))
+        {
+            if (impact.transform.gameObject.tag != "MainCamera" && impact.transform.gameObject.tag != "Player")
+            {
+                // Reallocates the camera
+                float advancedDistance = Vector3.Distance(trueTargetPosition, impact.point) - 0.5f;
+                position = player.playerObj.transform.position + mainCamera.offset - (rotation * Vector3.forward * advancedDistance);
+                mainCamera.cameraObj.transform.position = position;
+            }
+        }
+    }
 
-        // Assign the movement
-        mainCamera.controller.Move(mainCamera.direction);
+    static float ClampAngle(float angle, float min, float max)
+    {
+        if (angle < -360)
+            angle += 360;
+        if (angle > 360)
+            angle -= 360;
+        return Mathf.Clamp(angle, min, max);
+
     }
 }

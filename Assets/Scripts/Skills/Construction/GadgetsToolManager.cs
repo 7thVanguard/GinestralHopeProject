@@ -6,7 +6,7 @@ public class GadgetsToolManager
     public static void Remove(Player player, MainCamera mainCamera)
     {
         // Picks back the gadget
-        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
             if (mainCamera.raycast.transform.gameObject.tag == "Gadget")
             {
                 Gadget gadget = Gadget.Dictionary[mainCamera.raycast.transform.gameObject.name];
@@ -24,7 +24,7 @@ public class GadgetsToolManager
 
     public static void Place(World world, Player player, MainCamera mainCamera)
     {
-        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
         {
             if (mainCamera.raycast.normal.y >= 0.75f)
             {
@@ -68,7 +68,7 @@ public class GadgetsToolManager
 
     public static void Detect(World world, Player player, MainCamera mainCamera)
     {
-        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
         {
             // Check if we are aiming at the top face of a voxel
             if (mainCamera.raycast.normal.y >= 0.75f)

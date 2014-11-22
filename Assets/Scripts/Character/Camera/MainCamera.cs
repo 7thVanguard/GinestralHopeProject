@@ -4,7 +4,7 @@ using System.Collections;
 public class MainCamera
 {
     public GameObject cameraObj;
-    public CharacterController controller;
+    //public CharacterController controller;
 
 
     // Camera movement
@@ -30,7 +30,8 @@ public class MainCamera
     // Movement limits
     public float minAngleSight = -90;
     public float maxAngleSight = 90;
-    public float distance = 3.5f;
+    public float maxDistance = 3.5f;
+    public float objectiveDistance = 3.5f;
 
 
     public MainCamera()
@@ -49,7 +50,8 @@ public class MainCamera
 
         // Camera components creation
         cameraObj.AddComponent<Camera>();
-        controller = cameraObj.AddComponent<CharacterController>();
+        //controller = cameraObj.AddComponent<CharacterController>();
+        cameraObj.AddComponent<Rigidbody>();
 
         cameraObj.AddComponent("FlareLayer");
     }

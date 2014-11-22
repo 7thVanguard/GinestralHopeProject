@@ -13,7 +13,7 @@ public class MineVoxelsToolManager
         // Single
         if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.SINGLE)
         {
-            if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
+            if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
             {
                 if (mainCamera.raycast.transform.tag == "Chunk")
                 {
@@ -48,7 +48,7 @@ public class MineVoxelsToolManager
                 // Ortoedric
                 if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.ORTOEDRIC)
                 {
-                    if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
+                    if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
                     {
                         DevConstructionSkillsManager.detChunk = DevConstructionSkillsManager.chunk;
                         DevConstructionSkillsManager.detVoxel = DevConstructionSkillsManager.voxel;
@@ -70,7 +70,7 @@ public class MineVoxelsToolManager
         // Single
         if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.SINGLE)
         {
-            if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
+            if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
             {
                 if (mainCamera.raycast.transform.tag == "Chunk")
                 {
@@ -120,7 +120,7 @@ public class MineVoxelsToolManager
                 // Ortoedric
                 if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.ORTOEDRIC)
                 {
-                    if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
+                    if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
                     {
                         DevConstructionSkillsManager.detChunk = DevConstructionSkillsManager.chunk;
                         DevConstructionSkillsManager.detVoxel = DevConstructionSkillsManager.voxel;
@@ -145,7 +145,7 @@ public class MineVoxelsToolManager
 
     public static void Detect(World world, Player player, MainCamera mainCamera)
     {
-        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
         {
             if (mainCamera.raycast.collider == null)
                 mainCamera.raycast = new RaycastHit();

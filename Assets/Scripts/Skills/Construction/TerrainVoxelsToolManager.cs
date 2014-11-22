@@ -12,7 +12,7 @@ public static class TerrainVoxelsToolManager
 
     public static void Remove(World world, Player player, MainCamera mainCamera)
     {
-        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
         {
             if (mainCamera.raycast.transform.tag == "Chunk")
             {
@@ -56,7 +56,7 @@ public static class TerrainVoxelsToolManager
 
     public static void Place(World world, Player player, MainCamera mainCamera)
     {
-        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
         {
             if (mainCamera.raycast.transform.tag == "Chunk")
             {
@@ -106,7 +106,7 @@ public static class TerrainVoxelsToolManager
 
     public static void Detect(World world, Player player, MainCamera mainCamera)
     {
-        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
         {
             if (mainCamera.raycast.transform.tag == "Chunk")
             {
