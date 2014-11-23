@@ -79,19 +79,19 @@ public class MineVoxelsToolManager
 
                     // Detect the face impacted by the ray, and and place the block in front of that face
                     if (mainCamera.raycast.normal.x > 0.75f)
-                        LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 1, 0, 0);
+                        VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 1, 0, 0);
                     else if (mainCamera.raycast.normal.x < -0.75f)
-                        LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, -1, 0, 0);
+                        VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, -1, 0, 0);
 
                     else if (mainCamera.raycast.normal.y > 0.75f)
-                        LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 1, 0);
+                        VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 1, 0);
                     else if (mainCamera.raycast.normal.y < -0.75f)
-                        LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, -1, 0);
+                        VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, -1, 0);
 
                     else if (mainCamera.raycast.normal.z > 0.75f)
-                        LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 0, 1);
+                        VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 0, 1);
                     else if (mainCamera.raycast.normal.z < -0.75f)
-                        LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 0, -1);
+                        VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 0, -1);
 
                     world.chunk[DevConstructionSkillsManager.detChunk.numID.x, DevConstructionSkillsManager.detChunk.numID.y, DevConstructionSkillsManager.detChunk.numID.z]
                         .voxel[DevConstructionSkillsManager.detVoxel.numID.x, DevConstructionSkillsManager.detVoxel.numID.y, DevConstructionSkillsManager.detVoxel.numID.z]

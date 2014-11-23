@@ -122,6 +122,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 7 * world.textureSize);
+
+                    blastResistance = 5;
                 }
                 break;
             case "LittleRocks":
@@ -130,6 +132,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 6 * world.textureSize);
+
+                    blastResistance = 3;
                 }
                 break;
             case "Rock":
@@ -138,6 +142,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(1 * world.textureSize, 6 * world.textureSize);
+
+                    blastResistance = 6;
                 }
                 break;
             case "OtherRock":
@@ -146,6 +152,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(2 * world.textureSize, 6 * world.textureSize);
+
+                    blastResistance = 6;
                 }
                 break;
             case "BrokenRock":
@@ -154,6 +162,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(3 * world.textureSize, 6 * world.textureSize);
+
+                    blastResistance = 2;
                 }
                 break;
             case "RockFloor":
@@ -162,6 +172,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(4 * world.textureSize, 6 * world.textureSize);
+
+                    blastResistance = 6;
                 }
                 break;
             case "RockWall":
@@ -170,6 +182,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(5 * world.textureSize, 6 * world.textureSize);
+
+                    blastResistance = 5;
                 }
                 break;
             case "SmoothRock":
@@ -178,6 +192,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(6 * world.textureSize, 6 * world.textureSize);
+
+                    blastResistance = 7;
                 }
                 break;
             case "AmatistRock":
@@ -186,6 +202,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(7 * world.textureSize, 6 * world.textureSize);
+
+                    blastResistance = 4;
                 }
                 break;
             case "Wood":
@@ -194,6 +212,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 5 * world.textureSize);
+
+                    blastResistance = 1;
                 }
                 break;
             case "WoodLateralColumn":

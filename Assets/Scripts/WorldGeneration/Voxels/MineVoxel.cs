@@ -120,9 +120,9 @@ public class MineVoxel
         detChunk = chunk;
         detVoxel = voxel;
 
-        if (LVoxel.VoxelExists(world, detChunk, detVoxel, x, y, z) == true)
+        if (VoxelLib.VoxelExists(world, detChunk, detVoxel, x, y, z) == true)
         {
-            LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
+            VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
 
             if (x > 0)
                 transparency = detVoxel.leftTransparent;
@@ -179,9 +179,9 @@ public class MineVoxel
         }
 
         if (xDone != yDone)
-            if (LVoxel.VoxelExists(world, detChunk, detVoxel, x, y, 0))
+            if (VoxelLib.VoxelExists(world, detChunk, detVoxel, x, y, 0))
             {
-                LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, y, 0);
+                VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, x, y, 0);
 
                 if (detVoxel.voxelState == Voxel.VoxelState.SOLID)
                 {
@@ -196,9 +196,9 @@ public class MineVoxel
             }
 
         if (xDone != zDone)
-            if (LVoxel.VoxelExists(world, detChunk, detVoxel, x, 0, z))
+            if (VoxelLib.VoxelExists(world, detChunk, detVoxel, x, 0, z))
             {
-                LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, 0, z);
+                VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, x, 0, z);
 
                 if (detVoxel.voxelState == Voxel.VoxelState.SOLID)
                 {
@@ -213,9 +213,9 @@ public class MineVoxel
             }
 
         if (yDone != zDone)
-            if (LVoxel.VoxelExists(world, detChunk, detVoxel, 0, y, z))
+            if (VoxelLib.VoxelExists(world, detChunk, detVoxel, 0, y, z))
             {
-                LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, 0, y, z);
+                VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, 0, y, z);
 
                 if (detVoxel.voxelState == Voxel.VoxelState.SOLID)
                 {
@@ -230,9 +230,9 @@ public class MineVoxel
             }
 
         if (xDone != yDone || xDone != zDone || yDone != zDone)
-            if (LVoxel.VoxelExists(world, detChunk, detVoxel, x, y, z))
+            if (VoxelLib.VoxelExists(world, detChunk, detVoxel, x, y, z))
             {
-                LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
+                VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
 
                 if (detVoxel.voxelState == Voxel.VoxelState.SOLID)
                 {
@@ -254,12 +254,12 @@ public class MineVoxel
         detChunk = chunk;
         detVoxel = voxel;
 
-        LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
+        VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
         if (detVoxel.entityType == Voxel.EntityType.TERRAIN)
         {
-            if (LVoxel.VoxelExists(world, detChunk, detVoxel, 0, 1, 0) == true)
+            if (VoxelLib.VoxelExists(world, detChunk, detVoxel, 0, 1, 0) == true)
             {
-                LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, 0, 1, 0);
+                VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, 0, 1, 0);
 
                 if (detVoxel.botTransparent)
                     return false;

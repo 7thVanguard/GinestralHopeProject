@@ -71,6 +71,8 @@ public class PlayerMovement
 
     private void HorizontalMovement(float speed, float root)
     {
+        player.isMoving = true;
+
         // Assign a direction depending on the input introduced
         if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
             objectiveDirection = new Vector3(-root, objectiveDirection.y, root);
@@ -91,7 +93,10 @@ public class PlayerMovement
             else if (Input.GetKey(KeyCode.S))
                 objectiveDirection = new Vector3(0, objectiveDirection.y, -speed);
             else
+            {
                 objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
+                player.isMoving = false;
+            }
         }
 
         player.playerObj.transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);

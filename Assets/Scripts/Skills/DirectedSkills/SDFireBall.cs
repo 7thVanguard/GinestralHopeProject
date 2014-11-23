@@ -21,8 +21,8 @@ public class SDFireBall : SkillDirected
         castingTime = 2;
 
         // Fire
-        damage = 3;
-        blastRadius = 3;
+        damage = 10;
+        blastRadius = 17;
     }
 
 
@@ -54,6 +54,6 @@ public class SDFireBall : SkillDirected
         base.FireDirected(fireBall, originPosition, targetPosition, ballDirection, ballSpeed);
 
         // Fire skill
-        fireBall.GetComponent<SDFireBallBehaviour>().Init(base.direction, damage, blastRadius);
+        fireBall.GetComponent<SDFireBallBehaviour>().Init(base.world, base.direction, damage, blastRadius);
     }
 }

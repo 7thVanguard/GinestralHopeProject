@@ -17,6 +17,20 @@ public class LChunk
     }
 
 
+    public static bool ChunkExists(World world, IntVector3 numID)
+    {
+        if (numID.x < world.chunkNumber.x &&
+            numID.x >= 0 &&
+            numID.y < world.chunkNumber.y &&
+            numID.y >= 0 &&
+            numID.z < world.chunkNumber.z &&
+            numID.z >= 0)
+            return true;
+        else
+            return false;
+    }
+
+
     public static void Reset(World world, ChunkGenerator detectionChunk, Voxel detectionVoxel)
     {
         int xSign, ySign, zSign;

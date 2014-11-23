@@ -15,8 +15,8 @@ public class Player
     public float runSpeed = 4.5f;
     public float walkSpeed = 2;
     public float acceleration = 0.2f;
-
     public float jumpInitialSpeed = 5;
+    public bool isMoving;
 
     // Detection
     public int constructionDetection = 300;

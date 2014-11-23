@@ -23,9 +23,9 @@ public class TerrainVoxel
         detChunk = chunk;
         detVoxel = voxel;
 
-        if (LVoxel.VoxelExists(world, detChunk, detVoxel, 0, 1, 0) == true)
+        if (VoxelLib.VoxelExists(world, detChunk, detVoxel, 0, 1, 0) == true)
         {
-            LVoxel.GetVoxel(world, ref detChunk, ref detVoxel, 0, 1, 0);
+            VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, 0, 1, 0);
             if (detVoxel.botTransparent)
                 return true;
             else

@@ -41,7 +41,7 @@ public class CameraMovement
             mainCamera.isMoving = false;
 
         // Zoom adapt
-        if (mainCamera.objectiveDistance < mainCamera.maxDistance && mainCamera.isMoving)
+        if (mainCamera.objectiveDistance < mainCamera.maxDistance && (mainCamera.isMoving || player.isMoving))
             mainCamera.objectiveDistance += Time.deltaTime;
 
         // Angle sight clamp
@@ -73,7 +73,7 @@ public class CameraMovement
         }
     }
 
-    static float ClampAngle(float angle, float min, float max)
+    private float ClampAngle(float angle, float min, float max)
     {
         if (angle < -360)
             angle += 360;

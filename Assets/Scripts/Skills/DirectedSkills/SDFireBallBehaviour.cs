@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SDFireBallBehaviour : MonoBehaviour 
 {
+    World world;
     RaycastHit impact;
 
     // Trajectory
@@ -12,7 +13,7 @@ public class SDFireBallBehaviour : MonoBehaviour
 
     // Fire
     private float damage;
-    private float blastRadius;
+    private int blastRadius;
 
     // Explosion
     private int initialxplosionCounter = 100;
@@ -25,8 +26,9 @@ public class SDFireBallBehaviour : MonoBehaviour
     // Trail
     private bool updateActivation = false;
 
-    public void Init(Vector3 direction, float damage, float blastRadius)
+    public void Init(World world, Vector3 direction, float damage, int blastRadius)
     {
+        this.world = world;
         this.damage = damage;
         this.blastRadius = blastRadius;
         this.direction = direction;
@@ -62,7 +64,8 @@ public class SDFireBallBehaviour : MonoBehaviour
                             impact.transform.gameObject.GetComponent<PlayerComponent>().Damage(damage);
                         else if (impact.transform.gameObject.tag == "Chunk")
                         {
-
+                            Debug.Log(blastRadius);
+                            VoxelLib.Explosion(world, impact.point, damage, blastRadius);
                         }
                     }
                 }
@@ -134,7 +137,7 @@ public class SDFireBallBehaviour : MonoBehaviour
                 other.gameObject.GetComponent<PlayerComponent>().Damage(damage);
             else if (other.gameObject.tag == "Chunk")
             {
-
+                Debug.Log(transform.position);
             }
         }
     }

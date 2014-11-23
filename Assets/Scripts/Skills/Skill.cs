@@ -23,8 +23,9 @@ public class Skill
     public float castingTime; // In seconds
 
     // Fire
+    public int blastRadius;
     public float damage;
-    public float blastRadius;
+    
 
 
     public virtual void Init(World world, Player player, MainCamera mainCamera, Skill skill)

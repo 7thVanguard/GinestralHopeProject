@@ -165,19 +165,19 @@ public static class TerrainVoxelsToolManager
         DevConstructionSkillsManager.detVoxel = DevConstructionSkillsManager.voxel;
 
         // We make sure, we are changing the highest voxel
-        while (LVoxel.VoxelExists(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel, 0, 1, 0))
+        while (VoxelLib.VoxelExists(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel, 0, 1, 0))
         {
-            LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 1, 0);
+            VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 1, 0);
             if (DevConstructionSkillsManager.detVoxel.entityType != Voxel.EntityType.TERRAIN)
             {
-                LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, -1, 0);
+                VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, -1, 0);
                 break;
             }
         }
         // Detects when all the vertices of the voxel are at max height, but we detect the upper one
-        if (LVoxel.VoxelExists(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel, 0, -1, 0))
+        if (VoxelLib.VoxelExists(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel, 0, -1, 0))
             if (DevConstructionSkillsManager.detVoxel.entityType != Voxel.EntityType.TERRAIN)
-                LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, -1, 0);
+                VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, -1, 0);
     }
 
 
@@ -194,21 +194,21 @@ public static class TerrainVoxelsToolManager
             sedimentExcess = (int)vertexHeight;
 
             // We get the voxel below for futher terraformation
-            if (LVoxel.VoxelExists(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel, 0, -1, 0))
-                LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, -1, 0);
+            if (VoxelLib.VoxelExists(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel, 0, -1, 0))
+                VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, -1, 0);
         }
         else if (vertexHeight > world.maxSediment)
         {
             // We get the voxel above for actual and futher terraformation
-            if (LVoxel.VoxelExists(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel, 0, 1, 0))
-                LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 1, 0);
+            if (VoxelLib.VoxelExists(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel, 0, 1, 0))
+                VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 1, 0);
 
             // We place a terrain voxel above and detect the excess of sediment
             world.chunk[DevConstructionSkillsManager.detChunk.numID.x, DevConstructionSkillsManager.detChunk.numID.y, DevConstructionSkillsManager.detChunk.numID.z].voxel[DevConstructionSkillsManager.detVoxel.numID.x, DevConstructionSkillsManager.detVoxel.numID.y, DevConstructionSkillsManager.detVoxel.numID.z]
                     = new Voxel(world, DevConstructionSkillsManager.detVoxel.numID, DevConstructionSkillsManager.detChunk.numID, EGameFlow.selectedTerrain);
             sedimentExcess = (int)vertexHeight;
 
-            LVoxel.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 0, 0);
+            VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 0, 0);
         }
     }
 

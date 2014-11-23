@@ -49,8 +49,6 @@ public class SkillDirected : Skill
             targetPosition = player.playerObj.transform.position;
         }
 
-        Debug.Log(targetPosition);
-
         //+ Fire
         // Detecting initial direction
         objectDirection = targetPosition - origin;

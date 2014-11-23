@@ -14,4 +14,10 @@ public class IntVector3
         this.y = y;
         this.z = z;
     }
+
+
+    public Vector3 ToVector3()
+    {
+        return new Vector3(this.x, this.y, this.z);
+    }
 }
