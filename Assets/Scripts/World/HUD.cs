@@ -92,9 +92,10 @@ public class HUD : MonoBehaviour
                 break;
             case EGameFlow.GameMode.GODMODE:
                 break;
+                //+ Developer HUD
             case EGameFlow.GameMode.DEVELOPER:
                 {
-                    // Base icons
+                    // Lateral panel
                     // Sun icon
                     GUI.DrawTextureWithTexCoords
                         (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
@@ -116,7 +117,7 @@ public class HUD : MonoBehaviour
                         developerAtlas,
                         new Rect(5 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
 
-                    // 
+                    // Lower pannel
                     switch (EGameFlow.selectedTool)
                     {
                         case EGameFlow.SelectedTool.LIGHT:

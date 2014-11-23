@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class World
 {
     // Chunks relative
-    public IntVector3 chunkNumber = new IntVector3(6, 2, 6);                    // Initial number of chunks
+    public IntVector3 chunkNumber = new IntVector3(10, 2, 10);                  // Initial number of chunks
     public IntVector3 chunkSize = new IntVector3(16, 16, 16);                   // Space occupied by a chunk
     public ChunkGenerator[, ,] chunk;                                           // Chunks declaration
     public List<IntVector3> chunksToReset = new List<IntVector3>();             // Control the chunks we are going to reset
