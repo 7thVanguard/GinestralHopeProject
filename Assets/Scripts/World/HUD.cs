@@ -156,10 +156,32 @@ public class HUD : MonoBehaviour
                         //+ Light
                         case EGameFlow.SelectedTool.LIGHT:
                             {
+                                // Selection
                                 GUI.DrawTextureWithTexCoords
                                     (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, buttonSize, buttonSize),
                                     developerAtlas,
                                     new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+
+                                // Tools
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                    developerAtlas,
+                                    new Rect(0 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
+
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                    developerAtlas,
+                                    new Rect(1 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
+
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.width * 60 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                    developerAtlas,
+                                    new Rect(2 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
+
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.width * 70 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                    developerAtlas,
+                                    new Rect(3 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
                             }
                             break;
                         //+ Mine

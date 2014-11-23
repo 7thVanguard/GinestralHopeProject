@@ -14,7 +14,7 @@ public class LightSystemBehaviour
     protected LensFlare lensFlare;
 
     // DayNight cycle duration relative
-    protected const float dayDuration = 1200;
+    protected const float dayDuration = 120;
     protected const float beginingTime = 270;
 
     // Season relative
@@ -92,4 +92,28 @@ public class LightSystemBehaviour
             }
         }
 	}
+
+
+    public void SetSunRise()
+    {
+        gameTime = 0;
+    }
+
+
+    public void SetMidDay()
+    {
+        gameTime = dayDuration * 1 / 4;
+    }
+
+
+    public void SetNoon()
+    {
+        gameTime = dayDuration * 2 / 4;
+    }
+
+
+    public void SetNight()
+    {
+        gameTime = dayDuration * 3 / 4;
+    }
 }

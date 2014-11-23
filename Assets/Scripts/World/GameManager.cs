@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         aPC.Start();
         Controller.Add("GodMode", aPC);
 
-        aPC = new DeveloperGameController(world, player, mainCamera);
+        aPC = new DeveloperGameController(world, player, mainCamera, sun);
         aPC.Start();
         Controller.Add("DeveloperMode", aPC);
 

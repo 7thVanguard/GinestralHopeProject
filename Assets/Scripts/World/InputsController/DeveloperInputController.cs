@@ -6,14 +6,17 @@ public class DeveloperInputController : AbstractInputsController
     private World world;
     private Player player;
     private MainCamera mainCamera;
+    private Sun sun;
+
     private DevConstructionSkillsManager skills;
 
 
-    public DeveloperInputController(World world, Player player, MainCamera mainCamera)
+    public DeveloperInputController(World world, Player player, MainCamera mainCamera, Sun sun)
     {
         this.world = world;
         this.player = player;
         this.mainCamera = mainCamera;
+        this.sun = sun;
     }
 
 
@@ -43,6 +46,20 @@ public class DeveloperInputController : AbstractInputsController
 
         
         //+ SubTool
+        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.LIGHT)
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                if (Input.GetKey(KeyCode.Alpha1))
+                    sun.lightSystemBehaviour.SetSunRise();
+                else if (Input.GetKey(KeyCode.Alpha2))
+                    sun.lightSystemBehaviour.SetMidDay();
+                else if (Input.GetKey(KeyCode.Alpha3))
+                    sun.lightSystemBehaviour.SetNoon();
+                else if (Input.GetKey(KeyCode.Alpha4))
+                    sun.lightSystemBehaviour.SetNight();
+            }
+        }
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
         {
             if (Input.GetKey(KeyCode.I))
@@ -52,23 +69,6 @@ public class DeveloperInputController : AbstractInputsController
         }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
         {
-            if (Input.GetKey(KeyCode.I))
-                EGameFlow.selectedMine = "Rock";
-            else if (Input.GetKey(KeyCode.J))
-                EGameFlow.selectedMine = "BrokenRock";
-            else if (Input.GetKey(KeyCode.K))
-                EGameFlow.selectedMine = "Wood";
-            else if (Input.GetKey(KeyCode.M))
-                EGameFlow.selectedMine = "RockFloor";
-            else if (Input.GetKey(KeyCode.N))
-                EGameFlow.selectedMine = "RockWall";
-            else if (Input.GetKey(KeyCode.O))
-                EGameFlow.selectedMine = "SmoothRock";
-            else if (Input.GetKey(KeyCode.B))
-                EGameFlow.selectedMine = "LittleRocks";
-            else if (Input.GetKey(KeyCode.V))
-                EGameFlow.selectedMine = "OtherRock";
-
             if(Input.GetKey(KeyCode.LeftShift))
             {
                 if (Input.GetKey(KeyCode.Alpha1))
