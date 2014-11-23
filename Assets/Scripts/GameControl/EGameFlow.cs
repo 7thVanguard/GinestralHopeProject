@@ -9,7 +9,7 @@ public static class EGameFlow
 
 
     // Tools
-    public enum SelectedTool { TERRAIN, MINE, GADGET, ENEMY }
+    public enum SelectedTool { LIGHT, TERRAIN, MINE, GADGET, ENEMY }
     public static SelectedTool selectedTool = SelectedTool.MINE;
 
     public enum DeveloperTerrainTools { VERTEX, MULTIVERTEX }

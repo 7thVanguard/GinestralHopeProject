@@ -31,12 +31,12 @@ public class DeveloperInputController : AbstractInputsController
 
         // Tool
         if (Input.GetKey(KeyCode.Alpha1))
-            EGameFlow.selectedTool = EGameFlow.SelectedTool.TERRAIN;
-        else if (Input.GetKey(KeyCode.Alpha2))
-            EGameFlow.selectedTool = EGameFlow.SelectedTool.MINE;
+            EGameFlow.selectedTool = EGameFlow.SelectedTool.LIGHT;
         else if (Input.GetKey(KeyCode.Alpha3))
-            EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
+            EGameFlow.selectedTool = EGameFlow.SelectedTool.MINE;
         else if (Input.GetKey(KeyCode.Alpha4))
+            EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
+        else if (Input.GetKey(KeyCode.Alpha5))
             EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
 
         

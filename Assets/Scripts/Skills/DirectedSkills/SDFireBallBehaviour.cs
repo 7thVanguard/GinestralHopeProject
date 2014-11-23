@@ -63,10 +63,7 @@ public class SDFireBallBehaviour : MonoBehaviour
                         else if (impact.transform.gameObject.tag == "Player")
                             impact.transform.gameObject.GetComponent<PlayerComponent>().Damage(damage);
                         else if (impact.transform.gameObject.tag == "Chunk")
-                        {
-                            Debug.Log(blastRadius);
                             VoxelLib.Explosion(world, impact.point, damage, blastRadius);
-                        }
                     }
                 }
 
@@ -136,9 +133,7 @@ public class SDFireBallBehaviour : MonoBehaviour
             else if (other.gameObject.tag == "Player")
                 other.gameObject.GetComponent<PlayerComponent>().Damage(damage);
             else if (other.gameObject.tag == "Chunk")
-            {
-                Debug.Log(transform.position);
-            }
+                VoxelLib.Explosion(world, transform.position, damage, blastRadius);
         }
     }
 }

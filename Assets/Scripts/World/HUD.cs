@@ -94,6 +94,7 @@ public class HUD : MonoBehaviour
                 break;
             case EGameFlow.GameMode.DEVELOPER:
                 {
+                    // Base icons
                     // Sun icon
                     GUI.DrawTextureWithTexCoords
                         (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
@@ -114,6 +115,45 @@ public class HUD : MonoBehaviour
                         (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
                         developerAtlas,
                         new Rect(5 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
+
+                    // 
+                    switch (EGameFlow.selectedTool)
+                    {
+                        case EGameFlow.SelectedTool.LIGHT:
+                            {
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                                    developerAtlas,
+                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                            }
+                            break;
+                        case EGameFlow.SelectedTool.MINE:
+                            {
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                                    developerAtlas,
+                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                            }
+                            break;
+                        case EGameFlow.SelectedTool.GADGET:
+                            {
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                                    developerAtlas,
+                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                            }
+                            break;
+                        case EGameFlow.SelectedTool.ENEMY:
+                            {
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                                    developerAtlas,
+                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                            }
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 break;
             default:

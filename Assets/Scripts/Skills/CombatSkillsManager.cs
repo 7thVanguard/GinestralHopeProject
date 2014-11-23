@@ -13,9 +13,9 @@ public class CombatSkillsManager
         // Make sure that pressing again a button won't reset the skill
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (methodName != "FireBall")
+            if (methodName != "Fire Ball")
             {
-                methodName = "FireBall";
+                methodName = "Fire Ball";
                 actualCastingTime = 0;
                 totalCastingTime = Skill.Dictionary[methodName].castingTime;
                 casting = true;
