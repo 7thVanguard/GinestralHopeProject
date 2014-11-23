@@ -16,14 +16,17 @@ public class ConstructionSkillsManager
 
     public void Update(World world, Player player, MainCamera mainCamera)
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-            Remove(player, mainCamera);
-        else if (Input.GetKeyDown(KeyCode.Mouse1))
-            Place(world, player, mainCamera);
-        else if (Input.GetKeyDown(KeyCode.Mouse2))
-            Cancel();
-        else
-            Detect(world, player, mainCamera);
+        if (!Input.GetKey(KeyCode.LeftControl))
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+                Remove(player, mainCamera);
+            else if (Input.GetKeyDown(KeyCode.Mouse1))
+                Place(world, player, mainCamera);
+            else if (Input.GetKeyDown(KeyCode.Mouse2))
+                Cancel();
+            else
+                Detect(world, player, mainCamera);
+        }
     }
 
 

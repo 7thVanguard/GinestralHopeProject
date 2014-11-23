@@ -28,19 +28,21 @@ public class DeveloperInputController : AbstractInputsController
         EGameFlow.gameMode = EGameFlow.GameMode.DEVELOPER;
         player.constructionDetection = 300;
 
-
-        // Tool
-        if (Input.GetKey(KeyCode.Alpha1))
-            EGameFlow.selectedTool = EGameFlow.SelectedTool.LIGHT;
-        else if (Input.GetKey(KeyCode.Alpha3))
-            EGameFlow.selectedTool = EGameFlow.SelectedTool.MINE;
-        else if (Input.GetKey(KeyCode.Alpha4))
-            EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
-        else if (Input.GetKey(KeyCode.Alpha5))
-            EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
+        //+ Tool
+        if (!Input.GetKey(KeyCode.LeftShift))
+        {
+            if (Input.GetKey(KeyCode.Alpha1))
+                EGameFlow.selectedTool = EGameFlow.SelectedTool.LIGHT;
+            else if (Input.GetKey(KeyCode.Alpha3))
+                EGameFlow.selectedTool = EGameFlow.SelectedTool.MINE;
+            else if (Input.GetKey(KeyCode.Alpha4))
+                EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
+            else if (Input.GetKey(KeyCode.Alpha5))
+                EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
+        }
 
         
-        // SubTool
+        //+ SubTool
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
         {
             if (Input.GetKey(KeyCode.I))
@@ -50,11 +52,6 @@ public class DeveloperInputController : AbstractInputsController
         }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-                EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.SINGLE;
-            else if (Input.GetKey(KeyCode.DownArrow))
-                EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.ORTOEDRIC;
-
             if (Input.GetKey(KeyCode.I))
                 EGameFlow.selectedMine = "Rock";
             else if (Input.GetKey(KeyCode.J))
@@ -71,6 +68,14 @@ public class DeveloperInputController : AbstractInputsController
                 EGameFlow.selectedMine = "LittleRocks";
             else if (Input.GetKey(KeyCode.V))
                 EGameFlow.selectedMine = "OtherRock";
+
+            if(Input.GetKey(KeyCode.LeftShift))
+            {
+                if (Input.GetKey(KeyCode.Alpha1))
+                    EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.SINGLE;
+                else if (Input.GetKey(KeyCode.Alpha2))
+                    EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.ORTOEDRIC;
+            }
         }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
         {

@@ -32,8 +32,11 @@ public class CameraMovement
         mainCamera.offset = player.playerObj.transform.right * 0.5f + player.playerObj.transform.forward * 0.3f + Vector3.up * (1.2f - mainCamera.angleSight / 45.0f);
 
         // Mouse inputs
-        mainCamera.interpolatedPosition += Input.GetAxis("Mouse X") * mainCamera.mouseSensitivityX;
-        mainCamera.angleSight -= Input.GetAxis("Mouse Y") * mainCamera.mouseSensitivityY;
+        if (!Input.GetKey(KeyCode.LeftControl))
+        {
+            mainCamera.interpolatedPosition += Input.GetAxis("Mouse X") * mainCamera.mouseSensitivityX;
+            mainCamera.angleSight -= Input.GetAxis("Mouse Y") * mainCamera.mouseSensitivityY;
+        }
 
         if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
             mainCamera.isMoving = true;

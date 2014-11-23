@@ -116,7 +116,7 @@ public class Voxel
                     botTransparent = true;
                 }
                 break;
-            case "SandWay":
+            case "Sand Way":
                 {
                     entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
@@ -126,7 +126,7 @@ public class Voxel
                     blastResistance = 5;
                 }
                 break;
-            case "LittleRocks":
+            case "Little Rock":
                 {
                     entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
@@ -136,7 +136,7 @@ public class Voxel
                     blastResistance = 3;
                 }
                 break;
-            case "Rock":
+            case "Large Rock":
                 {
                     entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
@@ -146,7 +146,7 @@ public class Voxel
                     blastResistance = 6;
                 }
                 break;
-            case "OtherRock":
+            case "Medium Rock":
                 {
                     entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
@@ -156,7 +156,7 @@ public class Voxel
                     blastResistance = 6;
                 }
                 break;
-            case "BrokenRock":
+            case "Medium Broken Rock":
                 {
                     entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
@@ -166,7 +166,7 @@ public class Voxel
                     blastResistance = 2;
                 }
                 break;
-            case "RockFloor":
+            case "Rock Brick Floor":
                 {
                     entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
@@ -176,7 +176,7 @@ public class Voxel
                     blastResistance = 6;
                 }
                 break;
-            case "RockWall":
+            case "Stripped Rock Wall":
                 {
                     entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
@@ -186,7 +186,7 @@ public class Voxel
                     blastResistance = 5;
                 }
                 break;
-            case "SmoothRock":
+            case "Irregular Smooth Rock":
                 {
                     entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
@@ -196,7 +196,7 @@ public class Voxel
                     blastResistance = 7;
                 }
                 break;
-            case "AmatistRock":
+            case "Amethyst Smooth Rock":
                 {
                     entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
@@ -206,7 +206,7 @@ public class Voxel
                     blastResistance = 4;
                 }
                 break;
-            case "Wood":
+            case "Dark Brown Wood":
                 {
                     entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
@@ -216,7 +216,7 @@ public class Voxel
                     blastResistance = 1;
                 }
                 break;
-            case "WoodLateralColumn":
+            case "Three Wood Column Mine":
                 {
                     entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
@@ -224,12 +224,20 @@ public class Voxel
                     UVStart = new Vector2(1 * world.textureSize, 5 * world.textureSize);
                 }
                 break;
-            case "WoodCentralColumn":
+            case "Two Wood Column Mine":
                 {
                     entityType = EntityType.MINE;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(2 * world.textureSize, 5 * world.textureSize);
+                }
+                break;
+            case "Wood base Large Rock":
+                {
+                    entityType = EntityType.MINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(3 * world.textureSize, 5 * world.textureSize);
                 }
                 break;
             default:

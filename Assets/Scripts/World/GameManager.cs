@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         sun = new Sun(player, sunFlare);
 
         // post initialize
-        world.worldObj.GetComponent<HUD>().Init(player, developerAtlas, developerBox);      // Initialize HUD
+        world.worldObj.GetComponent<HUD>().Init(player, mineAtlas, developerAtlas, developerBox);      // Initialize HUD
         sun.lightSystemBehaviour.Init(player, sun.sunObj, sun.lensFlare);                   // Initialize Light System
 
 

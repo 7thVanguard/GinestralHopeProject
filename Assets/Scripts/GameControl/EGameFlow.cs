@@ -27,6 +27,6 @@ public static class EGameFlow
     // Selection
     public static string selectedGadget = "Wood Pieces";
     public static string selectedTerrain = "Grass";
-    public static string selectedMine = "Rock";
+    public static string selectedMine = "Large Rock";
     public static string selectedEnemy = "Normal Slime";
 }

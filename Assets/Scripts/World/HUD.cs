@@ -9,6 +9,9 @@ public class HUD : MonoBehaviour
     private Texture2D developerAtlas;
     private Texture2D developerBox;
 
+    // Atlas
+    private Material mineAtlas;
+
     // gizmos
     public static Texture2D gizmoCircle;
     private Texture2D gizmoCross;
@@ -27,12 +30,21 @@ public class HUD : MonoBehaviour
     // GUI booleans
 
 
-    public void Init(Player player, Texture2D developerAtlas, Texture2D developerBox)
+    // Helpers
+    private Vector2 mousePosition;
+    private float buttonSize;
+
+
+    public void Init(Player player, Material mineAtlas, Texture2D developerAtlas, Texture2D developerBox)
     {
         this.player = player;
 
+        this.mineAtlas = mineAtlas;
+
         this.developerAtlas = developerAtlas;
         this.developerBox = developerBox;
+
+        buttonSize = Screen.height * 6 / 50;
     }
 
 
@@ -85,69 +97,149 @@ public class HUD : MonoBehaviour
                 (Screen.width * 2 / 8) * (CombatSkillsManager.actualCastingTime / CombatSkillsManager.totalCastingTime), 14), lifeBar);
         }
 
+        // Set the mouse position in the same direction of the textures
+        mousePosition = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
 
         switch (EGameFlow.gameMode)
         {
+            //++ Player HUD
             case EGameFlow.GameMode.PLAYER:
                 break;
+            //++ GodMode HUD
             case EGameFlow.GameMode.GODMODE:
                 break;
-                //+ Developer HUD
+            //++ Developer HUD
             case EGameFlow.GameMode.DEVELOPER:
                 {
-                    // Lateral panel
+                    //+ Lateral panel
                     // Sun icon
                     GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                        (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, buttonSize, buttonSize),
                         developerAtlas,
                         new Rect(1 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
                     // Voxels icon
                     GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                        (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, buttonSize, buttonSize),
                         developerAtlas,
                         new Rect(3 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
                     // Gadgets icon
                     GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                        (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, buttonSize, buttonSize),
                         developerAtlas,
                         new Rect(4 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
                     // Enemies icon
                     GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                        (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, buttonSize, buttonSize),
                         developerAtlas,
                         new Rect(5 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
 
-                    // Lower pannel
+                    //? Tool Control
+                    if (Input.GetKey(KeyCode.LeftControl))
+                    {
+                        if (Input.GetKeyUp(KeyCode.Mouse0))
+                        {
+                            if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, buttonSize, buttonSize), mousePosition))
+                                EGameFlow.selectedTool = EGameFlow.SelectedTool.LIGHT;
+                            else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, buttonSize, buttonSize), mousePosition))
+                                EGameFlow.selectedTool = EGameFlow.SelectedTool.MINE;
+                            else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, buttonSize, buttonSize), mousePosition))
+                                EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
+                            else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, buttonSize, buttonSize), mousePosition))
+                                EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
+                        }
+                    }
+
+
+                    //+ Lower pannel
                     switch (EGameFlow.selectedTool)
                     {
+                        //+ Light
                         case EGameFlow.SelectedTool.LIGHT:
                             {
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                                    (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, buttonSize, buttonSize),
                                     developerAtlas,
                                     new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
                             }
                             break;
+                        //+ Mine
                         case EGameFlow.SelectedTool.MINE:
                             {
+                                // Selection
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                                    (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, buttonSize, buttonSize),
                                     developerAtlas,
                                     new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+
+                                // Tools
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                    developerAtlas,
+                                    new Rect(0 / 8f, 4 / 8f, 1 / 8f, 1 / 8f));
+
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                    developerAtlas,
+                                    new Rect(1 / 8f, 4 / 8f, 1 / 8f, 1 / 8f));
+
+
+                                switch (EGameFlow.developerMineTools)
+                                {
+                                    case EGameFlow.DeveloperMineTools.SINGLE:
+                                        {
+                                            GUI.DrawTextureWithTexCoords
+                                                (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                                developerAtlas,
+                                                new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                        }
+                                        break;
+                                    case EGameFlow.DeveloperMineTools.ORTOEDRIC:
+                                        {
+                                            GUI.DrawTextureWithTexCoords
+                                                (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                                developerAtlas,
+                                                new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                        }
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+
+                                if (Input.GetKey(KeyCode.LeftControl))
+                                {
+                                    // Draw textures
+                                    GUI.DrawTexture(new Rect(0, Screen.height * 3 / 8, Screen.height * 5 / 8, Screen.height * 5 / 8), mineAtlas.mainTexture);
+
+                                    if (Input.GetKeyUp(KeyCode.Mouse0))
+                                    {
+                                        //? SubTool Control
+                                        if (ButtonPressed(new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, buttonSize, buttonSize), mousePosition))
+                                            EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.SINGLE;
+                                        else if (ButtonPressed(new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, buttonSize, buttonSize), mousePosition))
+                                            EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.ORTOEDRIC;
+
+                                        //! Textures Control
+                                        if (ButtonPressed(new Rect(0, Screen.height * 3 / 8, Screen.height * 5 / 8, Screen.height * 5 / 8), mousePosition))
+                                            SelectTexture(new Rect(0, Screen.height * 3 / 8, Screen.height * 5 / 8, Screen.height * 5 / 8), mousePosition);
+                                    }
+                                }
                             }
                             break;
+                        //+ Gadget
                         case EGameFlow.SelectedTool.GADGET:
                             {
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                                    (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, buttonSize, buttonSize),
                                     developerAtlas,
                                     new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
                             }
                             break;
+                        //+ Enemy
                         case EGameFlow.SelectedTool.ENEMY:
                             {
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, Screen.height * 6 / 50, Screen.height * 6 / 50),
+                                    (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, buttonSize, buttonSize),
                                     developerAtlas,
                                     new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
                             }
@@ -159,6 +251,58 @@ public class HUD : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+
+    private bool ButtonPressed(Rect rect, Vector2 point)
+    {
+        if (point.x > rect.x && point.x < rect.x + rect.width && point.y > rect.y && point.y < rect.y + rect.height)
+            return true;
+        else
+            return false;
+    }
+
+
+    private void SelectTexture(Rect rect, Vector2 point)
+    {
+        int selectionX = (int)(point.x / (rect.width / 8));
+        int selectionY = (int)((point.y - rect.y) / ((rect.height) / 8));
+
+        if (selectionY == 0)
+        {
+            if (selectionX == 0)
+                EGameFlow.selectedMine = "Sand Way";
+        }
+        else if (selectionY == 1)
+        {
+            if (selectionX == 0)
+                EGameFlow.selectedMine = "Little Rock";
+            else if (selectionX == 1)
+                EGameFlow.selectedMine = "Large Rock";
+            else if (selectionX == 2)
+                EGameFlow.selectedMine = "Medium Rock";
+            else if (selectionX == 3)
+                EGameFlow.selectedMine = "Medium Broken Rock";
+            else if (selectionX == 4)
+                EGameFlow.selectedMine = "Rock Brick Floor";
+            else if (selectionX == 5)
+                EGameFlow.selectedMine = "Stripped Rock Wall";
+            else if (selectionX == 6)
+                EGameFlow.selectedMine = "Irregular Smooth Rock";
+            else if (selectionX == 7)
+                EGameFlow.selectedMine = "Amethyst Smooth Rock";
+        }
+        else if (selectionY == 2)
+        {
+            if (selectionX == 0)
+                EGameFlow.selectedMine = "Dark Brown Wood";
+            else if (selectionX == 1)
+                EGameFlow.selectedMine = "Three Wood Column Mine";
+            else if (selectionX == 2)
+                EGameFlow.selectedMine = "Two Wood Column Mine";
+            else if (selectionX == 3)
+                EGameFlow.selectedMine = "Wood base Large Rock";
         }
     }
 }
