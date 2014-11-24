@@ -41,7 +41,7 @@ public class GadgetsToolManager
                     yRotation = 270;
 
                 Gadget.Dictionary[EGameFlow.selectedGadget].Place(EGameFlow.selectedGadget, 
-                    new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)), new Vector3(0, yRotation, 0));
+                    new Vector3((int)(mainCamera.raycast.point.x) + 0.5f, mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z) + 0.5f), new Vector3(0, yRotation, 0));
             }
             else if (mainCamera.raycast.normal.y == 0 && !Gadget.Dictionary[EGameFlow.selectedGadget].placedOnFloor)
             {

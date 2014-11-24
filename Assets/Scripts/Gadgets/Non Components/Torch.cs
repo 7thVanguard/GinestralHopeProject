@@ -17,7 +17,7 @@ public class Torch : Gadget
         placedOnFloor = false;
 
         givesComponents = false;
-        dropCount = 1;
+        dropCount = 0;
     }
 
 

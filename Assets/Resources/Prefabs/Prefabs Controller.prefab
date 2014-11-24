@@ -379,6 +379,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400044}
+  - 135: {fileID: 13500004}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Gadget
@@ -543,6 +544,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400064}
+  - 65: {fileID: 6500000}
   m_Layer: 0
   m_Name: Torch
   m_TagString: Gadget
@@ -572,7 +574,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.7235374, y: 34.9082222, z: 24.2064152}
+  m_LocalPosition: {x: 2.65052938, y: 21.7925873, z: 34.1683388}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400048}
@@ -1194,6 +1196,18 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 36df642399b6e1840ae6604e4166ac50, type: 3}
+--- !u!65 &6500000
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .200000003, y: 1, z: .5}
+  m_Center: {x: 0, y: .5, z: -.200000003}
 --- !u!108 &10800000
 Light:
   m_ObjectHideFlags: 1
@@ -1466,6 +1480,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .200000003
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &13500004
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100044}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .5
+  m_Center: {x: 0, y: .5, z: 0}
 --- !u!143 &14300000
 CharacterController:
   m_ObjectHideFlags: 1

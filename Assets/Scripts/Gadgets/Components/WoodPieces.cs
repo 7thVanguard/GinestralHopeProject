@@ -23,8 +23,7 @@ public class WoodPieces : Gadget
 
     public override void Place(string ID, Vector3 pos, Vector3 rotation)
     {
-        Transform woodPieces = world.woodPieces;
-        woodPieces = Object.Instantiate(world.gadgets.FindChild("Wood Pieces"), pos, Quaternion.identity) as Transform;
+        Transform woodPieces = Object.Instantiate(world.gadgets.FindChild("Wood Pieces"), pos, Quaternion.identity) as Transform;
 
         // Head atributes
         woodPieces.name = "Wood Pieces";
@@ -32,6 +31,5 @@ public class WoodPieces : Gadget
 
         // Set transforms
         woodPieces.transform.eulerAngles = Vector3.zero;
-        woodPieces.transform.localScale = Gadget.Dictionary[woodPieces.name].size;
     }
 }
