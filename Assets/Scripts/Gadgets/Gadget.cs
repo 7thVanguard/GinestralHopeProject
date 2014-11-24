@@ -35,6 +35,10 @@ public class Gadget
         gadget.Init(world, player, mainCamera, gadget);
         Dictionary.Add("Wooden Plank", gadget);
 
+        // Torch
+        gadget = new Torch();
+        gadget.Init(world, player, mainCamera, gadget);
+        Dictionary.Add("Torch", gadget);
 
         //+ Components
         // Wood Pieces

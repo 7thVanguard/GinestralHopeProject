@@ -39,22 +39,12 @@ public class GadgetsToolManager
                 else
                     yRotation = 270;
 
-                switch (EGameFlow.selectedGadget)
-                {
-                    case "Wooden Plank":
-                        LVGadget.placePlank(new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)), yRotation);
-                        break;
-                    case "Wood Pieces":
-                        LVGadget.placeWoodPiecesGadget(world, new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)));
-                        break;
-                    case "Nails":
-                        LVGadget.placeNailsGadget(world, new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)));
-                        break;
-                    case "Wooden Ladder":
-                        break;
-                    default:
-                        break;
-                }
+                Gadget.Dictionary[EGameFlow.selectedGadget].Place(EGameFlow.selectedGadget, 
+                    new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)), new Vector3(0, yRotation, 0));
+            }
+            else if (mainCamera.raycast.normal.y <= 0.25f && mainCamera.raycast.normal.y >= -0.25f)
+            {
+
             }
         }
     }

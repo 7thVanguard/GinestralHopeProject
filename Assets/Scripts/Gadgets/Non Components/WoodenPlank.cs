@@ -21,15 +21,43 @@ public class WoodenPlank : Gadget
 
     public override void Place(string ID, Vector3 pos, Vector3 rotation)
     {
-        GameObject plank = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        if (Gadget.Dictionary["Wooden Plank"].count >= 1 || EGameFlow.gameMode != EGameFlow.GameMode.PLAYER)
+        {
+            GameObject plank = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            Gadget gadget = Gadget.Dictionary["Wooden Plank"];
 
-        // Head atributes
-        plank.name = "Wooden Plank";
-        plank.tag = "Gadget";
+            plank.name = "Wooden Plank";
+            plank.tag = "Gadget";
 
-        // Set transforms
-        plank.transform.position = pos;
-        plank.transform.eulerAngles = rotation;
-        plank.transform.localScale = Gadget.Dictionary[plank.name].size;
+            // Set the transform of the plank
+            if (rotation.y == 0)
+            {
+                plank.transform.position = new Vector3(pos.x + gadget.size.x / 2.0f, pos.y + gadget.size.y / 2.0f, pos.z + gadget.size.z / 2.0f);
+                plank.transform.localScale = gadget.size;
+            }
+            else if (rotation.y == 90)
+            {
+                plank.transform.position = new Vector3(pos.x + gadget.size.z / 2.0f, pos.y + gadget.size.y / 2.0f, pos.z + gadget.size.x / 2.0f);
+                plank.transform.localScale = gadget.size;
+            }
+            else if (rotation.y == 180)
+            {
+                plank.transform.position = new Vector3(pos.x + gadget.size.x / 2.0f, pos.y + gadget.size.y / 2.0f, 1 + pos.z - gadget.size.z / 2.0f);
+                plank.transform.localScale = gadget.size;
+            }
+            else
+            {
+                plank.transform.position = new Vector3(1 + pos.x - gadget.size.z / 2.0f, pos.y + gadget.size.y / 2.0f, pos.z + gadget.size.x / 2.0f);
+                plank.transform.localScale = gadget.size;
+            }
+
+            plank.transform.eulerAngles = new Vector3(0, rotation.y, 0);
+
+            if (EGameFlow.gameMode == EGameFlow.GameMode.PLAYER)
+            {
+                // Remove the plank from the inventory
+                Gadget.Dictionary["Wooden Plank"].count--;
+            }
+        }
     }
 }

@@ -45,7 +45,7 @@ public class CameraMovement
 
         // Zoom adapt
         if (mainCamera.objectiveDistance < mainCamera.maxDistance && (mainCamera.isMoving || player.isMoving))
-            mainCamera.objectiveDistance += Time.deltaTime;
+            mainCamera.objectiveDistance += 10 * Time.deltaTime;
 
         // Angle sight clamp
         mainCamera.angleSight = ClampAngle(mainCamera.angleSight, mainCamera.minAngleSight, mainCamera.maxAngleSight);
@@ -83,6 +83,5 @@ public class CameraMovement
         if (angle > 360)
             angle -= 360;
         return Mathf.Clamp(angle, min, max);
-
     }
 }
