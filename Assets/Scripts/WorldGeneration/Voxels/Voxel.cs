@@ -240,6 +240,54 @@ public class Voxel
                     UVStart = new Vector2(3 * world.textureSize, 5 * world.textureSize);
                 }
                 break;
+            case "Fire large Rock":
+                {
+                    entityType = EntityType.MINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(0 * world.textureSize, 4 * world.textureSize);
+                }
+                break;
+            case "Fire Rock Brick Floor":
+                {
+                    entityType = EntityType.MINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(1 * world.textureSize, 4 * world.textureSize);
+                }
+                break;
+            case "Fire Irregular Smooth Rock":
+                {
+                    entityType = EntityType.MINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(2 * world.textureSize, 4 * world.textureSize);
+                }
+                break;
+            case "Fire Amethyst Smooth Rock":
+                {
+                    entityType = EntityType.MINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(3 * world.textureSize, 4 * world.textureSize);
+                }
+                break;
+            case "Moss Large Rock":
+                {
+                    entityType = EntityType.MINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(0 * world.textureSize, 3 * world.textureSize);
+                }
+                break;
+            case "Moss Medium Rock":
+                {
+                    entityType = EntityType.MINE;
+                    voxelState = VoxelState.SOLID;
+
+                    UVStart = new Vector2(1 * world.textureSize, 3 * world.textureSize);
+                }
+                break;
             default:
                 break;
         }

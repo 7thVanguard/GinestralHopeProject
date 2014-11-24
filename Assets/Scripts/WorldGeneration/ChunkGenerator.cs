@@ -171,5 +171,6 @@ public class ChunkGenerator
             Transform.Destroy(chunkObject.GetComponent<MeshCollider>());
 
         chunkObject.AddComponent<MeshCollider>();
+        //chunkObject.isStatic = true;
     }
 }

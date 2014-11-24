@@ -326,5 +326,23 @@ public class HUD : MonoBehaviour
             else if (selectionX == 3)
                 EGameFlow.selectedMine = "Wood base Large Rock";
         }
+        else if (selectionY == 3)
+        {
+            if (selectionX == 0)
+                EGameFlow.selectedMine = "Fire large Rock";
+            else if (selectionX == 1)
+                EGameFlow.selectedMine = "Fire Rock Brick Floor";
+            else if (selectionX == 2)
+                EGameFlow.selectedMine = "Fire Irregular Smooth Rock";
+            else if (selectionX == 3)
+                EGameFlow.selectedMine = "Fire Amethyst Smooth Rock";
+        }
+        else if (selectionY == 4)
+        {
+            if (selectionX == 0)
+                EGameFlow.selectedMine = "Moss Large Rock";
+            else if (selectionX == 1)
+                EGameFlow.selectedMine = "Moss Medium Rock";
+        }
     }
 }
