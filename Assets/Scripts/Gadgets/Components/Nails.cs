@@ -22,14 +22,14 @@ public class Nails : Gadget
     public override void Place(string ID, Vector3 pos, Vector3 rotation)
     {
         Transform nails = world.nails;
-        nails = Object.Instantiate(nails, pos, Quaternion.identity) as Transform;
+        nails = Object.Instantiate(world.gadgets.FindChild("Nails"), pos, Quaternion.identity) as Transform;
 
         // Head atributes
         nails.name = "Nails";
         nails.tag = "Gadget";
 
         // Set transforms
-        nails.transform.eulerAngles = rotation;
+        nails.transform.eulerAngles = Vector3.zero;
         nails.transform.localScale = Gadget.Dictionary[nails.name].size;
     }
 }

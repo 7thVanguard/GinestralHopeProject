@@ -14,6 +14,8 @@ public class WoodenPlank : Gadget
         size = new Vector3(1, 0.1f, 6);
         count = 0;
 
+        placedOnFloor = true;
+
         givesComponents = false;
         dropCount = 1;
     }

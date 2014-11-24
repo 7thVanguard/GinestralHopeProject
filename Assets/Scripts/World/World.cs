@@ -15,6 +15,7 @@ public class World
 
 
     // Prefabs
+    public Transform gadgets;
     public Transform skills;
 
     public Transform normalSlime;
@@ -44,6 +45,7 @@ public class World
 
         // Prefabs relative
         skills = prefabs.FindChild("Skills");
+        gadgets = prefabs.FindChild("Gadgets");
 
         normalSlime = prefabs.FindChild("Normal Slime");
         woodPieces = prefabs.FindChild("Wood Pieces");

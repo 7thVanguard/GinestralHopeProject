@@ -11,8 +11,10 @@ public class Torch : Gadget
 
         ID = "Torch";
 
-        size = new Vector3(1, 0.1f, 6);
+        size = new Vector3(1, 1, 1);
         count = 0;
+
+        placedOnFloor = false;
 
         givesComponents = false;
         dropCount = 1;
@@ -21,7 +23,8 @@ public class Torch : Gadget
 
     public override void Place(string ID, Vector3 pos, Vector3 rotation)
     {
-        GameObject torch = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        Transform torch = world.nails;
+        torch = Object.Instantiate(world.gadgets.FindChild("Torch"), pos, Quaternion.identity) as Transform;
 
         // Head atributes
         torch.name = "Torch";
@@ -30,6 +33,5 @@ public class Torch : Gadget
         // Set transforms
         torch.transform.position = pos;
         torch.transform.eulerAngles = rotation;
-        torch.transform.localScale = Gadget.Dictionary[torch.name].size;
     }
 }

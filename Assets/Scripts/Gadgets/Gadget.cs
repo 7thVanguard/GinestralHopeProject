@@ -17,6 +17,8 @@ public class Gadget
     public Vector3 size;
     public int count;
 
+    public bool placedOnFloor;
+
     // Drops
     public bool givesComponents;
     public int dropCount;

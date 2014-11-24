@@ -26,10 +26,11 @@ public class GadgetsToolManager
     {
         if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
         {
-            if (mainCamera.raycast.normal.y >= 0.75f)
+            if (mainCamera.raycast.normal.y >= 0.75f && Gadget.Dictionary[EGameFlow.selectedGadget].placedOnFloor)
             {
                 // Claculates the initial position and the rotation of the Gadget we are going to place
                 int yRotation;
+
                 if (Camera.main.transform.eulerAngles.y < 45 || Camera.main.transform.eulerAngles.y > 315)
                     yRotation = 0;
                 else if (Camera.main.transform.eulerAngles.y < 135)
@@ -42,9 +43,38 @@ public class GadgetsToolManager
                 Gadget.Dictionary[EGameFlow.selectedGadget].Place(EGameFlow.selectedGadget, 
                     new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)), new Vector3(0, yRotation, 0));
             }
-            else if (mainCamera.raycast.normal.y <= 0.25f && mainCamera.raycast.normal.y >= -0.25f)
+            else if (mainCamera.raycast.normal.y == 0 && !Gadget.Dictionary[EGameFlow.selectedGadget].placedOnFloor)
             {
+                int yRotation;
 
+                if (mainCamera.raycast.normal == Vector3.back)
+                {
+                    yRotation = 0;
+                    Gadget.Dictionary[EGameFlow.selectedGadget].Place(EGameFlow.selectedGadget,
+                        new Vector3((int)mainCamera.raycast.point.x + 0.5f, (int)mainCamera.raycast.point.y, (mainCamera.raycast.point.z)),
+                        new Vector3(0, yRotation, 0));
+                }
+                else if (mainCamera.raycast.normal == Vector3.left)
+                {
+                    yRotation = 90;
+                    Gadget.Dictionary[EGameFlow.selectedGadget].Place(EGameFlow.selectedGadget,
+                        new Vector3(mainCamera.raycast.point.x, (int)mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z + 0.5f)),
+                        new Vector3(0, yRotation, 0));
+                }
+                else if (mainCamera.raycast.normal == Vector3.forward)
+                {
+                    yRotation = 180;
+                    Gadget.Dictionary[EGameFlow.selectedGadget].Place(EGameFlow.selectedGadget,
+                        new Vector3((int)mainCamera.raycast.point.x + 0.5f, (int)mainCamera.raycast.point.y, (mainCamera.raycast.point.z)),
+                        new Vector3(0, yRotation, 0));
+                }
+                else if (mainCamera.raycast.normal == Vector3.right)
+                {
+                    yRotation = 270;
+                    Gadget.Dictionary[EGameFlow.selectedGadget].Place(EGameFlow.selectedGadget,
+                        new Vector3(mainCamera.raycast.point.x, (int)mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z + 0.5f)),
+                        new Vector3(0, yRotation, 0));
+                }
             }
         }
     }
