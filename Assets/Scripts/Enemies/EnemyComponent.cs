@@ -6,6 +6,7 @@ public class EnemyComponent : MonoBehaviour
     [HideInInspector] public Color originalColor;
     [HideInInspector] public int maxLife;
     [HideInInspector] public float life;
+    [HideInInspector] public bool isSelected;
 
     private int animCounter;
 

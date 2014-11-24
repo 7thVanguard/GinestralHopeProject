@@ -49,7 +49,7 @@ public class DevConstructionSkillsManager
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
             GadgetsToolManager.Remove(player, mainCamera);
 		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
-			EnemiesToolManager.Remove();
+			EnemiesToolManager.Select(mainCamera);
     }
 
 

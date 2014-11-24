@@ -6,8 +6,6 @@ public class NSlimeEnemyCombat
     Player player;
     GameObject enemy;
     RaycastHit impact;
-
-    Skill selectedSkill;
     
     private Vector3 playerFocus;            // Vector that goes from enemy to player
     private float dotProduct;
@@ -19,7 +17,6 @@ public class NSlimeEnemyCombat
         this.player = player;
         this.enemy = enemy;
 
-        selectedSkill = Skill.Dictionary["Fire Ball"];
         detectionDistance = 30;
     }
 
@@ -49,7 +46,7 @@ public class NSlimeEnemyCombat
                 // Check if player is visible
                 if (Physics.Raycast(enemy.transform.position, playerFocus, out impact, 30))
                     if (impact.transform.gameObject.tag == "Player")
-                        selectedSkill.CastDirected(null, enemy.transform.position, false);
+                        Skill.Dictionary["Fire Ball"].CastDirected(null, enemy.transform.position, false);
             }
         }
     }

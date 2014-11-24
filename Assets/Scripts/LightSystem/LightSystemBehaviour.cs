@@ -14,8 +14,8 @@ public class LightSystemBehaviour
     protected LensFlare lensFlare;
 
     // DayNight cycle duration relative
-    protected const float dayDuration = 120;
-    protected const float beginingTime = 270;
+    protected const float dayDuration = 12000;
+    protected const float beginingTime = 11500;
 
     // Season relative
     protected const float maxSunAngle = 45;

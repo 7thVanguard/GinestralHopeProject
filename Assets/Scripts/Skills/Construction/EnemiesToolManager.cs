@@ -3,10 +3,32 @@ using System.Collections;
 
 public class EnemiesToolManager
 {
-	public static void Remove()
-	{
+    private static GameObject gameObject;
 
-	}
+    public static void Select(MainCamera mainCamera)
+    {
+        if (mainCamera.raycast.transform.gameObject.tag == "Enemy")
+        {
+            if (gameObject != null)
+            {
+                gameObject.GetComponent<EnemyComponent>().isSelected = false;
+                gameObject.renderer.material.color = Color.white;
+            }
+
+            gameObject = mainCamera.raycast.transform.gameObject;
+            gameObject.GetComponent<EnemyComponent>().isSelected = true;
+
+            gameObject.renderer.material.color = Color.red;
+        }
+        else
+        {
+            if (gameObject != null)
+            {
+                gameObject.GetComponent<EnemyComponent>().isSelected = false;
+                gameObject.renderer.material.color = Color.white;
+            }
+        }
+    }
 	
 	
 	public static void Place(World world, Player player, MainCamera mainCamera)

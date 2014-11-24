@@ -5,6 +5,7 @@ public class Player
 {
     public GameObject playerObj;
     public CharacterController controller;
+    public Light light;
 
     // Statistics
     public float maxLife = 20;
@@ -48,17 +49,16 @@ public class Player
 
         // Player components creation
         controller = playerObj.AddComponent<CharacterController>();
-        playerObj.AddComponent<SphereCollider>();
         playerObj.AddComponent<PlayerComponent>();
+        light = playerObj.AddComponent<Light>();
 
         // Component variables
         playerObj.GetComponent<CharacterController>().slopeLimit = 46;
-
-        playerObj.GetComponent<SphereCollider>().isTrigger = true;
-        playerObj.GetComponent<SphereCollider>().radius = 30;
-        playerObj.GetComponent<SphereCollider>().center = Vector3.zero;
-
         playerObj.renderer.material = new Material(Shader.Find("Diffuse"));
+        light.type = LightType.Point;
+        light.color = Color.white;
+        light.range = 20;
+        light.intensity = 1.5f;
 
         //+ Player initializations
         playerObj.GetComponent<PlayerComponent>().Init(this);
