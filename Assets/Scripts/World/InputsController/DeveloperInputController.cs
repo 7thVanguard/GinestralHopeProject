@@ -8,7 +8,7 @@ public class DeveloperInputController : AbstractInputsController
     private MainCamera mainCamera;
     private Sun sun;
 
-    private DevConstructionSkillsManager skills;
+    private DevConstructionToolsManager skills;
 
 
     public DeveloperInputController(World world, Player player, MainCamera mainCamera, Sun sun)
@@ -22,7 +22,7 @@ public class DeveloperInputController : AbstractInputsController
 
     public override void Start()
     {
-        skills = new DevConstructionSkillsManager();
+        skills = new DevConstructionToolsManager();
     }
 
 

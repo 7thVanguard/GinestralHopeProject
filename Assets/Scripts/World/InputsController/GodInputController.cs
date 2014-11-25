@@ -6,7 +6,7 @@ public class GodInputController : AbstractInputsController
     private Player player;
     private MainCamera mainCamera;
 
-    private DevCombatSkillsManager skills;
+    private DevCombatToolsManager skills;
 
 
     public GodInputController(Player player, MainCamera mainCamera)
@@ -18,7 +18,7 @@ public class GodInputController : AbstractInputsController
 
 	public override void Start()
     {
-        skills = new DevCombatSkillsManager();
+        skills = new DevCombatToolsManager();
 	}
 	
 

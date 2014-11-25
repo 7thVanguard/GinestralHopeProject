@@ -53,11 +53,11 @@ public class EnemiesToolManager
             if (mainCamera.raycast.normal.y >= 0.75f)
             {
                 // Detects the voxel
-                DevConstructionSkillsManager.chunk = world.chunk[(int)((mainCamera.raycast.point.x) / world.chunkSize.x),
+                DevConstructionToolsManager.chunk = world.chunk[(int)((mainCamera.raycast.point.x) / world.chunkSize.x),
                                                            (int)((mainCamera.raycast.point.y + 0.5f) / world.chunkSize.y),
                                                            (int)((mainCamera.raycast.point.z) / world.chunkSize.z)];
 
-                DevConstructionSkillsManager.voxel = DevConstructionSkillsManager.chunk.voxel[(int)((mainCamera.raycast.point.x) % world.chunkSize.x),
+                DevConstructionToolsManager.voxel = DevConstructionToolsManager.chunk.voxel[(int)((mainCamera.raycast.point.x) % world.chunkSize.x),
                                                                                 (int)((mainCamera.raycast.point.y + 0.5f) % world.chunkSize.y),
                                                                                 (int)((mainCamera.raycast.point.z) % world.chunkSize.z)];
             }

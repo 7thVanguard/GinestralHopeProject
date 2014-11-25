@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CombatSkillsManager
+public class CombatToolsManager
 {
     public static float totalCastingTime = 0;
     public static float actualCastingTime = 0;

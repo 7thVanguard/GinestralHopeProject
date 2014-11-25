@@ -17,16 +17,16 @@ public class MineVoxelsToolManager
             {
                 if (mainCamera.raycast.transform.tag == "Chunk")
                 {
-                    DevConstructionSkillsManager.detChunk = DevConstructionSkillsManager.chunk;
-                    DevConstructionSkillsManager.detVoxel = DevConstructionSkillsManager.voxel;
+                    DevConstructionToolsManager.detChunk = DevConstructionToolsManager.chunk;
+                    DevConstructionToolsManager.detVoxel = DevConstructionToolsManager.voxel;
 
                     // Destroy the selected voxel
-                    world.chunk[DevConstructionSkillsManager.detChunk.numID.x, DevConstructionSkillsManager.detChunk.numID.y, DevConstructionSkillsManager.detChunk.numID.z]
-                        .voxel[DevConstructionSkillsManager.detVoxel.numID.x, DevConstructionSkillsManager.detVoxel.numID.y, DevConstructionSkillsManager.detVoxel.numID.z]
-                        = new Voxel(world, DevConstructionSkillsManager.detVoxel.numID, DevConstructionSkillsManager.detChunk.numID, "Air");
+                    world.chunk[DevConstructionToolsManager.detChunk.numID.x, DevConstructionToolsManager.detChunk.numID.y, DevConstructionToolsManager.detChunk.numID.z]
+                        .voxel[DevConstructionToolsManager.detVoxel.numID.x, DevConstructionToolsManager.detVoxel.numID.y, DevConstructionToolsManager.detVoxel.numID.z]
+                        = new Voxel(world, DevConstructionToolsManager.detVoxel.numID, DevConstructionToolsManager.detChunk.numID, "Air");
 
                     // Reset
-                    LChunk.Reset(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel);
+                    LChunk.Reset(world, DevConstructionToolsManager.detChunk, DevConstructionToolsManager.detVoxel);
                 }
             }
         }
@@ -34,14 +34,14 @@ public class MineVoxelsToolManager
         else
         {
             // Check if this voxel is the first selection or the second one in multi selection tools
-            if (!DevConstructionSkillsManager.selected)
+            if (!DevConstructionToolsManager.selected)
             {
                 // Set the first detected voxel
-                preDetChunk = DevConstructionSkillsManager.chunk;
-                preDetVoxel = DevConstructionSkillsManager.voxel;
+                preDetChunk = DevConstructionToolsManager.chunk;
+                preDetVoxel = DevConstructionToolsManager.voxel;
 
                 // Begind the fase 2 of multi selection tools
-                DevConstructionSkillsManager.selected = true;
+                DevConstructionToolsManager.selected = true;
             }
             else
             {
@@ -50,14 +50,14 @@ public class MineVoxelsToolManager
                 {
                     if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
                     {
-                        DevConstructionSkillsManager.detChunk = DevConstructionSkillsManager.chunk;
-                        DevConstructionSkillsManager.detVoxel = DevConstructionSkillsManager.voxel;
+                        DevConstructionToolsManager.detChunk = DevConstructionToolsManager.chunk;
+                        DevConstructionToolsManager.detVoxel = DevConstructionToolsManager.voxel;
 
                         // Places the selectet voxel in the selected ones
                         OrtoedricResolution(world, "Air");
 
                         // End of fase 2 of multi selection tool
-                        DevConstructionSkillsManager.selected = false;
+                        DevConstructionToolsManager.selected = false;
                     }
                 }
             }
@@ -74,31 +74,31 @@ public class MineVoxelsToolManager
             {
                 if (mainCamera.raycast.transform.tag == "Chunk")
                 {
-                    DevConstructionSkillsManager.detChunk = DevConstructionSkillsManager.chunk;
-                    DevConstructionSkillsManager.detVoxel = DevConstructionSkillsManager.voxel;
+                    DevConstructionToolsManager.detChunk = DevConstructionToolsManager.chunk;
+                    DevConstructionToolsManager.detVoxel = DevConstructionToolsManager.voxel;
 
                     // Detect the face impacted by the ray, and and place the block in front of that face
                     if (mainCamera.raycast.normal.x > 0.75f)
-                        VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 1, 0, 0);
+                        VoxelLib.GetVoxel(world, ref DevConstructionToolsManager.detChunk, ref DevConstructionToolsManager.detVoxel, 1, 0, 0);
                     else if (mainCamera.raycast.normal.x < -0.75f)
-                        VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, -1, 0, 0);
+                        VoxelLib.GetVoxel(world, ref DevConstructionToolsManager.detChunk, ref DevConstructionToolsManager.detVoxel, -1, 0, 0);
 
                     else if (mainCamera.raycast.normal.y > 0.75f)
-                        VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 1, 0);
+                        VoxelLib.GetVoxel(world, ref DevConstructionToolsManager.detChunk, ref DevConstructionToolsManager.detVoxel, 0, 1, 0);
                     else if (mainCamera.raycast.normal.y < -0.75f)
-                        VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, -1, 0);
+                        VoxelLib.GetVoxel(world, ref DevConstructionToolsManager.detChunk, ref DevConstructionToolsManager.detVoxel, 0, -1, 0);
 
                     else if (mainCamera.raycast.normal.z > 0.75f)
-                        VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 0, 1);
+                        VoxelLib.GetVoxel(world, ref DevConstructionToolsManager.detChunk, ref DevConstructionToolsManager.detVoxel, 0, 0, 1);
                     else if (mainCamera.raycast.normal.z < -0.75f)
-                        VoxelLib.GetVoxel(world, ref DevConstructionSkillsManager.detChunk, ref DevConstructionSkillsManager.detVoxel, 0, 0, -1);
+                        VoxelLib.GetVoxel(world, ref DevConstructionToolsManager.detChunk, ref DevConstructionToolsManager.detVoxel, 0, 0, -1);
 
-                    world.chunk[DevConstructionSkillsManager.detChunk.numID.x, DevConstructionSkillsManager.detChunk.numID.y, DevConstructionSkillsManager.detChunk.numID.z]
-                        .voxel[DevConstructionSkillsManager.detVoxel.numID.x, DevConstructionSkillsManager.detVoxel.numID.y, DevConstructionSkillsManager.detVoxel.numID.z]
-                        = new Voxel(world, DevConstructionSkillsManager.detVoxel.numID, DevConstructionSkillsManager.detChunk.numID, EGameFlow.selectedMine);
+                    world.chunk[DevConstructionToolsManager.detChunk.numID.x, DevConstructionToolsManager.detChunk.numID.y, DevConstructionToolsManager.detChunk.numID.z]
+                        .voxel[DevConstructionToolsManager.detVoxel.numID.x, DevConstructionToolsManager.detVoxel.numID.y, DevConstructionToolsManager.detVoxel.numID.z]
+                        = new Voxel(world, DevConstructionToolsManager.detVoxel.numID, DevConstructionToolsManager.detChunk.numID, EGameFlow.selectedMine);
 
                     // Reset
-                    LChunk.Reset(world, DevConstructionSkillsManager.detChunk, DevConstructionSkillsManager.detVoxel);
+                    LChunk.Reset(world, DevConstructionToolsManager.detChunk, DevConstructionToolsManager.detVoxel);
                 }
             }
         }
@@ -106,14 +106,14 @@ public class MineVoxelsToolManager
         else
         {
             // Check if this voxel is the first selection or the second one in multi selection tools
-            if (!DevConstructionSkillsManager.selected)
+            if (!DevConstructionToolsManager.selected)
             {
                 // Set the first detected voxel
-                preDetChunk = DevConstructionSkillsManager.chunk;
-                preDetVoxel = DevConstructionSkillsManager.voxel;
+                preDetChunk = DevConstructionToolsManager.chunk;
+                preDetVoxel = DevConstructionToolsManager.voxel;
 
                 // Begind the fase 2 of multi selection tools
-                DevConstructionSkillsManager.selected = true;
+                DevConstructionToolsManager.selected = true;
             }
             else
             {
@@ -122,14 +122,14 @@ public class MineVoxelsToolManager
                 {
                     if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
                     {
-                        DevConstructionSkillsManager.detChunk = DevConstructionSkillsManager.chunk;
-                        DevConstructionSkillsManager.detVoxel = DevConstructionSkillsManager.voxel;
+                        DevConstructionToolsManager.detChunk = DevConstructionToolsManager.chunk;
+                        DevConstructionToolsManager.detVoxel = DevConstructionToolsManager.voxel;
 
                         // Places the selectet voxel in the selected ones
                         OrtoedricResolution(world, EGameFlow.selectedMine);
 
                         // End of fase 2 of multi selection tool
-                        DevConstructionSkillsManager.selected = false;
+                        DevConstructionToolsManager.selected = false;
                     }
                 }
             }
@@ -139,7 +139,7 @@ public class MineVoxelsToolManager
 
     public static void Cancel()
     {
-        DevConstructionSkillsManager.selected = false;
+        DevConstructionToolsManager.selected = false;
     }
 
 
@@ -164,11 +164,11 @@ public class MineVoxelsToolManager
                         voxelDisplacementZ = 0.25f;
 
                     // Detects the vertex we are aiming at
-                    DevConstructionSkillsManager.chunk = world.chunk[(int)((mainCamera.raycast.point.x - voxelDisplacementX) / world.chunkSize.x),
+                    DevConstructionToolsManager.chunk = world.chunk[(int)((mainCamera.raycast.point.x - voxelDisplacementX) / world.chunkSize.x),
                                                                 (int)((mainCamera.raycast.point.y - voxelDisplacementY) / world.chunkSize.y),
                                                                 (int)((mainCamera.raycast.point.z - voxelDisplacementZ) / world.chunkSize.z)];
 
-                    DevConstructionSkillsManager.voxel = DevConstructionSkillsManager.chunk.voxel[(int)((mainCamera.raycast.point.x - voxelDisplacementX) % world.chunkSize.x),
+                    DevConstructionToolsManager.voxel = DevConstructionToolsManager.chunk.voxel[(int)((mainCamera.raycast.point.x - voxelDisplacementX) % world.chunkSize.x),
                                                                                     (int)((mainCamera.raycast.point.y - voxelDisplacementY) % world.chunkSize.y),
                                                                                     (int)((mainCamera.raycast.point.z - voxelDisplacementZ) % world.chunkSize.z)];
                 }
@@ -194,7 +194,7 @@ public class MineVoxelsToolManager
 
         // Detect where the selection begins and where it ends
         initX = preDetChunk.numID.x * world.chunkSize.x + preDetVoxel.numID.x;
-        endX = DevConstructionSkillsManager.detChunk.numID.x * world.chunkSize.x + DevConstructionSkillsManager.detVoxel.numID.x;
+        endX = DevConstructionToolsManager.detChunk.numID.x * world.chunkSize.x + DevConstructionToolsManager.detVoxel.numID.x;
 
         if (initX <= endX)
         {
@@ -210,7 +210,7 @@ public class MineVoxelsToolManager
         }
 
         initY = preDetChunk.numID.y * world.chunkSize.y + preDetVoxel.numID.y;
-        endY = DevConstructionSkillsManager.detChunk.numID.y * world.chunkSize.y + DevConstructionSkillsManager.detVoxel.numID.y;
+        endY = DevConstructionToolsManager.detChunk.numID.y * world.chunkSize.y + DevConstructionToolsManager.detVoxel.numID.y;
 
         if (initY <= endY)
         {
@@ -226,7 +226,7 @@ public class MineVoxelsToolManager
         }
 
         initZ = preDetChunk.numID.z * world.chunkSize.z + preDetVoxel.numID.z;
-        endZ = DevConstructionSkillsManager.detChunk.numID.z * world.chunkSize.z + DevConstructionSkillsManager.detVoxel.numID.z;
+        endZ = DevConstructionToolsManager.detChunk.numID.z * world.chunkSize.z + DevConstructionToolsManager.detVoxel.numID.z;
 
         if (initZ <= endZ)
         {

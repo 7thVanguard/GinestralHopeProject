@@ -7,8 +7,8 @@ public class PlayerInputController : AbstractInputsController
     private Player player;
     private MainCamera mainCamera;
 
-    private ConstructionSkillsManager constructionSkills;
-    private CombatSkillsManager combatSkills;
+    private ConstructionToolsManager constructionSkills;
+    private CombatToolsManager combatSkills;
 
 
 
@@ -22,8 +22,8 @@ public class PlayerInputController : AbstractInputsController
 
     public override void Start()
     {
-        constructionSkills = new ConstructionSkillsManager();
-        combatSkills = new CombatSkillsManager();
+        constructionSkills = new ConstructionToolsManager();
+        combatSkills = new CombatToolsManager();
     }
 
 

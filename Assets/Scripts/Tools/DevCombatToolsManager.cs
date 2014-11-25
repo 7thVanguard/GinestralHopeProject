@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DevCombatSkillsManager
+public class DevCombatToolsManager
 {
     public void Update(Player player, MainCamera mainCamera)
     {

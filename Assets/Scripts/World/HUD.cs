@@ -90,11 +90,11 @@ public class HUD : MonoBehaviour
 
 
         //+ Skills casting
-        if (CombatSkillsManager.casting)
+        if (CombatToolsManager.casting)
         {
             GUI.DrawTexture(new Rect(Screen.width * 3 / 8 - 3, Screen.height * 4 / 5 - 10, Screen.width * 2 / 8 + 6, 20), lifeBarBack);
             GUI.DrawTexture(new Rect(Screen.width * 3 / 8, Screen.height * 4 / 5 - 7,
-                (Screen.width * 2 / 8) * (CombatSkillsManager.actualCastingTime / CombatSkillsManager.totalCastingTime), 14), lifeBar);
+                (Screen.width * 2 / 8) * (CombatToolsManager.actualCastingTime / CombatToolsManager.totalCastingTime), 14), lifeBar);
         }
 
         // Set the mouse position in the same direction of the textures
