@@ -123,7 +123,7 @@ public class Voxel
 
                     UVStart = new Vector2(0 * world.textureSize, 7 * world.textureSize);
 
-                    blastResistance = 5;
+                    blastResistance = 7;
                 }
                 break;
             case "Little Rock":
@@ -133,7 +133,7 @@ public class Voxel
 
                     UVStart = new Vector2(0 * world.textureSize, 6 * world.textureSize);
 
-                    blastResistance = 3;
+                    blastResistance = 6;
                 }
                 break;
             case "Large Rock":
@@ -143,7 +143,7 @@ public class Voxel
 
                     UVStart = new Vector2(1 * world.textureSize, 6 * world.textureSize);
 
-                    blastResistance = 6;
+                    blastResistance = 8;
                 }
                 break;
             case "Medium Rock":
@@ -153,7 +153,7 @@ public class Voxel
 
                     UVStart = new Vector2(2 * world.textureSize, 6 * world.textureSize);
 
-                    blastResistance = 6;
+                    blastResistance = 7;
                 }
                 break;
             case "Medium Broken Rock":
@@ -163,7 +163,7 @@ public class Voxel
 
                     UVStart = new Vector2(3 * world.textureSize, 6 * world.textureSize);
 
-                    blastResistance = 2;
+                    blastResistance = 3;
                 }
                 break;
             case "Rock Brick Floor":
@@ -173,7 +173,7 @@ public class Voxel
 
                     UVStart = new Vector2(4 * world.textureSize, 6 * world.textureSize);
 
-                    blastResistance = 6;
+                    blastResistance = 9;
                 }
                 break;
             case "Stripped Rock Wall":
@@ -183,7 +183,7 @@ public class Voxel
 
                     UVStart = new Vector2(5 * world.textureSize, 6 * world.textureSize);
 
-                    blastResistance = 5;
+                    blastResistance = 8;
                 }
                 break;
             case "Irregular Smooth Rock":
@@ -193,7 +193,7 @@ public class Voxel
 
                     UVStart = new Vector2(6 * world.textureSize, 6 * world.textureSize);
 
-                    blastResistance = 7;
+                    blastResistance = 8;
                 }
                 break;
             case "Amethyst Smooth Rock":
@@ -213,7 +213,7 @@ public class Voxel
 
                     UVStart = new Vector2(0 * world.textureSize, 5 * world.textureSize);
 
-                    blastResistance = 1;
+                    blastResistance = 2;
                 }
                 break;
             case "Three Wood Column Mine":
@@ -222,6 +222,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(1 * world.textureSize, 5 * world.textureSize);
+
+                    blastResistance = 4;
                 }
                 break;
             case "Two Wood Column Mine":
@@ -230,6 +232,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(2 * world.textureSize, 5 * world.textureSize);
+
+                    blastResistance = 4;
                 }
                 break;
             case "Wood base Large Rock":
@@ -238,6 +242,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(3 * world.textureSize, 5 * world.textureSize);
+
+                    blastResistance = 5;
                 }
                 break;
             case "Fire large Rock":
@@ -246,6 +252,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 4 * world.textureSize);
+
+                    blastResistance = 9;
                 }
                 break;
             case "Fire Rock Brick Floor":
@@ -254,6 +262,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(1 * world.textureSize, 4 * world.textureSize);
+
+                    blastResistance = 10;
                 }
                 break;
             case "Fire Irregular Smooth Rock":
@@ -262,6 +272,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(2 * world.textureSize, 4 * world.textureSize);
+
+                    blastResistance = 9;
                 }
                 break;
             case "Fire Amethyst Smooth Rock":
@@ -270,6 +282,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(3 * world.textureSize, 4 * world.textureSize);
+
+                    blastResistance = 6;
                 }
                 break;
             case "Moss Large Rock":
@@ -278,6 +292,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 3 * world.textureSize);
+
+                    blastResistance = 6;
                 }
                 break;
             case "Moss Medium Rock":
@@ -286,6 +302,8 @@ public class Voxel
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(1 * world.textureSize, 3 * world.textureSize);
+
+                    blastResistance = 5;
                 }
                 break;
             default:

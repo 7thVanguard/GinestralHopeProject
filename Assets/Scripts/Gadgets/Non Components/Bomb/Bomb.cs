@@ -31,5 +31,7 @@ public class Bomb : Gadget
 
         // Set transforms
         bomb.transform.position = new Vector3(pos.x, pos.y, pos.z);
+        bomb.gameObject.AddComponent<BombBehaviour>();
+        bomb.gameObject.GetComponent<BombBehaviour>().Init(world);
     }
 }
