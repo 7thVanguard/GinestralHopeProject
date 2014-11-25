@@ -31,7 +31,8 @@ public class BombBehaviour : MonoBehaviour
     private float maxLightIntensity = 5;
     private float maxLightRange = 26;
 
-    private bool exploded;
+    private bool exploded = false;
+    private bool finished = false;
 
 
 	public void Init(World world)
@@ -39,10 +40,11 @@ public class BombBehaviour : MonoBehaviour
         this.world = world;
 
         transform.FindChild("Explosion").gameObject.SetActive(false);
+        transform.FindChild("Smoke").gameObject.SetActive(false);
         light = transform.FindChild("Explosion").light;
         
-        damage = 6;
-        blastRadius = 12;
+        damage = 8;
+        blastRadius = 16;
 
         glowColor = transform.FindChild("AnimatedRunes").FindChild("RunesGlow").gameObject.renderer.material.GetColor("_TintColor");
         baseBombColor = transform.FindChild("Bomb").renderer.material.color;
@@ -108,7 +110,7 @@ public class BombBehaviour : MonoBehaviour
                     downCounter = initialxplosionCounter;
                 }
             }
-            else
+            else if (!finished)
             {
                 // Deactivate on impact
                 if (downCounter == initialxplosionCounter)
@@ -116,8 +118,10 @@ public class BombBehaviour : MonoBehaviour
                     // Explosion relative
                     Destroy(transform.FindChild("AnimatedRunes").gameObject);
                     Destroy(transform.FindChild("Bomb").gameObject);
-                    transform.FindChild("Explosion").gameObject.SetActive(false);
                     transform.FindChild("Explosion").gameObject.SetActive(true);
+                    transform.FindChild("Explosion").gameObject.particleSystem.playbackSpeed = 0.75f;
+                    transform.FindChild("Smoke").gameObject.SetActive(true);
+                    transform.FindChild("Smoke").gameObject.particleSystem.playbackSpeed = 0.35f;
                     light = transform.FindChild("Explosion").light;
 
                     // Destroy near objects
@@ -130,6 +134,17 @@ public class BombBehaviour : MonoBehaviour
                 light.range = maxLightRange * downCounter / initialxplosionCounter;
 
                 // Destroy the bomb
+                if (downCounter <= 0)
+                {
+                    downCounter = 7;
+                    finished = true;
+                }
+            }
+            else
+            {
+                // Smoke
+                downCounter -= Time.deltaTime;
+                
                 if (downCounter <= 0)
                     Destroy(this.gameObject);
             }

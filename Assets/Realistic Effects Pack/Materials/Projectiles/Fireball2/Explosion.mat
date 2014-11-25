@@ -30,20 +30,20 @@ Material:
     m_Floats:
       data:
         first:
-          name: _InvFade
-        second: 3
-      data:
-        first:
           name: _Shininess
         second: .078125
       data:
         first:
-          name: _BumpAmt
-        second: 98.2142868
+          name: _InvFade
+        second: 3
       data:
         first:
           name: _CutOutLightCore
         second: .571428597
+      data:
+        first:
+          name: _BumpAmt
+        second: 98.2142868
     m_Colors:
       data:
         first:
