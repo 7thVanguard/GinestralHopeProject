@@ -13,10 +13,11 @@ public class Player
 
     // Movement
     public float godModeSpeed = 25;
-    public float runSpeed = 8.5f;
+    public float runSpeed = 6.5f;
     public float walkSpeed = 4;
     public float acceleration = 0.2f;
-    public float jumpInitialSpeed = 4;
+    public float jumpInitialSpeed = 6;
+    public float jumpGravityMultiplier = 2.5f;
     public bool isMoving;
 
     // Detection

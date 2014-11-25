@@ -28,8 +28,20 @@ public class CameraMovement
 
     public void Update()
     {
+        // First Person
+        if(EGameFlow.gameMode == EGameFlow.GameMode.DEVELOPER)
+        {
+            mainCamera.maxDistance = 0;
+            mainCamera.objectiveDistance = 0;
+        }
+        else
+        {
+            mainCamera.maxDistance = 3;
+        }
+
+
         // Camera aim depending on the player
-        mainCamera.offset = player.playerObj.transform.right * 0.5f + player.playerObj.transform.forward * 0.3f + Vector3.up * (1.2f - mainCamera.angleSight / 45.0f);
+        mainCamera.offset = player.playerObj.transform.right * 0.5f + player.playerObj.transform.forward * 0.3f + Vector3.up * (1 - mainCamera.angleSight / 45.0f);
 
         // Mouse inputs
         if (!Input.GetKey(KeyCode.LeftControl))
@@ -60,16 +72,16 @@ public class CameraMovement
         mainCamera.controller.Move(mainCamera.position - mainCamera.previousPosition);
 
         // Blocked view detection
-        Vector3 trueTargetPosition = player.playerObj.transform.position + mainCamera.offset;
+        Vector3 playerInScreenPosition = player.playerObj.transform.position + mainCamera.offset;
         
         // Raycast with an objective
-        if (Physics.Linecast(trueTargetPosition, mainCamera.cameraObj.transform.position, out impact))
+        if (Physics.Linecast(playerInScreenPosition, mainCamera.cameraObj.transform.position, out impact))
         {
             if (impact.transform.gameObject.tag != "MainCamera" && impact.transform.gameObject.tag != "Player")
             {
                 // Reallocates the camera
-                float advancedDistance = Vector3.Distance(trueTargetPosition, impact.point) - 0.5f;
-                mainCamera.objectiveDistance = Vector3.Distance(trueTargetPosition, impact.point) - 0.5f;
+                float advancedDistance = Vector3.Distance(playerInScreenPosition, impact.point) - 0.5f;
+                mainCamera.objectiveDistance = Vector3.Distance(playerInScreenPosition, impact.point) - 0.5f;
                 mainCamera.cameraObj.transform.position = player.playerObj.transform.position + mainCamera.offset - (rotation * Vector3.forward * advancedDistance);
                 //mainCamera.cameraObj.transform.position = mainCamera.position;
             }

@@ -36,7 +36,7 @@ public class PlayerMovement
                 objectiveDirection = new Vector3(objectiveDirection.x, player.jumpInitialSpeed, objectiveDirection.z);
         }
         else
-            objectiveDirection += new Vector3(0, -EGamePhysics.gravity * 1.5f, 0) * Time.deltaTime;
+            objectiveDirection += new Vector3(0, -EGamePhysics.gravity * player.jumpGravityMultiplier, 0) * Time.deltaTime;
 
         // Assign movement
         player.controller.Move(interpolateDirection * Time.deltaTime);

@@ -54,10 +54,13 @@ public class GameManager : MonoBehaviour
         sun.lightSystemBehaviour.Init(player, sun.sunObj, sun.lensFlare);                   // Initialize Light System
 
 
-
         //+ Controllers Init
         Controller = new Dictionary<string, GameController>();
 
+
+        //+ Physic ignores
+        Physics.IgnoreCollision(mainCamera.cameraObj.collider, player.playerObj.GetComponent<CharacterController>());
+        Physics.IgnoreCollision(player.playerObj.GetComponent<CharacterController>(), mainCamera.cameraObj.collider);
 
 
         //+ Game modes

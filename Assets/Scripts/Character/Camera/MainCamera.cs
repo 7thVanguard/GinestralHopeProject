@@ -33,8 +33,8 @@ public class MainCamera
     // Movement limits
     public float minAngleSight = -90;
     public float maxAngleSight = 90;
-    public float maxDistance = 3.5f;
-    public float objectiveDistance = 3.5f;
+    public float maxDistance = 3;
+    public float objectiveDistance = 3;
     public bool isMoving;
 
 
