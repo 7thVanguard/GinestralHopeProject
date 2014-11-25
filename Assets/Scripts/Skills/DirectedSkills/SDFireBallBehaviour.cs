@@ -16,8 +16,8 @@ public class SDFireBallBehaviour : MonoBehaviour
     private int blastRadius;
 
     // Explosion
-    private int initialxplosionCounter = 100;
-    private int explosionCounter;
+    private float initialxplosionCounter = 1.66f;
+    private float explosionCounter;
 
     private Light light;
     private float maxLightIntensity = 4;
@@ -105,7 +105,7 @@ public class SDFireBallBehaviour : MonoBehaviour
                 }
 
                 // Explosion relative
-                explosionCounter--;
+                explosionCounter -= Time.deltaTime;
                 light.intensity = maxLightIntensity * explosionCounter / initialxplosionCounter;
                 light.range = maxLightRange * explosionCounter / initialxplosionCounter;
 

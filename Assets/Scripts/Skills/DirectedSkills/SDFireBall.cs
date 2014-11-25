@@ -21,7 +21,7 @@ public class SDFireBall : SkillDirected
         castingTime = 2;
 
         // Fire
-        damage = 10;
+        damage = 100;
         blastRadius = 17;
     }
 
