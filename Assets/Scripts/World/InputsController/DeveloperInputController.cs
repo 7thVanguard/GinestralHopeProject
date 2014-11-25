@@ -31,6 +31,12 @@ public class DeveloperInputController : AbstractInputsController
         EGameFlow.gameMode = EGameFlow.GameMode.DEVELOPER;
         player.constructionDetection = 300;
 
+        if (Input.GetKeyUp(KeyCode.LeftAlt))
+        {
+            Debug.Log(" Impact point information");
+            Debug.Log((int)mainCamera.raycast.point.x + " " + (int)mainCamera.raycast.point.y + " " + (int)mainCamera.raycast.point.z);
+        }
+
         //+ Tool
         if (!Input.GetKey(KeyCode.LeftShift))
         {
@@ -42,6 +48,8 @@ public class DeveloperInputController : AbstractInputsController
                 EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
             else if (Input.GetKey(KeyCode.Alpha5))
                 EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
+            else if (Input.GetKey(KeyCode.Alpha6))
+                EGameFlow.selectedTool = EGameFlow.SelectedTool.EVENT;
         }
 
         

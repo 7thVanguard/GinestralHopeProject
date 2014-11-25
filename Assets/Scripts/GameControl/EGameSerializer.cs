@@ -29,14 +29,28 @@ public struct GadgetStruct
 
 
 [System.Serializable]
+public struct EventStruct
+{
+    public string ID;
+    public EventComponent.EventType eventType;
+    public float positionX;
+    public float positionY;
+    public float positionZ;
+}
+
+
+
+[System.Serializable]
 public class EGameSerializer
 {
     
     private EnemyStruct enemyStruct;
     private GadgetStruct gadgetStruct;
+    private EventStruct eventStruct;
 
     private static List<EnemyStruct> EnemySave;
     private static List<GadgetStruct> GadgetSave;
+    private static List<EventStruct> EventSave;
     private static string[] dataString;
 
 
@@ -49,6 +63,7 @@ public class EGameSerializer
 
         EnemySave = new List<EnemyStruct>();
         GadgetSave = new List<GadgetStruct>();
+        EventSave = new List<EventStruct>();
 
         Encryptor(world, bf, file);
         file.Close();
@@ -66,6 +81,7 @@ public class EGameSerializer
 
             EnemySave = new List<EnemyStruct>();
             GadgetSave = new List<GadgetStruct>();
+            EventSave = new List<EventStruct>();
 
             Desencrypter(world, player, mainCamera, bf, file);
             file.Close();
@@ -125,6 +141,22 @@ public class EGameSerializer
             GadgetSave.Add(gadgetStruct);
         }
         bf.Serialize(file, GadgetSave);
+
+
+        //+ Events
+        // Find all events in game
+        GameObject[] eventsInGame = GameObject.FindGameObjectsWithTag("Event");
+
+        foreach (GameObject eventObj in eventsInGame)
+        {
+            eventStruct.ID = eventObj.name;
+            eventStruct.positionX = eventObj.transform.position.x;
+            eventStruct.positionY = eventObj.transform.position.y;
+            eventStruct.positionZ = eventObj.transform.position.z;
+            eventStruct.eventType = eventObj.GetComponent<EventComponent>().eventType;
+            EventSave.Add(eventStruct);
+        }
+        bf.Serialize(file, EventSave);
     }
 
 
@@ -159,7 +191,7 @@ public class EGameSerializer
 
 
         //+ Enemies
-        // Deserialize the enemies listlist
+        // Deserialize the enemies list
         EnemySave = (List<EnemyStruct>)bf.Deserialize(file);
 
         // Destroy existing enemies
@@ -192,5 +224,22 @@ public class EGameSerializer
 
         //Reset enemies list
         GadgetSave.Clear();
+
+
+        //+ Events
+        // Deserialize the gadgets listlist
+        EventSave = (List<EventStruct>)bf.Deserialize(file);
+
+        // Destroy existing enemies
+        GameObject[] events = GameObject.FindGameObjectsWithTag("Event");
+        foreach (GameObject eventObj in events)
+            GameObject.Destroy(eventObj);
+
+        // Load enemies
+        foreach (EventStruct eventObj in EventSave)
+            Event.Place(eventObj.ID, eventObj.eventType, new Vector3(eventObj.positionX, eventObj.positionY, eventObj.positionZ));
+
+        //Reset enemies list
+        EventSave.Clear();
     }
 }
