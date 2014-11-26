@@ -477,14 +477,14 @@ public class Voxel
 				}
 				break;
 			case "R Fire Carpet":
-			{
-				entityType = EntityType.MINE;
-				voxelState = VoxelState.SOLID;
-				
-				UVStart = new Vector2(3 * world.textureSize, 0 * world.textureSize);
-				
-				blastResistance = 8;
-			}
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(3 * world.textureSize, 0 * world.textureSize);
+					
+					blastResistance = 8;
+				}
 				break;
 			case "B Fire Carpet":
 				{
