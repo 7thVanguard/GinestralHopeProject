@@ -1,0 +1,11 @@
+Nou menu entre el botó de Sun i el de Geometria (1 i 3).
+
+Menú lateral dret Light(tecla 2).
+
+Submenu inferior: Standard Light
+
+	Paràmetres a guardar:
+	-Position
+	-Range
+	-Color
+	-Intensity
