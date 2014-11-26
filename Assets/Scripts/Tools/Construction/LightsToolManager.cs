@@ -20,7 +20,6 @@ public class LightsToolManager
 		else
 			position = new Vector3(((int)mainCamera.raycast.point.x) + 0.5f, ((int)mainCamera.raycast.point.y + 0.5f), mainCamera.raycast.point.z - 0.5f);
 
-		Debug.Log("pass");
 		Emiter.Place (position, 111, 1, 1, 1);
 	}
 }

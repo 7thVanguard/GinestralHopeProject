@@ -45,10 +45,10 @@ public struct EmiterStruct
 	public float positionX;
 	public float positionY;
 	public float positionZ;
-	public int intensityAndRange;
-	public byte r;
-	public byte g;
-	public byte b;
+	public float intensityAndRange;
+	public float r;
+    public float g;
+    public float b;
 }
 
 
@@ -175,10 +175,10 @@ public class EGameSerializer
         }
         bf.Serialize(file, EventSave);
 
-		/*
+
 		//+ Emiters
 		// Find all emiters in game
-		GameObject[] emitersInGame = GameObject.FindGameObjectsWithTag("Emiter");
+        GameObject[] emitersInGame = GameObject.FindGameObjectsWithTag("Emiter");
 
 		foreach (GameObject emiterObj in emitersInGame)
 		{
@@ -189,8 +189,9 @@ public class EGameSerializer
 			emiterStruct.r = emiterObj.light.color.r;
 			emiterStruct.g = emiterObj.light.color.g;
 			emiterStruct.b = emiterObj.light.color.b;
+            EmiterSave.Add(emiterStruct);
 		}
-		*/
+        bf.Serialize(file, EmiterSave);
     }
 
 
@@ -213,8 +214,8 @@ public class EGameSerializer
                                     world.chunk[cx, cy, cz].voxel[x, y, z] =
                                         new Voxel(world, new IntVector3(x, y, z), new IntVector3(cx, cy, cz), dataString[z]);
                                 }
-                            } 
-                } 
+                            }
+                }
 
         // Reset voxels
         foreach (ChunkGenerator chunk in world.chunk)
@@ -232,7 +233,7 @@ public class EGameSerializer
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
             GameObject.Destroy(enemy);
-        
+
         // Load enemies
         foreach (EnemyStruct enemy in EnemySave)
             Enemy.Dictionary[enemy.ID]
@@ -253,7 +254,7 @@ public class EGameSerializer
 
         // Load enemies
         foreach (GadgetStruct gadget in GadgetSave)
-            Gadget.Dictionary[gadget.ID].Place(gadget.ID, 
+            Gadget.Dictionary[gadget.ID].Place(gadget.ID,
                 new Vector3(gadget.positionX, gadget.positionY, gadget.positionZ), new Vector3(gadget.rotationX, gadget.rotationY, gadget.rotationZ));
 
         //Reset enemies list
@@ -273,22 +274,26 @@ public class EGameSerializer
         foreach (EventStruct eventObj in EventSave)
             Event.Place(eventObj.ID, eventObj.eventType, new Vector3(eventObj.positionX, eventObj.positionY, eventObj.positionZ));
 
-        //Reset events list
+        // Reset events list
         EventSave.Clear();
 
-		/*
-		//+ Emiters
-		// Deserialize the emiters list
-		EmiterSave = (List<EmiterStruct>)bf.Deserialize (file);
+        //+ Emiters
+        // Deserialize the emiters list
+        EmiterSave = (List<EmiterStruct>)bf.Deserialize(file);
 
-		// Destroy existing emiters
-		GameObject[] emiters = GameObject.FindGameObjectsWithTag("Emiter");
-		foreach (GameObject emiterObj in emiters)
-			GameObject.Destroy (emiterObj);
+        // Destroy existing emiters
+        GameObject[] emiters = GameObject.FindGameObjectsWithTag("Emiter");
+            foreach (GameObject emiterObj in emiters)
+                GameObject.Destroy(emiterObj);
 
-		// Load emiters
-		foreach (EmiterStruct emiterObj in EmiterSave)
-		   	Emiter.Place(new Vector3(emiterObj.positionX, emiterObj.positionY, emiterObj.positionZ), emiterObj.intensityAndRange, 
-*/
+        // Load emiters
+        foreach (EmiterStruct emiterObj in EmiterSave)
+            Emiter.Place(new Vector3(emiterObj.positionX, emiterObj.positionY, emiterObj.positionZ),
+                                    (int)emiterObj.intensityAndRange, emiterObj.r, emiterObj.g, emiterObj.b);
+
+        Debug.Log(EmiterSave.Count);
+
+        // Reset emiters list
+        EmiterSave.Clear();
     }
 }

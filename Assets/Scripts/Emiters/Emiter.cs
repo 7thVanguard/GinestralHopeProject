@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Emiter 
 {
-	public static void Place(Vector3 position, int intensityAndRange, byte r, byte g, byte b)
+    public static void Place(Vector3 position, int intensityAndRange, float r, float g, float b)
 	{
 		GameObject emiterObj = new GameObject();
 		emiterObj.name = "Light Emiter";
@@ -16,7 +16,5 @@ public class Emiter
 		emiterObj.light.range = intensityAndRange % 100;
 
 		emiterObj.light.color = new Color (r, g, b);
-
-		Debug.Log("pass");
 	}
 }
