@@ -283,8 +283,8 @@ public class EGameSerializer
 
         // Destroy existing emiters
         GameObject[] emiters = GameObject.FindGameObjectsWithTag("Emiter");
-            foreach (GameObject emiterObj in emiters)
-                GameObject.Destroy(emiterObj);
+        foreach (GameObject emiterObj in emiters)
+            GameObject.Destroy(emiterObj);
 
         // Load emiters
         foreach (EmiterStruct emiterObj in EmiterSave)

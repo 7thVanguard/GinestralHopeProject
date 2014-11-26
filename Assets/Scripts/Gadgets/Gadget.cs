@@ -53,10 +53,10 @@ public class Gadget
         gadget.Init(world, player, mainCamera, gadget);
         Dictionary.Add("Wood Pieces", gadget);
 
-        // Nails
-        gadget = new Nails();
+        // Iron Pieces
+        gadget = new IronPieces();
         gadget.Init(world, player, mainCamera, gadget);
-        Dictionary.Add("Nails", gadget);
+        Dictionary.Add("Iron Pieces", gadget);
 
         gadget = Dictionary["Wooden Plank"];
     }
