@@ -8,10 +8,15 @@ public class Emiter
 		GameObject emiterObj = new GameObject();
 		emiterObj.name = "Light Emiter";
 		emiterObj.tag = "Emiter";
+
+		emiterObj.AddComponent<Light>();
+		emiterObj.light.type = LightType.Point;
 		emiterObj.transform.position = position;
 		emiterObj.light.intensity = intensityAndRange / 100;
 		emiterObj.light.range = intensityAndRange % 100;
 
 		emiterObj.light.color = new Color (r, g, b);
+
+		Debug.Log("pass");
 	}
 }

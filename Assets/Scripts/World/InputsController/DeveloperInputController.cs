@@ -50,6 +50,8 @@ public class DeveloperInputController : AbstractInputsController
                 EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
             else if (Input.GetKey(KeyCode.Alpha6))
                 EGameFlow.selectedTool = EGameFlow.SelectedTool.EVENT;
+			else if (Input.GetKey(KeyCode.Alpha7))
+				EGameFlow.selectedTool = EGameFlow.SelectedTool.EMITER;
         }
 
         

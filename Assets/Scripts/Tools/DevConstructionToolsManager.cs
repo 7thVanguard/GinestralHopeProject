@@ -65,6 +65,8 @@ public class DevConstructionToolsManager
             EnemiesToolManager.Place(world, player, mainCamera);
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.EVENT)
             EventsToolManager.Place(world, player, mainCamera);
+		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.EMITER)
+			LightsToolManager.Place(world, player, mainCamera);
     }
 
 
