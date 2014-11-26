@@ -306,6 +306,196 @@ public class Voxel
                     blastResistance = 8;
                 }
                 break;
+			case "Brown Trunk Column":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(0 * world.textureSize, 2 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "Brown Trunk Medium Large Rock":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(1 * world.textureSize, 2 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "Brown Trunk Smooth Irregular Rock":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(2 * world.textureSize, 2 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "Smooth Rock":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(3 * world.textureSize, 2 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "Smooth Rock Column":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(4 * world.textureSize, 2 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "Metal Base Smooth Rock":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(5 * world.textureSize, 2 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "Metal Base Brown Trunk Column":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(6 * world.textureSize, 2 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "Two Stone Brick Floor":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(0 * world.textureSize, 1 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "Eight Stone Brick Floor":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(1 * world.textureSize, 1 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "Hexagonal Stone Brick Floor":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(2 * world.textureSize, 1 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "UL Fire Carpet":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(3 * world.textureSize, 1 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "UR Fire Carpet":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(4 * world.textureSize, 1 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "BL Fire Carpet":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(5 * world.textureSize, 1 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "BR Fire Carpet":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(6 * world.textureSize, 1 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "C Fire Carpet":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(0 * world.textureSize, 0 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "L Fire Carpet":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(1 * world.textureSize, 0 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "U Fire Carpet":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(2 * world.textureSize, 0 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
+			case "R Fire Carpet":
+			{
+				entityType = EntityType.MINE;
+				voxelState = VoxelState.SOLID;
+				
+				UVStart = new Vector2(3 * world.textureSize, 0 * world.textureSize);
+				
+				blastResistance = 8;
+			}
+				break;
+			case "B Fire Carpet":
+				{
+					entityType = EntityType.MINE;
+					voxelState = VoxelState.SOLID;
+					
+					UVStart = new Vector2(4 * world.textureSize, 0 * world.textureSize);
+					
+					blastResistance = 8;
+				}
+				break;
             default:
                 break;
         }

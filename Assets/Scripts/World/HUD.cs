@@ -344,5 +344,52 @@ public class HUD : MonoBehaviour
             else if (selectionX == 1)
                 EGameFlow.selectedMine = "Moss Medium Rock";
         }
+		else if (selectionY == 5)
+		{
+			if (selectionX == 0)
+				EGameFlow.selectedMine = "Brown Trunk Column";
+			else if (selectionX == 1)
+				EGameFlow.selectedMine = "Brown Trunk Medium Large Rock";
+			else if (selectionX == 2)
+				EGameFlow.selectedMine = "Brown Trunk Smooth Irregular Rock";
+			else if (selectionX == 3)
+				EGameFlow.selectedMine = "Smooth Rock";
+			else if (selectionX == 4)
+				EGameFlow.selectedMine = "Smooth Rock Column";
+			else if (selectionX == 5)
+				EGameFlow.selectedMine = "Metal Base Smooth Rock";
+			else if (selectionX == 6)
+				EGameFlow.selectedMine = "Metal Base Brown Trunk Column";
+		}
+		else if (selectionY == 6)
+		{
+			if (selectionX == 0)
+				EGameFlow.selectedMine = "Two Stone Brick Floor";
+			else if (selectionX == 1)
+				EGameFlow.selectedMine = "Eight Stone Brick Floor";
+			else if (selectionX == 2)
+				EGameFlow.selectedMine = "Hexagonal Stone Brick Floor";
+			else if (selectionX == 3)
+				EGameFlow.selectedMine = "UL Fire Carpet";
+			else if (selectionX == 4)
+				EGameFlow.selectedMine = "UR Fire Carpet";
+			else if (selectionX == 5)
+				EGameFlow.selectedMine = "BL Fire Carpet";
+			else if (selectionX == 6)
+				EGameFlow.selectedMine = "BR Fire Carpet";
+		}
+		else if (selectionY == 7)
+		{
+			if (selectionX == 0)
+				EGameFlow.selectedMine = "C Fire Carpet";
+			else if (selectionX == 1)
+				EGameFlow.selectedMine = "L Fire Carpet";
+			else if (selectionX == 2)
+				EGameFlow.selectedMine = "U Fire Carpet";
+			else if (selectionX == 3)
+				EGameFlow.selectedMine = "R Fire Carpet";
+			else if (selectionX == 4)
+				EGameFlow.selectedMine = "B Fire Carpet";
+		}
     }
 }
