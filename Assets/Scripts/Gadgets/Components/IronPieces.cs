@@ -21,15 +21,15 @@ public class IronPieces : Gadget
 
     public override void Place(string ID, Vector3 pos, Vector3 rotation)
     {
-        Transform nails = world.nails;
-        nails = Object.Instantiate(world.gadgets.FindChild("Iron Pieces"), pos, Quaternion.identity) as Transform;
+        Transform ironPieces = world.gadgets;
+        ironPieces = Object.Instantiate(world.gadgets.FindChild("Iron Pieces"), pos, Quaternion.identity) as Transform;
 
         // Head atributes
-        nails.name = "Iron Pieces";
-        nails.tag = "Gadget";
+        ironPieces.name = "Iron Pieces";
+        ironPieces.tag = "Gadget";
 
         // Set transforms
-        nails.transform.eulerAngles = Vector3.zero;
-        nails.transform.localScale = Gadget.Dictionary[nails.name].size;
+        ironPieces.transform.eulerAngles = Vector3.zero;
+        ironPieces.transform.localScale = Gadget.Dictionary[ironPieces.name].size;
     }
 }

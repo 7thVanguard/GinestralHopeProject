@@ -289,7 +289,7 @@ public class EGameSerializer
         // Load emiters
         foreach (EmiterStruct emiterObj in EmiterSave)
             Emiter.Place(new Vector3(emiterObj.positionX, emiterObj.positionY, emiterObj.positionZ),
-                                    (int)emiterObj.intensityAndRange, emiterObj.r, emiterObj.g, emiterObj.b);
+                                    emiterObj.intensityAndRange, emiterObj.r, emiterObj.g, emiterObj.b);
 
         Debug.Log(EmiterSave.Count);
 

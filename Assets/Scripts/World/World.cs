@@ -49,7 +49,6 @@ public class World
 
         normalSlime = prefabs.FindChild("Normal Slime");
         woodPieces = prefabs.FindChild("Wood Pieces");
-        nails = prefabs.FindChild("Nails");
 
         // Atlas relative
         textureSize = 128 / 1024.0f;
