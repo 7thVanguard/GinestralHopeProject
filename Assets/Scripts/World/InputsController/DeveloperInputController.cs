@@ -101,6 +101,10 @@ public class DeveloperInputController : AbstractInputsController
                 EGameFlow.selectedGadget = "Iron Pieces";
             else if (Input.GetKey(KeyCode.N))
                 EGameFlow.selectedGadget = "Altar";
+            else if (Input.GetKey(KeyCode.O))
+                EGameFlow.selectedGadget = "Fire Gem";
+            else if (Input.GetKey(KeyCode.V))
+                EGameFlow.selectedGadget = "Chest";
         }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
         {
