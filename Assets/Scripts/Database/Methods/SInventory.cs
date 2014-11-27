@@ -5,12 +5,10 @@ public static class SInventory
 {
     public static void CraftWoodPlank()
     {
-        if (GameComponentDictionary.GameComponentsDictionary["Wood Pieces"].count >= 5 &&
-            GameComponentDictionary.GameComponentsDictionary["Nails"].count >= 20)
+        if (GameComponentDictionary.GameComponentsDictionary["Wood Pieces"].count >= 6)
         {
-            GameComponentDictionary.GameComponentsDictionary["Wood Pieces"].count -= 5;
-            GameComponentDictionary.GameComponentsDictionary["Nails"].count -= 20;
-            Gadget.Dictionary["Wooden Plank"].count++;
+            GameComponentDictionary.GameComponentsDictionary["Wood Pieces"].count -= 6;
+            Gadget.Dictionary["Wooden Bridge"].count++;
         }
     }
 }

@@ -33,9 +33,9 @@ public class Gadget
 
         //+ Non components
         // Wooden Plank
-        gadget = new WoodenPlank();
+        gadget = new WoodenBridge();
         gadget.Init(world, player, mainCamera, gadget);
-        Dictionary.Add("Wooden Plank", gadget);
+        Dictionary.Add("Wooden Bridge", gadget);
 
         // Torch
         gadget = new Torch();
@@ -64,7 +64,7 @@ public class Gadget
         gadget.Init(world, player, mainCamera, gadget);
         Dictionary.Add("Iron Pieces", gadget);
 
-        gadget = Dictionary["Wooden Plank"];
+        gadget = Dictionary["Wooden Bridge"];
     }
 
 
