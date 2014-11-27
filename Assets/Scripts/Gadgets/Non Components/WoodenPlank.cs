@@ -20,6 +20,7 @@ public class WoodenPlank : Gadget
         dropCount = 1;
     }
 
+     
 
     public override void Place(string ID, Vector3 pos, Vector3 rotation)
     {
@@ -30,6 +31,9 @@ public class WoodenPlank : Gadget
 
             plank.name = "Wooden Plank";
             plank.tag = "Gadget";
+
+            pos += new Vector3(-0.5f, 0, -0.5f);
+
 
             // Set the transform of the plank
             if (rotation.y == 0)

@@ -14,6 +14,8 @@ public class IronPieces : Gadget
         size = new Vector3(1, 1, 1);
         count = 0;
 
+        placedOnFloor = true;
+
         givesComponents = true;
         dropCount = 4;
     }
@@ -21,8 +23,7 @@ public class IronPieces : Gadget
 
     public override void Place(string ID, Vector3 pos, Vector3 rotation)
     {
-        Transform ironPieces = world.gadgets;
-        ironPieces = Object.Instantiate(world.gadgets.FindChild("Iron Pieces"), pos, Quaternion.identity) as Transform;
+        Transform ironPieces = Object.Instantiate(world.gadgets.FindChild("Iron Pieces"), pos, Quaternion.identity) as Transform;
 
         // Head atributes
         ironPieces.name = "Iron Pieces";
