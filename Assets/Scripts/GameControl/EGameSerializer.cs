@@ -45,7 +45,8 @@ public struct EmiterStruct
 	public float positionX;
 	public float positionY;
 	public float positionZ;
-	public float intensityAndRange;
+	public float intensity;
+	public float range;
 	public float r;
     public float g;
     public float b;
@@ -185,7 +186,8 @@ public class EGameSerializer
 			emiterStruct.positionX = emiterObj.transform.position.x;
 			emiterStruct.positionY = emiterObj.transform.position.y;
 			emiterStruct.positionZ = emiterObj.transform.position.z;
-			emiterStruct.intensityAndRange = (emiterObj.light.intensity * 100) + (emiterObj.light.range);
+			emiterStruct.intensity = emiterObj.light.intensity;
+			emiterStruct.range = emiterObj.light.range;
 			emiterStruct.r = emiterObj.light.color.r;
 			emiterStruct.g = emiterObj.light.color.g;
 			emiterStruct.b = emiterObj.light.color.b;
@@ -289,7 +291,7 @@ public class EGameSerializer
         // Load emiters
         foreach (EmiterStruct emiterObj in EmiterSave)
             Emiter.Place(new Vector3(emiterObj.positionX, emiterObj.positionY, emiterObj.positionZ),
-                                    emiterObj.intensityAndRange, emiterObj.r, emiterObj.g, emiterObj.b);
+                                    emiterObj.intensity, emiterObj.range, emiterObj.r, emiterObj.g, emiterObj.b);
 
         Debug.Log(EmiterSave.Count);
 
