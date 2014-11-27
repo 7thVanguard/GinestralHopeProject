@@ -114,7 +114,7 @@ public static class VoxelLib
             for (int y = centralVoxel.y - blastRadius; y <= centralVoxel.y + blastRadius; y++)
                 for (int z = centralVoxel.z - blastRadius; z <= centralVoxel.z + blastRadius; z++)
                 {
-                    if (GetVoxelWithPosition(world, new IntVector3(x, y, z), ref chunk, ref voxel))
+                    if (GetVoxelWithPositionIfExists(world, new IntVector3(x, y, z), ref chunk, ref voxel))
                     {
                         // Damage recieved by the voxel depending on the distance from the epicenter
                         recievedDamage = (blastRadius - Vector3.Distance(centralVoxel.ToVector3(), new Vector3(x, y, z))) * damage / blastRadius;
@@ -145,7 +145,7 @@ public static class VoxelLib
     }
 
 
-    private static bool GetVoxelWithPosition(World world, IntVector3 position, ref ChunkGenerator chunk, ref Voxel voxel)
+    public static bool GetVoxelWithPositionIfExists(World world, IntVector3 position, ref ChunkGenerator chunk, ref Voxel voxel)
     {
         if (position.x < 0 || position.x >= world.chunkNumber.x * world.chunkSize.x ||
             position.y < 0 || position.y >= world.chunkNumber.y * world.chunkSize.y ||

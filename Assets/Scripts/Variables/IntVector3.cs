@@ -8,6 +8,14 @@ public class IntVector3
     public int z;
 
 
+    public IntVector3 ()
+    {
+        this.x = 0;
+        this.y = 0;
+        this.z = 0;
+    }
+
+
     public IntVector3 (int x, int y, int z)
     {
         this.x = x;

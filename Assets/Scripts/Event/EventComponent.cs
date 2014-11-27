@@ -7,7 +7,6 @@ public class EventComponent : MonoBehaviour
     public enum EventType { None, EraseTorch, EraseVoxels, PutTorch, PutVoxels }
     
 
-    public TriggerShape triggerShape;
     public EventType eventType;
 
 
