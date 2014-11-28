@@ -28,6 +28,7 @@ public class Chest : Gadget
         // Head atributes
         chest.name = "Chest";
         chest.tag = "Gadget";
+        chest.transform.parent = world.gadgetsController.transform;
 
         // Set transforms
         chest.transform.eulerAngles = Vector3.zero;

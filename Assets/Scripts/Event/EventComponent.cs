@@ -3,20 +3,13 @@ using System.Collections;
 
 public class EventComponent : MonoBehaviour 
 {
-    public enum TriggerShape { NONE, SPHERE, ORTOEDRIC }
-    public enum EventType { None, EraseTorch, EraseVoxels, PutTorch, PutVoxels }
-    
-
-    public EventType eventType;
-
-
-
 	void Start ()
     {
-        if (eventType != EventType.None)
+        if (this.name != "none")
         {
-            this.gameObject.name = eventType.ToString();
-            this.gameObject.AddComponent(eventType.ToString());
+            this.gameObject.name = this.name;
+            this.gameObject.AddComponent(this.name);
+            Transform.Destroy(this.gameObject.GetComponent<EventComponent>());
         }
 	}
 }

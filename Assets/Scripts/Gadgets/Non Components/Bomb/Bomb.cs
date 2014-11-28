@@ -28,6 +28,7 @@ public class Bomb : Gadget
         // Head atributes
         bomb.name = "Bomb";
         bomb.tag = "Gadget";
+        bomb.transform.parent = world.gadgetsController.transform;
 
         // Set transforms
         bomb.transform.position = new Vector3(pos.x, pos.y, pos.z);

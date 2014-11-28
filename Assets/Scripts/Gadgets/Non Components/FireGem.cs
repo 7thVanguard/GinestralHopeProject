@@ -28,6 +28,7 @@ public class FireGem : Gadget
         // Head atributes
         fireGem.name = "Fire Gem";
         fireGem.tag = "Gadget";
+        fireGem.transform.parent = world.gadgetsController.transform;
 
         // Set transforms
         fireGem.transform.eulerAngles = Vector3.zero;

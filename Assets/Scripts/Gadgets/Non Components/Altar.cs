@@ -28,6 +28,7 @@ public class Altar : Gadget
         // Head atributes
         altar.name = "Altar";
         altar.tag = "Gadget";
+        altar.transform.parent = world.gadgetsController.transform;
 
         // Set transforms
         altar.transform.eulerAngles = Vector3.zero;

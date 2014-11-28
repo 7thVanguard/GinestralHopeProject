@@ -32,7 +32,6 @@ public struct GadgetStruct
 public struct EventStruct
 {
     public string ID;
-    public EventComponent.EventType eventType;
     public float positionX;
     public float positionY;
     public float positionZ;
@@ -171,7 +170,6 @@ public class EGameSerializer
             eventStruct.positionX = eventObj.transform.position.x;
             eventStruct.positionY = eventObj.transform.position.y;
             eventStruct.positionZ = eventObj.transform.position.z;
-            eventStruct.eventType = eventObj.GetComponent<EventComponent>().eventType;
             EventSave.Add(eventStruct);
         }
         bf.Serialize(file, EventSave);
@@ -274,7 +272,7 @@ public class EGameSerializer
 
         // Load events
         foreach (EventStruct eventObj in EventSave)
-            Event.Place(eventObj.ID, eventObj.eventType, new Vector3(eventObj.positionX, eventObj.positionY, eventObj.positionZ));
+            Event.Place(world, eventObj.ID, new Vector3(eventObj.positionX, eventObj.positionY, eventObj.positionZ));
 
         // Reset events list
         EventSave.Clear();
@@ -290,10 +288,8 @@ public class EGameSerializer
 
         // Load emiters
         foreach (EmiterStruct emiterObj in EmiterSave)
-            Emiter.Place(new Vector3(emiterObj.positionX, emiterObj.positionY, emiterObj.positionZ),
+            Emiter.Place(world, new Vector3(emiterObj.positionX, emiterObj.positionY, emiterObj.positionZ),
                                     emiterObj.intensity, emiterObj.range, emiterObj.r, emiterObj.g, emiterObj.b);
-
-        Debug.Log(EmiterSave.Count);
 
         // Reset emiters list
         EmiterSave.Clear();

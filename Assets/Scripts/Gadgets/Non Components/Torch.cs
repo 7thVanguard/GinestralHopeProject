@@ -29,6 +29,7 @@ public class Torch : Gadget
         // Head atributes
         torch.name = "Torch";
         torch.tag = "Gadget";
+        torch.transform.parent = world.gadgetsController.transform;
 
         // Set transforms
         torch.transform.position = pos;

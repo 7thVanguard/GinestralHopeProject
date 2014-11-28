@@ -20,6 +20,6 @@ public class EmiterToolManager
 		else
 			position = new Vector3(((int)mainCamera.raycast.point.x) + 0.5f, ((int)mainCamera.raycast.point.y + 0.5f), mainCamera.raycast.point.z - 0.5f);
 
-		Emiter.Place (position, 5, 5, 1, 1, 1);
+		Emiter.Place (world, position, 5, 5, 1, 1, 1);
 	}
 }

@@ -25,6 +25,7 @@ public class NormalSlimeEnemy : Enemy
 
         // Head atributes
         enemy.name = "Normal Slime";
+        enemy.transform.parent = world.enemiesController.transform;
 
         // Components
         enemy.gameObject.AddComponent<EnemyComponent>();
