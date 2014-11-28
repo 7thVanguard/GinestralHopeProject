@@ -13,7 +13,7 @@ public class MainCamera
     public Vector3 direction;
 
     public float objectivePosition;
-    public float interpolatedPosition;
+    public Vector3 interpolatedPosition;
 
     public float angleSight;
 

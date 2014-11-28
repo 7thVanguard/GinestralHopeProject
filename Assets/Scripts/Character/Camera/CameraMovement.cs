@@ -19,7 +19,7 @@ public class CameraMovement
     public void Start(GameObject camera)
     {
         Vector3 beginingRotation = mainCamera.cameraObj.transform.eulerAngles;
-        mainCamera.interpolatedPosition = beginingRotation.y;
+        mainCamera.objectivePosition = beginingRotation.y;
         mainCamera.angleSight = beginingRotation.x;
 
         Physics.IgnoreCollision(mainCamera.cameraObj.collider, player.playerObj.collider);
@@ -46,7 +46,7 @@ public class CameraMovement
         // Mouse inputs
         if (!Input.GetKey(KeyCode.LeftControl))
         {
-            mainCamera.interpolatedPosition += Input.GetAxis("Mouse X") * mainCamera.mouseSensitivityX;
+            mainCamera.objectivePosition += Input.GetAxis("Mouse X") * mainCamera.mouseSensitivityX;
             mainCamera.angleSight -= Input.GetAxis("Mouse Y") * mainCamera.mouseSensitivityY;
         }
 
@@ -57,19 +57,20 @@ public class CameraMovement
 
         // Zoom adapt
         if (mainCamera.objectiveDistance < mainCamera.maxDistance && (mainCamera.isMoving || player.isMoving))
-            mainCamera.objectiveDistance += 10 * Time.deltaTime;
+            mainCamera.objectiveDistance += 7.5f * Time.deltaTime;
 
         // Angle sight clamp
         mainCamera.angleSight = ClampAngle(mainCamera.angleSight, mainCamera.minAngleSight, mainCamera.maxAngleSight);
 
         // Camera rotation
-        Quaternion rotation = Quaternion.Euler(mainCamera.angleSight, mainCamera.interpolatedPosition, 0);
+        Quaternion rotation = Quaternion.Euler(mainCamera.angleSight, mainCamera.objectivePosition, 0);
         mainCamera.cameraObj.transform.rotation = rotation;
 
         // Camera position 
         mainCamera.previousPosition = mainCamera.cameraObj.transform.position;
         mainCamera.position = player.playerObj.transform.position + mainCamera.offset - (rotation * Vector3.forward * mainCamera.objectiveDistance);
-        mainCamera.controller.Move(mainCamera.position - mainCamera.previousPosition);
+        mainCamera.interpolatedPosition = Vector3.Lerp(mainCamera.previousPosition, mainCamera.position, 0.75f);
+        mainCamera.controller.Move(mainCamera.interpolatedPosition - mainCamera.previousPosition);
 
         // Blocked view detection
         Vector3 playerInScreenPosition = player.playerObj.transform.position + mainCamera.offset;
@@ -83,10 +84,10 @@ public class CameraMovement
                 float advancedDistance = Vector3.Distance(playerInScreenPosition, impact.point) - 0.5f;
                 mainCamera.objectiveDistance = Vector3.Distance(playerInScreenPosition, impact.point) - 0.5f;
                 mainCamera.cameraObj.transform.position = player.playerObj.transform.position + mainCamera.offset - (rotation * Vector3.forward * advancedDistance);
-                //mainCamera.cameraObj.transform.position = mainCamera.position;
             }
         }
     }
+
 
     private float ClampAngle(float angle, float min, float max)
     {

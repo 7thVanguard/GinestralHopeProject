@@ -11,7 +11,7 @@ public class FireGemEvent : MonoBehaviour
     {
         SphereCollider boxCollider;
         boxCollider = gameObject.AddComponent<SphereCollider>();
-        boxCollider.radius = 1.5f;
+        boxCollider.radius = 2;
         boxCollider.isTrigger = true;
         this.world = gameObject.GetComponent<EventComponent>().world;
         Transform.Destroy(gameObject.GetComponent<EventComponent>());
