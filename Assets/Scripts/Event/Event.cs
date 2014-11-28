@@ -12,5 +12,6 @@ public class Event
         eventObj.transform.position = position;
         eventObj.transform.parent = world.eventsController.transform;
         eventObj.AddComponent<EventComponent>();
+        eventObj.GetComponent<EventComponent>().world = world;
     }
 }

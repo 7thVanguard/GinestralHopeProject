@@ -117,22 +117,22 @@ public class World
         //+ Controllers
         gadgetsController.transform.position = Vector3.zero;
         gadgetsController.transform.eulerAngles = Vector3.zero;
-        gadgetsController.transform.localScale = Vector3.zero;
+        gadgetsController.transform.localScale = Vector3.one;
         gadgetsController.name = "Gadgets Controller";
 
         enemiesController.transform.position = Vector3.zero;
         enemiesController.transform.eulerAngles = Vector3.zero;
-        enemiesController.transform.localScale = Vector3.zero;
+        enemiesController.transform.localScale = Vector3.one;
         enemiesController.name = "Enemies Controller";
 
         eventsController.transform.position = Vector3.zero;
         eventsController.transform.eulerAngles = Vector3.zero;
-        eventsController.transform.localScale = Vector3.zero;
+        eventsController.transform.localScale = Vector3.one;
         eventsController.name = "Events Controller";
 
         emitersController.transform.position = Vector3.zero;
         emitersController.transform.eulerAngles = Vector3.zero;
-        emitersController.transform.localScale = Vector3.zero;
+        emitersController.transform.localScale = Vector3.one;
         emitersController.name = "Emiters Controller";
     }
 }
