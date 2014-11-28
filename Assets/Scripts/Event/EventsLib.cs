@@ -5,6 +5,18 @@ public static class EventsLib
 {
     public static void EraseVoxels(World world, IntVector3 firstPosition, IntVector3 secondPosition)
     {
+        VoxelGenericFunctionality(world, "Air", firstPosition, secondPosition);
+    }
+
+
+    public static void FillWithVoxels(World world, string replacingVoxels, IntVector3 firstPosition, IntVector3 secondPosition)
+    {
+        VoxelGenericFunctionality(world, replacingVoxels, firstPosition, secondPosition);
+    }
+
+
+    private static void VoxelGenericFunctionality(World world, string replacingVoxels, IntVector3 firstPosition, IntVector3 secondPosition)
+    {
         ChunkGenerator chunk = null;
         Voxel voxel = null;
 
@@ -53,12 +65,12 @@ public static class EventsLib
                     {
                         world.chunk[chunk.numID.x, chunk.numID.y, chunk.numID.z].voxel[voxel.numID.x, voxel.numID.y, voxel.numID.z] =
                                 new Voxel(world, new IntVector3(voxel.numID.x, voxel.numID.y, voxel.numID.z),
-                                new IntVector3(chunk.numID.x, chunk.numID.y, chunk.numID.z), "Air");
+                                new IntVector3(chunk.numID.x, chunk.numID.y, chunk.numID.z), replacingVoxels);
                     }
                 }
 
 
-         // Destroy chunks
+        // Destroy chunks
         for (int x = chunkInitPos.x; x <= chunkEndPos.x; x++)
             for (int y = chunkInitPos.y; y <= chunkEndPos.y; y++)
                 for (int z = chunkInitPos.z; z <= chunkEndPos.z; z++)
