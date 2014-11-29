@@ -3,36 +3,57 @@ using System.Collections;
 
 public class GUISystem : MonoBehaviour 
 {
-    private enum MenuState {Main, Selector, OAudio, OVideo, OKeys, OAdvanced }
+    World world;
 
-    private MenuState menuState = MenuState.Main;
 
-    public GUIStyle menuStyle;
+    private enum MenuState {MAIN, SELECTOR, AUDIO_OPTIONS, VIDEO_OPTIONS, KEYS_OPTIONS, ADVANCED_OPTIONS }
 
-    public Texture background;
+    private MenuState menuState = MenuState.MAIN;
+
+    //public GUIStyle menuStyle;
+
+    //public Texture background;
+
+
+
+    public void Init(World world)
+    {
+        this.world = world;
+    }
+
+
 
     void OnGUI()
     {
-        if (true)
+        if (EGameFlow.gameState == EGameFlow.GameState.MENU)
         {
-            GUI.Box(new Rect(20, 20, Screen.width - 40, Screen.height - 20), GUIContent.none, menuStyle);
+             GUI.Box(new Rect(0, 0, Screen.width, Screen.height), GUIContent.none);
 
             switch (menuState)
             {
-                case MenuState.Main:
+                case MenuState.MAIN:
                     {
-                        if (GUI.Button(new Rect(Screen.width / 2 - 150, Screen.height / 2 - 60, 220, 80), "New Game", menuStyle)) { }
+                        if (GUI.Button(new Rect(Screen.width * 2 / 5, Screen.height * 1 / 6, Screen.width / 5, Screen.height / 6 - 20), "New Game"))
+                        {
+                            world.worldObj.GetComponent<GameManager>().gameSerializer.Load(world, "NewGameSave");
+                            EGameFlow.gameState = EGameFlow.GameState.GAME;
+                        }
+                        else if (GUI.Button(new Rect(Screen.width * 2 / 5, Screen.height * 2 / 6, Screen.width / 5, Screen.height / 6 - 20), "Load Game"))
+                        {
+                            world.worldObj.GetComponent<GameManager>().gameSerializer.Load(world, "CaverninaOnPlaySave");
+                            EGameFlow.gameState = EGameFlow.GameState.GAME;
+                        }
                     }
                     break;
-                case MenuState.Selector:
+                case MenuState.SELECTOR:
                     break;
-                case MenuState.OAudio:
+                case MenuState.AUDIO_OPTIONS:
                     break;
-                case MenuState.OVideo:
+                case MenuState.VIDEO_OPTIONS:
                     break;
-                case MenuState.OKeys:
+                case MenuState.KEYS_OPTIONS:
                     break;
-                case MenuState.OAdvanced:
+                case MenuState.ADVANCED_OPTIONS:
                     break;
                 default:
                     break;

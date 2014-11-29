@@ -86,7 +86,7 @@ public class EGameSerializer
     }
 
 
-    public void Load(World world, Player player, MainCamera mainCamera, string saveName)
+    public void Load(World world, string saveName)
     {
         if (File.Exists("Assets/Saves/" + saveName + ".save"))
         {
@@ -100,7 +100,7 @@ public class EGameSerializer
             EventSave = new List<EventStruct>();
 			EmiterSave = new List<EmiterStruct>();
 
-            Desencrypter(world, player, mainCamera, bf, file);
+            Desencrypter(world, bf, file);
             file.Close();
         }
     }
@@ -195,7 +195,7 @@ public class EGameSerializer
     }
 
 
-    private void Desencrypter(World world, Player player, MainCamera mainCamera, BinaryFormatter bf, FileStream file)
+    private void Desencrypter(World world, BinaryFormatter bf, FileStream file)
     {
         //+ Voxels
         for (int cx = 0; cx < world.chunkNumber.x; cx++)
