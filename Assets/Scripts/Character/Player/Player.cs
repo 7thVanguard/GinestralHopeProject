@@ -27,17 +27,18 @@ public class Player
     public int damageAnimTime = 5;
 
 
-    public Player()
+    public Player(World world)
     {
-        Init();
+        Init(world);
     }
 
 
-    public void Init()
+    public void Init(World world)
     {
         //+ Player creation
-        playerObj = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        Transform.Destroy(playerObj.GetComponent<CapsuleCollider>());
+        Transform character = Object.Instantiate(world.character) as Transform;
+
+        playerObj = character.gameObject;
 
         // Head atributes
         playerObj.name = "Player";
@@ -46,7 +47,7 @@ public class Player
         // Set transforms
         playerObj.transform.position = new Vector3(4, 35, 4);
         playerObj.transform.eulerAngles = Vector3.zero;
-        playerObj.transform.localScale = new Vector3(0.675f, 0.7f, 0.675f);
+        //playerObj.transform.localScale = new Vector3(0.575f, 0.7f, 0.575f);
 
         // Player components creation
         controller = playerObj.AddComponent<CharacterController>();
@@ -55,7 +56,7 @@ public class Player
 
         // Component variables
         playerObj.GetComponent<CharacterController>().slopeLimit = 46;
-        playerObj.renderer.material = new Material(Shader.Find("Diffuse"));
+        //playerObj.renderer.material = new Material(Shader.Find("Diffuse"));
         light.type = LightType.Point;
         light.color = Color.white;
         light.range = 20;

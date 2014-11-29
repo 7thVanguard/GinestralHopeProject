@@ -20,7 +20,7 @@ public class PlayerComponent : MonoBehaviour
     {
         // Damage relative
         player.currentLife = player.maxLife;
-        originalColor = gameObject.renderer.material.color;
+        // originalColor = gameObject.renderer.material.color;
         animCounter = 0;
     }
 
@@ -28,12 +28,12 @@ public class PlayerComponent : MonoBehaviour
     void Update()
     {
         // Hit animation
-        if (animCounter > 0)
-        {
-            animCounter--;
-            if (animCounter == 0)
-                gameObject.renderer.material.color = originalColor;
-        }
+        //if (animCounter > 0)
+        //{
+        //    animCounter--;
+        //    if (animCounter == 0)
+        //        gameObject.renderer.material.color = originalColor;
+        //}
     }
 
 
@@ -52,6 +52,6 @@ public class PlayerComponent : MonoBehaviour
     {
         animCounter = player.damageAnimTime;
 
-        gameObject.renderer.material.color = Color.red;
+        // gameObject.renderer.material.color = Color.red;
     }
 }

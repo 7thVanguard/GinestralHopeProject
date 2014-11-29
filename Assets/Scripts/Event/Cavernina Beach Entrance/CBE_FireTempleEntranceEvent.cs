@@ -11,7 +11,7 @@ public class CBE_FireTempleEntranceEvent : MonoBehaviour
     {
         BoxCollider boxCollider;
         boxCollider = gameObject.AddComponent<BoxCollider>();
-        boxCollider.size = new Vector3(4, 4, 4);
+        boxCollider.size = new Vector3(5, 5, 5);
         boxCollider.isTrigger = true;
         this.world = gameObject.GetComponent<EventComponent>().world;
         Transform.Destroy(gameObject.GetComponent<EventComponent>());

@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     {
         //+ Object Init
         world = new World(gameObject, prefabs, mineAtlas);
-        player = new Player();
+        player = new Player(world);
         mainCamera = new MainCamera();
         sun = new Sun(player, sunFlare);
 

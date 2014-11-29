@@ -15,6 +15,7 @@ public class World
 
 
     // Prefabs
+    public Transform character;
     public Transform gadgets;
     public Transform skills;
 
@@ -49,11 +50,11 @@ public class World
         chunk = new ChunkGenerator[chunkNumber.x, chunkNumber.y, chunkNumber.z];
 
         // Prefabs relative
-        skills = prefabs.FindChild("Skills");
+        character = prefabs.FindChild("Character");
         gadgets = prefabs.FindChild("Gadgets");
+        skills = prefabs.FindChild("Skills");
 
         normalSlime = prefabs.FindChild("Normal Slime");
-        woodPieces = prefabs.FindChild("Wood Pieces");
 
         // Atlas relative
         textureSize = 128 / 1024.0f;
