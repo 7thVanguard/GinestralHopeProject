@@ -17,8 +17,15 @@ public class GameManager : MonoBehaviour
     public Texture2D developerBox;
 
     public Flare sunFlare;
-    public string saveName;
-
+    
+    //GUI
+    public Texture2D background;
+    public Font ghFont;
+    public Texture2D title;
+    public Texture2D pressStart;
+    public Texture2D iddleButton;
+    public Texture2D pressedButton;
+    public Texture2D hoverButton;
 
     // Controllers
     private Dictionary<string, GameController> Controller;
@@ -39,7 +46,7 @@ public class GameManager : MonoBehaviour
 
     // Save
     public EGameSerializer gameSerializer;
-
+    public string saveName;
 
     void Awake()
     {
@@ -50,9 +57,9 @@ public class GameManager : MonoBehaviour
         sun = new Sun(player, sunFlare);
 
         // post initialize
-        world.worldObj.GetComponent<HUD>().Init(player, mineAtlas, developerAtlas, developerBox);       // Initialize HUD
-        world.worldObj.GetComponent<GUISystem>().Init(world);                                           // Initialize GUI
-        sun.lightSystemBehaviour.Init(player, sun.sunObj, sun.lensFlare);                   // Initialize Light System
+        world.worldObj.GetComponent<HUD>().Init(player, mineAtlas, developerAtlas, developerBox);                                       // Initialize HUD
+        world.worldObj.GetComponent<GUISystem>().Init(world, background, pressStart, iddleButton, pressedButton, hoverButton, title, ghFont);       // Initialize GUI
+        sun.lightSystemBehaviour.Init(player, sun.sunObj, sun.lensFlare);                                                               // Initialize Light System
 
 
         //+ Controllers Init
