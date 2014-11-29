@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     
 
     // Save
-    EGameSerializer gameSerializer;
+    public EGameSerializer gameSerializer;
 
 
     void Awake()
