@@ -16,7 +16,7 @@ public class NormalSlimeEnemy : Enemy
     }
 
 
-    public override void Place(Vector3 pos)
+    public override GameObject Place(Vector3 pos)
     {
         Transform enemy = world.normalSlime;
 
@@ -31,5 +31,7 @@ public class NormalSlimeEnemy : Enemy
         enemy.gameObject.AddComponent<EnemyComponent>();
         enemy.gameObject.AddComponent<NormalSlimeEnemyBehaviour>();
         enemy.gameObject.GetComponent<NormalSlimeEnemyBehaviour>().Init(player, mainCamera, life);
+
+        return enemy.gameObject;
     }
 }

@@ -40,19 +40,19 @@ public static class EventsLib
         chunkEndPos = new IntVector3(endPos.x / world.chunkSize.x, endPos.y / world.chunkSize.y, endPos.z / world.chunkSize.z);
 
         // Lower limit of the chunk
-        if (initPos.x == 0)
+        if (initPos.x % world.chunkSize.x == 0)
             chunkInitPos.x--;
-        if (initPos.y == 0)
+        if (initPos.y % world.chunkSize.y == 0)
             chunkInitPos.y--;
-        if (initPos.z == 0)
+        if (initPos.z % world.chunkSize.z == 0)
             chunkInitPos.z--;
 
         // Lower limit of the chunk
-        if (endPos.x == world.chunkSize.x - 1)
+        if (endPos.x % world.chunkSize.x == world.chunkSize.x - 1)
             chunkEndPos.x++;
-        if (endPos.y == world.chunkSize.y - 1)
+        if (endPos.y % world.chunkSize.y == world.chunkSize.y - 1)
             chunkEndPos.y++;
-        if (endPos.z == world.chunkSize.z - 1)
+        if (endPos.z % world.chunkSize.z == world.chunkSize.z - 1)
             chunkEndPos.z++;
 
 

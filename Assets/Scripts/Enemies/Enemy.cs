@@ -33,8 +33,8 @@ public class Enemy
     }
 
 
-    public virtual void Place(Vector3 pos)
+    public virtual GameObject Place(Vector3 pos)
     {
-
+        return null;
     }
 }
