@@ -50,7 +50,7 @@ public class Player
         //playerObj.transform.localScale = new Vector3(0.575f, 0.7f, 0.575f);
 
         // Player components creation
-        controller = playerObj.AddComponent<CharacterController>();
+        controller = playerObj.GetComponent<CharacterController>();
         playerObj.AddComponent<PlayerComponent>();
         light = playerObj.AddComponent<Light>();
 

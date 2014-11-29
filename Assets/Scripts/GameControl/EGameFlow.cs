@@ -3,6 +3,11 @@ using System.Collections;
 
 public static class EGameFlow
 {
+    // Game States
+    public enum GameState { MENU, GAME }
+    public static GameState gameState = GameState.MENU;
+
+
     // Game Modes
     public enum GameMode { PLAYER, GODMODE, DEVELOPER }
     public static GameMode gameMode = GameMode.DEVELOPER;

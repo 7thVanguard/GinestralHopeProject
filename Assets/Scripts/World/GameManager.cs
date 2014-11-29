@@ -122,8 +122,16 @@ public class GameManager : MonoBehaviour
 
 
         //+ Controllers
-        activeController.Update();
-        sun.lightSystemBehaviour.Update();
+        if (EGameFlow.gameState == EGameFlow.GameState.GAME)
+        {
+            activeController.Update();
+            sun.lightSystemBehaviour.Update();
+        }
+        else
+        {
+            if (Input.GetKeyUp(KeyCode.Alpha9))
+                EGameFlow.gameState = EGameFlow.GameState.GAME;
+        }
 
 
         //+ Reset queue
