@@ -25,7 +25,7 @@ public class CombatToolsManager
 
 
         // Cancel
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             totalCastingTime = 0;
             actualCastingTime = 0;

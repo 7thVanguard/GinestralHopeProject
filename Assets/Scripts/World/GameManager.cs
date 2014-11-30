@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
         aPC.Start();
         Controller.Add("DeveloperMode", aPC);
 
-        activeController = Controller["DeveloperMode"];
+        activeController = Controller["PlayerMode"];
 
 
         //+ Enemies Init
@@ -143,11 +143,18 @@ public class GameManager : MonoBehaviour
         {
             activeController.Update();
             sun.lightSystemBehaviour.Update();
+
+            if (Input.GetKeyUp(KeyCode.Escape))
+                EGameFlow.gameState = EGameFlow.GameState.MENU;
+
+            if (!Input.GetKey(KeyCode.LeftControl))
+                Screen.lockCursor = true;
+            else
+                Screen.lockCursor = false;
         }
         else
         {
-            if (Input.GetKeyUp(KeyCode.Alpha9))
-                EGameFlow.gameState = EGameFlow.GameState.GAME;
+            Screen.lockCursor = false;
         }
 
 
