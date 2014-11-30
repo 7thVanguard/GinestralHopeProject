@@ -5,6 +5,20 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
+
+[System.Serializable]
+public struct PlayerStruct
+{
+    public float positionX;
+    public float positionY;
+    public float positionZ;
+    public float rotationX;
+    public float rotationY;
+    public float rotationZ;
+    public bool unlockedSkillFireBall;
+}
+
+
 [System.Serializable]
 public struct EnemyStruct
 {
@@ -56,7 +70,7 @@ public struct EmiterStruct
 [System.Serializable]
 public class EGameSerializer
 {
-    
+    private PlayerStruct playerStruct;
     private EnemyStruct enemyStruct;
     private GadgetStruct gadgetStruct;
     private EventStruct eventStruct;
@@ -108,6 +122,20 @@ public class EGameSerializer
 
     private void Encryptor(World world, BinaryFormatter bf, FileStream file)
     {
+        //+ Player
+        // Find all players in game
+        GameObject playerOnGame = GameObject.FindGameObjectWithTag("Player");
+
+        playerStruct.positionX = playerOnGame.transform.position.x;
+        playerStruct.positionY = playerOnGame.transform.position.y + 0.05f;
+        playerStruct.positionZ = playerOnGame.transform.position.z;
+        playerStruct.rotationX = playerOnGame.transform.eulerAngles.x;
+        playerStruct.rotationY = playerOnGame.transform.eulerAngles.y;
+        playerStruct.rotationZ = playerOnGame.transform.eulerAngles.z;
+
+        bf.Serialize(file, playerStruct);
+
+
         //+ Voxels
         for (int cx = 0; cx < world.chunkNumber.x; cx++)
             for (int cy = 0; cy < world.chunkNumber.y; cy++)
@@ -197,6 +225,16 @@ public class EGameSerializer
 
     private void Desencrypter(World world, BinaryFormatter bf, FileStream file)
     {
+        //+ Enemies
+        // Deserialize the players list
+        playerStruct = (PlayerStruct)bf.Deserialize(file);
+
+        GameObject playerOnGame = GameObject.FindGameObjectWithTag("Player");
+
+        playerOnGame.transform.position = new Vector3(playerStruct.positionX, playerStruct.positionY, playerStruct.positionZ);
+        playerOnGame.transform.eulerAngles = new Vector3(playerStruct.rotationX, playerStruct.rotationY, playerStruct.rotationZ);
+
+
         //+ Voxels
         for (int cx = 0; cx < world.chunkNumber.x; cx++)
             for (int cy = 0; cy < world.chunkNumber.y; cy++)

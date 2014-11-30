@@ -26,6 +26,9 @@ public class Player
     // Animation
     public int damageAnimTime = 5;
 
+    // Skills
+    public bool unlockedSkillFireBall = false;
+
 
     public Player(World world)
     {
