@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Fire Gem
+  m_Name: FireGem_Mat
   m_Shader: {fileID: 11, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -66,6 +66,10 @@ Material:
         second: 1
       data:
         first:
+          name: _EmissionLM
+        second: 0
+      data:
+        first:
           name: _TintStrength
         second: 1
       data:
@@ -76,10 +80,6 @@ Material:
         first:
           name: _CutOutLightCore
         second: .5
-      data:
-        first:
-          name: _EmissionLM
-        second: 0
       data:
         first:
           name: _Emission

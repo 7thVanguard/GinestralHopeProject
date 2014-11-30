@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: a36bb4bea36b85341a7a9a127bc93239
+guid: 7d0b99ac3b7ef3a439aef8b41c54d049
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 15
   fileIDToRecycleName:
     100000: Box001
     100002: Plane001
@@ -24,7 +24,6 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    motionNodeName: 
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
@@ -68,5 +67,4 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 0
-  additionalBone: 0
   userData: 
