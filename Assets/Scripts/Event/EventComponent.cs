@@ -4,6 +4,7 @@ using System.Collections;
 public class EventComponent : MonoBehaviour 
 {
     [HideInInspector] public World world;
+    [HideInInspector] public Player player;
 
 
 

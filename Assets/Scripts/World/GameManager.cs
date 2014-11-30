@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 
         // post initialize
         world.worldObj.GetComponent<HUD>().Init(player, mineAtlas, developerAtlas, developerBox);                                                   // Initialize HUD
-        world.worldObj.GetComponent<GUISystem>().Init(world, background, pressStart, iddleButton, pressedButton, hoverButton, title, ghFont);       // Initialize GUI
+        world.worldObj.GetComponent<GUISystem>().Init(world, player, background, pressStart, iddleButton, pressedButton, hoverButton, title, ghFont);       // Initialize GUI
         sun.lightSystemBehaviour.Init(player, sun.sunObj, sun.lensFlare);                                                                           // Initialize Light System
 
 
@@ -133,9 +133,9 @@ public class GameManager : MonoBehaviour
 
         // Save relative
         if (Input.GetKeyUp(KeyCode.F5))
-            gameSerializer.Save(world, saveName);
+            gameSerializer.Save(world, player, saveName);
         else if (Input.GetKeyUp(KeyCode.F9))
-            gameSerializer.Load(world, saveName);
+            gameSerializer.Load(world, player, saveName);
 
 
         //+ Controllers

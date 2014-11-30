@@ -83,7 +83,7 @@ public class EGameSerializer
     private static string[] dataString;
 
 
-    public void Save(World world, string saveName)
+    public void Save(World world, Player player, string saveName)
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create("Assets/Saves/" + saveName + ".save");
@@ -95,12 +95,12 @@ public class EGameSerializer
         EventSave = new List<EventStruct>();
 		EmiterSave = new List<EmiterStruct> ();
 
-        Encryptor(world, bf, file);
+        Encryptor(world, player, bf, file);
         file.Close();
     }
 
 
-    public void Load(World world, string saveName)
+    public void Load(World world, Player player, string saveName)
     {
         if (File.Exists("Assets/Saves/" + saveName + ".save"))
         {
@@ -114,13 +114,13 @@ public class EGameSerializer
             EventSave = new List<EventStruct>();
 			EmiterSave = new List<EmiterStruct>();
 
-            Desencrypter(world, bf, file);
+            Desencrypter(world, player, bf, file);
             file.Close();
         }
     }
 
 
-    private void Encryptor(World world, BinaryFormatter bf, FileStream file)
+    private void Encryptor(World world, Player player, BinaryFormatter bf, FileStream file)
     {
         //+ Player
         // Find all players in game
@@ -132,6 +132,7 @@ public class EGameSerializer
         playerStruct.rotationX = playerOnGame.transform.eulerAngles.x;
         playerStruct.rotationY = playerOnGame.transform.eulerAngles.y;
         playerStruct.rotationZ = playerOnGame.transform.eulerAngles.z;
+        playerStruct.unlockedSkillFireBall = player.unlockedSkillFireBall;
 
         bf.Serialize(file, playerStruct);
 
@@ -223,16 +224,17 @@ public class EGameSerializer
     }
 
 
-    private void Desencrypter(World world, BinaryFormatter bf, FileStream file)
+    private void Desencrypter(World world, Player player, BinaryFormatter bf, FileStream file)
     {
-        //+ Enemies
-        // Deserialize the players list
+        //+ Player
+        // Deserialize the players
         playerStruct = (PlayerStruct)bf.Deserialize(file);
 
         GameObject playerOnGame = GameObject.FindGameObjectWithTag("Player");
 
         playerOnGame.transform.position = new Vector3(playerStruct.positionX, playerStruct.positionY, playerStruct.positionZ);
         playerOnGame.transform.eulerAngles = new Vector3(playerStruct.rotationX, playerStruct.rotationY, playerStruct.rotationZ);
+        player.unlockedSkillFireBall = playerStruct.unlockedSkillFireBall;
 
 
         //+ Voxels
@@ -290,12 +292,12 @@ public class EGameSerializer
         foreach (GameObject gadget in gadgets)
             GameObject.Destroy(gadget);
 
-        // Load enemies
+        // Load gadgets
         foreach (GadgetStruct gadget in GadgetSave)
             Gadget.Dictionary[gadget.ID].Place(gadget.ID,
                 new Vector3(gadget.positionX, gadget.positionY, gadget.positionZ), new Vector3(gadget.rotationX, gadget.rotationY, gadget.rotationZ));
 
-        //Reset enemies list
+        //Reset gadgets list
         GadgetSave.Clear();
 
 
@@ -310,7 +312,7 @@ public class EGameSerializer
 
         // Load events
         foreach (EventStruct eventObj in EventSave)
-            Event.Place(world, eventObj.ID, new Vector3(eventObj.positionX, eventObj.positionY, eventObj.positionZ));
+            Event.Place(world, player, eventObj.ID, new Vector3(eventObj.positionX, eventObj.positionY, eventObj.positionZ));
 
         // Reset events list
         EventSave.Clear();

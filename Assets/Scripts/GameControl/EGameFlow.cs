@@ -10,7 +10,7 @@ public static class EGameFlow
 
     // Game Modes
     public enum GameMode { PLAYER, GODMODE, DEVELOPER }
-    public static GameMode gameMode = GameMode.DEVELOPER;
+    public static GameMode gameMode = GameMode.PLAYER;
 
 
     // Tools

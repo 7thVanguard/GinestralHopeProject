@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Event
 {
-    public static void Place(World world, string ID, Vector3 position)
+    public static void Place(World world, Player player, string ID, Vector3 position)
     {
         GameObject eventObj = new GameObject();
         eventObj.name = ID;
@@ -13,5 +13,6 @@ public class Event
         eventObj.transform.parent = world.eventsController.transform;
         eventObj.AddComponent<EventComponent>();
         eventObj.GetComponent<EventComponent>().world = world;
+        eventObj.GetComponent<EventComponent>().player = player;
     }
 }
