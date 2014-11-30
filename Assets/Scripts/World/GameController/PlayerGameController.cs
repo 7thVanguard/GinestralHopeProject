@@ -31,6 +31,7 @@ public class PlayerGameController : GameController
         if (!EGameFlow.pause)
         {
             playerMovement.NormalMovementUpdate();
+            playerCombat.Update();
             cameraMovement.Update();
             cameraRaycast.Update();
         }
