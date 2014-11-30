@@ -13,7 +13,7 @@ public static class SInventory
     }
 
 
-    public static void CraftWoodPlank()
+    public static void CraftBomb()
     {
         if (Gadget.Dictionary["Iron Pieces"].count >= 5)
         {

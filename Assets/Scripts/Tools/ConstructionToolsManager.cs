@@ -32,28 +32,24 @@ public class ConstructionToolsManager
 
     private void Remove(Player player, MainCamera mainCamera)
     {
-        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            GadgetsToolManager.Remove(player, mainCamera);
+        GadgetsToolManager.Select(player, mainCamera);
     }
 
 
     private void Place(World world, Player player, MainCamera mainCamera)
     {
-        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            GadgetsToolManager.Place(world, player, mainCamera);
+        GadgetsToolManager.Place(world, player, mainCamera);
     }
 
 
     private void Cancel()
     {
-        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            GadgetsToolManager.Cancel();
+        GadgetsToolManager.Cancel();
     }
 
 
     private void Detect(World world, Player player, MainCamera mainCamera)
     {
-        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            GadgetsToolManager.Detect(world, player, mainCamera);
+        GadgetsToolManager.Detect(world, player, mainCamera);
     }
 }

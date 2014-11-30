@@ -14,6 +14,18 @@ public class GadgetsToolManager
     }
 
 
+    public static void Select(Player player, MainCamera mainCamera)
+    {
+        // Picks back the gadget
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
+            if (mainCamera.raycast.transform.gameObject.tag == "Gadget")
+                if (Gadget.Dictionary[mainCamera.raycast.transform.gameObject.name].givesComponents)
+                {
+                    Gadget.Dictionary[mainCamera.raycast.transform.gameObject.name].count += Gadget.Dictionary[mainCamera.raycast.transform.gameObject.name].dropCount;
+                }
+    }
+
+
     public static void Place(World world, Player player, MainCamera mainCamera)
     {
         if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)

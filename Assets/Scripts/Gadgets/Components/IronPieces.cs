@@ -17,7 +17,7 @@ public class IronPieces : Gadget
         placedOnFloor = true;
 
         givesComponents = true;
-        dropCount = 4;
+        dropCount = 1;
     }
 
 

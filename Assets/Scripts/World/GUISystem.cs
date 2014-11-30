@@ -94,16 +94,16 @@ public class GUISystem : MonoBehaviour
                             Application.Quit();
                         // Audio
                         else if (GUI.Button(new Rect(Screen.width * 3 / 30, Screen.height * 4 / 5, Screen.width * 4 / 30, Screen.height / 12), "Audio"))
-                            Application.Quit();
+                        { }
                         // Video
                         else if (GUI.Button(new Rect(Screen.width * 10 / 30, Screen.height * 4 / 5, Screen.width * 4 / 30, Screen.height / 12), "Video"))
-                            Application.Quit();
+                        { }
                         // Keys
                         else if (GUI.Button(new Rect(Screen.width * 17 / 30, Screen.height * 4 / 5, Screen.width * 4 / 30, Screen.height / 12), "Keys"))
-                            Application.Quit();
+                        { }
                         // Advanced
                         else if (GUI.Button(new Rect(Screen.width * 24 / 30, Screen.height * 4 / 5, Screen.width * 4 / 30, Screen.height / 12), "Advanced"))
-                            Application.Quit();
+                        { }
                     }
                     break;
                 case MenuState.SELECTOR:
