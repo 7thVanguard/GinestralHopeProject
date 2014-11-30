@@ -9,6 +9,14 @@ public class CBE_FireGemEvent : MonoBehaviour
     World world;
 
 
+    private GameObject enemy1;
+    private GameObject enemy2;
+    private GameObject enemy3;
+    private GameObject enemy4;
+
+    private bool combatStart = false;
+
+
 
     void Start()
     {
@@ -26,10 +34,25 @@ public class CBE_FireGemEvent : MonoBehaviour
         switch (eventPhase)
         {
             case EventPhase.COMBAT:
+                {
+                    if (!combatStart)
+                    {
+                        enemy1 = Enemy.Dictionary["Normal Slime"].Place(new Vector3(54, 11.5f, 37));
+                        enemy2 = Enemy.Dictionary["Normal Slime"].Place(new Vector3(54, 11.5f, 31));
+                        enemy3 = Enemy.Dictionary["Normal Slime"].Place(new Vector3(29, 11.5f, 37));
+                        enemy4 = Enemy.Dictionary["Normal Slime"].Place(new Vector3(29, 11.5f, 31));
+                        combatStart = true;
+                    }
+
+
+                    if (enemy1 == null && enemy2 == null && enemy3 == null && enemy4 == null)
+                        eventPhase = EventPhase.END;
+                }
                 break;
             case EventPhase.END:
                 {
-
+                    EventsLib.EraseVoxels(world, new IntVector3(40, 8, 44), new IntVector3(43, 14, 44));
+                    eventPhase = EventPhase.FINISHED;
                 }
                 break;
             default:
@@ -49,6 +72,7 @@ public class CBE_FireGemEvent : MonoBehaviour
                     EventsLib.EraseVoxels(world, new IntVector3(51, 8, 29), new IntVector3(51, 14, 39));
                     EventsLib.EraseVoxels(world, new IntVector3(32, 8, 29), new IntVector3(32, 14, 39));
                     EventsLib.FillWithVoxels(world, "Fire Amethyst Smooth Rock", new IntVector3(40, 8, 44), new IntVector3(43, 14, 44));
+                    eventPhase = EventPhase.COMBAT;
                 }
             }
         }
