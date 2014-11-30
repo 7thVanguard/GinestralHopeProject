@@ -23,16 +23,25 @@ public class Bomb : Gadget
 
     public override void Place(string ID, Vector3 pos, Vector3 rotation)
     {
-        Transform bomb = Object.Instantiate(world.gadgets.FindChild("Bomb"), pos, Quaternion.identity) as Transform;
+        if (Gadget.Dictionary["Bomb"].count >= 1 || EGameFlow.gameMode != EGameFlow.GameMode.PLAYER)
+        {
+            Transform bomb = Object.Instantiate(world.gadgets.FindChild("Bomb"), pos, Quaternion.identity) as Transform;
 
-        // Head atributes
-        bomb.name = "Bomb";
-        bomb.tag = "Gadget";
-        bomb.transform.parent = world.gadgetsController.transform;
+            // Head atributes
+            bomb.name = "Bomb";
+            bomb.tag = "Gadget";
+            bomb.transform.parent = world.gadgetsController.transform;
 
-        // Set transforms
-        bomb.transform.position = new Vector3(pos.x, pos.y, pos.z);
-        bomb.gameObject.AddComponent<BombBehaviour>();
-        bomb.gameObject.GetComponent<BombBehaviour>().Init(world);
+            // Set transforms
+            bomb.transform.position = new Vector3(pos.x, pos.y, pos.z);
+            bomb.gameObject.AddComponent<BombBehaviour>();
+            bomb.gameObject.GetComponent<BombBehaviour>().Init(world);
+
+            if (EGameFlow.gameMode == EGameFlow.GameMode.PLAYER)
+            {
+                // Remove the plank from the inventory
+                Gadget.Dictionary["Bomb"].count--;
+            }
+        }
     }
 }

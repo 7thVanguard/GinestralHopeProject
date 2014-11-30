@@ -116,6 +116,7 @@ public class BombBehaviour : MonoBehaviour
                 if (downCounter == initialxplosionCounter)
                 {
                     // Explosion relative
+                    Transform.Destroy(transform.GetComponent<SphereCollider>());
                     Destroy(transform.FindChild("AnimatedRunes").gameObject);
                     Destroy(transform.FindChild("Bomb").gameObject);
                     transform.FindChild("Explosion").gameObject.SetActive(true);

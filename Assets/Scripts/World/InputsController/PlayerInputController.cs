@@ -32,17 +32,11 @@ public class PlayerInputController : AbstractInputsController
         EGameFlow.gameMode = EGameFlow.GameMode.PLAYER;
         player.constructionDetection = 5;
 
-        // Tools
-        if (Input.GetKey(KeyCode.Alpha3))
-            EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
+        if (Input.GetKey(KeyCode.Alpha4))
+            EGameFlow.selectedGadget = "Wooden Bridge";
+        else if (Input.GetKey(KeyCode.Alpha5))
+            EGameFlow.selectedGadget = "Bomb";
 
-
-        // Subtools
-        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-        {
-            if (Input.GetKey(KeyCode.I))
-                EGameFlow.selectedGadget = "Wooden Plank";
-        }
 
         if (!EGameFlow.pause)
         {
