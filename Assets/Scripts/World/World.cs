@@ -18,10 +18,7 @@ public class World
     public Transform character;
     public Transform gadgets;
     public Transform skills;
-
-    public Transform normalSlime;
-    public Transform woodPieces;
-    public Transform nails;
+    public Transform enemies;
 
 
     // Control Variables
@@ -53,8 +50,7 @@ public class World
         character = prefabs.FindChild("Character");
         gadgets = prefabs.FindChild("Gadgets");
         skills = prefabs.FindChild("Skills");
-
-        normalSlime = prefabs.FindChild("Normal Slime");
+        enemies = prefabs.FindChild("Enemies");
 
         // Atlas relative
         textureSize = 128 / 1024.0f;

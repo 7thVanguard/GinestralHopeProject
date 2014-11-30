@@ -23,8 +23,7 @@ public class Torch : Gadget
 
     public override void Place(string ID, Vector3 pos, Vector3 rotation)
     {
-        Transform torch = world.nails;
-        torch = Object.Instantiate(world.gadgets.FindChild("Torch"), pos, Quaternion.identity) as Transform;
+        Transform torch = Object.Instantiate(world.gadgets.FindChild("Torch"), pos, Quaternion.identity) as Transform;
 
         // Head atributes
         torch.name = "Torch";

@@ -18,7 +18,7 @@ public class NormalSlimeEnemy : Enemy
 
     public override GameObject Place(Vector3 pos)
     {
-        Transform enemy = world.normalSlime;
+        Transform enemy = world.enemies.FindChild("NormalSlime");
 
         enemy = Object.Instantiate(enemy, pos, Quaternion.identity) as Transform;
         enemy.position += new Vector3(0.5f, enemy.localScale.y / 2, 0.5f);
