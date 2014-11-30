@@ -89,22 +89,25 @@ public class DeveloperInputController : AbstractInputsController
         }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
         {
-            if (Input.GetKey(KeyCode.I))
-                EGameFlow.selectedGadget = "Wooden Bridge";
-            else if (Input.GetKey(KeyCode.J))
-                EGameFlow.selectedGadget = "Wood Pieces";
-            else if (Input.GetKey(KeyCode.K))
-                EGameFlow.selectedGadget = "Torch";
-            else if (Input.GetKey(KeyCode.B))
-                EGameFlow.selectedGadget = "Bomb";
-            else if (Input.GetKey(KeyCode.M))
-                EGameFlow.selectedGadget = "Iron Pieces";
-            else if (Input.GetKey(KeyCode.N))
-                EGameFlow.selectedGadget = "Altar";
-            else if (Input.GetKey(KeyCode.O))
-                EGameFlow.selectedGadget = "Fire Gem";
-            else if (Input.GetKey(KeyCode.V))
-                EGameFlow.selectedGadget = "Chest";
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                if (Input.GetKey(KeyCode.Alpha1))
+                    EGameFlow.selectedGadget = "Wooden Bridge";
+                else if (Input.GetKey(KeyCode.Alpha2))
+                    EGameFlow.selectedGadget = "Wood Pieces";
+                else if (Input.GetKey(KeyCode.Alpha3))
+                    EGameFlow.selectedGadget = "Bomb";
+                else if (Input.GetKey(KeyCode.Alpha4))
+                    EGameFlow.selectedGadget = "Torch";
+                else if (Input.GetKey(KeyCode.Alpha5))
+                    EGameFlow.selectedGadget = "Altar";
+                else if (Input.GetKey(KeyCode.Alpha6))
+                    EGameFlow.selectedGadget = "Fire Gem";
+                else if (Input.GetKey(KeyCode.Alpha7))
+                    EGameFlow.selectedGadget = "Iron Pieces";
+                else if (Input.GetKey(KeyCode.Alpha8))
+                    EGameFlow.selectedGadget = "Chest";
+            }
         }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
         {

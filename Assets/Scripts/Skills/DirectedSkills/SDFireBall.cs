@@ -18,7 +18,7 @@ public class SDFireBall : SkillDirected
         maxDistance = 30;
 
         // Cast
-        castingTime = 2;
+        castingTime = 0.5f;
 
         // Fire
         damage = 4;

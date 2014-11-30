@@ -25,7 +25,7 @@ public class InventoryManager : EditorWindow
             EditorGUILayout.LabelField("Name: " + entry.Value.nameKey + "  " + entry.Value.count);
 
         if (GUILayout.Button("Craft"))
-            SInventory.CraftWoodPlank();
+            SInventory.CraftWoodenBridge();
 
         if (GUILayout.Button("Refresh Inventory")) { }
 

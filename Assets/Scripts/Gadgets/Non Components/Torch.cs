@@ -31,8 +31,6 @@ public class Torch : Gadget
         torch.tag = "Gadget";
         torch.transform.parent = world.gadgetsController.transform;
 
-        // Set transforms
-        torch.transform.position = pos;
         torch.transform.eulerAngles = rotation;
     }
 }

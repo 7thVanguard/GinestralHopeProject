@@ -29,8 +29,5 @@ public class WoodPieces : Gadget
         woodPieces.name = "Wood Pieces";
         woodPieces.tag = "Gadget";
         woodPieces.transform.parent = world.gadgetsController.transform;
-
-        // Set transforms
-        woodPieces.transform.eulerAngles = Vector3.zero;
     }
 }

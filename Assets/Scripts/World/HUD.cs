@@ -65,262 +65,294 @@ public class HUD : MonoBehaviour
 	
 
 
-	void OnGUI () 
+	void OnGUI ()
     {
-        //+ Gizmos
-        GUI.DrawTexture(new Rect(Screen.width / 2 - gizmoCross.width / 2, Screen.height / 2 - gizmoCross.width / 2, gizmoCross.width, gizmoCross.height), gizmoCross);
-        
-        if (PlayerCombat.target == null)
-            GUI.DrawTexture(new Rect(Screen.width / 2 - gizmoCircle.width / 2, Screen.height / 2 - gizmoCircle.width / 2, gizmoCircle.width, gizmoCircle.height), gizmoCircle);
-        else
-            GUI.DrawTexture(new Rect(PlayerCombat.circleGizmoScreenPos.x - gizmoCircle.width / 2, (Screen.height - PlayerCombat.circleGizmoScreenPos.y) - gizmoCircle.width / 2, gizmoCircle.width, gizmoCircle.height), gizmoCircle);
-
-
-        //+ Game bars
-        // Player Life Bar
-        GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200, 20), lifeBarBack);
-        GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200 * player.currentLife / player.maxLife, 20), lifeBar);
-
-        // Enemy life bar
-        if (PlayerCombat.target != null)
+        if (EGameFlow.gameState == EGameFlow.GameState.GAME)
         {
-            GUI.DrawTexture(new Rect(Screen.width * 7 / 8, Screen.height / 2, Screen.width * 0.9f / 8, 15), lifeBarBack);
-            GUI.DrawTexture(new Rect(Screen.width * 7 / 8, Screen.height / 2,
-                (Screen.width * 0.9f / 8) * (PlayerCombat.target.GetComponent<EnemyComponent>().life / PlayerCombat.target.GetComponent<EnemyComponent>().maxLife), 15), lifeBar);
-        }
+            //+ Gizmos
+            GUI.DrawTexture(new Rect(Screen.width / 2 - gizmoCross.width / 2, Screen.height / 2 - gizmoCross.width / 2, gizmoCross.width, gizmoCross.height), gizmoCross);
+
+            if (PlayerCombat.target == null)
+                GUI.DrawTexture(new Rect(Screen.width / 2 - gizmoCircle.width / 2, Screen.height / 2 - gizmoCircle.width / 2, gizmoCircle.width, gizmoCircle.height), gizmoCircle);
+            else
+                GUI.DrawTexture(new Rect(PlayerCombat.circleGizmoScreenPos.x - gizmoCircle.width / 2, (Screen.height - PlayerCombat.circleGizmoScreenPos.y) - gizmoCircle.width / 2, gizmoCircle.width, gizmoCircle.height), gizmoCircle);
 
 
-        //+ Skills casting
-        if (CombatToolsManager.casting)
-        {
-            GUI.DrawTexture(new Rect(Screen.width * 3 / 8 - 3, Screen.height * 4 / 5 - 10, Screen.width * 2 / 8 + 6, 20), lifeBarBack);
-            GUI.DrawTexture(new Rect(Screen.width * 3 / 8, Screen.height * 4 / 5 - 7,
-                (Screen.width * 2 / 8) * (CombatToolsManager.actualCastingTime / CombatToolsManager.totalCastingTime), 14), lifeBar);
-        }
+            //+ Game bars
+            // Player Life Bar
+            GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200, 20), lifeBarBack);
+            GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200 * player.currentLife / player.maxLife, 20), lifeBar);
 
-        // Set the mouse position in the same direction of the textures
-        mousePosition = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
+            // Enemy life bar
+            if (PlayerCombat.target != null)
+            {
+                GUI.DrawTexture(new Rect(Screen.width * 7 / 8, Screen.height / 2, Screen.width * 0.9f / 8, 15), lifeBarBack);
+                GUI.DrawTexture(new Rect(Screen.width * 7 / 8, Screen.height / 2,
+                    (Screen.width * 0.9f / 8) * (PlayerCombat.target.GetComponent<EnemyComponent>().life / PlayerCombat.target.GetComponent<EnemyComponent>().maxLife), 15), lifeBar);
+            }
 
-        switch (EGameFlow.gameMode)
-        {
-            //++ Player HUD
-            case EGameFlow.GameMode.PLAYER:
-                break;
-            //++ GodMode HUD
-            case EGameFlow.GameMode.GODMODE:
-                break;
-            //++ Developer HUD
-            case EGameFlow.GameMode.DEVELOPER:
-                {
-                    //+ Lateral panel
-                    // Sun icon
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(1 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
-                    // Voxels icon
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(3 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
-                    // Gadgets icon
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(4 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
-                    // Enemies icon
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(5 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
 
-                    //? Tool Control
-                    if (Input.GetKey(KeyCode.LeftControl))
+            //+ Skills casting
+            if (CombatToolsManager.casting)
+            {
+                GUI.DrawTexture(new Rect(Screen.width * 3 / 8 - 3, Screen.height * 4 / 5 - 10, Screen.width * 2 / 8 + 6, 20), lifeBarBack);
+                GUI.DrawTexture(new Rect(Screen.width * 3 / 8, Screen.height * 4 / 5 - 7,
+                    (Screen.width * 2 / 8) * (CombatToolsManager.actualCastingTime / CombatToolsManager.totalCastingTime), 14), lifeBar);
+            }
+
+            // Set the mouse position in the same direction of the textures
+            mousePosition = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
+
+            switch (EGameFlow.gameMode)
+            {
+                //++ Player HUD
+                case EGameFlow.GameMode.PLAYER:
                     {
-                        if (Input.GetKeyUp(KeyCode.Mouse0))
-                        {
-                            if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                                EGameFlow.selectedTool = EGameFlow.SelectedTool.LIGHT;
-                            else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                                EGameFlow.selectedTool = EGameFlow.SelectedTool.MINE;
-                            else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                                EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
-                            else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                                EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
+                        // Fire Ball
+                        GUI.DrawTextureWithTexCoords
+                            (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
+                            developerAtlas,
+                            new Rect(0 / 8f, 1 / 8f, 1 / 8f, 1 / 8f));
+
+
+                        // Inventory
+                        // Show components
+                        Gadget gadget = Gadget.Dictionary["Wood Pieces"];
+                        GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.55f, 200, 50), gadget.ID + "  " + gadget.count);
+
+                        gadget = Gadget.Dictionary["Iron Pieces"];
+                        GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.60f, 200, 50), gadget.ID + "  " + gadget.count);
+
+                        // Show craftable gadgets
+                        gadget = Gadget.Dictionary["Wooden Bridge"];
+                        GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.7f, 200, 50), gadget.ID + "  " + gadget.count);
+
+                        gadget = Gadget.Dictionary["Bomb"];
+                        GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.75f, 200, 50), gadget.ID + "  " + gadget.count);
+
+                        if (GUI.Button(new Rect(Screen.width * 0.8f, Screen.height * 0.8f, 90, 30), "Craft Bridge")) 
+                        { 
+                            
                         }
+                        if (GUI.Button(new Rect(Screen.width * 0.8f, Screen.height * 0.85f, 90, 30), "Craft Bomb")) { }
                     }
-
-
-                    //+ Lower pannel
-                    switch (EGameFlow.selectedTool)
+                    break;
+                //++ GodMode HUD
+                case EGameFlow.GameMode.GODMODE:
+                    break;
+                //++ Developer HUD
+                case EGameFlow.GameMode.DEVELOPER:
                     {
-                        //+ Light
-                        case EGameFlow.SelectedTool.LIGHT:
+                        //+ Lateral panel
+                        // Sun icon
+                        GUI.DrawTextureWithTexCoords
+                            (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, lateralButtonSize, lateralButtonSize),
+                            developerAtlas,
+                            new Rect(1 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
+                        // Voxels icon
+                        GUI.DrawTextureWithTexCoords
+                            (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, lateralButtonSize, lateralButtonSize),
+                            developerAtlas,
+                            new Rect(3 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
+                        // Gadgets icon
+                        GUI.DrawTextureWithTexCoords
+                            (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, lateralButtonSize, lateralButtonSize),
+                            developerAtlas,
+                            new Rect(4 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
+                        // Enemies icon
+                        GUI.DrawTextureWithTexCoords
+                            (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, lateralButtonSize, lateralButtonSize),
+                            developerAtlas,
+                            new Rect(5 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
+
+                        //? Tool Control
+                        if (Input.GetKey(KeyCode.LeftControl))
+                        {
+                            if (Input.GetKeyUp(KeyCode.Mouse0))
                             {
-                                // Selection
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, lateralButtonSize, lateralButtonSize),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
-
-                                // Tools
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                                    developerAtlas,
-                                    new Rect(0 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
-
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                                    developerAtlas,
-                                    new Rect(1 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
-
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 60 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                                    developerAtlas,
-                                    new Rect(2 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
-
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 70 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                                    developerAtlas,
-                                    new Rect(3 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
+                                if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
+                                    EGameFlow.selectedTool = EGameFlow.SelectedTool.LIGHT;
+                                else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
+                                    EGameFlow.selectedTool = EGameFlow.SelectedTool.MINE;
+                                else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
+                                    EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
+                                else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
+                                    EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
                             }
-                            break;
-                        //+ Mine
-                        case EGameFlow.SelectedTool.MINE:
-                            {
-                                // Selection
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, lateralButtonSize, lateralButtonSize),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
-
-                                // Tools
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                                    developerAtlas,
-                                    new Rect(0 / 8f, 4 / 8f, 1 / 8f, 1 / 8f));
-
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                                    developerAtlas,
-                                    new Rect(1 / 8f, 4 / 8f, 1 / 8f, 1 / 8f));
+                        }
 
 
-                                switch (EGameFlow.developerMineTools)
+                        //+ Lower pannel
+                        switch (EGameFlow.selectedTool)
+                        {
+                            //+ Light
+                            case EGameFlow.SelectedTool.LIGHT:
                                 {
-                                    case EGameFlow.DeveloperMineTools.SINGLE:
-                                        {
-                                            GUI.DrawTextureWithTexCoords
-                                                (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                                                developerAtlas,
-                                                new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
-                                        }
-                                        break;
-                                    case EGameFlow.DeveloperMineTools.ORTOEDRIC:
-                                        {
-                                            GUI.DrawTextureWithTexCoords
-                                                (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                                                developerAtlas,
-                                                new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
-                                        }
-                                        break;
-                                    default:
-                                        break;
+                                    // Selection
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, lateralButtonSize, lateralButtonSize),
+                                        developerAtlas,
+                                        new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+
+                                    // Tools
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
+                                        developerAtlas,
+                                        new Rect(0 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
+
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
+                                        developerAtlas,
+                                        new Rect(1 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
+
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.width * 60 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
+                                        developerAtlas,
+                                        new Rect(2 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
+
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.width * 70 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
+                                        developerAtlas,
+                                        new Rect(3 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
                                 }
-
-
-                                if (Input.GetKey(KeyCode.LeftControl))
+                                break;
+                            //+ Mine
+                            case EGameFlow.SelectedTool.MINE:
                                 {
-                                    // Draw textures
-                                    GUI.DrawTexture(new Rect(0, Screen.height * 3 / 8, Screen.height * 5 / 8, Screen.height * 5 / 8), mineAtlas.mainTexture);
+                                    // Selection
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, lateralButtonSize, lateralButtonSize),
+                                        developerAtlas,
+                                        new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
 
-                                    if (Input.GetKeyUp(KeyCode.Mouse0))
+                                    // Tools
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
+                                        developerAtlas,
+                                        new Rect(0 / 8f, 4 / 8f, 1 / 8f, 1 / 8f));
+
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
+                                        developerAtlas,
+                                        new Rect(1 / 8f, 4 / 8f, 1 / 8f, 1 / 8f));
+
+
+                                    switch (EGameFlow.developerMineTools)
                                     {
-                                        //? SubTool Control
-                                        if (ButtonPressed(new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                                            EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.SINGLE;
-                                        else if (ButtonPressed(new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                                            EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.ORTOEDRIC;
-
-                                        //! Textures Control
-                                        if (ButtonPressed(new Rect(0, Screen.height * 3 / 8, Screen.height * 5 / 8, Screen.height * 5 / 8), mousePosition))
-                                            SelectTexture(new Rect(0, Screen.height * 3 / 8, Screen.height * 5 / 8, Screen.height * 5 / 8), mousePosition);
+                                        case EGameFlow.DeveloperMineTools.SINGLE:
+                                            {
+                                                GUI.DrawTextureWithTexCoords
+                                                    (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
+                                                    developerAtlas,
+                                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                            }
+                                            break;
+                                        case EGameFlow.DeveloperMineTools.ORTOEDRIC:
+                                            {
+                                                GUI.DrawTextureWithTexCoords
+                                                    (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
+                                                    developerAtlas,
+                                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                            }
+                                            break;
+                                        default:
+                                            break;
                                     }
 
-                                    // Draw selected texture
-                                    GUI.DrawTextureWithTexCoords(new Rect(textureSelection.x, textureSelection.y, (Screen.height * 5 / 8) / 8, (Screen.height * 5 / 8) / 8),
-                                                                    developerAtlas,
-                                                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+
+                                    if (Input.GetKey(KeyCode.LeftControl))
+                                    {
+                                        // Draw textures
+                                        GUI.DrawTexture(new Rect(0, Screen.height * 3 / 8, Screen.height * 5 / 8, Screen.height * 5 / 8), mineAtlas.mainTexture);
+
+                                        if (Input.GetKeyUp(KeyCode.Mouse0))
+                                        {
+                                            //? SubTool Control
+                                            if (ButtonPressed(new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
+                                                EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.SINGLE;
+                                            else if (ButtonPressed(new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
+                                                EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.ORTOEDRIC;
+
+                                            //! Textures Control
+                                            if (ButtonPressed(new Rect(0, Screen.height * 3 / 8, Screen.height * 5 / 8, Screen.height * 5 / 8), mousePosition))
+                                                SelectTexture(new Rect(0, Screen.height * 3 / 8, Screen.height * 5 / 8, Screen.height * 5 / 8), mousePosition);
+                                        }
+
+                                        // Draw selected texture
+                                        GUI.DrawTextureWithTexCoords(new Rect(textureSelection.x, textureSelection.y, (Screen.height * 5 / 8) / 8, (Screen.height * 5 / 8) / 8),
+                                                                        developerAtlas,
+                                                                        new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                    }
                                 }
-                            }
-                            break;
-                        //+ Gadget
-                        case EGameFlow.SelectedTool.GADGET:
-                            {
-                                // Selection
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, lateralButtonSize, lateralButtonSize),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                break;
+                            //+ Gadget
+                            case EGameFlow.SelectedTool.GADGET:
+                                {
+                                    // Selection
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, lateralButtonSize, lateralButtonSize),
+                                        developerAtlas,
+                                        new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
 
-                                // Gadgets
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(0, Screen.height * 3 / 8, Screen.height * 3 / 16, Screen.height * 3 / 16),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                    // Gadgets
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(0, Screen.height * 3 / 8, Screen.height * 5 / 32, Screen.height * 5 / 32),
+                                        developerAtlas,
+                                        new Rect(0 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
 
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.height * 3 / 16, Screen.height * 3 / 8, Screen.height * 3 / 16, Screen.height * 3 / 16),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.height * 5 / 32, Screen.height * 3 / 8, Screen.height * 5 / 32, Screen.height * 5 / 32),
+                                        developerAtlas,
+                                        new Rect(1 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
 
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.height * 6 / 16, Screen.height * 26 / 50, Screen.height * 3 / 16, Screen.height * 3 / 16),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.height * 10 / 32, Screen.height * 3 / 8, Screen.height * 5 / 32, Screen.height * 5 / 32),
+                                        developerAtlas,
+                                        new Rect(2 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
 
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.height * 9 / 16, Screen.height * 26 / 50, Screen.height * 3 / 16, Screen.height * 3 / 16),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.height * 15 / 32, Screen.height * 3 / 8, Screen.height * 5 / 32, Screen.height * 5 / 32),
+                                        developerAtlas,
+                                        new Rect(3 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
 
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(0, Screen.height * 26 / 50, Screen.height * 3 / 16, Screen.height * 3 / 16),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(0, Screen.height * 3 / 8 + Screen.height * 5 / 32, Screen.height * 5 / 32, Screen.height * 5 / 32),
+                                        developerAtlas,
+                                        new Rect(4 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
 
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.height * 3 / 16, Screen.height * 26 / 50, Screen.height * 3 / 16, Screen.height * 3 / 16),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.height * 5 / 32, Screen.height * 3 / 8 + Screen.height * 5 / 32, Screen.height * 5 / 32, Screen.height * 5 / 32),
+                                        developerAtlas,
+                                        new Rect(5 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
 
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.height * 6 / 16, Screen.height * 26 / 50, Screen.height * 3 / 16, Screen.height * 3 / 16),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.height * 10 / 32, Screen.height * 3 / 8 + Screen.height * 5 / 32, Screen.height * 5 / 32, Screen.height * 5 / 32),
+                                        developerAtlas,
+                                        new Rect(6 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
 
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.height * 9 / 16, Screen.height * 26 / 50, Screen.height * 3 / 16, Screen.height * 3 / 16),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
-                            }
-                            break;
-                        //+ Enemy
-                        case EGameFlow.SelectedTool.ENEMY:
-                            {
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, lateralButtonSize, lateralButtonSize),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
-                            }
-                            break;
-                        default:
-                            break;
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.height * 15 / 32, Screen.height * 3 / 8 + Screen.height * 5 / 32, Screen.height * 5 / 32, Screen.height * 5 / 32),
+                                        developerAtlas,
+                                        new Rect(7 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
+                                }
+                                break;
+                            //+ Enemy
+                            case EGameFlow.SelectedTool.ENEMY:
+                                {
+                                    GUI.DrawTextureWithTexCoords
+                                        (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, lateralButtonSize, lateralButtonSize),
+                                        developerAtlas,
+                                        new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                                }
+                                break;
+                            default:
+                                break;
+                        }
                     }
-                }
-                break;
-            default:
-                break;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

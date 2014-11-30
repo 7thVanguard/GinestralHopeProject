@@ -30,7 +30,6 @@ public class Chest : Gadget
         chest.tag = "Gadget";
         chest.transform.parent = world.gadgetsController.transform;
 
-        // Set transforms
-        chest.transform.eulerAngles = Vector3.zero;
+        chest.transform.eulerAngles = rotation;
     }
 }

@@ -29,9 +29,5 @@ public class IronPieces : Gadget
         ironPieces.name = "Iron Pieces";
         ironPieces.tag = "Gadget";
         ironPieces.transform.parent = world.gadgetsController.transform;
-
-        // Set transforms
-        ironPieces.transform.eulerAngles = Vector3.zero;
-        ironPieces.transform.localScale = Gadget.Dictionary[ironPieces.name].size;
     }
 }

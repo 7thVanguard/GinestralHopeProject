@@ -29,9 +29,5 @@ public class Altar : Gadget
         altar.name = "Altar";
         altar.tag = "Gadget";
         altar.transform.parent = world.gadgetsController.transform;
-
-        // Set transforms
-        altar.transform.eulerAngles = Vector3.zero;
-        altar.transform.localScale = Gadget.Dictionary[altar.name].size;
     }
 }

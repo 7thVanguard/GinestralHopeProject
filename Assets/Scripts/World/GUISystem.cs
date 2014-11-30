@@ -77,16 +77,33 @@ public class GUISystem : MonoBehaviour
                     break;
                 case MenuState.MAIN:
                     {
+                        // New Game
                         if (GUI.Button(new Rect(Screen.width * 2 / 5, Screen.height * 1 / 6, Screen.width / 5, Screen.height / 6 - 20), "New Game"))
                         {
                             world.worldObj.GetComponent<GameManager>().gameSerializer.Load(world, "NewGameSave");
                             EGameFlow.gameState = EGameFlow.GameState.GAME;
                         }
+                        // Load Game
                         else if (GUI.Button(new Rect(Screen.width * 2 / 5, Screen.height * 2 / 6, Screen.width / 5, Screen.height / 6 - 20), "Load Game"))
                         {
                             world.worldObj.GetComponent<GameManager>().gameSerializer.Load(world, "CaverninaOnPlaySave");
                             EGameFlow.gameState = EGameFlow.GameState.GAME;
                         }
+                        // Exit Game
+                        else if (GUI.Button(new Rect(Screen.width * 2 / 5, Screen.height * 3 / 6, Screen.width / 5, Screen.height / 6 - 20), "Exit Game"))
+                            Application.Quit();
+                        // Audio
+                        else if (GUI.Button(new Rect(Screen.width * 3 / 30, Screen.height * 4 / 5, Screen.width * 4 / 30, Screen.height / 12), "Audio"))
+                            Application.Quit();
+                        // Video
+                        else if (GUI.Button(new Rect(Screen.width * 10 / 30, Screen.height * 4 / 5, Screen.width * 4 / 30, Screen.height / 12), "Video"))
+                            Application.Quit();
+                        // Keys
+                        else if (GUI.Button(new Rect(Screen.width * 17 / 30, Screen.height * 4 / 5, Screen.width * 4 / 30, Screen.height / 12), "Keys"))
+                            Application.Quit();
+                        // Advanced
+                        else if (GUI.Button(new Rect(Screen.width * 24 / 30, Screen.height * 4 / 5, Screen.width * 4 / 30, Screen.height / 12), "Advanced"))
+                            Application.Quit();
                     }
                     break;
                 case MenuState.SELECTOR:
