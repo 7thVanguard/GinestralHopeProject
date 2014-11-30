@@ -595,7 +595,7 @@ GameObject:
   - 4: {fileID: 400072}
   - 33: {fileID: 3300014}
   - 23: {fileID: 2300014}
-  - 64: {fileID: 6400008}
+  - 65: {fileID: 6500006}
   m_Layer: 0
   m_Name: Iron Pieces
   m_TagString: Gadget
@@ -1953,19 +1953,6 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 07196a074397be840bc546b1869157a0, type: 3}
---- !u!64 &6400008
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100072}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: ad82a2b95aba1a34e8a42b140c028832, type: 3}
 --- !u!64 &6400010
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -2015,6 +2002,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .932275951, y: .569305956, z: .932275951}
   m_Center: {x: 0, y: .284652978, z: 0}
+--- !u!65 &6500006
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100072}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: .243868008, z: 1}
+  m_Center: {x: 0, y: .121934004, z: 0}
 --- !u!108 &10800000
 Light:
   m_ObjectHideFlags: 1
