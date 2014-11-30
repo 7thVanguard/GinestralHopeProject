@@ -50,6 +50,7 @@ public class ChunkGenerator
         chunkObject = new GameObject();
         chunkObject.name = "Chunk (" + numID.x + ", " + numID.y + ", " + numID.z + ")";
         chunkObject.tag = ("Chunk");
+        chunkObject.layer = LayerMask.NameToLayer("GameObject");
 
         // Set chunk transforms
         chunkObject.transform.position = Vector3.zero;

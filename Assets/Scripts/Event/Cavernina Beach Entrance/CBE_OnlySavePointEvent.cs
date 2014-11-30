@@ -20,10 +20,9 @@ public class CBE_OnlySavePointEvent : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            if (EGameFlow.gameMode == EGameFlow.GameMode.PLAYER)
-                world.worldObj.GetComponent<GameManager>().gameSerializer.Save(world, "CaverninaOnPlaySave");
-        }
+        if (EGameFlow.gameMode == EGameFlow.GameMode.PLAYER)
+            if (other.tag == "Player")
+                if (EGameFlow.gameMode == EGameFlow.GameMode.PLAYER)
+                    world.worldObj.GetComponent<GameManager>().gameSerializer.Save(world, "CaverninaOnPlaySave");
     }
 }

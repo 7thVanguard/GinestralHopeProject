@@ -112,11 +112,20 @@ public class GameManager : MonoBehaviour
         //+ Global inputs
         // Game mode
         if (Input.GetKey(KeyCode.F1))
+        {
             activeController = Controller["PlayerMode"];
+            Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("GameObject"), false);
+        }
         else if (Input.GetKey(KeyCode.F2))
+        {
             activeController = Controller["GodMode"];
+            Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("GameObject"), true);
+        }
         else if (Input.GetKey(KeyCode.F3))
+        {
             activeController = Controller["DeveloperMode"];
+            Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("GameObject"), false);
+        }
 
         // Pause
         if (Input.GetKeyUp(KeyCode.P))

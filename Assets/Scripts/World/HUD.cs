@@ -32,7 +32,8 @@ public class HUD : MonoBehaviour
 
     // Helpers
     private Vector2 mousePosition;
-    private float buttonSize;
+    private Vector2 textureSelection = new Vector2((Screen.height * 5 / 8) / 8, Screen.height * 3 / 8);
+    private float lateralButtonSize;
 
 
     public void Init(Player player, Material mineAtlas, Texture2D developerAtlas, Texture2D developerBox)
@@ -44,7 +45,7 @@ public class HUD : MonoBehaviour
         this.developerAtlas = developerAtlas;
         this.developerBox = developerBox;
 
-        buttonSize = Screen.height * 6 / 50;
+        lateralButtonSize = Screen.height * 6 / 50;
     }
 
 
@@ -114,22 +115,22 @@ public class HUD : MonoBehaviour
                     //+ Lateral panel
                     // Sun icon
                     GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, buttonSize, buttonSize),
+                        (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, lateralButtonSize, lateralButtonSize),
                         developerAtlas,
                         new Rect(1 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
                     // Voxels icon
                     GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, buttonSize, buttonSize),
+                        (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, lateralButtonSize, lateralButtonSize),
                         developerAtlas,
                         new Rect(3 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
                     // Gadgets icon
                     GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, buttonSize, buttonSize),
+                        (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, lateralButtonSize, lateralButtonSize),
                         developerAtlas,
                         new Rect(4 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
                     // Enemies icon
                     GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, buttonSize, buttonSize),
+                        (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, lateralButtonSize, lateralButtonSize),
                         developerAtlas,
                         new Rect(5 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
 
@@ -138,13 +139,13 @@ public class HUD : MonoBehaviour
                     {
                         if (Input.GetKeyUp(KeyCode.Mouse0))
                         {
-                            if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, buttonSize, buttonSize), mousePosition))
+                            if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
                                 EGameFlow.selectedTool = EGameFlow.SelectedTool.LIGHT;
-                            else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, buttonSize, buttonSize), mousePosition))
+                            else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
                                 EGameFlow.selectedTool = EGameFlow.SelectedTool.MINE;
-                            else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, buttonSize, buttonSize), mousePosition))
+                            else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
                                 EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
-                            else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, buttonSize, buttonSize), mousePosition))
+                            else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
                                 EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
                         }
                     }
@@ -158,28 +159,28 @@ public class HUD : MonoBehaviour
                             {
                                 // Selection
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, buttonSize, buttonSize),
+                                    (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, lateralButtonSize, lateralButtonSize),
                                     developerAtlas,
                                     new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
 
                                 // Tools
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                    (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
                                     developerAtlas,
                                     new Rect(0 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
 
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                    (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
                                     developerAtlas,
                                     new Rect(1 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
 
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 60 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                    (new Rect(Screen.width * 60 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
                                     developerAtlas,
                                     new Rect(2 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
 
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 70 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                    (new Rect(Screen.width * 70 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
                                     developerAtlas,
                                     new Rect(3 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
                             }
@@ -189,18 +190,18 @@ public class HUD : MonoBehaviour
                             {
                                 // Selection
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, buttonSize, buttonSize),
+                                    (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, lateralButtonSize, lateralButtonSize),
                                     developerAtlas,
                                     new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
 
                                 // Tools
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                    (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
                                     developerAtlas,
                                     new Rect(0 / 8f, 4 / 8f, 1 / 8f, 1 / 8f));
 
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                    (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
                                     developerAtlas,
                                     new Rect(1 / 8f, 4 / 8f, 1 / 8f, 1 / 8f));
 
@@ -210,7 +211,7 @@ public class HUD : MonoBehaviour
                                     case EGameFlow.DeveloperMineTools.SINGLE:
                                         {
                                             GUI.DrawTextureWithTexCoords
-                                                (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                                (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
                                                 developerAtlas,
                                                 new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
                                         }
@@ -218,7 +219,7 @@ public class HUD : MonoBehaviour
                                     case EGameFlow.DeveloperMineTools.ORTOEDRIC:
                                         {
                                             GUI.DrawTextureWithTexCoords
-                                                (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, buttonSize, buttonSize),
+                                                (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
                                                 developerAtlas,
                                                 new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
                                         }
@@ -236,23 +237,70 @@ public class HUD : MonoBehaviour
                                     if (Input.GetKeyUp(KeyCode.Mouse0))
                                     {
                                         //? SubTool Control
-                                        if (ButtonPressed(new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, buttonSize, buttonSize), mousePosition))
+                                        if (ButtonPressed(new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
                                             EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.SINGLE;
-                                        else if (ButtonPressed(new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, buttonSize, buttonSize), mousePosition))
+                                        else if (ButtonPressed(new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
                                             EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.ORTOEDRIC;
 
                                         //! Textures Control
                                         if (ButtonPressed(new Rect(0, Screen.height * 3 / 8, Screen.height * 5 / 8, Screen.height * 5 / 8), mousePosition))
                                             SelectTexture(new Rect(0, Screen.height * 3 / 8, Screen.height * 5 / 8, Screen.height * 5 / 8), mousePosition);
                                     }
+
+                                    // Draw selected texture
+                                    GUI.DrawTextureWithTexCoords(new Rect(textureSelection.x, textureSelection.y, (Screen.height * 5 / 8) / 8, (Screen.height * 5 / 8) / 8),
+                                                                    developerAtlas,
+                                                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
                                 }
                             }
                             break;
                         //+ Gadget
                         case EGameFlow.SelectedTool.GADGET:
                             {
+                                // Selection
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, buttonSize, buttonSize),
+                                    (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, lateralButtonSize, lateralButtonSize),
+                                    developerAtlas,
+                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+
+                                // Gadgets
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(0, Screen.height * 3 / 8, Screen.height * 3 / 16, Screen.height * 3 / 16),
+                                    developerAtlas,
+                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.height * 3 / 16, Screen.height * 3 / 8, Screen.height * 3 / 16, Screen.height * 3 / 16),
+                                    developerAtlas,
+                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.height * 6 / 16, Screen.height * 26 / 50, Screen.height * 3 / 16, Screen.height * 3 / 16),
+                                    developerAtlas,
+                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.height * 9 / 16, Screen.height * 26 / 50, Screen.height * 3 / 16, Screen.height * 3 / 16),
+                                    developerAtlas,
+                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(0, Screen.height * 26 / 50, Screen.height * 3 / 16, Screen.height * 3 / 16),
+                                    developerAtlas,
+                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.height * 3 / 16, Screen.height * 26 / 50, Screen.height * 3 / 16, Screen.height * 3 / 16),
+                                    developerAtlas,
+                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.height * 6 / 16, Screen.height * 26 / 50, Screen.height * 3 / 16, Screen.height * 3 / 16),
+                                    developerAtlas,
+                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+
+                                GUI.DrawTextureWithTexCoords
+                                    (new Rect(Screen.height * 9 / 16, Screen.height * 26 / 50, Screen.height * 3 / 16, Screen.height * 3 / 16),
                                     developerAtlas,
                                     new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
                             }
@@ -261,7 +309,7 @@ public class HUD : MonoBehaviour
                         case EGameFlow.SelectedTool.ENEMY:
                             {
                                 GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, buttonSize, buttonSize),
+                                    (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, lateralButtonSize, lateralButtonSize),
                                     developerAtlas,
                                     new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
                             }
@@ -391,5 +439,7 @@ public class HUD : MonoBehaviour
 			else if (selectionX == 4)
 				EGameFlow.selectedMine = "B Fire Carpet";
 		}
+
+        textureSelection = new Vector2(selectionX * (Screen.height * 5 / 8) / 8, Screen.height * 3 / 8 + selectionY * (Screen.height * 5 / 8) / 8);
     }
 }

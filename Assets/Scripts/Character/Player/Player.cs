@@ -43,6 +43,7 @@ public class Player
         // Head atributes
         playerObj.name = "Player";
         playerObj.tag = "Player";
+        playerObj.layer = LayerMask.NameToLayer("Player");
 
         // Set transforms
         playerObj.transform.position = new Vector3(4, 35, 4);

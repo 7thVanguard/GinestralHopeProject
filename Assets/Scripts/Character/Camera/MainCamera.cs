@@ -51,6 +51,7 @@ public class MainCamera
 
         cameraObj.name = "MainCamera";
         cameraObj.tag = "MainCamera";
+        cameraObj.layer = LayerMask.NameToLayer("Player");
 
         // Camera components creation
         cameraObj.AddComponent<Camera>();
