@@ -38,7 +38,8 @@ public class ConstructionToolsManager
 
     private void Place(World world, Player player, MainCamera mainCamera)
     {
-        GadgetsToolManager.Place(world, player, mainCamera);
+        if (EGameFlow.selectedGadget == "Wooden Bridge" || EGameFlow.selectedGadget == "Bomb")
+            GadgetsToolManager.Place(world, player, mainCamera);
     }
 
 
