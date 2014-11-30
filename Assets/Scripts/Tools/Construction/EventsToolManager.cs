@@ -20,6 +20,6 @@ public class EventsToolManager
         else
             position = new Vector3(((int)mainCamera.raycast.point.x) + 0.5f, ((int)mainCamera.raycast.point.y + 0.5f), mainCamera.raycast.point.z - 0.5f);
 
-        Event.Place(world, "none", position);
+        Event.Place(world, player, "none", position);
     }
 }

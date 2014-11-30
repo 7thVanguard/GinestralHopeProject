@@ -4,6 +4,8 @@ using System.Collections;
 public class GUISystem : MonoBehaviour 
 {
     World world;
+    Player player;
+
     Texture2D atlasGUI;
     Font ghFont;
 
@@ -26,9 +28,10 @@ public class GUISystem : MonoBehaviour
 
 
 
-    public void Init(World world, Texture2D background, Texture2D pressStart, Texture2D iddleButton, Texture2D pressedButton, Texture2D hoverButton, Texture2D title, Font ghFont)
+    public void Init(World world, Player player, Texture2D background, Texture2D pressStart, Texture2D iddleButton, Texture2D pressedButton, Texture2D hoverButton, Texture2D title, Font ghFont)
     {
         this.world = world;
+        this.player = player;
         //this.atlasGUI = background;
         //this.pressStart = pressStart;
         //this.ghFont = ghFont;
@@ -80,13 +83,13 @@ public class GUISystem : MonoBehaviour
                         // New Game
                         if (GUI.Button(new Rect(Screen.width * 2 / 5, Screen.height * 1 / 6, Screen.width / 5, Screen.height / 6 - 20), "New Game"))
                         {
-                            world.worldObj.GetComponent<GameManager>().gameSerializer.Load(world, "NewGameSave");
+                            world.worldObj.GetComponent<GameManager>().gameSerializer.Load(world, player, "NewGameSave");
                             EGameFlow.gameState = EGameFlow.GameState.GAME;
                         }
                         // Load Game
                         else if (GUI.Button(new Rect(Screen.width * 2 / 5, Screen.height * 2 / 6, Screen.width / 5, Screen.height / 6 - 20), "Load Game"))
                         {
-                            world.worldObj.GetComponent<GameManager>().gameSerializer.Load(world, "CaverninaOnPlaySave");
+                            world.worldObj.GetComponent<GameManager>().gameSerializer.Load(world, player, "CaverninaOnPlaySave");
                             EGameFlow.gameState = EGameFlow.GameState.GAME;
                         }
                         // Exit Game
