@@ -31,16 +31,16 @@ public class GUISystem : MonoBehaviour
     public void Init(World world, Player player, Texture2D background, Texture2D pressStart, Texture2D iddleButton, Texture2D pressedButton, Texture2D hoverButton, Texture2D title, Font ghFont)
     {
         this.world = world;
-<<<<<<< HEAD
+
         this.background = background;
         this.pressStart = pressStart;
         this.ghFont = ghFont;
-=======
+
         this.player = player;
         //this.atlasGUI = background;
         //this.pressStart = pressStart;
         //this.ghFont = ghFont;
->>>>>>> origin/develop
+
 
         this.iddleButton = iddleButton;
         this.pressedButton = pressedButton;

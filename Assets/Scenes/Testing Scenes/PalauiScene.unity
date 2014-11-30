@@ -6034,13 +6034,13 @@ MonoBehaviour:
   developerAtlas: {fileID: 2800000, guid: 49329810f8ae410438bf5ba7b0332c95, type: 3}
   developerBox: {fileID: 2800000, guid: bafeb03eb9a5e7e4d86228b4193cce2c, type: 3}
   sunFlare: {fileID: 12100000, guid: 54fbbf098d116effa00081aba8ad6659, type: 2}
-  background: {fileID: 0}
+  background: {fileID: 2800000, guid: 535000e8548ecd34d9018bae0d3d1268, type: 3}
   ghFont: {fileID: 12800000, guid: da96ffbb0d5a8a54e9928c880ed83125, type: 3}
-  title: {fileID: 0}
-  pressStart: {fileID: 0}
-  iddleButton: {fileID: 0}
-  pressedButton: {fileID: 0}
-  hoverButton: {fileID: 0}
+  title: {fileID: 2800000, guid: 7a605f0fa59099b4196f8cb31bc397f3, type: 3}
+  pressStart: {fileID: 2800000, guid: 89aeae541856f124f9832dd66a3b903d, type: 3}
+  iddleButton: {fileID: 2800000, guid: c790a6707cf0c694ebff12e9a2709e89, type: 3}
+  pressedButton: {fileID: 2800000, guid: 953a884443db7fa46ab34a96edfb4d9a, type: 3}
+  hoverButton: {fileID: 2800000, guid: 20978a18c3d834c46b0fa6759d451394, type: 3}
   saveName: PalauiSave
 --- !u!1 &760914084
 GameObject:
