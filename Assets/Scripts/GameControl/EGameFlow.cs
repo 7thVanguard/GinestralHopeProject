@@ -14,7 +14,7 @@ public static class EGameFlow
 
 
     // Tools
-    public enum SelectedTool { LIGHT, TERRAIN, MINE, GADGET, ENEMY, EVENT, EMITER }
+    public enum SelectedTool { LIGHT, MINE, GEOMETRY, STRUCTURE, GADGET, ENEMY, EVENT }
     public static SelectedTool selectedTool = SelectedTool.MINE;
 
     public enum DeveloperTerrainTools { VERTEX, MULTIVERTEX }
@@ -30,7 +30,8 @@ public static class EGameFlow
 
 
     // Selection
-    public static string selectedGadget = "Wood Pieces";
+    public static string selectedGeometry = "Wooden Bridge 6m";
+    public static string selectedGadget = "Wooden Plank";
     public static string selectedTerrain = "Grass";
     public static string selectedMine = "Large Rock";
     public static string selectedEnemy = "Normal Slime";

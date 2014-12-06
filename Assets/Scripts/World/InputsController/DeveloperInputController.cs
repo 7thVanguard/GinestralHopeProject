@@ -37,25 +37,28 @@ public class DeveloperInputController : AbstractInputsController
             Debug.Log((int)mainCamera.raycast.point.x + " " + (int)mainCamera.raycast.point.y + " " + (int)mainCamera.raycast.point.z);
         }
 
-        //+ Tool
+        //++ Tool
         if (!Input.GetKey(KeyCode.LeftShift))
         {
             if (Input.GetKey(KeyCode.Alpha1))
                 EGameFlow.selectedTool = EGameFlow.SelectedTool.LIGHT;
-            else if (Input.GetKey(KeyCode.Alpha3))
+            else if (Input.GetKey(KeyCode.Alpha2))
                 EGameFlow.selectedTool = EGameFlow.SelectedTool.MINE;
+            else if (Input.GetKey(KeyCode.Alpha3))
+                EGameFlow.selectedTool = EGameFlow.SelectedTool.GEOMETRY;
             else if (Input.GetKey(KeyCode.Alpha4))
-                EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
+                EGameFlow.selectedTool = EGameFlow.SelectedTool.STRUCTURE;
             else if (Input.GetKey(KeyCode.Alpha5))
-                EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
-            else if (Input.GetKey(KeyCode.Alpha6))
+                EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
+			else if (Input.GetKey(KeyCode.Alpha6))
+				EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
+            else if (Input.GetKey(KeyCode.Alpha7))
                 EGameFlow.selectedTool = EGameFlow.SelectedTool.EVENT;
-			else if (Input.GetKey(KeyCode.Alpha7))
-				EGameFlow.selectedTool = EGameFlow.SelectedTool.EMITER;
         }
 
         
-        //+ SubTool
+        //++ SubTool
+        //+ Light
         if (EGameFlow.selectedTool == EGameFlow.SelectedTool.LIGHT)
         {
             if (Input.GetKey(KeyCode.LeftShift))
@@ -70,13 +73,7 @@ public class DeveloperInputController : AbstractInputsController
                     sun.lightSystemBehaviour.SetNight();
             }
         }
-        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.TERRAIN)
-        {
-            if (Input.GetKey(KeyCode.I))
-                EGameFlow.selectedTerrain = "Grass";
-            else if (Input.GetKey(KeyCode.J))
-                EGameFlow.selectedTerrain = "DirtGrass";
-        }
+            //+ Mine
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
         {
             if(Input.GetKey(KeyCode.LeftShift))
@@ -87,31 +84,43 @@ public class DeveloperInputController : AbstractInputsController
                     EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.ORTOEDRIC;
             }
         }
+        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GEOMETRY)
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                if (Input.GetKey(KeyCode.Alpha1))
+                    EGameFlow.selectedGeometry = "Wooden Bridge 6m";
+                else if (Input.GetKey(KeyCode.Alpha2))
+                    EGameFlow.selectedGeometry = "Wood Pieces";
+                else if (Input.GetKey(KeyCode.Alpha3))
+                    EGameFlow.selectedGeometry = "Bomb";
+                else if (Input.GetKey(KeyCode.Alpha4))
+                    EGameFlow.selectedGeometry = "Torch";
+                else if (Input.GetKey(KeyCode.Alpha5))
+                    EGameFlow.selectedGeometry = "Altar";
+                else if (Input.GetKey(KeyCode.Alpha6))
+                    EGameFlow.selectedGeometry = "Fire Gem";
+                else if (Input.GetKey(KeyCode.Alpha7))
+                    EGameFlow.selectedGeometry = "Iron Pieces";
+                else if (Input.GetKey(KeyCode.Alpha8))
+                    EGameFlow.selectedGeometry = "Chest";
+            }
+        }
+        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.STRUCTURE)
+        {
+
+        }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 if (Input.GetKey(KeyCode.Alpha1))
-                    EGameFlow.selectedGadget = "Wooden Bridge";
-                else if (Input.GetKey(KeyCode.Alpha2))
-                    EGameFlow.selectedGadget = "Wood Pieces";
-                else if (Input.GetKey(KeyCode.Alpha3))
-                    EGameFlow.selectedGadget = "Bomb";
-                else if (Input.GetKey(KeyCode.Alpha4))
-                    EGameFlow.selectedGadget = "Torch";
-                else if (Input.GetKey(KeyCode.Alpha5))
-                    EGameFlow.selectedGadget = "Altar";
-                else if (Input.GetKey(KeyCode.Alpha6))
-                    EGameFlow.selectedGadget = "Fire Gem";
-                else if (Input.GetKey(KeyCode.Alpha7))
-                    EGameFlow.selectedGadget = "Iron Pieces";
-                else if (Input.GetKey(KeyCode.Alpha8))
-                    EGameFlow.selectedGadget = "Chest";
+                    EGameFlow.selectedGadget = "Wooden Plank";
             }
         }
         else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
         {
-            if (Input.GetKey(KeyCode.I))
+            if (Input.GetKey(KeyCode.Alpha1))
                 EGameFlow.selectedEnemy = "Normal Slime";
         }
 

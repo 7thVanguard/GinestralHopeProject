@@ -70,7 +70,7 @@ public static class EventsLib
                 }
 
 
-        // Destroy chunks
+        // Reset chunks
         for (int x = chunkInitPos.x; x <= chunkEndPos.x; x++)
             for (int y = chunkInitPos.y; y <= chunkEndPos.y; y++)
                 for (int z = chunkInitPos.z; z <= chunkEndPos.z; z++)

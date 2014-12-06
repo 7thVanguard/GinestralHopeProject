@@ -16,12 +16,14 @@ public class World
 
     // Prefabs
     public Transform character;
+    public Transform geometry;
     public Transform gadgets;
     public Transform skills;
     public Transform enemies;
 
 
     // Control Variables
+    public GameObject geometryController = new GameObject();
     public GameObject gadgetsController = new GameObject();
     public GameObject enemiesController = new GameObject();
     public GameObject eventsController = new GameObject();
@@ -34,6 +36,7 @@ public class World
 
     private int chunksLoadedPerFrame = 12;
     private int chunksLoadedThisFrame = 0;
+
 
     // Materials relative
     public float textureSize;
@@ -48,6 +51,7 @@ public class World
 
         // Prefabs relative
         character = prefabs.FindChild("Character");
+        geometry = prefabs.FindChild("Geometry");
         gadgets = prefabs.FindChild("Gadgets");
         skills = prefabs.FindChild("Skills");
         enemies = prefabs.FindChild("Enemies");
@@ -112,6 +116,11 @@ public class World
 
 
         //+ Controllers
+        geometryController.transform.position = Vector3.zero;
+        geometryController.transform.eulerAngles = Vector3.zero;
+        geometryController.transform.localScale = Vector3.one;
+        geometryController.name = "Geometry Controller";
+
         gadgetsController.transform.position = Vector3.zero;
         gadgetsController.transform.eulerAngles = Vector3.zero;
         gadgetsController.transform.localScale = Vector3.one;
@@ -130,6 +139,6 @@ public class World
         emitersController.transform.position = Vector3.zero;
         emitersController.transform.eulerAngles = Vector3.zero;
         emitersController.transform.localScale = Vector3.one;
-        emitersController.name = "Emiters Controller";
+        emitersController.name = "Emitters Controller";
     }
 }

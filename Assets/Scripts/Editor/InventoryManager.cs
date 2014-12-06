@@ -21,22 +21,22 @@ public class InventoryManager : EditorWindow
 
         //+ GameComponents
 
-        foreach (KeyValuePair<string, GameComponent> entry in GameComponentDictionary.GameComponentsDictionary)
-            EditorGUILayout.LabelField("Name: " + entry.Value.nameKey + "  " + entry.Value.count);
+        //foreach (KeyValuePair<string, GameComponent> entry in GameComponentDictionary.GameComponentsDictionary)
+        //    EditorGUILayout.LabelField("Name: " + entry.Value.nameKey + "  " + entry.Value.count);
 
-        if (GUILayout.Button("Craft"))
-            SInventory.CraftWoodenBridge();
+        //if (GUILayout.Button("Craft"))
+        //    SInventory.CraftWoodenBridge();
 
-        if (GUILayout.Button("Refresh Inventory")) { }
+        //if (GUILayout.Button("Refresh Inventory")) { }
 
-        EditorGUILayout.EndHorizontal();
+        //EditorGUILayout.EndHorizontal();
 
         //+ Gadgets
 
-        EditorGUILayout.BeginHorizontal();
+        //EditorGUILayout.BeginHorizontal();
 
-        foreach (KeyValuePair<string, Gadget> entry in Gadget.Dictionary)
-            EditorGUILayout.LabelField("Name: " + entry.Value.ID + "  " + entry.Value.count);
+        //foreach (KeyValuePair<string, Gadget> entry in Gadget.Dictionary)
+        //    EditorGUILayout.LabelField("Name: " + entry.Value.ID + "  " + entry.Value.count);
 
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.EndVertical();

@@ -31,12 +31,12 @@ public class GUISystem : MonoBehaviour
     public void Init(World world, Player player, Texture2D background, Texture2D pressStart, Texture2D iddleButton, Texture2D pressedButton, Texture2D hoverButton, Texture2D title, Font ghFont)
     {
         this.world = world;
+        this.player = player;
 
         this.background = background;
         this.pressStart = pressStart;
         this.ghFont = ghFont;
 
-        this.player = player;
         //this.atlasGUI = background;
         //this.pressStart = pressStart;
         //this.ghFont = ghFont;
@@ -90,6 +90,12 @@ public class GUISystem : MonoBehaviour
                         if (GUI.Button(new Rect(Screen.width * 2 / 5, Screen.height * 1 / 6, Screen.width / 5, Screen.height / 6 - 20), "New Game", ghStyle))
                         {
                             world.worldObj.GetComponent<GameManager>().gameSerializer.Load(world, player, "NewGameSave");
+                            EGameFlow.gameState = EGameFlow.GameState.GAME;
+                        }
+                        // Developer
+                        else if (GUI.Button(new Rect(Screen.width * 3.5f / 5, Screen.height * 1 / 6, Screen.width / 5, Screen.height / 6 - 20), "Developer", ghStyle))
+                        {
+                            EGameFlow.gameMode = EGameFlow.GameMode.DEVELOPER;
                             EGameFlow.gameState = EGameFlow.GameState.GAME;
                         }
                         // Load Game

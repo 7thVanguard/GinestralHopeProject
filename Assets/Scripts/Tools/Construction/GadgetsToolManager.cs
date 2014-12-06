@@ -19,10 +19,7 @@ public class GadgetsToolManager
         // Picks back the gadget
         if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
             if (mainCamera.raycast.transform.gameObject.tag == "Gadget")
-                if (Gadget.Dictionary[mainCamera.raycast.transform.gameObject.name].givesComponents)
-                {
-                    Gadget.Dictionary[mainCamera.raycast.transform.gameObject.name].count += Gadget.Dictionary[mainCamera.raycast.transform.gameObject.name].dropCount;
-                }
+            { }
     }
 
 
@@ -30,7 +27,7 @@ public class GadgetsToolManager
     {
         if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
         {
-            if (mainCamera.raycast.normal.y >= 0.75f && Gadget.Dictionary[EGameFlow.selectedGadget].placedOnFloor)
+            if (mainCamera.raycast.normal.y >= 0.75f && Gadget.Dictionary[EGameFlow.selectedGadget].placedOn == Gadget.PlacedOn.FLOOR)
             {
                 // Claculates the initial position and the rotation of the Gadget we are going to place
                 int yRotation;
@@ -47,7 +44,7 @@ public class GadgetsToolManager
                 Gadget.Dictionary[EGameFlow.selectedGadget].Place(EGameFlow.selectedGadget, 
                     new Vector3((int)(mainCamera.raycast.point.x) + 0.5f, mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z) + 0.5f), new Vector3(0, yRotation, 0));
             }
-            else if (mainCamera.raycast.normal.y == 0 && !Gadget.Dictionary[EGameFlow.selectedGadget].placedOnFloor)
+            else if (mainCamera.raycast.normal.y == 0 && Gadget.Dictionary[EGameFlow.selectedGadget].placedOn == Gadget.PlacedOn.WALL)
             {
                 int yRotation;
 

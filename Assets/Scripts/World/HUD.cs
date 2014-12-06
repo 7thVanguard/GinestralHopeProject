@@ -132,23 +132,23 @@ public class HUD : MonoBehaviour
 
                         // Inventory
                         // Show components
-                        Gadget gadget = Gadget.Dictionary["Wood Pieces"];
-                        GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.55f, 200, 50), gadget.ID + "  " + gadget.count);
+                        //Gadget gadget = Gadget.Dictionary["Wood Pieces"];
+                        //GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.55f, 200, 50), gadget.ID + "  " + gadget.count);
 
-                        gadget = Gadget.Dictionary["Iron Pieces"];
-                        GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.60f, 200, 50), gadget.ID + "  " + gadget.count);
+                        //gadget = Gadget.Dictionary["Iron Pieces"];
+                        //GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.60f, 200, 50), gadget.ID + "  " + gadget.count);
 
-                        // Show craftable gadgets
-                        gadget = Gadget.Dictionary["Wooden Bridge"];
-                        GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.7f, 200, 50), gadget.ID + "  " + gadget.count);
+                        //// Show craftable gadgets
+                        //gadget = Gadget.Dictionary["Wooden Bridge"];
+                        //GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.7f, 200, 50), gadget.ID + "  " + gadget.count);
 
-                        gadget = Gadget.Dictionary["Bomb"];
-                        GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.75f, 200, 50), gadget.ID + "  " + gadget.count);
+                        //gadget = Gadget.Dictionary["Bomb"];
+                        //GUI.Label(new Rect(Screen.width * 0.8f, Screen.height * 0.75f, 200, 50), gadget.ID + "  " + gadget.count);
 
-                        if (GUI.Button(new Rect(Screen.width * 0.8f, Screen.height * 0.8f, 90, 30), "Craft Bridge"))
-                            SInventory.CraftWoodenBridge();
-                        if (GUI.Button(new Rect(Screen.width * 0.8f, Screen.height * 0.85f, 90, 30), "Craft Bomb"))
-                            SInventory.CraftBomb();
+                        //if (GUI.Button(new Rect(Screen.width * 0.8f, Screen.height * 0.8f, 90, 30), "Craft Bridge"))
+                        //    SInventory.CraftWoodenBridge();
+                        //if (GUI.Button(new Rect(Screen.width * 0.8f, Screen.height * 0.85f, 90, 30), "Craft Bomb"))
+                        //    SInventory.CraftBomb();
                     }
                     break;
                 //++ GodMode HUD
