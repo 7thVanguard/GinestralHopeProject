@@ -10,20 +10,21 @@ public class WoodenBridge : Geometry
         this.mainCamera = mainCamera;
 
         placedOn = PlacedOn.FLOOR;
-        size = new Vector3(6, 1, 1);
     }
 
-     
 
-    public override void Place(string ID, Vector3 pos, Vector3 rot)
+
+    public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale)
     {
-        pos += player.playerObj.transform.forward * size.x / 2;
+        pos += player.playerObj.transform.forward * 2.5f;
         rot.y += 90;
 
         Transform woodenBridge = Transform.Instantiate(world.gadgets.FindChild("Wooden Bridge 6m"), pos, Quaternion.Euler(rot)) as Transform;
 
         woodenBridge.name = "Wooden Bridge 6m";
         woodenBridge.tag = "Geometry";
-        woodenBridge.transform.parent = world.gadgetsController.transform;
+
+        woodenBridge.transform.localScale = scale;
+        woodenBridge.transform.parent = world.geometryController.transform;
     }
 }

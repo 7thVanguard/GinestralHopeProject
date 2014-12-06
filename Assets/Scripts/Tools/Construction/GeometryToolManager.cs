@@ -22,7 +22,8 @@ public class GeometryToolManager
                 // Claculates the initial position and the rotation of the Gadget we are going to place
                 int yRotation = (int)player.playerObj.transform.eulerAngles.y;
 
-                Geometry.Dictionary[EGameFlow.selectedGeometry].Place(EGameFlow.selectedGeometry, mainCamera.raycast.point, new Vector3(0, yRotation, 0));
+                Geometry.Dictionary[EGameFlow.selectedGeometry].Place(EGameFlow.selectedGeometry, mainCamera.raycast.point, 
+                    new Vector3(0, yRotation, 0), Vector3.one);
             }
             //+ Wall
             else if (mainCamera.raycast.normal.y == 0 && Geometry.Dictionary[EGameFlow.selectedGeometry].placedOn == Geometry.PlacedOn.WALL)
@@ -34,28 +35,28 @@ public class GeometryToolManager
                     yRotation = 0;
                     Geometry.Dictionary[EGameFlow.selectedGeometry].Place(EGameFlow.selectedGeometry,
                         new Vector3((int)mainCamera.raycast.point.x + 0.5f, (int)mainCamera.raycast.point.y, (mainCamera.raycast.point.z)),
-                        new Vector3(0, yRotation, 0));
+                        new Vector3(0, yRotation, 0), Vector3.one);
                 }
                 else if (mainCamera.raycast.normal == Vector3.left)
                 {
                     yRotation = 90;
                     Geometry.Dictionary[EGameFlow.selectedGeometry].Place(EGameFlow.selectedGeometry,
                         new Vector3(mainCamera.raycast.point.x, (int)mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z) + 0.5f),
-                        new Vector3(0, yRotation, 0));
+                        new Vector3(0, yRotation, 0), Vector3.one);
                 }
                 else if (mainCamera.raycast.normal == Vector3.forward)
                 {
                     yRotation = 180;
                     Geometry.Dictionary[EGameFlow.selectedGeometry].Place(EGameFlow.selectedGeometry,
                         new Vector3((int)mainCamera.raycast.point.x + 0.5f, (int)mainCamera.raycast.point.y, (mainCamera.raycast.point.z)),
-                        new Vector3(0, yRotation, 0));
+                        new Vector3(0, yRotation, 0), Vector3.one);
                 }
                 else if (mainCamera.raycast.normal == Vector3.right)
                 {
                     yRotation = 270;
                     Geometry.Dictionary[EGameFlow.selectedGeometry].Place(EGameFlow.selectedGeometry,
                         new Vector3(mainCamera.raycast.point.x, (int)mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z) + 0.5f),
-                        new Vector3(0, yRotation, 0));
+                        new Vector3(0, yRotation, 0), Vector3.one);
                 }
             }
         }

@@ -10,17 +10,18 @@ public class WoodPieces : Geometry
         this.mainCamera = mainCamera;
 
         placedOn = PlacedOn.FLOOR;
-        size = new Vector3(1, 1, 1);
     }
 
 
-    public override void Place(string ID, Vector3 pos, Vector3 rot)
+    public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale)
     {
         Transform woodPieces = Object.Instantiate(world.gadgets.FindChild("Wood Pieces"), pos, Quaternion.Euler(rot)) as Transform;
 
         // Head atributes
         woodPieces.name = "Wood Pieces";
         woodPieces.tag = "Geometry";
-        woodPieces.transform.parent = world.gadgetsController.transform;
+
+        woodPieces.transform.localScale = scale;
+        woodPieces.transform.parent = world.geometryController.transform;
     }
 }

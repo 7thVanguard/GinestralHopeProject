@@ -10,11 +10,10 @@ public class Bomb : Geometry
         this.mainCamera = mainCamera;
 
         placedOn = PlacedOn.FLOOR;
-        size = new Vector3(1, 1, 1);
     }
 
 
-    public override void Place(string ID, Vector3 pos, Vector3 rotation)
+    public override void Place(string ID, Vector3 pos, Vector3 rotation, Vector3 scale)
     {
         if (EGameFlow.selectedGadget == "Bomb" || EGameFlow.gameMode != EGameFlow.GameMode.PLAYER)
         {

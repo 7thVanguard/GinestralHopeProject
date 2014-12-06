@@ -10,17 +10,18 @@ public class Altar : Geometry
         this.mainCamera = mainCamera;
 
         placedOn = PlacedOn.FLOOR;
-        size = new Vector3(1, 1, 1);
     }
 
 
-    public override void Place(string ID, Vector3 pos, Vector3 rot)
+    public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale)
     {
         Transform altar = Object.Instantiate(world.gadgets.FindChild("Altar"), pos, Quaternion.Euler(rot)) as Transform;
 
         // Head atributes
         altar.name = "Altar";
         altar.tag = "Geometry";
-        altar.transform.parent = world.gadgetsController.transform;
+
+        altar.transform.localScale = scale;
+        altar.transform.parent = world.geometryController.transform;
     }
 }

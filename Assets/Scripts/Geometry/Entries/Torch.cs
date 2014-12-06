@@ -10,17 +10,18 @@ public class Torch : Geometry
         this.mainCamera = mainCamera;
 
         placedOn = PlacedOn.WALL;
-        size = new Vector3(1, 1, 1);
     }
 
 
-    public override void Place(string ID, Vector3 pos, Vector3 rot)
+    public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale)
     {
         Transform torch = Object.Instantiate(world.gadgets.FindChild("Torch"), pos, Quaternion.Euler(rot)) as Transform;
 
         // Head atributes
         torch.name = "Torch";
         torch.tag = "Geometry";
-        torch.transform.parent = world.gadgetsController.transform;
+
+        torch.transform.localScale = scale;
+        torch.transform.parent = world.geometryController.transform;
     }
 }

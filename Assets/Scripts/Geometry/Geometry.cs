@@ -14,7 +14,6 @@ public class Geometry
 
     // Variables
     public PlacedOn placedOn;
-    public Vector3 size;
 
 
     public virtual void Init(World world, Player player, MainCamera mainCamera)
@@ -67,7 +66,7 @@ public class Geometry
     }
 
 
-    public virtual void Place(string ID, Vector3 pos, Vector3 rotation)
+    public virtual void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale)
     {
 
     }
