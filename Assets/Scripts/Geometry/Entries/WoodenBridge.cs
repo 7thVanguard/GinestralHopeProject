@@ -14,10 +14,13 @@ public class WoodenBridge : Geometry
 
 
 
-    public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale)
+    public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale, bool firstPlacing)
     {
-        pos += player.playerObj.transform.forward * 2.5f;
-        rot.y += 90;
+        if (firstPlacing)
+        {
+            rot.y += 90;
+            pos += player.playerObj.transform.forward * 2.5f;
+        }
 
         Transform woodenBridge = Transform.Instantiate(world.gadgets.FindChild("Wooden Bridge 6m"), pos, Quaternion.Euler(rot)) as Transform;
 

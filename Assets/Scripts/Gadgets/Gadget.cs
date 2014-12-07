@@ -15,8 +15,6 @@ public class Gadget
 
     // Variables
     public PlacedOn placedOn;
-    public Vector3 size;
-    public string ID;
     public bool isCompressed;
 
     

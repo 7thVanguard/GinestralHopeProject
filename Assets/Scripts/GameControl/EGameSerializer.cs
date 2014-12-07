@@ -339,7 +339,7 @@ public class EGameSerializer
             Geometry.Dictionary[geometry.ID].Place(geometry.ID,
                 new Vector3(geometry.positionX, geometry.positionY, geometry.positionZ), 
                 new Vector3(geometry.rotationX, geometry.rotationY, geometry.rotationZ),
-                new Vector3(geometry.scaleX, geometry.scaleY, geometry.scaleZ));
+                new Vector3(geometry.scaleX, geometry.scaleY, geometry.scaleZ), false);
 
         //Reset gadgets list
         GeometrySave.Clear();

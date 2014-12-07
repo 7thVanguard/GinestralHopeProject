@@ -42,13 +42,13 @@ public class DevConstructionToolsManager
 
     private void Remove(World world, Player player, MainCamera mainCamera)
     {
-        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
+        if (mainCamera.raycast.transform.tag == "Chunk")
             MineVoxelsToolManager.Remove(world, player, mainCamera);
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GEOMETRY)
+        else if (mainCamera.raycast.transform.tag == "Geometry")
             GeometryToolManager.Remove(player, mainCamera);
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
+        else if (mainCamera.raycast.transform.tag == "Gadget")
             GadgetsToolManager.Remove(player, mainCamera);
-		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
+        else if (mainCamera.raycast.transform.tag == "Enemy")
 			EnemiesToolManager.Select(mainCamera);
     }
 

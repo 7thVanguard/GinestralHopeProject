@@ -13,7 +13,7 @@ public class IronPieces : Geometry
     }
 
 
-    public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale)
+    public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale, bool firstPlacing)
     {
         Transform ironPieces = Object.Instantiate(world.gadgets.FindChild("Iron Pieces"), pos, Quaternion.Euler(rot)) as Transform;
 

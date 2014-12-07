@@ -10,8 +10,6 @@ public class WoodenPlank : Gadget
         this.mainCamera = mainCamera;
 
         placedOn = PlacedOn.FLOOR;
-        size = new Vector3(6, 1, 1);
-        ID = "Wooden Plank";
         isCompressed = true;
     }
 

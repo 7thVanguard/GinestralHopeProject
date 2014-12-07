@@ -66,7 +66,7 @@ public class Geometry
     }
 
 
-    public virtual void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale)
+    public virtual void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale, bool firstPlacing)
     {
 
     }

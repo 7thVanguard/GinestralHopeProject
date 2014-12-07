@@ -13,7 +13,7 @@ public class FireGem : Geometry
     }
 
 
-    public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale)
+    public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale, bool firstPlacing)
     {
         Transform fireGem = Object.Instantiate(world.gadgets.FindChild("FireGem"), pos, Quaternion.Euler(rot)) as Transform;
 

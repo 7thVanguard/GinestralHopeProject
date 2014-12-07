@@ -13,7 +13,7 @@ public class Bomb : Geometry
     }
 
 
-    public override void Place(string ID, Vector3 pos, Vector3 rotation, Vector3 scale)
+    public override void Place(string ID, Vector3 pos, Vector3 rotation, Vector3 scale, bool firstPlacing)
     {
         if (EGameFlow.selectedGadget == "Bomb" || EGameFlow.gameMode != EGameFlow.GameMode.PLAYER)
         {
