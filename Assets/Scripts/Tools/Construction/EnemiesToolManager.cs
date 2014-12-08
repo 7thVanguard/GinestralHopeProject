@@ -5,29 +5,9 @@ public class EnemiesToolManager
 {
     private static GameObject gameObject;
 
-    public static void Select(MainCamera mainCamera)
+    public static void Remove(MainCamera mainCamera)
     {
-        if (mainCamera.raycast.transform.gameObject.tag == "Enemy")
-        {
-            if (gameObject != null)
-            {
-                gameObject.GetComponent<EnemyComponent>().isSelected = false;
-                gameObject.renderer.material.color = Color.white;
-            }
-
-            gameObject = mainCamera.raycast.transform.gameObject;
-            gameObject.GetComponent<EnemyComponent>().isSelected = true;
-
-            gameObject.renderer.material.color = Color.red;
-        }
-        else
-        {
-            if (gameObject != null)
-            {
-                gameObject.GetComponent<EnemyComponent>().isSelected = false;
-                gameObject.renderer.material.color = Color.white;
-            }
-        }
+        Object.Destroy(mainCamera.raycast.transform.gameObject);
     }
 	
 	

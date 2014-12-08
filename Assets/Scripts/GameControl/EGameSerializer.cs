@@ -357,7 +357,7 @@ public class EGameSerializer
         // Load gadgets
         foreach (GadgetStruct gadget in GadgetSave)
             Gadget.Dictionary[gadget.ID].Place(gadget.ID,
-                new Vector3(gadget.positionX, gadget.positionY, gadget.positionZ), new Vector3(gadget.rotationX, gadget.rotationY, gadget.rotationZ));
+                new Vector3(gadget.positionX, gadget.positionY, gadget.positionZ), new Vector3(gadget.rotationX, gadget.rotationY, gadget.rotationZ), false);
 
         //Reset gadgets list
         GadgetSave.Clear();

@@ -37,7 +37,7 @@ public class Gadget
     }
 
 
-    public virtual void Place(string ID, Vector3 pos, Vector3 rotation)
+    public virtual void Place(string ID, Vector3 pos, Vector3 rotation, bool firstPlaced)
     {
 
     }

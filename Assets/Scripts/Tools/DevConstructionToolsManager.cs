@@ -49,24 +49,29 @@ public class DevConstructionToolsManager
         else if (mainCamera.raycast.transform.tag == "Gadget")
             GadgetsToolManager.Remove(player, mainCamera);
         else if (mainCamera.raycast.transform.tag == "Enemy")
-			EnemiesToolManager.Select(mainCamera);
+            EnemiesToolManager.Remove(mainCamera);
     }
 
 
     private void Place(World world, Player player, MainCamera mainCamera)
     {
-        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.LIGHT)
-			EmiterToolManager.Place(world, player, mainCamera);
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
-            MineVoxelsToolManager.Place(world, player, mainCamera);
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GEOMETRY)
-            GeometryToolManager.Place(world, player, mainCamera);
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
-            GadgetsToolManager.Place(world, player, mainCamera);
-		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
-            EnemiesToolManager.Place(world, player, mainCamera);
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.EVENT)
-            EventsToolManager.Place(world, player, mainCamera);
+        if (mainCamera.raycast.transform.tag == "Chunk")
+        {
+            if (EGameFlow.selectedTool == EGameFlow.SelectedTool.LIGHT)
+			    EmiterToolManager.Place(world, player, mainCamera);
+            else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
+                MineVoxelsToolManager.Place(world, player, mainCamera);
+            else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GEOMETRY)
+                GeometryToolManager.Place(world, player, mainCamera);
+            else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
+                GadgetsToolManager.Place(world, player, mainCamera);
+		    else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
+                EnemiesToolManager.Place(world, player, mainCamera);
+            else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.EVENT)
+                EventsToolManager.Place(world, player, mainCamera);
+        }
+        else if (mainCamera.raycast.transform.tag == "Gadget")
+            GadgetsToolManager.ChangeCompression();
     }
 
 

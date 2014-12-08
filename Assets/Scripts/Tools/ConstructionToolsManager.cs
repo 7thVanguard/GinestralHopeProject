@@ -32,7 +32,7 @@ public class ConstructionToolsManager
 
     private void Remove(Player player, MainCamera mainCamera)
     {
-        GadgetsToolManager.Select(player, mainCamera);
+        GadgetsToolManager.Remove(player, mainCamera);
     }
 
 
