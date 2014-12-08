@@ -33,30 +33,22 @@ public class Gadget
         gadget.Init(world, player, mainCamera, gadget);
         Dictionary.Add("Wooden Plank", gadget);
 
+        gadget = new WoodenPlank();
+        gadget.Init(world, player, mainCamera, gadget);
+        Dictionary.Add("Wooden Plank Compressed", gadget);
+
         gadget = Dictionary["Wooden Plank"];
     }
 
 
     public virtual void Place(string ID, Vector3 pos, Vector3 rotation, bool firstPlaced)
     {
-
+        
     }
 
 
-    public virtual void Compress()
+    public virtual void ChangeCompression(World world, Player player, MainCamera mainCamera)
     {
-
-    }
-
-
-    public virtual void DeCompress()
-    {
-
-    }
-
-
-    public virtual void Aim()
-    {
-
+        
     }
 }

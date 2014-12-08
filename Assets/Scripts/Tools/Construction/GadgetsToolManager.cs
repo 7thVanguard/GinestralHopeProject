@@ -94,8 +94,8 @@ public class GadgetsToolManager
     }
 
 
-    public static void ChangeCompression()
+    public static void ChangeCompression(World world, Player player, MainCamera mainCamera)
     {
-
+        Gadget.Dictionary[EGameFlow.selectedGadget].ChangeCompression(world, player, mainCamera);
     }
 }

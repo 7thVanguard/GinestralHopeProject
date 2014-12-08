@@ -71,7 +71,7 @@ public class DevConstructionToolsManager
                 EventsToolManager.Place(world, player, mainCamera);
         }
         else if (mainCamera.raycast.transform.tag == "Gadget")
-            GadgetsToolManager.ChangeCompression();
+            GadgetsToolManager.ChangeCompression(world, player, mainCamera);
     }
 
 
