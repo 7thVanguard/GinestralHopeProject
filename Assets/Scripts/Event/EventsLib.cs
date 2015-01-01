@@ -17,7 +17,7 @@ public static class EventsLib
 
     private static void VoxelGenericFunctionality(World world, string replacingVoxels, IntVector3 firstPosition, IntVector3 secondPosition)
     {
-        ChunkGenerator chunk = null;
+        Chunk chunk = null;
         Voxel voxel = null;
 
         IntVector3 initPos, endPos;

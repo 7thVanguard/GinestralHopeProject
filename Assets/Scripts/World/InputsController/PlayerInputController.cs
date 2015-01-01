@@ -29,18 +29,21 @@ public class PlayerInputController : AbstractInputsController
 
     public override void Update()
     {
-        EGameFlow.gameMode = EGameFlow.GameMode.PLAYER;
-        player.constructionDetection = 5;
-
-        if (Input.GetKey(KeyCode.Alpha4))
-            EGameFlow.selectedGadget = "Wooden Bridge";
-        else if (Input.GetKey(KeyCode.Alpha5))
-            EGameFlow.selectedGadget = "Bomb";
-
-
-        if (!EGameFlow.pause)
+        if (!GameFlow.pause)
         {
-            constructionSkills.Update(world, player, mainCamera);
+            // Impact information
+            if (Input.GetKeyUp(KeyCode.LeftAlt))
+            {
+                Debug.Log(" Impact point information");
+                Debug.Log(mainCamera.raycast.transform.tag);
+                Debug.Log((int)mainCamera.raycast.point.x + " " + (int)mainCamera.raycast.point.y + " " + (int)mainCamera.raycast.point.z);
+            }
+
+            if (Input.GetKeyUp(KeyCode.E))
+                if (mainCamera.raycast.transform.tag == "Interactive")
+                    mainCamera.raycast.transform.GetComponent<InteractiveComponent>().interacting = true;
+
+            //constructionSkills.Update(world, player, mainCamera);
             combatSkills.Update(player, mainCamera);
         }
     }

@@ -12,10 +12,10 @@ public class GameController
 
     public GameController(World world, Player player, MainCamera mainCamera)
     {
-        playerMovement = new PlayerMovement(player);
+        playerMovement = new PlayerMovement(world, player, mainCamera);
         playerCombat = new PlayerCombat(player, mainCamera);
         cameraMovement = new CameraMovement(player, mainCamera);
-        cameraRaycast = new CameraRaycast(mainCamera);
+        cameraRaycast = new CameraRaycast(player, mainCamera);
     }
 
 

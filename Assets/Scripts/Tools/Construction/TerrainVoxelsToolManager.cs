@@ -12,7 +12,7 @@ public static class TerrainVoxelsToolManager
 
     public static void Remove(World world, Player player, MainCamera mainCamera)
     {
-        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
         {
             if (mainCamera.raycast.transform.tag == "Chunk")
             {
@@ -56,7 +56,7 @@ public static class TerrainVoxelsToolManager
 
     public static void Place(World world, Player player, MainCamera mainCamera)
     {
-        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
         {
             if (mainCamera.raycast.transform.tag == "Chunk")
             {
@@ -106,7 +106,7 @@ public static class TerrainVoxelsToolManager
 
     public static void Detect(World world, Player player, MainCamera mainCamera)
     {
-        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
         {
             if (mainCamera.raycast.transform.tag == "Chunk")
             {
@@ -205,7 +205,7 @@ public static class TerrainVoxelsToolManager
 
             // We place a terrain voxel above and detect the excess of sediment
             world.chunk[DevConstructionToolsManager.detChunk.numID.x, DevConstructionToolsManager.detChunk.numID.y, DevConstructionToolsManager.detChunk.numID.z].voxel[DevConstructionToolsManager.detVoxel.numID.x, DevConstructionToolsManager.detVoxel.numID.y, DevConstructionToolsManager.detVoxel.numID.z]
-                    = new Voxel(world, DevConstructionToolsManager.detVoxel.numID, DevConstructionToolsManager.detChunk.numID, EGameFlow.selectedTerrain);
+                    = new Voxel(world, DevConstructionToolsManager.detVoxel.numID, DevConstructionToolsManager.detChunk.numID, GameFlow.selectedTerrain);
             sedimentExcess = (int)vertexHeight;
 
             VoxelLib.GetVoxel(world, ref DevConstructionToolsManager.detChunk, ref DevConstructionToolsManager.detVoxel, 0, 0, 0);

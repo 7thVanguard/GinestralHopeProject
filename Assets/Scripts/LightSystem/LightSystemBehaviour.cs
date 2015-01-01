@@ -54,7 +54,7 @@ public class LightSystemBehaviour
                 sun.light.shadows = LightShadows.None;
         }
 
-        if (!EGameFlow.pause)
+        if (!GameFlow.pause)
         {
             // Time passing calculation
             gameTime += Time.deltaTime;

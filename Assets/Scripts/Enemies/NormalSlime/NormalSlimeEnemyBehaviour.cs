@@ -40,7 +40,7 @@ public class NormalSlimeEnemyBehaviour : MonoBehaviour
 
 	void FixedUpdate ()
     {
-        if (!EGameFlow.pause)
+        if (!GameFlow.pause)
         {
             movement.Update();
             combat.Update(mainCamera, gameObject);

@@ -5,11 +5,11 @@ public class ConstructionToolsManager
 {
     // Detecting variables
     // Base detections
-    public static ChunkGenerator chunk;
+    public static Chunk chunk;
     public static Voxel voxel;
 
     // Auxiliar
-    public static ChunkGenerator detChunk;
+    public static Chunk detChunk;
     public static Voxel detVoxel;
     public static Vector2 detVertex;
 
@@ -38,7 +38,7 @@ public class ConstructionToolsManager
 
     private void Place(World world, Player player, MainCamera mainCamera)
     {
-        if (EGameFlow.selectedGadget == "Wooden Bridge" || EGameFlow.selectedGadget == "Bomb")
+        if (GameFlow.selectedInteractive == "Wooden Bridge" || GameFlow.selectedInteractive == "Bomb")
             GadgetsToolManager.Place(world, player, mainCamera);
     }
 

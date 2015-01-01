@@ -3,7 +3,7 @@ using System.Collections;
 
 public static class VoxelLib
 {
-    public static bool VoxelExists(World world, ChunkGenerator detectionChunk, Voxel detectionVoxel, int x, int y, int z)
+    public static bool VoxelExists(World world, Chunk detectionChunk, Voxel detectionVoxel, int x, int y, int z)
     {
         if (detectionChunk.numID.x * world.chunkSize.x + detectionVoxel.numID.x + x >= 0 &&
             detectionChunk.numID.x * world.chunkSize.x + detectionVoxel.numID.x + x < world.chunkNumber.x * world.chunkSize.x &&
@@ -17,7 +17,7 @@ public static class VoxelLib
     }
 
 
-    public static void GetVoxel(World world, ref ChunkGenerator detectionChunk, ref Voxel detectionVoxel, int x, int y, int z)
+    public static void GetVoxel(World world, ref Chunk detectionChunk, ref Voxel detectionVoxel, int x, int y, int z)
     {
         int cx, cy, cz;
         int vx, vy, vz;
@@ -75,7 +75,7 @@ public static class VoxelLib
 
     public static void Explosion(World world, Vector3 position, float damage, int blastRadius)
     {
-        ChunkGenerator chunk = null;
+        Chunk chunk = null;
         Voxel voxel = null;
 
         IntVector3 centralVoxel = new IntVector3((int)position.x, (int)position.y, (int)position.z);
@@ -145,7 +145,7 @@ public static class VoxelLib
     }
 
 
-    public static bool GetVoxelWithPositionIfExists(World world, IntVector3 position, ref ChunkGenerator chunk, ref Voxel voxel)
+    public static bool GetVoxelWithPositionIfExists(World world, IntVector3 position, ref Chunk chunk, ref Voxel voxel)
     {
         if (position.x < 0 || position.x >= world.chunkNumber.x * world.chunkSize.x ||
             position.y < 0 || position.y >= world.chunkNumber.y * world.chunkSize.y ||

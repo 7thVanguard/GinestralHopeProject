@@ -15,7 +15,7 @@ public class Chest : Geometry
 
     public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale, bool firstPlacing)
     {
-        Transform chest = Object.Instantiate(world.gadgets.FindChild("Chest"), pos, Quaternion.Euler(rot)) as Transform;
+        Transform chest = Object.Instantiate(world.interactives.FindChild("Chest"), pos, Quaternion.Euler(rot)) as Transform;
 
         // Head atributes
         chest.name = "Chest";

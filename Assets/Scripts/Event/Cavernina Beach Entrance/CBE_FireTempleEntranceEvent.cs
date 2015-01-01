@@ -20,7 +20,7 @@ public class CBE_FireTempleEntranceEvent : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (EGameFlow.gameMode == EGameFlow.GameMode.PLAYER)
+        if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
             if (other.tag == "Player")
                 EventsLib.EraseVoxels(world, new IntVector3(42, 19, 59), new IntVector3(41, 17, 59));
     }

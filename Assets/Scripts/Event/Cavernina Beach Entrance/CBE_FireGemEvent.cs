@@ -33,7 +33,7 @@ public class CBE_FireGemEvent : MonoBehaviour
 
     void Update()
     {
-        if (EGameFlow.gameMode == EGameFlow.GameMode.PLAYER)
+        if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
         {
             switch (eventPhase)
             {
@@ -68,7 +68,7 @@ public class CBE_FireGemEvent : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (EGameFlow.gameMode == EGameFlow.GameMode.PLAYER)
+        if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
             if (eventPhase == EventPhase.START)
                 if (other.tag == "Player")
                     if (Input.GetKeyUp(KeyCode.E))

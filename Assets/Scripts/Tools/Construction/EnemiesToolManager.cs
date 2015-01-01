@@ -13,9 +13,9 @@ public class EnemiesToolManager
 	
 	public static void Place(World world, Player player, MainCamera mainCamera)
 	{
-        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
             if (mainCamera.raycast.normal.y >= 0.75f)
-                Enemy.Dictionary[EGameFlow.selectedEnemy].Place(new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)));
+                Enemy.Dictionary[GameFlow.selectedEnemy].Place(new Vector3((int)(mainCamera.raycast.point.x), mainCamera.raycast.point.y, (int)(mainCamera.raycast.point.z)));
 	}
 	
 	
@@ -27,7 +27,7 @@ public class EnemiesToolManager
 	
 	public static void Detect(World world, Player player, MainCamera mainCamera)
 	{
-        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
         {
             // Check if we are aiming at the top face of a voxel
             if (mainCamera.raycast.normal.y >= 0.75f)

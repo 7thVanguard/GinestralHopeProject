@@ -19,8 +19,9 @@ public class Skill
     protected int objectSpeed;
     protected int maxDistance;
 
-    // Cast
-    public float castingTime; // In seconds
+    // Cast // In seconds
+    public float castingTime;
+    public float coolDown;
 
     // Fire
     public int blastRadius;
@@ -35,6 +36,11 @@ public class Skill
         this.mainCamera = mainCamera;
 
         Dictionary = new Dictionary<string, Skill>();
+
+        //+ Frost Ball
+        skill = new SDFrostBolt();
+        skill.Init(world, player, mainCamera, skill);
+        Dictionary.Add("Frost Bolt", skill);
 
         //+ Fire Ball
         skill = new SDFireBall();

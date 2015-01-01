@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LChunk
 {
-    public static bool ChunkExists(World world, ChunkGenerator detectionChunk, int x, int y, int z)
+    public static bool ChunkExists(World world, Chunk detectionChunk, int x, int y, int z)
     {
         if (detectionChunk.numID.x + x < world.chunkNumber.x &&
             detectionChunk.numID.x + x >= 0 &&
@@ -31,7 +31,7 @@ public class LChunk
     }
 
 
-    public static void Reset(World world, ChunkGenerator detectionChunk, Voxel detectionVoxel)
+    public static void Reset(World world, Chunk detectionChunk, Voxel detectionVoxel)
     {
         int xSign, ySign, zSign;
 

@@ -18,7 +18,7 @@ public class NSlimeEnemyMovement
     public void Update()
     {
         if (!enemyController.isGrounded)
-            objectiveDirection += new Vector3(0, -EGamePhysics.gravity * 1.5f, 0) * Time.deltaTime;
+            objectiveDirection += new Vector3(0, -GamePhysics.gravity * 1.5f, 0) * Time.deltaTime;
 
         // Rotation
         enemy.transform.eulerAngles += new Vector3(0, 30 * Time.deltaTime, 0);

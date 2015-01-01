@@ -5,9 +5,9 @@ using System.Collections.Generic;
 public class World
 {
     // Chunks relative
-    public IntVector3 chunkNumber = new IntVector3(10, 2, 10);                  // Initial number of chunks
-    public IntVector3 chunkSize = new IntVector3(16, 16, 16);                   // Space occupied by a chunk
-    public ChunkGenerator[, ,] chunk;                                           // Chunks declaration
+    public IntVector3 chunkNumber = new IntVector3(12, 3, 12);                  // Initial number of chunks
+    public IntVector3 chunkSize = new IntVector3(8, 8, 8);                      // Space occupied by a chunk
+    public Chunk[, ,] chunk;                                                    // Chunks declaration
     public List<IntVector3> chunksToReset = new List<IntVector3>();             // Control the chunks we are going to reset
 
     // GameObjects
@@ -17,14 +17,15 @@ public class World
     // Prefabs
     public Transform character;
     public Transform geometry;
-    public Transform gadgets;
+    public Transform interactives;
     public Transform skills;
     public Transform enemies;
+    public Transform effects;
 
 
     // Control Variables
     public GameObject geometryController = new GameObject();
-    public GameObject gadgetsController = new GameObject();
+    public GameObject interactivesController = new GameObject();
     public GameObject enemiesController = new GameObject();
     public GameObject eventsController = new GameObject();
     public GameObject emitersController = new GameObject();
@@ -39,32 +40,37 @@ public class World
 
 
     // Materials relative
-    public float textureSize;
+    public float textureSize = 0.125f;
     public int maxSediment;                                                     // Terrain height
 
 
+    // GUI
+    public GUISkin GHSkin;
 
-    public World(GameObject world, Transform prefabs, Material atlas)
+
+    public World(GameObject world, Transform prefabs, Material atlas, GUISkin GHSkin)
     {
         this.worldObj = world;
-        chunk = new ChunkGenerator[chunkNumber.x, chunkNumber.y, chunkNumber.z];
+        this.GHSkin = GHSkin;
+
+        chunk = new Chunk[chunkNumber.x, chunkNumber.y, chunkNumber.z];
 
         // Prefabs relative
-        character = prefabs.FindChild("Character");
+        character = prefabs.FindChild("Characters");
         geometry = prefabs.FindChild("Geometry");
-        gadgets = prefabs.FindChild("Gadgets");
+        interactives = prefabs.FindChild("Interactives");
         skills = prefabs.FindChild("Skills");
         enemies = prefabs.FindChild("Enemies");
+        effects = prefabs.FindChild("Effects");
 
         // Atlas relative
-        textureSize = 128 / 1024.0f;
         maxSediment = 12;
 
-        Init(atlas, textureSize);
+        Init(atlas);
     }
 
 
-    public void Init(Material atlas, float textureSize)
+    public void Init(Material atlas)
     {
         //+ World setting
         worldObj.name = "World";
@@ -74,7 +80,6 @@ public class World
         worldObj.transform.eulerAngles = Vector3.zero;
         worldObj.transform.localScale = Vector3.one;
 
-        worldObj.AddComponent<GUISystem>();
         worldObj.AddComponent<HUD>();
 
 
@@ -82,7 +87,7 @@ public class World
         for(int cx = 0; cx < chunkNumber.x; cx++)
             for(int cy = 0; cy < chunkNumber.y; cy++)
                 for (int cz = 0; cz < chunkNumber.z; cz++)
-                    chunk[cx, cy, cz] = new ChunkGenerator(new IntVector3(cx, cy, cz), atlas);
+                    chunk[cx, cy, cz] = new Chunk(new IntVector3(cx, cy, cz), atlas);
 
             // Instantiates and Fills the chunks.
         for(int cx = 0; cx < chunkNumber.x; cx++)
@@ -121,10 +126,10 @@ public class World
         geometryController.transform.localScale = Vector3.one;
         geometryController.name = "Geometry Controller";
 
-        gadgetsController.transform.position = Vector3.zero;
-        gadgetsController.transform.eulerAngles = Vector3.zero;
-        gadgetsController.transform.localScale = Vector3.one;
-        gadgetsController.name = "Gadgets Controller";
+        interactivesController.transform.position = Vector3.zero;
+        interactivesController.transform.eulerAngles = Vector3.zero;
+        interactivesController.transform.localScale = Vector3.one;
+        interactivesController.name = "Interactives Controller";
 
         enemiesController.transform.position = Vector3.zero;
         enemiesController.transform.eulerAngles = Vector3.zero;

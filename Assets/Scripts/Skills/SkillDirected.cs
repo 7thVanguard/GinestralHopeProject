@@ -39,6 +39,11 @@ public class SkillDirected : Skill
                     targetPosition = mainCamera.raycast.point;
                 else
                     targetPosition = mainCamera.cameraObj.transform.position + mainCamera.cameraObj.transform.forward * (maxDistance + mainCamera.maxDistance);
+
+                // Maintain the height in Clouds-Sight
+                if (GameFlow.runningGame == GameFlow.RunningGame.CLOUDS_SIGHT)
+                    targetPosition.y = player.playerObj.transform.position.y;
+
             }
             else
                 targetPosition = PlayerCombat.target.transform.position;
@@ -72,7 +77,7 @@ public class SkillDirected : Skill
             // Initial direction
             direction.x = objectDirection.x;
             direction.z = objectDirection.z;
-            direction.y = (targetPosition.y - originPosition.y + 0.5f * EGamePhysics.gravity * Mathf.Pow(flyTime, 2)) / flyTime;
+            direction.y = (targetPosition.y - originPosition.y + 0.5f * GamePhysics.gravity * Mathf.Pow(flyTime, 2)) / flyTime;
         }
         else if (skillTrajectory == SkillTrajectory.LINEAR)
         {
@@ -80,9 +85,6 @@ public class SkillDirected : Skill
             direction.z = objectDirection.z;
             direction.y = (targetPosition.y - originPosition.y) / flyTime;
         }
-
-        
-        
 
         gameObject.transform.position = originPosition;
     }

@@ -60,7 +60,7 @@ public class BombBehaviour : MonoBehaviour
 
 	void Update () 
     {
-        if (!EGameFlow.pause && launch)
+        if (!GameFlow.pause && launch)
         {
             if (!exploded)
             {

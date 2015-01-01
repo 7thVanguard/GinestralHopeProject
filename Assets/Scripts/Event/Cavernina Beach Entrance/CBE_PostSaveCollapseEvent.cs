@@ -20,7 +20,7 @@ public class CBE_PostSaveCollapseEvent : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (EGameFlow.gameMode == EGameFlow.GameMode.PLAYER)
+        if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
             if (other.tag == "Player")
                 EventsLib.FillWithVoxels(world, "Large Rock", new IntVector3(60, 15, 110), new IntVector3(59, 19, 110));
     }

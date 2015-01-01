@@ -15,7 +15,7 @@ public class Torch : Geometry
 
     public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale, bool firstPlacing)
     {
-        Transform torch = Object.Instantiate(world.gadgets.FindChild("Torch"), pos, Quaternion.Euler(rot)) as Transform;
+        Transform torch = Object.Instantiate(world.interactives.FindChild("Torch"), pos, Quaternion.Euler(rot)) as Transform;
 
         // Head atributes
         torch.name = "Torch";

@@ -7,7 +7,9 @@ public class DevCombatToolsManager
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
             Skill.Dictionary["Fire Ball"].CastDirected(null, player.playerObj.transform.position, true);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            Skill.Dictionary["Fire Mine"].CastDirected(null, player.playerObj.transform.position, true);
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
             Skill.Dictionary["Fire Mine"].CastDirected(null, player.playerObj.transform.position, true);
     }
 }

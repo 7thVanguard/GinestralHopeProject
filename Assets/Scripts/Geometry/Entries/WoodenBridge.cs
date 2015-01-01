@@ -22,7 +22,7 @@ public class WoodenBridge : Geometry
             pos += player.playerObj.transform.forward * 2.5f;
         }
 
-        Transform woodenBridge = Transform.Instantiate(world.gadgets.FindChild("Wooden Bridge 6m"), pos, Quaternion.Euler(rot)) as Transform;
+        Transform woodenBridge = Transform.Instantiate(world.geometry.FindChild("Wooden Bridge"), pos, Quaternion.Euler(rot)) as Transform;
 
         woodenBridge.name = "Wooden Bridge 6m";
         woodenBridge.tag = "Geometry";

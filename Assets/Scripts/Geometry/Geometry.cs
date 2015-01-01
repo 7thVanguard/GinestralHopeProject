@@ -62,6 +62,16 @@ public class Geometry
         geometry.Init(world, player, mainCamera);
         Dictionary.Add("Iron Pieces", geometry);
 
+        // Invisible collider
+        geometry = new InvisibleCollider();
+        geometry.Init(world, player, mainCamera);
+        Dictionary.Add("Invisible Collider", geometry);
+
+        // Cloud collider
+        geometry = new CloudCollider();
+        geometry.Init(world, player, mainCamera);
+        Dictionary.Add("Cloud Collider", geometry);
+
         geometry = Dictionary["Wooden Bridge 6m"];
     }
 

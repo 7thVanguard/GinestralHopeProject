@@ -4,16 +4,16 @@ using System.Collections;
 public class MineVoxelsToolManager
 {
     // Selected voxel in a multi selection tool
-    private static ChunkGenerator preDetChunk;
+    private static Chunk preDetChunk;
     private static Voxel preDetVoxel;
 
 
     public static void Remove(World world, Player player, MainCamera mainCamera)
     {
         // Single
-        if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.SINGLE)
+        if (GameFlow.developerMineTools == GameFlow.DeveloperMineTools.SINGLE)
         {
-            if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
+            if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
             {
                 if (mainCamera.raycast.transform.tag == "Chunk")
                 {
@@ -46,9 +46,9 @@ public class MineVoxelsToolManager
             else
             {
                 // Ortoedric
-                if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.ORTOEDRIC)
+                if (GameFlow.developerMineTools == GameFlow.DeveloperMineTools.ORTOEDRIC)
                 {
-                    if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
+                    if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
                     {
                         DevConstructionToolsManager.detChunk = DevConstructionToolsManager.chunk;
                         DevConstructionToolsManager.detVoxel = DevConstructionToolsManager.voxel;
@@ -68,9 +68,9 @@ public class MineVoxelsToolManager
     public static void Place(World world, Player player, MainCamera mainCamera)
     {
         // Single
-        if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.SINGLE)
+        if (GameFlow.developerMineTools == GameFlow.DeveloperMineTools.SINGLE)
         {
-            if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
+            if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
             {
                 if (mainCamera.raycast.transform.tag == "Chunk")
                 {
@@ -95,7 +95,7 @@ public class MineVoxelsToolManager
 
                     world.chunk[DevConstructionToolsManager.detChunk.numID.x, DevConstructionToolsManager.detChunk.numID.y, DevConstructionToolsManager.detChunk.numID.z]
                         .voxel[DevConstructionToolsManager.detVoxel.numID.x, DevConstructionToolsManager.detVoxel.numID.y, DevConstructionToolsManager.detVoxel.numID.z]
-                        = new Voxel(world, DevConstructionToolsManager.detVoxel.numID, DevConstructionToolsManager.detChunk.numID, EGameFlow.selectedMine);
+                        = new Voxel(world, DevConstructionToolsManager.detVoxel.numID, DevConstructionToolsManager.detChunk.numID, GameFlow.selectedMine);
 
                     // Reset
                     LChunk.Reset(world, DevConstructionToolsManager.detChunk, DevConstructionToolsManager.detVoxel);
@@ -118,15 +118,15 @@ public class MineVoxelsToolManager
             else
             {
                 // Ortoedric
-                if (EGameFlow.developerMineTools == EGameFlow.DeveloperMineTools.ORTOEDRIC)
+                if (GameFlow.developerMineTools == GameFlow.DeveloperMineTools.ORTOEDRIC)
                 {
-                    if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
+                    if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
                     {
                         DevConstructionToolsManager.detChunk = DevConstructionToolsManager.chunk;
                         DevConstructionToolsManager.detVoxel = DevConstructionToolsManager.voxel;
 
                         // Places the selectet voxel in the selected ones
-                        OrtoedricResolution(world, EGameFlow.selectedMine);
+                        OrtoedricResolution(world, GameFlow.selectedMine);
 
                         // End of fase 2 of multi selection tool
                         DevConstructionToolsManager.selected = false;
@@ -145,7 +145,7 @@ public class MineVoxelsToolManager
 
     public static void Detect(World world, Player player, MainCamera mainCamera)
     {
-        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.maxDistance) && mainCamera.raycast.distance != 0)
+        if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
         {
             if (mainCamera.raycast.collider == null)
                 mainCamera.raycast = new RaycastHit();

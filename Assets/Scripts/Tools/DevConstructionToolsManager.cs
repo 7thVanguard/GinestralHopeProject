@@ -5,11 +5,11 @@ public class DevConstructionToolsManager
 {
     // Detecting variables
     // Base detections
-    public static ChunkGenerator chunk;
+    public static Chunk chunk;
     public static Voxel voxel;
 
     // Auxiliar
-    public static ChunkGenerator detChunk;
+    public static Chunk detChunk;
     public static Voxel detVoxel;
     public static Vector2 detVertex;
 
@@ -57,42 +57,40 @@ public class DevConstructionToolsManager
     {
         if (mainCamera.raycast.transform.tag == "Chunk")
         {
-            if (EGameFlow.selectedTool == EGameFlow.SelectedTool.LIGHT)
+            if (GameFlow.selectedTool == GameFlow.SelectedTool.LIGHT)
 			    EmiterToolManager.Place(world, player, mainCamera);
-            else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
+            else if (GameFlow.selectedTool == GameFlow.SelectedTool.MINE)
                 MineVoxelsToolManager.Place(world, player, mainCamera);
-            else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GEOMETRY)
+            else if (GameFlow.selectedTool == GameFlow.SelectedTool.GEOMETRY)
                 GeometryToolManager.Place(world, player, mainCamera);
-            else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
+            else if (GameFlow.selectedTool == GameFlow.SelectedTool.INTERACTIVE)
                 GadgetsToolManager.Place(world, player, mainCamera);
-		    else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
+		    else if (GameFlow.selectedTool == GameFlow.SelectedTool.ENEMY)
                 EnemiesToolManager.Place(world, player, mainCamera);
-            else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.EVENT)
+            else if (GameFlow.selectedTool == GameFlow.SelectedTool.EVENT)
                 EventsToolManager.Place(world, player, mainCamera);
         }
-        else if (mainCamera.raycast.transform.tag == "Gadget")
-            GadgetsToolManager.ChangeCompression(world, player, mainCamera);
     }
 
 
     private void Cancel()
     {
-        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
+        if (GameFlow.selectedTool == GameFlow.SelectedTool.MINE)
             MineVoxelsToolManager.Cancel();
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
+        else if (GameFlow.selectedTool == GameFlow.SelectedTool.INTERACTIVE)
             GadgetsToolManager.Cancel();
-		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
+		else if (GameFlow.selectedTool == GameFlow.SelectedTool.ENEMY)
 			EnemiesToolManager.Cancel();
     }
 
 
     private void Detect(World world, Player player, MainCamera mainCamera)
     {
-        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
+        if (GameFlow.selectedTool == GameFlow.SelectedTool.MINE)
             MineVoxelsToolManager.Detect(world, player, mainCamera);
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
+        else if (GameFlow.selectedTool == GameFlow.SelectedTool.INTERACTIVE)
             GadgetsToolManager.Detect(world, player, mainCamera);
-		else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
+		else if (GameFlow.selectedTool == GameFlow.SelectedTool.ENEMY)
             EnemiesToolManager.Detect(world, player, mainCamera);
     }
 }

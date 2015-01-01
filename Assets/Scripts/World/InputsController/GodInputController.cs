@@ -25,9 +25,6 @@ public class GodInputController : AbstractInputsController
 
     public override void Update()
     {
-        EGameFlow.gameMode = EGameFlow.GameMode.GODMODE;
-        player.constructionDetection = 300;
-
         skills.Update(player, mainCamera);
 	}
 }

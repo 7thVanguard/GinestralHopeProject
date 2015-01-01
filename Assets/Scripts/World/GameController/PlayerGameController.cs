@@ -28,7 +28,7 @@ public class PlayerGameController : GameController
     {
         base.Update();
 
-        if (!EGameFlow.pause)
+        if (!GameFlow.pause)
         {
             playerMovement.NormalMovementUpdate();
             playerCombat.Update();

@@ -28,12 +28,10 @@ public class DeveloperInputController : AbstractInputsController
 
     public override void Update()
     {
-        EGameFlow.gameMode = EGameFlow.GameMode.DEVELOPER;
-        player.constructionDetection = 300;
-
         if (Input.GetKeyUp(KeyCode.LeftAlt))
         {
             Debug.Log(" Impact point information");
+            Debug.Log(mainCamera.raycast.transform.tag);
             Debug.Log((int)mainCamera.raycast.point.x + " " + (int)mainCamera.raycast.point.y + " " + (int)mainCamera.raycast.point.z);
         }
 
@@ -41,25 +39,25 @@ public class DeveloperInputController : AbstractInputsController
         if (!Input.GetKey(KeyCode.LeftShift))
         {
             if (Input.GetKey(KeyCode.Alpha1))
-                EGameFlow.selectedTool = EGameFlow.SelectedTool.LIGHT;
+                GameFlow.selectedTool = GameFlow.SelectedTool.LIGHT;
             else if (Input.GetKey(KeyCode.Alpha2))
-                EGameFlow.selectedTool = EGameFlow.SelectedTool.MINE;
+                GameFlow.selectedTool = GameFlow.SelectedTool.MINE;
             else if (Input.GetKey(KeyCode.Alpha3))
-                EGameFlow.selectedTool = EGameFlow.SelectedTool.GEOMETRY;
+                GameFlow.selectedTool = GameFlow.SelectedTool.GEOMETRY;
             else if (Input.GetKey(KeyCode.Alpha4))
-                EGameFlow.selectedTool = EGameFlow.SelectedTool.STRUCTURE;
+                GameFlow.selectedTool = GameFlow.SelectedTool.STRUCTURE;
             else if (Input.GetKey(KeyCode.Alpha5))
-                EGameFlow.selectedTool = EGameFlow.SelectedTool.GADGET;
+                GameFlow.selectedTool = GameFlow.SelectedTool.INTERACTIVE;
 			else if (Input.GetKey(KeyCode.Alpha6))
-				EGameFlow.selectedTool = EGameFlow.SelectedTool.ENEMY;
+				GameFlow.selectedTool = GameFlow.SelectedTool.ENEMY;
             else if (Input.GetKey(KeyCode.Alpha7))
-                EGameFlow.selectedTool = EGameFlow.SelectedTool.EVENT;
+                GameFlow.selectedTool = GameFlow.SelectedTool.EVENT;
         }
 
         
         //++ SubTool
         //+ Light
-        if (EGameFlow.selectedTool == EGameFlow.SelectedTool.LIGHT)
+        if (GameFlow.selectedTool == GameFlow.SelectedTool.LIGHT)
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -74,54 +72,54 @@ public class DeveloperInputController : AbstractInputsController
             }
         }
             //+ Mine
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.MINE)
+        else if (GameFlow.selectedTool == GameFlow.SelectedTool.MINE)
         {
             if(Input.GetKey(KeyCode.LeftShift))
             {
                 if (Input.GetKey(KeyCode.Alpha1))
-                    EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.SINGLE;
+                    GameFlow.developerMineTools = GameFlow.DeveloperMineTools.SINGLE;
                 else if (Input.GetKey(KeyCode.Alpha2))
-                    EGameFlow.developerMineTools = EGameFlow.DeveloperMineTools.ORTOEDRIC;
+                    GameFlow.developerMineTools = GameFlow.DeveloperMineTools.ORTOEDRIC;
             }
         }
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GEOMETRY)
+        else if (GameFlow.selectedTool == GameFlow.SelectedTool.GEOMETRY)
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 if (Input.GetKey(KeyCode.Alpha1))
-                    EGameFlow.selectedGeometry = "Wooden Bridge 6m";
+                    GameFlow.selectedGeometry = "Wooden Bridge 6m";
                 else if (Input.GetKey(KeyCode.Alpha2))
-                    EGameFlow.selectedGeometry = "Wood Pieces";
+                    GameFlow.selectedGeometry = "Wood Pieces";
                 else if (Input.GetKey(KeyCode.Alpha3))
-                    EGameFlow.selectedGeometry = "Bomb";
+                    GameFlow.selectedGeometry = "Bomb";
                 else if (Input.GetKey(KeyCode.Alpha4))
-                    EGameFlow.selectedGeometry = "Torch";
+                    GameFlow.selectedGeometry = "Torch";
                 else if (Input.GetKey(KeyCode.Alpha5))
-                    EGameFlow.selectedGeometry = "Altar";
+                    GameFlow.selectedGeometry = "Altar";
                 else if (Input.GetKey(KeyCode.Alpha6))
-                    EGameFlow.selectedGeometry = "Fire Gem";
+                    GameFlow.selectedGeometry = "Fire Gem";
                 else if (Input.GetKey(KeyCode.Alpha7))
-                    EGameFlow.selectedGeometry = "Iron Pieces";
+                    GameFlow.selectedGeometry = "Iron Pieces";
                 else if (Input.GetKey(KeyCode.Alpha8))
-                    EGameFlow.selectedGeometry = "Chest";
+                    GameFlow.selectedGeometry = "Chest";
             }
         }
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.STRUCTURE)
+        else if (GameFlow.selectedTool == GameFlow.SelectedTool.STRUCTURE)
         {
 
         }
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.GADGET)
+        else if (GameFlow.selectedTool == GameFlow.SelectedTool.INTERACTIVE)
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 if (Input.GetKey(KeyCode.Alpha1))
-                    EGameFlow.selectedGadget = "Wooden Plank";
+                    GameFlow.selectedInteractive = "Wooden Plank";
             }
         }
-        else if (EGameFlow.selectedTool == EGameFlow.SelectedTool.ENEMY)
+        else if (GameFlow.selectedTool == GameFlow.SelectedTool.ENEMY)
         {
             if (Input.GetKey(KeyCode.Alpha1))
-                EGameFlow.selectedEnemy = "Normal Slime";
+                GameFlow.selectedEnemy = "Normal Slime";
         }
 
         // Mouse click

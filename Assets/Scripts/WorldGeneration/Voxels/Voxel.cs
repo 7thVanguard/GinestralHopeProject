@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Voxel
 {
-    public enum EntityType { TERRAIN, MINE, FLUID, GADGET, ENEMY, AIR }
+    public enum EntityType { TERRAIN, ORGANIC, CUBIC, FLUID, GADGET, ENEMY, AIR }
     public EntityType entityType;
 
     public enum VoxelState { SOLID, FLUID, GAS }
@@ -57,14 +57,20 @@ public class Voxel
         {
             case EntityType.TERRAIN:
                 {
-                    if (TerrainVoxel.IsFaceVisible(world, parentChunkID, numID) == true)
-                        TerrainVoxel.FaceVertices(world, parentChunkID, numID, Vertices, UV, Triangles, ref vertexCount);
+                    TerrainVoxel.DetectSorroundings(world, parentChunkID, numID);
+                    TerrainVoxel.FaceVertices(world, parentChunkID, numID, Vertices, UV, Triangles, ref vertexCount);
                 }
                 break;
-            case EntityType.MINE:
+            case EntityType.ORGANIC:
                 {
-                    MineVoxel.DetectSorroundings(world, parentChunkID, numID);
-                    MineVoxel.FaceVertices(world, parentChunkID, numID, Vertices, UV, Triangles, ref vertexCount);
+                    OrganicVoxel.DetectSorroundings(world, parentChunkID, numID);
+                    OrganicVoxel.FaceVertices(world, parentChunkID, numID, Vertices, UV, Triangles, ref vertexCount);
+                }
+                break;
+            case EntityType.CUBIC:
+                {
+                    CubicVoxel.DetectSorroundings(world, parentChunkID, numID);
+                    CubicVoxel.FaceVertices(world, parentChunkID, numID, Vertices, UV, Triangles, ref vertexCount);
                 }
                 break;
             case EntityType.FLUID:
@@ -83,12 +89,6 @@ public class Voxel
         switch (entityType)
         {
             case EntityType.TERRAIN:
-                {
-                    if (TerrainVoxel.IsFaceVisible(world, parentChunkID, numID) == true)
-                        TerrainVoxel.FaceNormals(world, parentChunkID, numID, Normals);
-                }
-                break;
-            case EntityType.MINE:
                 {
                     
                 }
@@ -118,7 +118,7 @@ public class Voxel
                 break;
             case "Sand Way":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.TERRAIN;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 7 * world.textureSize);
@@ -128,7 +128,7 @@ public class Voxel
                 break;
             case "Little Rock":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 6 * world.textureSize);
@@ -138,7 +138,7 @@ public class Voxel
                 break;
             case "Large Rock":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(1 * world.textureSize, 6 * world.textureSize);
@@ -148,7 +148,7 @@ public class Voxel
                 break;
             case "Medium Rock":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(2 * world.textureSize, 6 * world.textureSize);
@@ -158,7 +158,7 @@ public class Voxel
                 break;
             case "Medium Broken Rock":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(3 * world.textureSize, 6 * world.textureSize);
@@ -168,7 +168,7 @@ public class Voxel
                 break;
             case "Rock Brick Floor":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(4 * world.textureSize, 6 * world.textureSize);
@@ -178,7 +178,7 @@ public class Voxel
                 break;
             case "Stripped Rock Wall":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(5 * world.textureSize, 6 * world.textureSize);
@@ -188,7 +188,7 @@ public class Voxel
                 break;
             case "Irregular Smooth Rock":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(6 * world.textureSize, 6 * world.textureSize);
@@ -198,7 +198,7 @@ public class Voxel
                 break;
             case "Amethyst Smooth Rock":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(7 * world.textureSize, 6 * world.textureSize);
@@ -208,7 +208,7 @@ public class Voxel
                 break;
             case "Dark Brown Wood":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 5 * world.textureSize);
@@ -218,7 +218,7 @@ public class Voxel
                 break;
             case "Three Wood Column Mine":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(1 * world.textureSize, 5 * world.textureSize);
@@ -228,7 +228,7 @@ public class Voxel
                 break;
             case "Two Wood Column Mine":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(2 * world.textureSize, 5 * world.textureSize);
@@ -238,7 +238,7 @@ public class Voxel
                 break;
             case "Wood base Large Rock":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(3 * world.textureSize, 5 * world.textureSize);
@@ -248,7 +248,7 @@ public class Voxel
                 break;
             case "Fire large Rock":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 4 * world.textureSize);
@@ -258,7 +258,7 @@ public class Voxel
                 break;
             case "Fire Rock Brick Floor":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(1 * world.textureSize, 4 * world.textureSize);
@@ -268,7 +268,7 @@ public class Voxel
                 break;
             case "Fire Irregular Smooth Rock":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(2 * world.textureSize, 4 * world.textureSize);
@@ -278,7 +278,7 @@ public class Voxel
                 break;
             case "Fire Amethyst Smooth Rock":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(3 * world.textureSize, 4 * world.textureSize);
@@ -288,7 +288,7 @@ public class Voxel
                 break;
             case "Moss Large Rock":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(0 * world.textureSize, 3 * world.textureSize);
@@ -298,7 +298,7 @@ public class Voxel
                 break;
             case "Moss Medium Rock":
                 {
-                    entityType = EntityType.MINE;
+                    entityType = EntityType.ORGANIC;
                     voxelState = VoxelState.SOLID;
 
                     UVStart = new Vector2(1 * world.textureSize, 3 * world.textureSize);
@@ -308,7 +308,7 @@ public class Voxel
                 break;
 			case "Brown Trunk Column":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(0 * world.textureSize, 2 * world.textureSize);
@@ -318,7 +318,7 @@ public class Voxel
 				break;
 			case "Brown Trunk Medium Large Rock":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(1 * world.textureSize, 2 * world.textureSize);
@@ -328,7 +328,7 @@ public class Voxel
 				break;
 			case "Brown Trunk Smooth Irregular Rock":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(2 * world.textureSize, 2 * world.textureSize);
@@ -338,7 +338,7 @@ public class Voxel
 				break;
 			case "Smooth Rock":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(3 * world.textureSize, 2 * world.textureSize);
@@ -348,7 +348,7 @@ public class Voxel
 				break;
 			case "Smooth Rock Column":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(4 * world.textureSize, 2 * world.textureSize);
@@ -358,7 +358,7 @@ public class Voxel
 				break;
 			case "Metal Base Smooth Rock":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(5 * world.textureSize, 2 * world.textureSize);
@@ -368,7 +368,7 @@ public class Voxel
 				break;
 			case "Metal Base Brown Trunk Column":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(6 * world.textureSize, 2 * world.textureSize);
@@ -378,7 +378,7 @@ public class Voxel
 				break;
 			case "Two Stone Brick Floor":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(0 * world.textureSize, 1 * world.textureSize);
@@ -388,7 +388,7 @@ public class Voxel
 				break;
 			case "Eight Stone Brick Floor":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(1 * world.textureSize, 1 * world.textureSize);
@@ -398,7 +398,7 @@ public class Voxel
 				break;
 			case "Hexagonal Stone Brick Floor":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(2 * world.textureSize, 1 * world.textureSize);
@@ -408,7 +408,7 @@ public class Voxel
 				break;
 			case "UL Fire Carpet":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(3 * world.textureSize, 1 * world.textureSize);
@@ -418,7 +418,7 @@ public class Voxel
 				break;
 			case "UR Fire Carpet":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(4 * world.textureSize, 1 * world.textureSize);
@@ -428,7 +428,7 @@ public class Voxel
 				break;
 			case "BL Fire Carpet":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(5 * world.textureSize, 1 * world.textureSize);
@@ -438,7 +438,7 @@ public class Voxel
 				break;
 			case "BR Fire Carpet":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(6 * world.textureSize, 1 * world.textureSize);
@@ -448,7 +448,7 @@ public class Voxel
 				break;
 			case "C Fire Carpet":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(0 * world.textureSize, 0 * world.textureSize);
@@ -458,7 +458,7 @@ public class Voxel
 				break;
 			case "L Fire Carpet":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(1 * world.textureSize, 0 * world.textureSize);
@@ -468,7 +468,7 @@ public class Voxel
 				break;
 			case "U Fire Carpet":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(2 * world.textureSize, 0 * world.textureSize);
@@ -478,7 +478,7 @@ public class Voxel
 				break;
 			case "R Fire Carpet":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(3 * world.textureSize, 0 * world.textureSize);
@@ -488,7 +488,7 @@ public class Voxel
 				break;
 			case "B Fire Carpet":
 				{
-					entityType = EntityType.MINE;
+					entityType = EntityType.ORGANIC;
 					voxelState = VoxelState.SOLID;
 					
 					UVStart = new Vector2(4 * world.textureSize, 0 * world.textureSize);
