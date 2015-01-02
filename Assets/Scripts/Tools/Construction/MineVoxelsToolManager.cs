@@ -256,11 +256,12 @@ public class MineVoxelsToolManager
                 }
 
         // Reseting all chunks
-        for (int x = chunkInitX; x <= chunkEndX; x++)
-            for (int y = chunkInitY; y <= chunkEndY; y++)
-                for (int z = chunkInitZ; z <= chunkEndZ; z++)
+        for (int x = chunkInitX - 1; x <= chunkEndX + 1; x++)
+            for (int y = chunkInitY - 1; y <= chunkEndY + 1; y++)
+                for (int z = chunkInitZ - 1; z <= chunkEndZ + 1; z++)
                 {
-                    world.chunksToReset.Add(new IntVector3(x, y, z));
+                    if (LChunk.ChunkExists(world, new IntVector3(x, y, z)))
+                        world.chunksToReset.Add(new IntVector3(x, y, z));
                 }
     }
 }
