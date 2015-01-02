@@ -98,32 +98,29 @@ public class CameraMovement
                                 Screen.lockCursor = false;
 
                             // Zoom
-                            if (GameFlow.gameMode != GameFlow.GameMode.DEVELOPER)
+                            // Zoom in
+                            if (Input.GetAxis("Mouse ScrollWheel") < 0)
                             {
-                                // Zoom in
-                                if (Input.GetAxis("Mouse ScrollWheel") < 0)
-                                {
-                                    mainCamera.objectiveDistance += 0.5f;
+                                mainCamera.objectiveDistance += 0.5f;
 
-                                    // Zoom max clamp
-                                    if (mainCamera.objectiveDistance > mainCamera.maxDistance)
-                                        mainCamera.objectiveDistance = mainCamera.maxDistance;
+                                // Zoom max clamp
+                                if (mainCamera.objectiveDistance > mainCamera.maxDistance)
+                                    mainCamera.objectiveDistance = mainCamera.maxDistance;
 
-                                    // Adapt both distances, the basic and the security one
-                                    mainCamera.distance = mainCamera.objectiveDistance;
-                                }
-                                // Zoom out
-                                else if (Input.GetAxis("Mouse ScrollWheel") > 0)
-                                {
-                                    mainCamera.objectiveDistance -= 0.5f;
+                                // Adapt both distances, the basic and the security one
+                                mainCamera.distance = mainCamera.objectiveDistance;
+                            }
+                            // Zoom out
+                            else if (Input.GetAxis("Mouse ScrollWheel") > 0)
+                            {
+                                mainCamera.objectiveDistance -= 0.5f;
 
-                                    // Zoom min clamp
-                                    if (mainCamera.objectiveDistance < mainCamera.minDistance)
-                                        mainCamera.objectiveDistance = mainCamera.minDistance;
+                                // Zoom min clamp
+                                if (mainCamera.objectiveDistance < mainCamera.minDistance)
+                                    mainCamera.objectiveDistance = mainCamera.minDistance;
 
-                                    // Adapt both distances, the basic and the security one
-                                    mainCamera.distance = mainCamera.objectiveDistance;
-                                }
+                                // Adapt both distances, the basic and the security one
+                                mainCamera.distance = mainCamera.objectiveDistance;
                             }
                         }
                         break;

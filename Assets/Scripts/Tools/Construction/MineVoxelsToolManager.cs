@@ -175,8 +175,24 @@ public class MineVoxelsToolManager
 
                     // Draw the marker
                     if (!DevConstructionToolsManager.selected)
+                    {
                         HUD.cubeMarker.transform.position = DevConstructionToolsManager.voxel.position;
-                        
+                        HUD.cubeMarker.transform.localScale = new Vector3(1.02f, 1.02f, 1.02f);
+                    }
+                    else
+                    {
+                        HUD.cubeMarker.transform.position = (DevConstructionToolsManager.voxel.position +
+                                                             new Vector3(preDetChunk.numID.x * world.chunkSize.x + preDetVoxel.numID.x, 
+                                                                         preDetChunk.numID.y * world.chunkSize.y + preDetVoxel.numID.y, 
+                                                                         preDetChunk.numID.z * world.chunkSize.z + preDetVoxel.numID.z) +
+                                                             new Vector3(0.5f, 0.5f, 0.5f)) / 2;
+
+                        HUD.cubeMarker.transform.localScale = new Vector3(
+                                Mathf.Abs(DevConstructionToolsManager.voxel.position.x - (preDetChunk.numID.x * world.chunkSize.x + preDetVoxel.numID.x + 0.5f)),
+                                Mathf.Abs(DevConstructionToolsManager.voxel.position.y - (preDetChunk.numID.y * world.chunkSize.y + preDetVoxel.numID.y + 0.5f)),
+                                Mathf.Abs(DevConstructionToolsManager.voxel.position.z - (preDetChunk.numID.z * world.chunkSize.z + preDetVoxel.numID.z + 0.5f)))
+                                + new Vector3(1.02f, 1.02f, 1.02f);
+                    }
                 }
             }
         }
