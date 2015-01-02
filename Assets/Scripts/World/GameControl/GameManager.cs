@@ -133,6 +133,8 @@ public class GameManager : MonoBehaviour
 
                 GameFlow.gameMode = GameFlow.GameMode.PLAYER;
                 Global.player.constructionDetection = 5;
+
+                HUD.cubeMarker.SetActive(false);
             }
             else if (Input.GetKey(KeyCode.F2))
             {
@@ -141,6 +143,8 @@ public class GameManager : MonoBehaviour
 
                 GameFlow.gameMode = GameFlow.GameMode.GODMODE;
                 Global.player.constructionDetection = 300;
+
+                HUD.cubeMarker.SetActive(false);
             }
             else if (Input.GetKey(KeyCode.F3))
             {
@@ -149,6 +153,8 @@ public class GameManager : MonoBehaviour
 
                 GameFlow.gameMode = GameFlow.GameMode.DEVELOPER;
                 Global.player.constructionDetection = 300;
+
+                HUD.cubeMarker.SetActive(true);
             }
 
             // Pause

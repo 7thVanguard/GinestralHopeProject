@@ -61,7 +61,6 @@ public class HUD : MonoBehaviour
         cubeMarker = MarkersCreator.CreateCubeMarker(cubeMarker, translucentSelector);
         sphereMarker = MarkersCreator.CreateSphereMarker(sphereMarker, translucentSelector);
 	}
-	
 
 
 	void OnGUI ()

@@ -163,7 +163,7 @@ public class MineVoxelsToolManager
                     else if (mainCamera.raycast.normal.z > 0.75f)
                         voxelDisplacementZ = 0.25f;
 
-                    // Detects the vertex we are aiming at
+                    // Detects the voxel we are aiming at
                     DevConstructionToolsManager.chunk = world.chunk[(int)((mainCamera.raycast.point.x - voxelDisplacementX) / world.chunkSize.x),
                                                                 (int)((mainCamera.raycast.point.y - voxelDisplacementY) / world.chunkSize.y),
                                                                 (int)((mainCamera.raycast.point.z - voxelDisplacementZ) / world.chunkSize.z)];
@@ -171,8 +171,13 @@ public class MineVoxelsToolManager
                     DevConstructionToolsManager.voxel = DevConstructionToolsManager.chunk.voxel[(int)((mainCamera.raycast.point.x - voxelDisplacementX) % world.chunkSize.x),
                                                                                     (int)((mainCamera.raycast.point.y - voxelDisplacementY) % world.chunkSize.y),
                                                                                     (int)((mainCamera.raycast.point.z - voxelDisplacementZ) % world.chunkSize.z)];
-                }
 
+
+                    // Draw the marker
+                    if (!DevConstructionToolsManager.selected)
+                        HUD.cubeMarker.transform.position = DevConstructionToolsManager.voxel.position;
+                        
+                }
             }
         }
     }

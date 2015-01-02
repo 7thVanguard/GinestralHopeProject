@@ -30,6 +30,7 @@ public static class MarkersCreator
         cubeMarker.name = "CubeMarker";
         cubeMarker.transform.position = new Vector3(0, -10000, 0);
         cubeMarker.transform.eulerAngles = new Vector3(0, 0, 0);
+        cubeMarker.transform.localScale = new Vector3(1.02f, 1.02f, 1.02f);
         cubeMarker.layer = LayerMask.NameToLayer("Ignore Raycast");
 
         cubeTranslucentMaterial = new Material(Shader.Find("Particles/Additive"));

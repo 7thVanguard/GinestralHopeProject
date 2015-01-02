@@ -48,6 +48,10 @@ public class Voxel
         this.numID = numID;
 
         SetVoxelProperties(world, ID);
+
+        position = new Vector3(chunkID.x * world.chunkSize.x + numID.x + 0.5f,
+                               chunkID.y * world.chunkSize.y + numID.y + 0.5f,
+                               chunkID.z * world.chunkSize.z + numID.z + 0.5f);
     }
 
 
