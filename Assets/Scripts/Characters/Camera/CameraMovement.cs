@@ -72,6 +72,7 @@ public class CameraMovement
                             else
                                 mainCamera.isMoving = false;
 
+                            Screen.lockCursor = true;
                         }
                         break;
                     case GameFlow.RunningGame.CLOUDS_SIGHT:
@@ -136,6 +137,8 @@ public class CameraMovement
                             }
 
                             mainCamera.objectiveDistance = 0;
+
+                            Screen.lockCursor = true;
                         }
                         break;
                     default:

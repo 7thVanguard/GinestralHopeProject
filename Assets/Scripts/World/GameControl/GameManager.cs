@@ -175,10 +175,21 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+            // Cursor control
             if (GameFlow.onInterface || GameFlow.pause)
                 Screen.lockCursor = false;
             else
-                Screen.lockCursor = true;
+            {
+                if (GameFlow.gameMode != GameFlow.GameMode.PLAYER)
+                {
+                    if (Input.GetKey(KeyCode.LeftControl))
+                        Screen.lockCursor = false;
+                    else
+                    {
+                        Screen.lockCursor = true;
+                    }
+                }
+            }
         }
 
 
