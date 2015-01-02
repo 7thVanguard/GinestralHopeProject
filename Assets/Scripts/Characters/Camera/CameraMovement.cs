@@ -72,6 +72,8 @@ public class CameraMovement
                             else
                                 mainCamera.isMoving = false;
 
+                            mainCamera.distance = 3;
+
                             Screen.lockCursor = true;
                         }
                         break;
