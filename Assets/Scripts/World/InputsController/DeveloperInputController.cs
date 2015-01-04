@@ -39,52 +39,42 @@ public class DeveloperInputController : AbstractInputsController
         if (!Input.GetKey(KeyCode.LeftShift))
         {
             if (Input.GetKey(KeyCode.Alpha1))
-                GameFlow.selectedTool = GameFlow.SelectedTool.LIGHT;
+                GameGUI.developerMode.transform.parent.FindChild("UI Controller Developer Mode").GetComponent<GUIDeveloperMode>().LightButton();
             else if (Input.GetKey(KeyCode.Alpha2))
-                GameFlow.selectedTool = GameFlow.SelectedTool.MINE;
+                GameGUI.developerMode.transform.parent.FindChild("UI Controller Developer Mode").GetComponent<GUIDeveloperMode>().VoxelButton();
             else if (Input.GetKey(KeyCode.Alpha3))
-                GameFlow.selectedTool = GameFlow.SelectedTool.GEOMETRY;
+                GameGUI.developerMode.transform.parent.FindChild("UI Controller Developer Mode").GetComponent<GUIDeveloperMode>().GeometryButton();
             else if (Input.GetKey(KeyCode.Alpha4))
-                GameFlow.selectedTool = GameFlow.SelectedTool.STRUCTURE;
+                GameGUI.developerMode.transform.parent.FindChild("UI Controller Developer Mode").GetComponent<GUIDeveloperMode>().StructureButton();
             else if (Input.GetKey(KeyCode.Alpha5))
-                GameFlow.selectedTool = GameFlow.SelectedTool.INTERACTIVE;
+                GameGUI.developerMode.transform.parent.FindChild("UI Controller Developer Mode").GetComponent<GUIDeveloperMode>().InteractiveButton();
 			else if (Input.GetKey(KeyCode.Alpha6))
-				GameFlow.selectedTool = GameFlow.SelectedTool.ENEMY;
+                GameGUI.developerMode.transform.parent.FindChild("UI Controller Developer Mode").GetComponent<GUIDeveloperMode>().EnemyButton();
             else if (Input.GetKey(KeyCode.Alpha7))
-                GameFlow.selectedTool = GameFlow.SelectedTool.EVENT;
+                GameGUI.developerMode.transform.parent.FindChild("UI Controller Developer Mode").GetComponent<GUIDeveloperMode>().EventButton();
         }
-
-        
         //++ SubTool
-        //+ Light
-        if (GameFlow.selectedTool == GameFlow.SelectedTool.LIGHT)
+        else
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (GameFlow.selectedTool == GameFlow.SelectedTool.LIGHT)
             {
                 if (Input.GetKey(KeyCode.Alpha1))
-                    sun.lightSystemBehaviour.SetSunRise();
+                    GameGUI.developerMode.transform.parent.FindChild("UI Controller Developer Mode").GetComponent<GUIDeveloperMode>().SunRiseButton();
                 else if (Input.GetKey(KeyCode.Alpha2))
-                    sun.lightSystemBehaviour.SetMidDay();
+                    GameGUI.developerMode.transform.parent.FindChild("UI Controller Developer Mode").GetComponent<GUIDeveloperMode>().MidDayButton();
                 else if (Input.GetKey(KeyCode.Alpha3))
-                    sun.lightSystemBehaviour.SetNoon();
+                    GameGUI.developerMode.transform.parent.FindChild("UI Controller Developer Mode").GetComponent<GUIDeveloperMode>().EveningButton();
                 else if (Input.GetKey(KeyCode.Alpha4))
-                    sun.lightSystemBehaviour.SetNight();
+                    GameGUI.developerMode.transform.parent.FindChild("UI Controller Developer Mode").GetComponent<GUIDeveloperMode>().NightButton();
             }
-        }
-            //+ Mine
-        else if (GameFlow.selectedTool == GameFlow.SelectedTool.MINE)
-        {
-            if(Input.GetKey(KeyCode.LeftShift))
+            else if (GameFlow.selectedTool == GameFlow.SelectedTool.VOXEL)
             {
                 if (Input.GetKey(KeyCode.Alpha1))
-                    GameFlow.developerMineTools = GameFlow.DeveloperMineTools.SINGLE;
+                    GameGUI.developerMode.transform.parent.FindChild("UI Controller Developer Mode").GetComponent<GUIDeveloperMode>().SingleVoxelButton();
                 else if (Input.GetKey(KeyCode.Alpha2))
-                    GameFlow.developerMineTools = GameFlow.DeveloperMineTools.ORTOEDRIC;
+                    GameGUI.developerMode.transform.parent.FindChild("UI Controller Developer Mode").GetComponent<GUIDeveloperMode>().OrtoedricVoxelButton();
             }
-        }
-        else if (GameFlow.selectedTool == GameFlow.SelectedTool.GEOMETRY)
-        {
-            if (Input.GetKey(KeyCode.LeftShift))
+            else if (GameFlow.selectedTool == GameFlow.SelectedTool.GEOMETRY)
             {
                 if (Input.GetKey(KeyCode.Alpha1))
                     GameFlow.selectedGeometry = "Wooden Bridge 6m";
@@ -103,26 +93,27 @@ public class DeveloperInputController : AbstractInputsController
                 else if (Input.GetKey(KeyCode.Alpha8))
                     GameFlow.selectedGeometry = "Chest";
             }
-        }
-        else if (GameFlow.selectedTool == GameFlow.SelectedTool.STRUCTURE)
-        {
+            else if (GameFlow.selectedTool == GameFlow.SelectedTool.STRUCTURE)
+            {
 
-        }
-        else if (GameFlow.selectedTool == GameFlow.SelectedTool.INTERACTIVE)
-        {
-            if (Input.GetKey(KeyCode.LeftShift))
+            }
+            else if (GameFlow.selectedTool == GameFlow.SelectedTool.INTERACTIVE)
             {
                 if (Input.GetKey(KeyCode.Alpha1))
                     GameFlow.selectedInteractive = "Wooden Plank";
             }
-        }
-        else if (GameFlow.selectedTool == GameFlow.SelectedTool.ENEMY)
-        {
-            if (Input.GetKey(KeyCode.Alpha1))
-                GameFlow.selectedEnemy = "Normal Slime";
-        }
+            else if (GameFlow.selectedTool == GameFlow.SelectedTool.ENEMY)
+            {
+                if (Input.GetKey(KeyCode.Alpha1))
+                    GameFlow.selectedEnemy = "Normal Slime";
+            }
+            else if (GameFlow.selectedTool == GameFlow.SelectedTool.EVENT)
+            {
 
-        // Mouse click
+            }
+        }
+        
+
         skills.Update(world, player, mainCamera);
 	}
 }

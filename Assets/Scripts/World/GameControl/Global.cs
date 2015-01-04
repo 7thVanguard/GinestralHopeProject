@@ -6,4 +6,6 @@ public static class Global
     public static World world;
     public static Player player;
     public static MainCamera mainCamera;
+
+    public static Sun sun;
 }

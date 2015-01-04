@@ -94,7 +94,7 @@ public struct EventStruct
 [System.Serializable]
 public class GameSerializer
 {
-    private VoxelStruct voxelStruct;
+    private VoxelStruct voxelStructSave;
     private PlayerStruct playerStruct;
     private EmitterStruct emitterStruct;
     private GeometryStruct geometryStruct;
@@ -194,9 +194,9 @@ public class GameSerializer
                                             actualNumber++;
                                         else
                                         {
-                                            voxelStruct.name = actualName;
-                                            voxelStruct.number = actualNumber;
-                                            VoxelSave.Add(voxelStruct);
+                                            voxelStructSave.name = actualName;
+                                            voxelStructSave.number = actualNumber;
+                                            VoxelSave.Add(voxelStructSave);
 
                                             actualNumber = 1;
                                             actualName = world.chunk[cx, cy, cz].voxel[x, y, z].ID;
@@ -205,9 +205,9 @@ public class GameSerializer
                                 }
 
         // The last struct is not detected in the loop
-        voxelStruct.name = actualName;
-        voxelStruct.number = actualNumber;
-        VoxelSave.Add(voxelStruct);
+        voxelStructSave.name = actualName;
+        voxelStructSave.number = actualNumber;
+        VoxelSave.Add(voxelStructSave);
 
         // Serialization of the lists
         bf.Serialize(file, VoxelSave);

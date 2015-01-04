@@ -98,7 +98,7 @@ public class HUD : MonoBehaviour
                 //++ Player HUD
                 case GameFlow.GameMode.PLAYER:
                     {
-                        playerHUD.Update(developerAtlas);
+                        //playerHUD.Update(developerAtlas);
                     }
                     break;
                 //++ GodMode HUD

@@ -5,7 +5,7 @@ public static class GameFlow
 {
     // Game in play
     public enum RunningGame { GINESTRAL_HOPE, CLOUDS_SIGHT, PLANNED_DREAM }
-    public static RunningGame runningGame = RunningGame.CLOUDS_SIGHT;
+    public static RunningGame runningGame = RunningGame.PLANNED_DREAM;
 
     // Game States
     public enum GameState { MENU, GAME }
@@ -18,12 +18,11 @@ public static class GameFlow
 
 
     // Tools
-    public enum SelectedTool { LIGHT, MINE, GEOMETRY, STRUCTURE, INTERACTIVE, ENEMY, EVENT }
-    public static SelectedTool selectedTool = SelectedTool.MINE;
+    public enum SelectedTool { LIGHT, VOXEL, GEOMETRY, STRUCTURE, INTERACTIVE, ENEMY, EVENT }
+    public static SelectedTool selectedTool = SelectedTool.VOXEL;
 
-    public enum DeveloperTerrainTools { VERTEX, MULTIVERTEX }
-    public static DeveloperTerrainTools developerTerrainTools = DeveloperTerrainTools.MULTIVERTEX;
 
+    // SubTools
     public enum DeveloperMineTools { SINGLE, ORTOEDRIC }
     public static DeveloperMineTools developerMineTools = DeveloperMineTools.SINGLE;
 

@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 
     // Textures
     public Texture2D developerAtlas;
-    public Flare sunFlare;
     
     //GUI
     public GUISkin GHSkin;
@@ -26,10 +25,8 @@ public class GameManager : MonoBehaviour
 
 
     // Main control classes
-    private Sun sun;
-
     private Enemy enemy;
-    private Interactive gadget;
+    private Interactive interactive;
     private Geometry geometry;
     private Skill skill;
     
@@ -40,16 +37,20 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        // Basic variables, activated in PreInit
+        //VoxelsList.Init();                                                                                  // Initialize Voxels
+
+
         //+ Object Init
         Global.world = new World(gameObject, prefabs, mineAtlas, GHSkin);
         Global.player = new Player(Global.world);
         Global.mainCamera = new MainCamera();
-        sun = new Sun(Global.player, sunFlare);
+        Global.sun = new Sun(Global.player);
 
         // post initialize
-        Global.world.worldObj.GetComponent<HUD>().Init(Global.player, mineAtlas, developerAtlas);       // Initialize HUD
-        sun.lightSystemBehaviour.Init(Global.player, sun.sunObj, sun.lensFlare);                        // Initialize Light System
-        InventoryManager.Init();                                                                        // Initialize Inventory
+        Global.world.worldObj.GetComponent<HUD>().Init(Global.player, mineAtlas, developerAtlas);           // Initialize HUD
+        Global.sun.lightSystemBehaviour.Init(Global.player, Global.sun.sunObj, Global.sun.lensFlare);       // Initialize Light System
+        InventoryManager.Init();                                                                            // Initialize Inventory
 
 
         //+ Controllers Init
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour
         aPC.Start();
         Controller.Add("GodMode", aPC);
 
-        aPC = new DeveloperGameController(Global.world, Global.player, Global.mainCamera, sun);
+        aPC = new DeveloperGameController(Global.world, Global.player, Global.mainCamera, Global.sun);
         aPC.Start();
         Controller.Add("DeveloperMode", aPC);
 
@@ -88,8 +89,8 @@ public class GameManager : MonoBehaviour
         geometry.Init(Global.world, Global.player, Global.mainCamera);
 
         //+ Gadgets Init
-        gadget = new Interactive();
-        gadget.Init(Global.world, Global.player, Global.mainCamera, gadget);
+        interactive = new Interactive();
+        interactive.Init(Global.world, Global.player, Global.mainCamera, interactive);
 
 
         //+ Skills Init
@@ -129,32 +130,17 @@ public class GameManager : MonoBehaviour
             if (Input.GetKey(KeyCode.F1))
             {
                 activeController = Controller["PlayerMode"];
-                Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("GameObject"), false);
-
-                GameFlow.gameMode = GameFlow.GameMode.PLAYER;
-                Global.player.constructionDetection = 5;
-
-                HUD.cubeMarker.SetActive(false);
+                PassToPlayer();
             }
             else if (Input.GetKey(KeyCode.F2))
             {
                 activeController = Controller["GodMode"];
-                Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("GameObject"), true);
-
-                GameFlow.gameMode = GameFlow.GameMode.GODMODE;
-                Global.player.constructionDetection = 300;
-
-                HUD.cubeMarker.SetActive(false);
+                PassToGod();
             }
             else if (Input.GetKey(KeyCode.F3))
             {
                 activeController = Controller["DeveloperMode"];
-                Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("GameObject"), false);
-
-                GameFlow.gameMode = GameFlow.GameMode.DEVELOPER;
-                Global.player.constructionDetection = 300;
-
-                HUD.cubeMarker.SetActive(true);
+                PassToDeveloper();
             }
 
             // Pause
@@ -170,7 +156,7 @@ public class GameManager : MonoBehaviour
 
             //+ Controllers
             activeController.Update();
-            sun.lightSystemBehaviour.Update();
+            Global.sun.lightSystemBehaviour.Update();
 
             if (Input.GetKeyUp(KeyCode.Escape))
             {
@@ -220,6 +206,42 @@ public class GameManager : MonoBehaviour
             // Removes the reseted chunk from the list
             Global.world.chunksToReset.Remove(Global.world.chunksToReset[0]);
         }
+    }
+
+
+    private void PassToPlayer()
+    {
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("GameObject"), false);
+
+        GameFlow.gameMode = GameFlow.GameMode.PLAYER;
+        Global.player.constructionDetection = 5;
+
+        HUD.cubeMarker.SetActive(false);
+    }
+
+
+    private void PassToGod()
+    {
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("GameObject"), true);
+
+        GameFlow.gameMode = GameFlow.GameMode.GODMODE;
+        Global.player.constructionDetection = 300;
+
+        HUD.cubeMarker.SetActive(false);
+    }
+
+
+    private void PassToDeveloper()
+    {
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("GameObject"), false);
+
+        GameFlow.gameMode = GameFlow.GameMode.DEVELOPER;
+        Global.player.constructionDetection = 300;
+
+        if (GameFlow.selectedTool == GameFlow.SelectedTool.VOXEL)
+            HUD.cubeMarker.SetActive(true);
+        else
+            HUD.cubeMarker.SetActive(false);
     }
 
 

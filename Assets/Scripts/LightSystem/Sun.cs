@@ -8,15 +8,15 @@ public class Sun
     public LensFlare lensFlare;
 
 
-    public Sun(Player player, Flare sunFlare)
+    public Sun(Player player)
     {
         lightSystemBehaviour = new LightSystemBehaviour();
 
-        Init(player, sunFlare);
+        Init(player);
     }
 
 
-    private void Init(Player player, Flare sunFlare)
+    private void Init(Player player)
     {
         // Sun
         sunObj = new GameObject();
@@ -33,7 +33,7 @@ public class Sun
         sunObj.AddComponent<Light>();
         sunObj.AddComponent<LensFlare>();
         lensFlare = sunObj.GetComponent<LensFlare>();
-        lensFlare.flare = sunFlare;
+        lensFlare.flare = (Flare)Resources.Load("LightFlares/50mm Zoom");
         
         sunObj.light.type = LightType.Directional;
         sunObj.light.shadows = LightShadows.Hard;

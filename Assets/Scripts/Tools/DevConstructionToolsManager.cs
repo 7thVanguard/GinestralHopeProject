@@ -59,7 +59,7 @@ public class DevConstructionToolsManager
         {
             if (GameFlow.selectedTool == GameFlow.SelectedTool.LIGHT)
 			    EmiterToolManager.Place(world, player, mainCamera);
-            else if (GameFlow.selectedTool == GameFlow.SelectedTool.MINE)
+            else if (GameFlow.selectedTool == GameFlow.SelectedTool.VOXEL)
                 MineVoxelsToolManager.Place(world, player, mainCamera);
             else if (GameFlow.selectedTool == GameFlow.SelectedTool.GEOMETRY)
                 GeometryToolManager.Place(world, player, mainCamera);
@@ -75,7 +75,7 @@ public class DevConstructionToolsManager
 
     private void Cancel()
     {
-        if (GameFlow.selectedTool == GameFlow.SelectedTool.MINE)
+        if (GameFlow.selectedTool == GameFlow.SelectedTool.VOXEL)
             MineVoxelsToolManager.Cancel();
         else if (GameFlow.selectedTool == GameFlow.SelectedTool.INTERACTIVE)
             GadgetsToolManager.Cancel();
@@ -86,7 +86,7 @@ public class DevConstructionToolsManager
 
     private void Detect(World world, Player player, MainCamera mainCamera)
     {
-        if (GameFlow.selectedTool == GameFlow.SelectedTool.MINE)
+        if (GameFlow.selectedTool == GameFlow.SelectedTool.VOXEL)
             MineVoxelsToolManager.Detect(world, player, mainCamera);
         else if (GameFlow.selectedTool == GameFlow.SelectedTool.INTERACTIVE)
             GadgetsToolManager.Detect(world, player, mainCamera);

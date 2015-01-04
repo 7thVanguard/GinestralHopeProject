@@ -27,211 +27,28 @@ public class DeveloperHUD
     {
         // Set the mouse position in the same direction of the textures
         mousePosition = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
-
-        //+ Lateral panel
-        // Sun icon
-        GUI.DrawTextureWithTexCoords
-            (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, lateralButtonSize, lateralButtonSize),
-            developerAtlas,
-            new Rect(1 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
-        // Voxels icon
-        GUI.DrawTextureWithTexCoords
-            (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, lateralButtonSize, lateralButtonSize),
-            developerAtlas,
-            new Rect(3 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
-        // Gadgets icon
-        GUI.DrawTextureWithTexCoords
-            (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, lateralButtonSize, lateralButtonSize),
-            developerAtlas,
-            new Rect(4 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
-        // Enemies icon
-        GUI.DrawTextureWithTexCoords
-            (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, lateralButtonSize, lateralButtonSize),
-            developerAtlas,
-            new Rect(5 / 8f, 7 / 8f, 1 / 8f, 1 / 8f));
-
-        //? Tool Control
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            if (Input.GetKeyUp(KeyCode.Mouse0))
-            {
-                if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                    GameFlow.selectedTool = GameFlow.SelectedTool.LIGHT;
-                else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                    GameFlow.selectedTool = GameFlow.SelectedTool.MINE;
-                else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                    GameFlow.selectedTool = GameFlow.SelectedTool.INTERACTIVE;
-                else if (ButtonPressed(new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                    GameFlow.selectedTool = GameFlow.SelectedTool.ENEMY;
-            }
-        }
-
         
         //+ Lower pannel
-        switch (GameFlow.selectedTool)
+        if (GameFlow.selectedTool == GameFlow.SelectedTool.VOXEL)
         {
-            //+ Light
-            case GameFlow.SelectedTool.LIGHT:
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                // Draw textures
+                GUI.DrawTexture(new Rect(0, Screen.height - atlasLength, atlasLength, atlasLength), mineAtlas.mainTexture);
+
+                if (Input.GetKeyUp(KeyCode.Mouse0))
                 {
-                    // Selection
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 10 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
+                    //? SubTool Control
+                    if (ButtonPressed(new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
+                        GameFlow.developerMineTools = GameFlow.DeveloperMineTools.SINGLE;
+                    else if (ButtonPressed(new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
+                        GameFlow.developerMineTools = GameFlow.DeveloperMineTools.ORTOEDRIC;
 
-                    // Tools
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(0 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
-
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(1 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
-
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 60 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(2 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
-
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 70 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(3 / 8f, 6 / 8f, 1 / 8f, 1 / 8f));
+                    //! Textures Control
+                    if (ButtonPressed(new Rect(0, Screen.height - atlasLength, atlasLength, atlasLength), mousePosition))
+                        SelectTexture(new Rect(0, Screen.height - atlasLength, atlasLength, atlasLength), mousePosition);
                 }
-                break;
-            //+ Mine
-            case GameFlow.SelectedTool.MINE:
-                {
-                    // Selection
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 18 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
-
-                    // Tools
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(0 / 8f, 4 / 8f, 1 / 8f, 1 / 8f));
-
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(1 / 8f, 4 / 8f, 1 / 8f, 1 / 8f));
-
-
-                    switch (GameFlow.developerMineTools)
-                    {
-                        case GameFlow.DeveloperMineTools.SINGLE:
-                            {
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
-                            }
-                            break;
-                        case GameFlow.DeveloperMineTools.ORTOEDRIC:
-                            {
-                                GUI.DrawTextureWithTexCoords
-                                    (new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize),
-                                    developerAtlas,
-                                    new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-
-
-                    if (Input.GetKey(KeyCode.LeftControl))
-                    {
-                        // Draw textures
-                        GUI.DrawTexture(new Rect(0, Screen.height - atlasLength, atlasLength, atlasLength), mineAtlas.mainTexture);
-
-                        if (Input.GetKeyUp(KeyCode.Mouse0))
-                        {
-                            //? SubTool Control
-                            if (ButtonPressed(new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                                GameFlow.developerMineTools = GameFlow.DeveloperMineTools.SINGLE;
-                            else if (ButtonPressed(new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                                GameFlow.developerMineTools = GameFlow.DeveloperMineTools.ORTOEDRIC;
-
-                            //! Textures Control
-                            if (ButtonPressed(new Rect(0, Screen.height - atlasLength, atlasLength, atlasLength), mousePosition))
-                                SelectTexture(new Rect(0, Screen.height - atlasLength, atlasLength, atlasLength), mousePosition);
-                        }
-
-                        // Draw selected texture
-                        GUI.DrawTextureWithTexCoords(new Rect(textureSelection.x, textureSelection.y, atlasLength / 8, atlasLength / 8),
-                                                        developerAtlas,
-                                                        new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
-                    }
-                }
-                break;
-            //+ Gadget
-            case GameFlow.SelectedTool.INTERACTIVE:
-                {
-                    // Selection
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 26 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
-
-                    // Gadgets
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(0, Screen.height * 3 / 8, Screen.height * 5 / 32, Screen.height * 5 / 32),
-                        developerAtlas,
-                        new Rect(0 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
-
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.height * 5 / 32, Screen.height * 3 / 8, Screen.height * 5 / 32, Screen.height * 5 / 32),
-                        developerAtlas,
-                        new Rect(1 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
-
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.height * 10 / 32, Screen.height * 3 / 8, Screen.height * 5 / 32, Screen.height * 5 / 32),
-                        developerAtlas,
-                        new Rect(2 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
-
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.height * 15 / 32, Screen.height * 3 / 8, Screen.height * 5 / 32, Screen.height * 5 / 32),
-                        developerAtlas,
-                        new Rect(3 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
-
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(0, Screen.height * 3 / 8 + Screen.height * 5 / 32, Screen.height * 5 / 32, Screen.height * 5 / 32),
-                        developerAtlas,
-                        new Rect(4 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
-
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.height * 5 / 32, Screen.height * 3 / 8 + Screen.height * 5 / 32, Screen.height * 5 / 32, Screen.height * 5 / 32),
-                        developerAtlas,
-                        new Rect(5 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
-
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.height * 10 / 32, Screen.height * 3 / 8 + Screen.height * 5 / 32, Screen.height * 5 / 32, Screen.height * 5 / 32),
-                        developerAtlas,
-                        new Rect(6 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
-
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.height * 15 / 32, Screen.height * 3 / 8 + Screen.height * 5 / 32, Screen.height * 5 / 32, Screen.height * 5 / 32),
-                        developerAtlas,
-                        new Rect(7 / 8f, 3 / 8f, 1 / 8f, 1 / 8f));
-                }
-                break;
-            //+ Enemy
-            case GameFlow.SelectedTool.ENEMY:
-                {
-                    GUI.DrawTextureWithTexCoords
-                        (new Rect(Screen.width * 92f / 100, Screen.height * 34 / 50, lateralButtonSize, lateralButtonSize),
-                        developerAtlas,
-                        new Rect(7 / 8f, 0 / 8f, 1 / 8f, 1 / 8f));
-                }
-                break;
-            default:
-                break;
+            }
         }
     }
 
