@@ -194,6 +194,13 @@ public class GameSerializer
                                             actualNumber++;
                                         else
                                         {
+                                            if (actualName == "Sand Way")
+                                                actualName = "P1(0, 7)";
+                                            else if (actualName == "Little Rock")
+                                                actualName = "P1(0, 6)";
+                                            else if (actualName == "Large Rock")
+                                                actualName = "P1(1, 6)";
+
                                             voxelStructSave.name = actualName;
                                             voxelStructSave.number = actualNumber;
                                             VoxelSave.Add(voxelStructSave);

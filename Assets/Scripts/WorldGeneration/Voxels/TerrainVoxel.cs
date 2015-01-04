@@ -183,7 +183,7 @@ public class TerrainVoxel
             {
                 VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, x, y, 0);
 
-                if (detVoxel.voxelState == Voxel.VoxelState.SOLID)
+                if (detVoxel.state == VoxelState.SOLID)
                 {
                     vertexPosition.x = 2 * x;
                     vertexPosition.y = 2 * y;
@@ -200,7 +200,7 @@ public class TerrainVoxel
             {
                 VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, x, 0, z);
 
-                if (detVoxel.voxelState == Voxel.VoxelState.SOLID)
+                if (detVoxel.state == VoxelState.SOLID)
                 {
                     vertexPosition.x = 2 * x;
                     vertexPosition.z = 2 * z;
@@ -217,7 +217,7 @@ public class TerrainVoxel
             {
                 VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, 0, y, z);
 
-                if (detVoxel.voxelState == Voxel.VoxelState.SOLID)
+                if (detVoxel.state == VoxelState.SOLID)
                 {
                     vertexPosition.y = 2 * y;
                     vertexPosition.z = 2 * z;
@@ -234,7 +234,7 @@ public class TerrainVoxel
             {
                 VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
 
-                if (detVoxel.voxelState == Voxel.VoxelState.SOLID)
+                if (detVoxel.state == VoxelState.SOLID)
                 {
                     vertexPosition.x = 2 * x;
                     vertexPosition.y = 2 * y;
@@ -264,7 +264,7 @@ public class TerrainVoxel
         detVoxel = voxel;
 
         VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
-        if (detVoxel.entityType == Voxel.EntityType.TERRAIN)
+        if (detVoxel.type == VoxelType.TERRAIN)
         {
             if (VoxelLib.VoxelExists(world, detChunk, detVoxel, 0, 1, 0) == true)
             {
@@ -299,10 +299,10 @@ public class TerrainVoxel
 
 
             // UV
-            UV.Add(new Vector2(detVoxel.UVStart.x, detVoxel.UVStart.y + world.textureSize));
-            UV.Add(new Vector2(detVoxel.UVStart.x + world.textureSize, detVoxel.UVStart.y + world.textureSize));
-            UV.Add(new Vector2(detVoxel.UVStart.x + world.textureSize, detVoxel.UVStart.y));
-            UV.Add(new Vector2(detVoxel.UVStart.x, detVoxel.UVStart.y));
+            UV.Add(new Vector2(detVoxel.UVStartTop.x, detVoxel.UVStartTop.y + world.textureSize));
+            UV.Add(new Vector2(detVoxel.UVStartTop.x + world.textureSize, detVoxel.UVStartTop.y + world.textureSize));
+            UV.Add(new Vector2(detVoxel.UVStartTop.x + world.textureSize, detVoxel.UVStartTop.y));
+            UV.Add(new Vector2(detVoxel.UVStartTop.x, detVoxel.UVStartTop.y));
 
             Triangles.Add(vertexCount + 0);
             Triangles.Add(vertexCount + 2);

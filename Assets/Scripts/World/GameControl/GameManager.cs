@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         // Basic variables, activated in PreInit
-        //VoxelsList.Init();                                                                                  // Initialize Voxels
+        VoxelsList.Init();                                                                                  // Initialize Voxels
 
 
         //+ Object Init

@@ -14,23 +14,12 @@ public struct VoxelData
     public string name;
     public string atlasName;
 
-    public float topUVBeginX;
-    public float topUVBeginY;
-
-    public float rightUVBeginX;
-    public float rightUVBeginY;
-
-    public float frontUVBeginX;
-    public float frontUVBeginY;
-
-    public float leftUVBeginX;
-    public float leftUVBeginY;
-
-    public float backUVBeginX;
-    public float backUVBeginY;
-
-    public float botUVBeginX;
-    public float botUVBeginY;
+    public Vector2 topUVBegin;
+    public Vector2 rightUVBegin;
+    public Vector2 frontUVBegin;
+    public Vector2 leftUVBegin;
+    public Vector2 backUVBegin;
+    public Vector2 botUVBegin;
 
     public bool topTransparent;
     public bool rightTransparent;
@@ -52,15 +41,27 @@ public class VoxelsList
 
     public static void Init()
     {
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.TERRAIN, "Air", "Faeri", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        selectedVoxel = InitVoxel(VoxelState.GAS, VoxelType.AIR, "Air", "None", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                   true, true, true, true, true, true,
-                                  10);
+                                  0);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.TERRAIN, "Large Rock", "Faeri", 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7,
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "P1(0, 7)", "P1", 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7,
                                   false, false, false, false, false, false,
                                   10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "P1(0, 6)", "P1", 0, 6, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7,
+                                  false, false, false, false, false, false,
+                                  10);
+        dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "P1(1, 6)", "P1", 1, 6, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7,
+                                  false, false, false, false, false, false,
+                                  10);
+        dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+
     }
 
 
@@ -77,23 +78,23 @@ public class VoxelsList
         voxel.name = name;
         voxel.atlasName = atlasName;
 
-        voxel.topUVBeginX = topX * 0.125f;
-        voxel.topUVBeginY = topY * 0.125f;
+        voxel.topUVBegin.x = topX * 0.125f;
+        voxel.topUVBegin.y = topY * 0.125f;
 
-        voxel.rightUVBeginX = rightX;
-        voxel.rightUVBeginY = rightY;
+        voxel.rightUVBegin.x = rightX * 0.125f;
+        voxel.rightUVBegin.y = rightY * 0.125f;
 
-        voxel.frontUVBeginX = frontX;
-        voxel.frontUVBeginY = frontY;
+        voxel.frontUVBegin.x = frontX * 0.125f;
+        voxel.frontUVBegin.y = frontY * 0.125f;
 
-        voxel.leftUVBeginX = leftX;
-        voxel.leftUVBeginY = leftY;
+        voxel.leftUVBegin.x = leftX * 0.125f;
+        voxel.leftUVBegin.y = leftY * 0.125f;
 
-        voxel.backUVBeginX = backX;
-        voxel.backUVBeginY = backY;
+        voxel.backUVBegin.x = backX * 0.125f;
+        voxel.backUVBegin.y = backY * 0.125f;
 
-        voxel.botUVBeginX = botX;
-        voxel.botUVBeginY = botY;
+        voxel.botUVBegin.x = botX * 0.125f;
+        voxel.botUVBegin.y = botY * 0.125f;
 
         voxel.topTransparent = topTrans;
         voxel.rightTransparent = rightTrans;

@@ -192,10 +192,10 @@ public class CubicVoxel : MonoBehaviour
     private static void SetVertexComponents(World world, List<Vector2> UV, List<int> Triangles, ref int vertexCount)
     {
         // UV
-        UV.Add(new Vector2(detVoxel.UVStart.x, detVoxel.UVStart.y + world.textureSize));
-        UV.Add(new Vector2(detVoxel.UVStart.x + world.textureSize, detVoxel.UVStart.y + world.textureSize));
-        UV.Add(new Vector2(detVoxel.UVStart.x + world.textureSize, detVoxel.UVStart.y));
-        UV.Add(new Vector2(detVoxel.UVStart.x, detVoxel.UVStart.y));
+        UV.Add(new Vector2(detVoxel.UVStartTop.x, detVoxel.UVStartTop.y + world.textureSize));
+        UV.Add(new Vector2(detVoxel.UVStartTop.x + world.textureSize, detVoxel.UVStartTop.y + world.textureSize));
+        UV.Add(new Vector2(detVoxel.UVStartTop.x + world.textureSize, detVoxel.UVStartTop.y));
+        UV.Add(new Vector2(detVoxel.UVStartTop.x, detVoxel.UVStartTop.y));
 
         // Triangles
         Triangles.Add(vertexCount + 0);

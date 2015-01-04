@@ -168,7 +168,7 @@ public static class TerrainVoxelsToolManager
         while (VoxelLib.VoxelExists(world, DevConstructionToolsManager.detChunk, DevConstructionToolsManager.detVoxel, 0, 1, 0))
         {
             VoxelLib.GetVoxel(world, ref DevConstructionToolsManager.detChunk, ref DevConstructionToolsManager.detVoxel, 0, 1, 0);
-            if (DevConstructionToolsManager.detVoxel.entityType != Voxel.EntityType.TERRAIN)
+            if (DevConstructionToolsManager.detVoxel.type != VoxelType.TERRAIN)
             {
                 VoxelLib.GetVoxel(world, ref DevConstructionToolsManager.detChunk, ref DevConstructionToolsManager.detVoxel, 0, -1, 0);
                 break;
@@ -176,7 +176,7 @@ public static class TerrainVoxelsToolManager
         }
         // Detects when all the vertices of the voxel are at max height, but we detect the upper one
         if (VoxelLib.VoxelExists(world, DevConstructionToolsManager.detChunk, DevConstructionToolsManager.detVoxel, 0, -1, 0))
-            if (DevConstructionToolsManager.detVoxel.entityType != Voxel.EntityType.TERRAIN)
+            if (DevConstructionToolsManager.detVoxel.type != VoxelType.TERRAIN)
                 VoxelLib.GetVoxel(world, ref DevConstructionToolsManager.detChunk, ref DevConstructionToolsManager.detVoxel, 0, -1, 0);
     }
 
