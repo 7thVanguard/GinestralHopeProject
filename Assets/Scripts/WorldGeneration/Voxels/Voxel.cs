@@ -118,7 +118,7 @@ public class Voxel
                     botTransparent = true;
                 }
                 break;
-            case "Sand Way":
+            case "P1(0, 7)":
                 {
                     type = VoxelType.TERRAIN;
                     state = VoxelState.SOLID;
@@ -128,7 +128,7 @@ public class Voxel
                     blastResistance = 10;
                 }
                 break;
-            case "Little Rock":
+            case "P1(0, 6)":
                 {
                     type = VoxelType.ORGANIC;
                     state = VoxelState.SOLID;
@@ -138,27 +138,20 @@ public class Voxel
                     blastResistance = 9;
                 }
                 break;
-            case "Large Rock":
+            case "P1(1, 6)":
                 {
-                    type = VoxelType.ORGANIC;
-                    state = VoxelState.SOLID;
+                    type = VoxelsList.dictionary[hashName].type;
+                    state = VoxelsList.dictionary[hashName].state;
 
-                    UVStartTop = new Vector2(1 * world.textureSize, 6 * world.textureSize);
+                    UVStartTop = VoxelsList.dictionary[hashName].topUVBegin;
 
                     blastResistance = 12;
-
-                    //type = VoxelsList.dictionary[hashName].type;
-                    //state = VoxelsList.dictionary[hashName].state;
-
-                    //UVStartTop = VoxelsList.dictionary[hashName].topUVBegin;
-
-                    //blastResistance = 12;
-                    //frontTransparent = VoxelsList.dictionary[hashName].frontTransparent;
-                    //rightTransparent = VoxelsList.dictionary[hashName].rightTransparent;
-                    //backTransparent = VoxelsList.dictionary[hashName].backTransparent;
-                    //leftTransparent = VoxelsList.dictionary[hashName].leftTransparent;
-                    //topTransparent = VoxelsList.dictionary[hashName].topTransparent;
-                    //botTransparent = VoxelsList.dictionary[hashName].botTransparent;
+                    frontTransparent = VoxelsList.dictionary[hashName].frontTransparent;
+                    rightTransparent = VoxelsList.dictionary[hashName].rightTransparent;
+                    backTransparent = VoxelsList.dictionary[hashName].backTransparent;
+                    leftTransparent = VoxelsList.dictionary[hashName].leftTransparent;
+                    topTransparent = VoxelsList.dictionary[hashName].topTransparent;
+                    botTransparent = VoxelsList.dictionary[hashName].botTransparent;
                 }
                 break;
             case "Medium Rock":
@@ -221,7 +214,7 @@ public class Voxel
                     blastResistance = 4;
                 }
                 break;
-            case "Dark Brown Wood":
+            case "P1(0, 5)":
                 {
                     type = VoxelType.ORGANIC;
                     state = VoxelState.SOLID;
