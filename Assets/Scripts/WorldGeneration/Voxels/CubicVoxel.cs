@@ -43,8 +43,7 @@ public class CubicVoxel : MonoBehaviour
 
 
     public static void FaceVertices
-        (World world, IntVector3 chunkID, IntVector3 voxelID, List<Vector3> Vertices, List<Vector2> UV, List<int> Triangles,
-        ref int vertexCount)
+        (World world, IntVector3 chunkID, IntVector3 voxelID, List<Vector3> Vertices, List<Vector2> UV, List<int> Triangles, ref int vertexCount)
     {
         // Setting
         chunk = world.chunk[chunkID.x, chunkID.y, chunkID.z];
@@ -60,12 +59,7 @@ public class CubicVoxel : MonoBehaviour
 
 
         // Create the voxel using a displaced general location and the constant dimension marked as 0
-        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction + Vector3.right / 2, 0, 1, 1, ref vertexCount, rightFull);
-        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction + Vector3.forward / 2, 1, 1, 0, ref vertexCount, frontFull);
-        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction + Vector3.left / 2, 0, 1, 1, ref vertexCount, leftFull);
-        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction + Vector3.back / 2, 1, 1, 0, ref vertexCount, backFull);
-        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction + Vector3.up / 2, 1, 0, 1, ref vertexCount, topFull);
-        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction + Vector3.down / 2, 1, 0, 1, ref vertexCount, botFull);
+        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, ref vertexCount);
     }
 
 
@@ -86,22 +80,22 @@ public class CubicVoxel : MonoBehaviour
         detChunk = chunk;
         detVoxel = voxel;
 
-        if (VoxelLib.VoxelExists(world, detChunk, detVoxel, x, y, z) == true)
+        if (VoxelLib.VoxelExists(world, detChunk, detVoxel, x, y, z))
         {
             VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
 
             if (x > 0)
-                transparency = detVoxel.leftTransparent;
+                transparency = TransparencyCalculation(world, detVoxel.leftTransparent);
             else if (x < 0)
-                transparency = detVoxel.rightTransparent;
+                transparency = TransparencyCalculation(world, detVoxel.rightTransparent);
             else if (y > 0)
-                transparency = detVoxel.botTransparent;
+                transparency = TransparencyCalculation(world, detVoxel.botTransparent);
             else if (y < 0)
-                transparency = detVoxel.topTransparent;
+                transparency = TransparencyCalculation(world, detVoxel.topTransparent);
             else if (z > 0)
-                transparency = detVoxel.backTransparent;
+                transparency = TransparencyCalculation(world, detVoxel.backTransparent);
             else if (z < 0)
-                transparency = detVoxel.frontTransparent;
+                transparency = TransparencyCalculation(world, detVoxel.frontTransparent);
 
             if (transparency)
                 return false;
@@ -113,8 +107,28 @@ public class CubicVoxel : MonoBehaviour
     }
 
 
-    private static void PlaceVertices(World world, List<Vector3> Vertices, List<Vector2> UV, List<int> Triangles, Vector3 genLoc,
-                                    int x, int y, int z, ref int vertexCount, bool voxelFull)
+    private static bool TransparencyCalculation(World world, bool relatedTransparent)
+    {
+        if (detVoxel.type != VoxelType.CUBIC)
+        {
+            if (VoxelLib.VoxelExists(world, detChunk, detVoxel, 0, 1, 0))
+            {
+                VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, 0, 1, 0);
+
+                if (detVoxel.state == VoxelState.SOLID)
+                    return false;
+                else
+                    return true;
+            }
+            else
+                return true;
+        }
+        else
+            return detVoxel.leftTransparent;
+    }
+
+
+    private static void PlaceVertices(World world, List<Vector3> Vertices, List<Vector2> UV, List<int> Triangles, Vector3 genLoc, ref int vertexCount)
     {
         detChunk = chunk;
         detVoxel = voxel;
@@ -123,10 +137,10 @@ public class CubicVoxel : MonoBehaviour
         if (!rightFull)
         {
             // Vertices
-            Vertices.Add(new Vector3(genLoc.x + 0.5f * x, genLoc.y - 0.5f * y, genLoc.z - 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x + 0.5f * x, genLoc.y - 0.5f * y, genLoc.z + 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x + 0.5f * x, genLoc.y + 0.5f * y, genLoc.z + 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x + 0.5f * x, genLoc.y + 0.5f * y, genLoc.z - 0.5f * z));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y - 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y - 0.5f, genLoc.z + 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y + 0.5f, genLoc.z - 0.5f));
 
             SetVertexComponents(world, UV, Triangles, ref vertexCount);
         }
@@ -134,10 +148,10 @@ public class CubicVoxel : MonoBehaviour
         if (!frontFull)
         {
             // Vertices
-            Vertices.Add(new Vector3(genLoc.x + 0.5f * x, genLoc.y - 0.5f * y, genLoc.z + 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x - 0.5f * x, genLoc.y - 0.5f * y, genLoc.z + 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x - 0.5f * x, genLoc.y + 0.5f * y, genLoc.z + 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x + 0.5f * x, genLoc.y + 0.5f * y, genLoc.z + 0.5f * z));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y - 0.5f, genLoc.z + 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y - 0.5f, genLoc.z + 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
 
             SetVertexComponents(world, UV, Triangles, ref vertexCount);
         }
@@ -145,10 +159,10 @@ public class CubicVoxel : MonoBehaviour
         if (!leftFull)
         {
             // Vertices
-            Vertices.Add(new Vector3(genLoc.x - 0.5f * x, genLoc.y - 0.5f * y, genLoc.z + 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x - 0.5f * x, genLoc.y - 0.5f * y, genLoc.z - 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x - 0.5f * x, genLoc.y + 0.5f * y, genLoc.z - 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x - 0.5f * x, genLoc.y + 0.5f * y, genLoc.z + 0.5f * z));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y - 0.5f, genLoc.z + 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y - 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y + 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
 
             SetVertexComponents(world, UV, Triangles, ref vertexCount);
         }
@@ -156,10 +170,10 @@ public class CubicVoxel : MonoBehaviour
         if (!backFull)
         {
             // Vertices
-            Vertices.Add(new Vector3(genLoc.x - 0.5f * x, genLoc.y - 0.5f * y, genLoc.z - 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x + 0.5f * x, genLoc.y - 0.5f * y, genLoc.z - 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x + 0.5f * x, genLoc.y + 0.5f * y, genLoc.z - 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x - 0.5f * x, genLoc.y + 0.5f * y, genLoc.z - 0.5f * z));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y - 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y - 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y + 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y + 0.5f, genLoc.z - 0.5f));
 
             SetVertexComponents(world, UV, Triangles, ref vertexCount);
         }
@@ -167,10 +181,10 @@ public class CubicVoxel : MonoBehaviour
         if (!topFull)
         {
             // Vertices
-            Vertices.Add(new Vector3(genLoc.x - 0.5f * x, genLoc.y + 0.5f * y, genLoc.z - 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x + 0.5f * x, genLoc.y + 0.5f * y, genLoc.z - 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x + 0.5f * x, genLoc.y + 0.5f * y, genLoc.z + 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x - 0.5f * x, genLoc.y + 0.5f * y, genLoc.z + 0.5f * z));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y + 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y + 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
 
             SetVertexComponents(world, UV, Triangles, ref vertexCount);
         }
@@ -178,10 +192,10 @@ public class CubicVoxel : MonoBehaviour
         if (!botFull)
         {
             // Vertices
-            Vertices.Add(new Vector3(genLoc.x + 0.5f * x, genLoc.y - 0.5f * y, genLoc.z + 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x - 0.5f * x, genLoc.y - 0.5f * y, genLoc.z + 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x - 0.5f * x, genLoc.y - 0.5f * y, genLoc.z - 0.5f * z));
-            Vertices.Add(new Vector3(genLoc.x + 0.5f * x, genLoc.y - 0.5f * y, genLoc.z - 0.5f * z));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y - 0.5f, genLoc.z + 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y - 0.5f, genLoc.z + 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y - 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y - 0.5f, genLoc.z - 0.5f));
 
             SetVertexComponents(world, UV, Triangles, ref vertexCount);
         }

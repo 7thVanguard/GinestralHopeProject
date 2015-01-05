@@ -120,7 +120,7 @@ public class OrganicVoxel
         detChunk = chunk;
         detVoxel = voxel;
 
-        if (VoxelLib.VoxelExists(world, detChunk, detVoxel, x, y, z) == true)
+        if (VoxelLib.VoxelExists(world, detChunk, detVoxel, x, y, z))
         {
             VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
 

@@ -78,21 +78,6 @@ public class TerrainVoxel
         botBackLeftVertex = VertexPosition(world, -1, -1, -1, leftFull, botFull, backFull);
 
 
-        // Check if the voxel beside is a visible terrain voxel and after that check if covers this voxel
-        if (rightFull)
-            rightFull = NerbyTerrainCalculation(world, 1, 0, 0);
-        if (frontFull)
-            frontFull = NerbyTerrainCalculation(world, 0, 0, 1);
-        if (leftFull)
-            leftFull = NerbyTerrainCalculation(world, -1, 0, 0);
-        if (backFull)
-            backFull = NerbyTerrainCalculation(world, 0, 0, -1);
-        if (topFull)
-            topFull = NerbyTerrainCalculation(world, 0, 1, 0);
-        if (botFull)
-            botFull = NerbyTerrainCalculation(world, 0, -1, 0);
-
-
         // Create the voxel depending ont he vertices we found before
         PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botBackRightVertex, botFrontRightVertex, topFrontRightVertex, topBackRightVertex, ref vertexCount, rightFull);
         PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botFrontRightVertex, botFrontLeftVertex, topFrontLeftVertex, topFrontRightVertex, ref vertexCount, frontFull);
@@ -255,30 +240,6 @@ public class TerrainVoxel
             vertexPosition.z = 0;
 
         return vertexPosition;
-    }
-
-
-    private static bool NerbyTerrainCalculation(World world, int x, int y, int z)
-    {
-        detChunk = chunk;
-        detVoxel = voxel;
-
-        VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
-        if (detVoxel.type == VoxelType.TERRAIN)
-        {
-            if (VoxelLib.VoxelExists(world, detChunk, detVoxel, 0, 1, 0) == true)
-            {
-                VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, 0, 1, 0);
-
-                if (detVoxel.botTransparent)
-                    return false;
-                else
-                    return true;
-            }
-            else
-                return false;
-        }
-        return true;
     }
 
 

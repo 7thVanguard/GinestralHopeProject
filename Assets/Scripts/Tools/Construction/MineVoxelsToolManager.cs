@@ -95,7 +95,7 @@ public class MineVoxelsToolManager
 
                     world.chunk[DevConstructionToolsManager.detChunk.numID.x, DevConstructionToolsManager.detChunk.numID.y, DevConstructionToolsManager.detChunk.numID.z]
                         .voxel[DevConstructionToolsManager.detVoxel.numID.x, DevConstructionToolsManager.detVoxel.numID.y, DevConstructionToolsManager.detVoxel.numID.z]
-                        = new Voxel(world, DevConstructionToolsManager.detVoxel.numID, DevConstructionToolsManager.detChunk.numID, GameFlow.selectedMine);
+                        = new Voxel(world, DevConstructionToolsManager.detVoxel.numID, DevConstructionToolsManager.detChunk.numID, GameFlow.selectedVoxel);
 
                     // Reset
                     LChunk.Reset(world, DevConstructionToolsManager.detChunk, DevConstructionToolsManager.detVoxel);
@@ -126,7 +126,7 @@ public class MineVoxelsToolManager
                         DevConstructionToolsManager.detVoxel = DevConstructionToolsManager.voxel;
 
                         // Places the selectet voxel in the selected ones
-                        OrtoedricResolution(world, GameFlow.selectedMine);
+                        OrtoedricResolution(world, GameFlow.selectedVoxel);
 
                         // End of fase 2 of multi selection tool
                         DevConstructionToolsManager.selected = false;

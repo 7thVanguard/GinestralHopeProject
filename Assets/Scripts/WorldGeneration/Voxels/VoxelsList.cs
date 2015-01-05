@@ -41,12 +41,7 @@ public class VoxelsList
 
     public static void Init()
     {
-        selectedVoxel = InitVoxel(VoxelState.GAS, VoxelType.AIR, "Air", "None", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                  true, true, true, true, true, true,
-                                  0);
-        dictionary.Add(selectedVoxel.name, selectedVoxel);
-
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "P1(0, 7)", "P1", 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7,
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.TERRAIN, "P1(0, 7)", "P1", 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7,
                                   false, false, false, false, false, false,
                                   10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
@@ -61,12 +56,10 @@ public class VoxelsList
                                   10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "P1(0, 5)", "P1", 0, 5, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7,
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.CUBIC, "P1(0, 5)", "P1", 0, 5, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7,
                                   false, false, false, false, false, false,
                                   10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
-
-
     }
 
 
@@ -77,8 +70,8 @@ public class VoxelsList
     {
         VoxelData voxel = new VoxelData();
 
-        voxel.state = VoxelState.SOLID;
-        voxel.type = VoxelType.TERRAIN;
+        voxel.state = state;
+        voxel.type = type;
 
         voxel.name = name;
         voxel.atlasName = atlasName;
