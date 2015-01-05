@@ -34,9 +34,9 @@ public class CubicVoxel : MonoBehaviour
 
         // Detect the sorrounding blocks
         rightFull = VisibilityCalculation(world, 1, 0, 0);
-        frontFull = VisibilityCalculation(world, 0, 0, 1);
+        frontFull = VisibilityCalculation(world, 0, 0, -1);
         leftFull = VisibilityCalculation(world, -1, 0, 0);
-        backFull = VisibilityCalculation(world, 0, 0, -1);
+        backFull = VisibilityCalculation(world, 0, 0, 1);
         topFull = VisibilityCalculation(world, 0, 1, 0);
         botFull = VisibilityCalculation(world, 0, -1, 0);
     }
@@ -89,13 +89,13 @@ public class CubicVoxel : MonoBehaviour
             else if (x < 0)
                 transparency = TransparencyCalculation(world, detVoxel.rightTransparent);
             else if (y > 0)
-                transparency = TransparencyCalculation(world, detVoxel.botTransparent);
+                transparency = detVoxel.botTransparent;
             else if (y < 0)
-                transparency = TransparencyCalculation(world, detVoxel.topTransparent);
+                transparency = detVoxel.topTransparent;
             else if (z > 0)
-                transparency = TransparencyCalculation(world, detVoxel.backTransparent);
-            else if (z < 0)
                 transparency = TransparencyCalculation(world, detVoxel.frontTransparent);
+            else if (z < 0)
+                transparency = TransparencyCalculation(world, detVoxel.backTransparent);
 
             if (transparency)
                 return false;
@@ -109,7 +109,7 @@ public class CubicVoxel : MonoBehaviour
 
     private static bool TransparencyCalculation(World world, bool relatedTransparent)
     {
-        if (detVoxel.type != VoxelType.CUBIC)
+        if (detVoxel.type != VoxelType.CUBIC && detVoxel.state == VoxelState.SOLID)
         {
             if (VoxelLib.VoxelExists(world, detChunk, detVoxel, 0, 1, 0))
             {
@@ -124,7 +124,7 @@ public class CubicVoxel : MonoBehaviour
                 return true;
         }
         else
-            return detVoxel.leftTransparent;
+            return relatedTransparent;
     }
 
 
@@ -142,20 +142,20 @@ public class CubicVoxel : MonoBehaviour
             Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
             Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y + 0.5f, genLoc.z - 0.5f));
 
-            SetVertexComponents(world, UV, Triangles, ref vertexCount);
+            SetVertexComponents(world, UV, Triangles, detVoxel.UVStartRight, ref vertexCount);
         }
 
         if (!frontFull)
         {
             // Vertices
-            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y - 0.5f, genLoc.z + 0.5f));
-            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y - 0.5f, genLoc.z + 0.5f));
-            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
-            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y - 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y - 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y + 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y + 0.5f, genLoc.z - 0.5f));
 
-            SetVertexComponents(world, UV, Triangles, ref vertexCount);
+            SetVertexComponents(world, UV, Triangles, detVoxel.UVStartFront, ref vertexCount);
         }
-
+                                                     
         if (!leftFull)
         {
             // Vertices
@@ -164,18 +164,18 @@ public class CubicVoxel : MonoBehaviour
             Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y + 0.5f, genLoc.z - 0.5f));
             Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
 
-            SetVertexComponents(world, UV, Triangles, ref vertexCount);
+            SetVertexComponents(world, UV, Triangles, detVoxel.UVStartLeft, ref vertexCount);
         }
 
         if (!backFull)
         {
             // Vertices
-            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y - 0.5f, genLoc.z - 0.5f));
-            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y - 0.5f, genLoc.z - 0.5f));
-            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y + 0.5f, genLoc.z - 0.5f));
-            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y + 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y - 0.5f, genLoc.z + 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y - 0.5f, genLoc.z + 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
 
-            SetVertexComponents(world, UV, Triangles, ref vertexCount);
+            SetVertexComponents(world, UV, Triangles, detVoxel.UVStartBack, ref vertexCount);
         }
 
         if (!topFull)
@@ -186,30 +186,30 @@ public class CubicVoxel : MonoBehaviour
             Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
             Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y + 0.5f, genLoc.z + 0.5f));
 
-            SetVertexComponents(world, UV, Triangles, ref vertexCount);
+            SetVertexComponents(world, UV, Triangles, detVoxel.UVStartTop, ref vertexCount);
         }
 
         if (!botFull)
         {
             // Vertices
-            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y - 0.5f, genLoc.z + 0.5f));
             Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y - 0.5f, genLoc.z + 0.5f));
-            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y - 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y - 0.5f, genLoc.z + 0.5f));
             Vertices.Add(new Vector3(genLoc.x + 0.5f, genLoc.y - 0.5f, genLoc.z - 0.5f));
+            Vertices.Add(new Vector3(genLoc.x - 0.5f, genLoc.y - 0.5f, genLoc.z - 0.5f));
 
-            SetVertexComponents(world, UV, Triangles, ref vertexCount);
+            SetVertexComponents(world, UV, Triangles, detVoxel.UVStartBot, ref vertexCount);
         }
             
     }
 
 
-    private static void SetVertexComponents(World world, List<Vector2> UV, List<int> Triangles, ref int vertexCount)
+    private static void SetVertexComponents(World world, List<Vector2> UV, List<int> Triangles, Vector2 UVToApply, ref int vertexCount)
     {
         // UV
-        UV.Add(new Vector2(detVoxel.UVStartTop.x, detVoxel.UVStartTop.y + world.textureSize));
-        UV.Add(new Vector2(detVoxel.UVStartTop.x + world.textureSize, detVoxel.UVStartTop.y + world.textureSize));
-        UV.Add(new Vector2(detVoxel.UVStartTop.x + world.textureSize, detVoxel.UVStartTop.y));
-        UV.Add(new Vector2(detVoxel.UVStartTop.x, detVoxel.UVStartTop.y));
+        UV.Add(new Vector2(UVToApply.x, UVToApply.y + world.textureSize));
+        UV.Add(new Vector2(UVToApply.x + world.textureSize, UVToApply.y + world.textureSize));
+        UV.Add(new Vector2(UVToApply.x + world.textureSize, UVToApply.y));
+        UV.Add(new Vector2(UVToApply.x, UVToApply.y));
 
         // Triangles
         Triangles.Add(vertexCount + 0);

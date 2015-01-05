@@ -75,7 +75,7 @@ public static class EventsLib
             for (int y = chunkInitPos.y; y <= chunkEndPos.y; y++)
                 for (int z = chunkInitPos.z; z <= chunkEndPos.z; z++)
                 {
-                    if (LChunk.ChunkExists(world, new IntVector3(x, y, z)))
+                    if (ChunkLib.ChunkExists(world, new IntVector3(x, y, z)))
                         world.chunksToReset.Add(new IntVector3(x, y, z));
                 }
     }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class World
 {
     // Chunks relative
-    public IntVector3 chunkNumber = new IntVector3(12, 3, 12);                  // Initial number of chunks
+    public IntVector3 chunkNumber = new IntVector3(1, 1, 1);                  // Initial number of chunks
     public IntVector3 chunkSize = new IntVector3(8, 8, 8);                      // Space occupied by a chunk
     public Chunk[, ,] chunk;                                                    // Chunks declaration
     public List<IntVector3> chunksToReset = new List<IntVector3>();             // Control the chunks we are going to reset
@@ -41,7 +41,6 @@ public class World
 
     // Materials relative
     public float textureSize = 0.125f;
-    public int maxSediment;                                                     // Terrain height
 
 
     // GUI
@@ -63,10 +62,9 @@ public class World
         enemies = prefabs.FindChild("Enemies");
         effects = prefabs.FindChild("Effects");
 
-        // Atlas relative
-        maxSediment = 12;
-
         Init(atlas);
+
+        worldObj.AddComponent<HUD>();
     }
 
 
@@ -79,8 +77,6 @@ public class World
         worldObj.transform.position = Vector3.zero;
         worldObj.transform.eulerAngles = Vector3.zero;
         worldObj.transform.localScale = Vector3.one;
-
-        worldObj.AddComponent<HUD>();
 
 
         //+ World creation

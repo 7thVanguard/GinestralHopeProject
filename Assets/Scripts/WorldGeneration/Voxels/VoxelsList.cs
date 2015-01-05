@@ -41,32 +41,37 @@ public class VoxelsList
 
     public static void Init()
     {
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.TERRAIN, "P1(0, 7)", "P1", 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7,
-                                  false, false, false, false, false, false,
-                                  10);
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.TERRAIN, "P1(0, 7)", "P1",
+                                    0, 7, false, 0, 5, false, 0, 5, false,
+                                    0, 5, false, 0, 5, false, 0, 5, false,
+                                    10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "P1(0, 6)", "P1", 0, 6, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7,
-                                  false, false, false, false, false, false,
-                                  10);
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "P1(0, 6)", "P1",
+                                    0, 6, false, 0, 5, false, 0, 5, false,
+                                    0, 5, false, 0, 5, false, 0, 5, false,
+                                    10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "P1(1, 6)", "P1", 1, 6, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7,
-                                  false, false, false, false, false, false,
-                                  10);
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "P1(1, 6)", "P1",
+                                    1, 6, false, 0, 5, false, 0, 5, false,
+                                    0, 5, false, 0, 5, false, 0, 5, false,
+                                    10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.CUBIC, "P1(0, 5)", "P1", 0, 5, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7,
-                                  false, false, false, false, false, false,
-                                  10);
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.CUBIC, "P1(0, 5)", "P1", 
+                                    0, 5, false, 0, 5, false, 0, 5, false, 
+                                    0, 5, false, 0, 5, false, 0, 5, false,
+                                    10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
     }
 
 
-    private static VoxelData InitVoxel(VoxelState state, VoxelType type, string name, string atlasName, int topX, float topY, float rightX, float rightY, 
-                                  float frontX, float frontY, float leftX, float leftY, float backX, float backY, float botX, float botY, 
-                                  bool topTrans, bool rightTrans, bool frontTrans, bool leftTrans, bool backTrans, bool botTrans,
-                                  int blastResis)
+    private static VoxelData InitVoxel(VoxelState state, VoxelType type, string name, string atlasName,
+                                        int topX, float topY, bool topTrans, float rightX, float rightY, bool rightTrans,
+                                        float frontX, float frontY, bool frontTrans, float leftX, float leftY, bool leftTrans,
+                                        float backX, float backY, bool backTrans, float botX, float botY, bool botTrans,
+                                        int blastResis)
     {
         VoxelData voxel = new VoxelData();
 

@@ -7,14 +7,6 @@ using System.IO;
 
 
 [System.Serializable]
-public struct VoxelStruct
-{
-    public string name;
-    public int number;
-}
-
-
-[System.Serializable]
 public struct PlayerStruct
 {
     public float positionX;
@@ -24,6 +16,26 @@ public struct PlayerStruct
     public float rotationY;
     public float rotationZ;
     public bool unlockedSkillFireBall;
+}
+
+
+[System.Serializable]
+public struct ChunkStruct
+{
+    public int chunkNumberX;
+    public int chunkNumberY;
+    public int chunkNumberZ;
+    public int chunkSizeX;
+    public int chunkSizeY;
+    public int chunkSizeZ;
+}
+
+
+[System.Serializable]
+public struct VoxelStruct
+{
+    public string name;
+    public int number;
 }
 
 
@@ -94,8 +106,9 @@ public struct EventStruct
 [System.Serializable]
 public class GameSerializer
 {
+    private PlayerStruct playerStructSave;
+    private ChunkStruct chunkStructSave;
     private VoxelStruct voxelStructSave;
-    private PlayerStruct playerStruct;
     private EmitterStruct emitterStruct;
     private GeometryStruct geometryStruct;
     private InteractiveStruct interactiveStruct;
@@ -110,6 +123,7 @@ public class GameSerializer
     private static List<EnemyStruct> EnemySave;
     private static List<EventStruct> EventSave;
 
+    // Voxel RLE Compression related
     private static string actualName;
     private static int actualNumber;
 
@@ -161,18 +175,28 @@ public class GameSerializer
         // Find all players in game
         GameObject playerOnGame = GameObject.FindGameObjectWithTag("Player");
 
-        playerStruct.positionX = playerOnGame.transform.position.x;
-        playerStruct.positionY = playerOnGame.transform.position.y + 0.05f;
-        playerStruct.positionZ = playerOnGame.transform.position.z;
-        playerStruct.rotationX = playerOnGame.transform.eulerAngles.x;
-        playerStruct.rotationY = playerOnGame.transform.eulerAngles.y;
-        playerStruct.rotationZ = playerOnGame.transform.eulerAngles.z;
-        playerStruct.unlockedSkillFireBall = player.unlockedSkillFireBall;
+        playerStructSave.positionX = playerOnGame.transform.position.x;
+        playerStructSave.positionY = playerOnGame.transform.position.y + 0.05f;
+        playerStructSave.positionZ = playerOnGame.transform.position.z;
+        playerStructSave.rotationX = playerOnGame.transform.eulerAngles.x;
+        playerStructSave.rotationY = playerOnGame.transform.eulerAngles.y;
+        playerStructSave.rotationZ = playerOnGame.transform.eulerAngles.z;
+        playerStructSave.unlockedSkillFireBall = player.unlockedSkillFireBall;
 
-        bf.Serialize(file, playerStruct);
+        bf.Serialize(file, playerStructSave);
 
 
-        //+ Voxels
+        //+ World
+        chunkStructSave.chunkNumberX = world.chunkNumber.x;
+        chunkStructSave.chunkNumberY = world.chunkNumber.y;
+        chunkStructSave.chunkNumberZ = world.chunkNumber.z;
+        chunkStructSave.chunkSizeX = world.chunkSize.x;
+        chunkStructSave.chunkSizeY = world.chunkSize.y;
+        chunkStructSave.chunkSizeZ = world.chunkSize.z;
+
+        bf.Serialize(file, chunkStructSave);
+
+
         bool firstVoxel = true;
 
         for (int cx = 0; cx < world.chunkNumber.x; cx++)
@@ -312,17 +336,40 @@ public class GameSerializer
     {
         //+ Player
         // Deserialize the players
-        playerStruct = (PlayerStruct)bf.Deserialize(file);
+        playerStructSave = (PlayerStruct)bf.Deserialize(file);
 
         GameObject playerOnGame = GameObject.FindGameObjectWithTag("Player");
 
-        playerOnGame.transform.position = new Vector3(playerStruct.positionX, playerStruct.positionY, playerStruct.positionZ);
-        playerOnGame.transform.eulerAngles = new Vector3(playerStruct.rotationX, playerStruct.rotationY, playerStruct.rotationZ);
-        player.unlockedSkillFireBall = playerStruct.unlockedSkillFireBall;
+        playerOnGame.transform.position = new Vector3(playerStructSave.positionX, playerStructSave.positionY, playerStructSave.positionZ);
+        playerOnGame.transform.eulerAngles = new Vector3(playerStructSave.rotationX, playerStructSave.rotationY, playerStructSave.rotationZ);
+        player.unlockedSkillFireBall = playerStructSave.unlockedSkillFireBall;
 
 
-        //+ Voxels
-        // Deserialize the emiters list
+        //+ World
+        // Deserialize the chunk struct
+        chunkStructSave = (ChunkStruct)bf.Deserialize(file);
+        // ------------------------------------------------------------------------------- Converter
+        if (world.chunkNumber.x != chunkStructSave.chunkNumberX || world.chunkSize.x != chunkStructSave.chunkSizeX ||
+            world.chunkNumber.y != chunkStructSave.chunkNumberY || world.chunkSize.y != chunkStructSave.chunkSizeY ||
+            world.chunkNumber.z != chunkStructSave.chunkNumberZ || world.chunkSize.z != chunkStructSave.chunkSizeZ)
+        {
+            world.chunkNumber.x = chunkStructSave.chunkNumberX;
+            world.chunkNumber.y = chunkStructSave.chunkNumberY;
+            world.chunkNumber.z = chunkStructSave.chunkNumberZ;
+            world.chunkSize.x = chunkStructSave.chunkSizeX;
+            world.chunkSize.y = chunkStructSave.chunkSizeY;
+            world.chunkSize.z = chunkStructSave.chunkSizeZ;
+
+            // Destroy existing emiters
+            GameObject[] chunks = GameObject.FindGameObjectsWithTag("Chunk");
+            foreach (GameObject chunkObj in chunks)
+                GameObject.Destroy(chunkObj);
+
+            world.chunk = new Chunk[chunkStructSave.chunkNumberX, chunkStructSave.chunkNumberY, chunkStructSave.chunkNumberZ];
+            world.Init((Material)Resources.Load("Atlas/TerrainAtlas/FaeriLightAtlasMat"));
+        }
+
+        // Deserialize the voxels list
         VoxelSave = (List<VoxelStruct>)bf.Deserialize(file);
 
         int listPosition = -1;
@@ -383,7 +430,7 @@ public class GameSerializer
 
 
         //+ Geometry
-        // Deserialize the gadgets list
+        // Deserialize the geometry list
         GeometrySave = (List<GeometryStruct>)bf.Deserialize(file);
 
         // Destroy existing gadgets

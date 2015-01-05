@@ -19,6 +19,11 @@ public class Voxel
 
     // Material relative
     public Vector2 UVStartTop;
+    public Vector2 UVStartRight;
+    public Vector2 UVStartFront;
+    public Vector2 UVStartLeft;
+    public Vector2 UVStartBack;
+    public Vector2 UVStartBot;
 
     // Intermediate height level (Terrain)
     public float backLeftVertex;
@@ -121,6 +126,11 @@ public class Voxel
             state = VoxelsList.dictionary[hashName].state;
 
             UVStartTop = VoxelsList.dictionary[hashName].topUVBegin;
+            UVStartRight = VoxelsList.dictionary[hashName].rightUVBegin;
+            UVStartFront = VoxelsList.dictionary[hashName].frontUVBegin;
+            UVStartLeft = VoxelsList.dictionary[hashName].leftUVBegin;
+            UVStartBack = VoxelsList.dictionary[hashName].backUVBegin;
+            UVStartBot = VoxelsList.dictionary[hashName].botUVBegin;
 
             blastResistance = 12;
             frontTransparent = VoxelsList.dictionary[hashName].frontTransparent;

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LChunk
+public class ChunkLib
 {
     public static bool ChunkExists(World world, Chunk detectionChunk, int x, int y, int z)
     {
@@ -55,31 +55,31 @@ public class LChunk
         world.chunksToReset.Add(new IntVector3(detectionChunk.numID.x, detectionChunk.numID.y, detectionChunk.numID.z));
 
         // x alone
-        if (LChunk.ChunkExists(world, detectionChunk, xSign, 0, 0))
+        if (ChunkLib.ChunkExists(world, detectionChunk, xSign, 0, 0))
             world.chunksToReset.Add(new IntVector3(detectionChunk.numID.x + xSign, detectionChunk.numID.y, detectionChunk.numID.z));
 
         // y alone
-        if (LChunk.ChunkExists(world, detectionChunk, 0, ySign, 0))
+        if (ChunkLib.ChunkExists(world, detectionChunk, 0, ySign, 0))
             world.chunksToReset.Add(new IntVector3(detectionChunk.numID.x, detectionChunk.numID.y + ySign, detectionChunk.numID.z));
 
         // z alone
-        if (LChunk.ChunkExists(world, detectionChunk, 0, 0, zSign))
+        if (ChunkLib.ChunkExists(world, detectionChunk, 0, 0, zSign))
             world.chunksToReset.Add(new IntVector3(detectionChunk.numID.x, detectionChunk.numID.y, detectionChunk.numID.z + zSign));
 
         // x and y
-        if (LChunk.ChunkExists(world, detectionChunk, xSign, ySign, 0))
+        if (ChunkLib.ChunkExists(world, detectionChunk, xSign, ySign, 0))
             world.chunksToReset.Add(new IntVector3(detectionChunk.numID.x + xSign, detectionChunk.numID.y + ySign, detectionChunk.numID.z));
 
         // x and z
-        if (LChunk.ChunkExists(world, detectionChunk, xSign, 0, zSign))
+        if (ChunkLib.ChunkExists(world, detectionChunk, xSign, 0, zSign))
             world.chunksToReset.Add(new IntVector3(detectionChunk.numID.x + xSign, detectionChunk.numID.y, detectionChunk.numID.z + zSign));
 
         // y and z
-        if (LChunk.ChunkExists(world, detectionChunk, 0, ySign, zSign))
+        if (ChunkLib.ChunkExists(world, detectionChunk, 0, ySign, zSign))
             world.chunksToReset.Add(new IntVector3(detectionChunk.numID.x, detectionChunk.numID.y + ySign, detectionChunk.numID.z + zSign));
 
         // x, y and z
-        if (LChunk.ChunkExists(world, detectionChunk, xSign, ySign, zSign))
+        if (ChunkLib.ChunkExists(world, detectionChunk, xSign, ySign, zSign))
             world.chunksToReset.Add(new IntVector3(detectionChunk.numID.x + xSign, detectionChunk.numID.y + ySign, detectionChunk.numID.z + zSign));
     }
 }

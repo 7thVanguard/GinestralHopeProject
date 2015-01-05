@@ -26,7 +26,7 @@ public class MineVoxelsToolManager
                         = new Voxel(world, DevConstructionToolsManager.detVoxel.numID, DevConstructionToolsManager.detChunk.numID, "Air");
 
                     // Reset
-                    LChunk.Reset(world, DevConstructionToolsManager.detChunk, DevConstructionToolsManager.detVoxel);
+                    ChunkLib.Reset(world, DevConstructionToolsManager.detChunk, DevConstructionToolsManager.detVoxel);
                 }
             }
         }
@@ -98,7 +98,7 @@ public class MineVoxelsToolManager
                         = new Voxel(world, DevConstructionToolsManager.detVoxel.numID, DevConstructionToolsManager.detChunk.numID, GameFlow.selectedVoxel);
 
                     // Reset
-                    LChunk.Reset(world, DevConstructionToolsManager.detChunk, DevConstructionToolsManager.detVoxel);
+                    ChunkLib.Reset(world, DevConstructionToolsManager.detChunk, DevConstructionToolsManager.detVoxel);
                 }
             }
         }
@@ -281,7 +281,7 @@ public class MineVoxelsToolManager
             for (int y = chunkInitY - 1; y <= chunkEndY + 1; y++)
                 for (int z = chunkInitZ - 1; z <= chunkEndZ + 1; z++)
                 {
-                    if (LChunk.ChunkExists(world, new IntVector3(x, y, z)))
+                    if (ChunkLib.ChunkExists(world, new IntVector3(x, y, z)))
                         world.chunksToReset.Add(new IntVector3(x, y, z));
                 }
     }

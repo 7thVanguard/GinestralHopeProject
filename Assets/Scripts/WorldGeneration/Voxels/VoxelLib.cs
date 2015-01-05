@@ -139,7 +139,7 @@ public static class VoxelLib
             for (int y = firstPosition.y; y <= lastPosition.y; y++)
                 for (int z = firstPosition.z; z <= lastPosition.z; z++)
                 {
-                    if (LChunk.ChunkExists(world, new IntVector3(x, y, z)))
+                    if (ChunkLib.ChunkExists(world, new IntVector3(x, y, z)))
                         world.chunksToReset.Add(new IntVector3(x, y, z));
                 }
     }

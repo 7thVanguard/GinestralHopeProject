@@ -78,13 +78,19 @@ public class TerrainVoxel
         botBackLeftVertex = VertexPosition(world, -1, -1, -1, leftFull, botFull, backFull);
 
 
-        // Create the voxel depending ont he vertices we found before
-        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botBackRightVertex, botFrontRightVertex, topFrontRightVertex, topBackRightVertex, ref vertexCount, rightFull);
-        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botFrontRightVertex, botFrontLeftVertex, topFrontLeftVertex, topFrontRightVertex, ref vertexCount, frontFull);
-        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botFrontLeftVertex, botBackLeftVertex, topBackLeftVertex, topFrontLeftVertex, ref vertexCount, leftFull);
-        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botBackLeftVertex, botBackRightVertex, topBackRightVertex, topBackLeftVertex, ref vertexCount, backFull);
-        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, topBackLeftVertex, topBackRightVertex, topFrontRightVertex, topFrontLeftVertex, ref vertexCount, topFull);
-        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botFrontLeftVertex, botFrontRightVertex, botBackRightVertex, botBackLeftVertex, ref vertexCount, botFull);
+        // Create the voxel depending on he vertices we found before
+        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botBackRightVertex, botFrontRightVertex, topFrontRightVertex, topBackRightVertex, 
+                        ref vertexCount, rightFull, detVoxel.UVStartRight);
+        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botFrontRightVertex, botFrontLeftVertex, topFrontLeftVertex, topFrontRightVertex,
+                        ref vertexCount, frontFull, detVoxel.UVStartFront);
+        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botFrontLeftVertex, botBackLeftVertex, topBackLeftVertex, topFrontLeftVertex,
+                        ref vertexCount, leftFull, detVoxel.UVStartLeft);
+        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botBackLeftVertex, botBackRightVertex, topBackRightVertex, topBackLeftVertex,
+                        ref vertexCount, backFull, detVoxel.UVStartBack);
+        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, topBackLeftVertex, topBackRightVertex, topFrontRightVertex, topFrontLeftVertex,
+                        ref vertexCount, topFull, detVoxel.UVStartTop);
+        PlaceVertices(world, Vertices, UV, Triangles, generalLoaction, botFrontLeftVertex, botFrontRightVertex, botBackRightVertex, botBackLeftVertex, 
+                        ref vertexCount, botFull, detVoxel.UVStartBot);
     }
 
 
@@ -243,8 +249,9 @@ public class TerrainVoxel
     }
 
 
-    private static void PlaceVertices(World world, List<Vector3> Vertices, List<Vector2> UV, List<int> Triangles, Vector3 genLoc,
-                                    Vector3 addPos1, Vector3 addPos2, Vector3 addPos3, Vector3 addPos4, ref int vertexCount, bool voxelFull)
+    private static void PlaceVertices(World world, List<Vector3> Vertices, List<Vector2> UV, List<int> Triangles,
+                                      Vector3 genLoc, Vector3 addPos1, Vector3 addPos2, Vector3 addPos3, Vector3 addPos4,
+                                      ref int vertexCount, bool voxelFull, Vector2 UVStart)
     {
         detChunk = chunk;
         detVoxel = voxel;
