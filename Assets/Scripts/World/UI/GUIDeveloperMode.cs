@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GUIDeveloperMode : MonoBehaviour 
 {
@@ -10,6 +11,8 @@ public class GUIDeveloperMode : MonoBehaviour
     private GameObject InteractiveUI;
     private GameObject EnemyUI;
     private GameObject EventUI;
+
+    private GameObject worldInfo;
 
     void Awake()
     {
@@ -24,6 +27,8 @@ public class GUIDeveloperMode : MonoBehaviour
         EnemyUI = transform.parent.FindChild("Developer Mode").FindChild("Enemy").gameObject;
         EventUI = transform.parent.FindChild("Developer Mode").FindChild("Event").gameObject;
 
+        worldInfo = transform.parent.FindChild("Developer Mode").FindChild("TXT World Info").gameObject;
+
         LightUI.SetActive(false);
         VoxelUI.SetActive(false);
         GeometryUI.SetActive(false);
@@ -31,6 +36,15 @@ public class GUIDeveloperMode : MonoBehaviour
         InteractiveUI.SetActive(false);
         EnemyUI.SetActive(false);
         EventUI.SetActive(false);
+    }
+
+
+    void Update()
+    {
+        if (GameGUI.developerMode.activeSelf)
+            worldInfo.GetComponent<Text>().text =
+                "Number of chunks: x = " + Global.world.chunkNumber.x.ToString() + ", y = " + Global.world.chunkNumber.y.ToString() + " , z = " + Global.world.chunkNumber.z.ToString() + "\n" +
+                "Size of the chunks: x = " + Global.world.chunkSize.x.ToString() + ", y = " + Global.world.chunkSize.y.ToString() + " , z = " + Global.world.chunkSize.z.ToString();
     }
 
 
@@ -144,6 +158,7 @@ public class GUIDeveloperMode : MonoBehaviour
         EventUI.SetActive(true);
 
         HUD.cubeMarker.SetActive(false);
+        GameFlow.developerWorldTools = GameFlow.DeveloperWorldTools.EVENT;
     }
 
 
@@ -175,12 +190,29 @@ public class GUIDeveloperMode : MonoBehaviour
     //+ Voxel
     public void SingleVoxelButton()
     {
-        GameFlow.developerMineTools = GameFlow.DeveloperMineTools.SINGLE;
+        GameFlow.developerVoxelTools = GameFlow.DeveloperVoxelTools.SINGLE;
     }
 
 
     public void OrtoedricVoxelButton()
     {
-        GameFlow.developerMineTools = GameFlow.DeveloperMineTools.ORTOEDRIC;
+        GameFlow.developerVoxelTools = GameFlow.DeveloperVoxelTools.ORTOEDRIC;
+    }
+
+
+    //+ Event
+    public void SimpleEventButton()
+    {
+        GameFlow.developerWorldTools = GameFlow.DeveloperWorldTools.EVENT;
+
+        HUD.cubeMarker.SetActive(false);
+    }
+
+
+    public void ChunkSizeEventButton()
+    {
+        GameFlow.developerWorldTools = GameFlow.DeveloperWorldTools.CHANGECHUNKSIZE;
+
+        HUD.cubeMarker.SetActive(true);
     }
 }

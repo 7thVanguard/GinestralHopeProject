@@ -40,9 +40,9 @@ public class DeveloperHUD
                 {
                     //? SubTool Control
                     if (ButtonPressed(new Rect(Screen.width * 40 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                        GameFlow.developerMineTools = GameFlow.DeveloperMineTools.SINGLE;
+                        GameFlow.developerVoxelTools = GameFlow.DeveloperVoxelTools.SINGLE;
                     else if (ButtonPressed(new Rect(Screen.width * 50 / 100, Screen.height * 42 / 50, lateralButtonSize, lateralButtonSize), mousePosition))
-                        GameFlow.developerMineTools = GameFlow.DeveloperMineTools.ORTOEDRIC;
+                        GameFlow.developerVoxelTools = GameFlow.DeveloperVoxelTools.ORTOEDRIC;
 
                     //! Textures Control
                     if (ButtonPressed(new Rect(0, Screen.height - atlasLength, atlasLength, atlasLength), mousePosition))

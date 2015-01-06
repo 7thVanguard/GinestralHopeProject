@@ -43,7 +43,7 @@ public class DevConstructionToolsManager
     private void Remove(World world, Player player, MainCamera mainCamera)
     {
         if (mainCamera.raycast.transform.tag == "Chunk")
-            MineVoxelsToolManager.Remove(world, player, mainCamera);
+            VoxelsToolManager.Remove(world, player, mainCamera);
         else if (mainCamera.raycast.transform.tag == "Geometry")
             GeometryToolManager.Remove(player, mainCamera);
         else if (mainCamera.raycast.transform.tag == "Gadget")
@@ -60,7 +60,7 @@ public class DevConstructionToolsManager
             if (GameFlow.selectedTool == GameFlow.SelectedTool.LIGHT)
 			    EmiterToolManager.Place(world, player, mainCamera);
             else if (GameFlow.selectedTool == GameFlow.SelectedTool.VOXEL)
-                MineVoxelsToolManager.Place(world, player, mainCamera);
+                VoxelsToolManager.Place(world, player, mainCamera);
             else if (GameFlow.selectedTool == GameFlow.SelectedTool.GEOMETRY)
                 GeometryToolManager.Place(world, player, mainCamera);
             else if (GameFlow.selectedTool == GameFlow.SelectedTool.INTERACTIVE)
@@ -76,7 +76,7 @@ public class DevConstructionToolsManager
     private void Cancel()
     {
         if (GameFlow.selectedTool == GameFlow.SelectedTool.VOXEL)
-            MineVoxelsToolManager.Cancel();
+            VoxelsToolManager.Cancel();
         else if (GameFlow.selectedTool == GameFlow.SelectedTool.INTERACTIVE)
             GadgetsToolManager.Cancel();
 		else if (GameFlow.selectedTool == GameFlow.SelectedTool.ENEMY)
@@ -87,10 +87,12 @@ public class DevConstructionToolsManager
     private void Detect(World world, Player player, MainCamera mainCamera)
     {
         if (GameFlow.selectedTool == GameFlow.SelectedTool.VOXEL)
-            MineVoxelsToolManager.Detect(world, player, mainCamera);
+            VoxelsToolManager.Detect(world, player, mainCamera);
         else if (GameFlow.selectedTool == GameFlow.SelectedTool.INTERACTIVE)
             GadgetsToolManager.Detect(world, player, mainCamera);
 		else if (GameFlow.selectedTool == GameFlow.SelectedTool.ENEMY)
             EnemiesToolManager.Detect(world, player, mainCamera);
+        else if (GameFlow.selectedTool == GameFlow.SelectedTool.EVENT)
+            EventsToolManager.Detect(world, player, mainCamera);
     }
 }

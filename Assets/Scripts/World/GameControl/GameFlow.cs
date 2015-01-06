@@ -23,8 +23,11 @@ public static class GameFlow
 
 
     // SubTools
-    public enum DeveloperMineTools { SINGLE, ORTOEDRIC }
-    public static DeveloperMineTools developerMineTools = DeveloperMineTools.SINGLE;
+    public enum DeveloperVoxelTools { SINGLE, ORTOEDRIC }
+    public static DeveloperVoxelTools developerVoxelTools = DeveloperVoxelTools.SINGLE;
+
+    public enum DeveloperWorldTools { EVENT, CHANGECHUNKSIZE }
+    public static DeveloperWorldTools developerWorldTools = DeveloperWorldTools.EVENT;
 
 
 	// Flow

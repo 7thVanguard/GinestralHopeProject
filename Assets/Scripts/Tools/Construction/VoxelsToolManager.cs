@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MineVoxelsToolManager
+public class VoxelsToolManager
 {
     // Selected voxel in a multi selection tool
     private static Chunk preDetChunk;
@@ -11,7 +11,7 @@ public class MineVoxelsToolManager
     public static void Remove(World world, Player player, MainCamera mainCamera)
     {
         // Single
-        if (GameFlow.developerMineTools == GameFlow.DeveloperMineTools.SINGLE)
+        if (GameFlow.developerVoxelTools == GameFlow.DeveloperVoxelTools.SINGLE)
         {
             if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
             {
@@ -46,7 +46,7 @@ public class MineVoxelsToolManager
             else
             {
                 // Ortoedric
-                if (GameFlow.developerMineTools == GameFlow.DeveloperMineTools.ORTOEDRIC)
+                if (GameFlow.developerVoxelTools == GameFlow.DeveloperVoxelTools.ORTOEDRIC)
                 {
                     if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
                     {
@@ -68,7 +68,7 @@ public class MineVoxelsToolManager
     public static void Place(World world, Player player, MainCamera mainCamera)
     {
         // Single
-        if (GameFlow.developerMineTools == GameFlow.DeveloperMineTools.SINGLE)
+        if (GameFlow.developerVoxelTools == GameFlow.DeveloperVoxelTools.SINGLE)
         {
             if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
             {
@@ -118,7 +118,7 @@ public class MineVoxelsToolManager
             else
             {
                 // Ortoedric
-                if (GameFlow.developerMineTools == GameFlow.DeveloperMineTools.ORTOEDRIC)
+                if (GameFlow.developerVoxelTools == GameFlow.DeveloperVoxelTools.ORTOEDRIC)
                 {
                     if (mainCamera.raycast.distance < (player.constructionDetection + mainCamera.distance) && mainCamera.raycast.distance != 0)
                     {
