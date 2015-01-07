@@ -40,6 +40,7 @@ public class World
 
 
     // Materials relative
+    public Material atlas;
     public float textureSize = 0.125f;
 
 
@@ -51,8 +52,7 @@ public class World
     {
         this.worldObj = world;
         this.GHSkin = GHSkin;
-
-        chunk = new Chunk[chunkNumber.x, chunkNumber.y, chunkNumber.z];
+        this.atlas = atlas;
 
         // Prefabs relative
         character = prefabs.FindChild("Characters");
@@ -62,13 +62,13 @@ public class World
         enemies = prefabs.FindChild("Enemies");
         effects = prefabs.FindChild("Effects");
 
-        Init(atlas);
+        Init();
 
         worldObj.AddComponent<HUD>();
     }
 
 
-    public void Init(Material atlas)
+    public void Init()
     {
         //+ World setting
         worldObj.name = "World";
@@ -78,7 +78,7 @@ public class World
         worldObj.transform.eulerAngles = Vector3.zero;
         worldObj.transform.localScale = Vector3.one;
 
-
+        chunk = new Chunk[chunkNumber.x, chunkNumber.y, chunkNumber.z];
         //+ World creation
         for(int cx = 0; cx < chunkNumber.x; cx++)
             for(int cy = 0; cy < chunkNumber.y; cy++)

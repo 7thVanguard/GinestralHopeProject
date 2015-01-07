@@ -365,8 +365,7 @@ public class GameSerializer
             foreach (GameObject chunkObj in chunks)
                 GameObject.Destroy(chunkObj);
 
-            world.chunk = new Chunk[chunkStructSave.chunkNumberX, chunkStructSave.chunkNumberY, chunkStructSave.chunkNumberZ];
-            world.Init((Material)Resources.Load("Atlas/TerrainAtlas/FaeriLightAtlasMat"));
+            world.Init();
         }
 
         // Deserialize the voxels list
