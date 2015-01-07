@@ -52,23 +52,8 @@ public class SDFireBallBehaviour : MonoBehaviour
             {
                 //+ Impact detection by raycast
                 if (Physics.Raycast(transform.position, direction, out impact, 0.5f))
-                {
                     if (impact.transform.gameObject.tag != "Skill")
-                    {
-                        // test if already collided (bug solver)
-                        if (isColliding)
-                            return;
-                        isColliding = true;
-
-                        // Impact result
-                        if (impact.transform.gameObject.tag == "Enemy")
-                            impact.transform.gameObject.GetComponent<EnemyComponent>().Damage(damage);
-                        else if (impact.transform.gameObject.tag == "Player")
-                            impact.transform.gameObject.GetComponent<PlayerComponent>().Damage(damage);
-
-                        VoxelLib.Explosion(world, impact.point, damage, blastRadius);
-                    }
-                }
+                        Impact();
 
                 //+ Normal movement
                 // if the raycast don't detect a collision
@@ -130,19 +115,28 @@ public class SDFireBallBehaviour : MonoBehaviour
     void OnCollisionStay(Collision other)
     {
         if (other.gameObject.tag != "Skill")
-        {
-            // test if already collided (bug solver)
-            if (isColliding)
-                return;
-            isColliding = true;
+            Impact();
+    }
 
-            // Impact result
-            if (other.gameObject.tag == "Enemy")
-                other.gameObject.GetComponent<EnemyComponent>().Damage(damage);
-            else if (other.gameObject.tag == "Player")
-                other.gameObject.GetComponent<PlayerComponent>().Damage(damage);
-            
-            VoxelLib.Explosion(world, transform.position, damage, blastRadius);
+
+    private void Impact()
+    {
+        // test if already collided (bug solver)
+        if (isColliding)
+            return;
+        isColliding = true;
+
+        // Impact result
+        if (impact.transform.gameObject.tag == "Enemy")
+            impact.transform.gameObject.GetComponent<EnemyComponent>().Damage(damage);
+        else if (impact.transform.gameObject.tag == "Player")
+            impact.transform.gameObject.GetComponent<PlayerComponent>().Damage(damage);
+        else if (impact.transform.gameObject.tag == "Geometry")
+        {
+            if (impact.transform.name == "Brazier")
+                impact.transform.GetComponent<BrazierBehaviour>().active = true;
         }
+
+        VoxelLib.Explosion(world, impact.point, damage, blastRadius);
     }
 }

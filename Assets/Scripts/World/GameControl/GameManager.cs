@@ -214,7 +214,7 @@ public class GameManager : MonoBehaviour
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("GameObject"), false);
 
         GameFlow.gameMode = GameFlow.GameMode.PLAYER;
-        Global.player.constructionDetection = 5;
+        Global.player.constructionDetection = 300;
 
         HUD.cubeMarker.SetActive(false);
     }

@@ -42,6 +42,11 @@ public class Geometry
         geometry.Init(world, player, mainCamera);
         Dictionary.Add("Altar", geometry);
 
+        // Brazier
+        geometry = new Brazier();
+        geometry.Init(world, player, mainCamera);
+        Dictionary.Add("Brazier", geometry);
+
         // Fire Gem
         geometry = new FireGem();
         geometry.Init(world, player, mainCamera);

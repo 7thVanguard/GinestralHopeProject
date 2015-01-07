@@ -18,7 +18,7 @@ public class CameraRaycast
     {
         if (GameFlow.gameMode == GameFlow.GameMode.DEVELOPER || GameFlow.runningGame != GameFlow.RunningGame.CLOUDS_SIGHT)
         {
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out mainCamera.raycast, player.constructionDetection)) { }
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out mainCamera.raycast, 1000)) { }
         }
         else
         {
