@@ -1712,7 +1712,7 @@ MonoBehaviour:
   mineAtlas: {fileID: 2100000, guid: 3bdb9855677a1624eab85c0773fc906a, type: 2}
   developerAtlas: {fileID: 2800000, guid: c85c2bc945d45cc44aab89c412fc3396, type: 3}
   GHSkin: {fileID: 11400000, guid: 125e585d826f4994a8a44ed7bfc83c0b, type: 2}
-  saveName: PalauiSave
+  saveName: AxelSave
 --- !u!1 &731636591
 GameObject:
   m_ObjectHideFlags: 0
