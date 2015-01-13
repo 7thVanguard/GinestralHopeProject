@@ -75,7 +75,7 @@ public class Chunk
                 for (int z = 0; z < world.chunkSize.z; z++)
                 {
                     if (numID.y == 0 && y == 0)
-                        voxel[x, y, z] = new Voxel(world, new IntVector3(x, y, z), numID, "(0, 7)");
+                        voxel[x, y, z] = new Voxel(world, new IntVector3(x, y, z), numID, "(1, 6)");
                     else
                         voxel[x, y, z] = new Voxel(world, new IntVector3(x, y, z), numID, "Air");
                 }
