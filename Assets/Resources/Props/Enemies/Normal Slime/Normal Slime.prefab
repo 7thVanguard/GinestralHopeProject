@@ -13,7 +13,7 @@ GameObject:
   - 64: {fileID: 6400000}
   - 143: {fileID: 14300000}
   m_Layer: 0
-  m_Name: NormalSlime
+  m_Name: Normal Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

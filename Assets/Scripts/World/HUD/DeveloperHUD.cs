@@ -67,6 +67,7 @@ public class DeveloperHUD
         int selectionX = (int)(point.x / (rect.width / 8));
         int selectionY = (int)((point.y - rect.y) / ((rect.height) / 8));
 
-        GameFlow.selectedVoxel = "P1(" + selectionX.ToString() + ", " + (7 - selectionY).ToString() + ")";
+
+        GameFlow.selectedVoxel = GameFlow.selectedAtlas + "(" + selectionX.ToString() + ", " + (7 - selectionY).ToString() + ")";
     }
 }

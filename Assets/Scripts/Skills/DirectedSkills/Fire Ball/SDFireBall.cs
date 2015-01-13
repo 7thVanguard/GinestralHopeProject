@@ -3,11 +3,17 @@ using System.Collections;
 
 public class SDFireBall : SkillDirected
 {
+    GameObject fireBall;
+
+
+
     public override void Init(World world, Player player, MainCamera mainCamera, Skill skill)
     {
         base.world = world;
         base.player = player;
         base.mainCamera = mainCamera;
+
+        fireBall = (GameObject)Resources.Load("Props/Skills/Fire Ball/Fire Ball");
 
         // Global
         ID = "Fire Ball";
@@ -45,8 +51,7 @@ public class SDFireBall : SkillDirected
         }
 
         // Create the object
-        Transform fireBallTransform = Object.Instantiate(world.skills.FindChild("Fire Ball")) as Transform;
-        fireBall = fireBallTransform.gameObject;
+        fireBall = GameObject.Instantiate(this.fireBall) as GameObject;
         fireBall.name = "Fire Ball";
 
         // Call base function

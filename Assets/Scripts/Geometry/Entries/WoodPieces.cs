@@ -3,6 +3,10 @@ using System.Collections;
 
 public class WoodPieces : Geometry 
 {
+    GameObject woodPieces;
+
+
+
     public override void Init(World world, Player player, MainCamera mainCamera)
     {
         this.world = world;
@@ -10,12 +14,14 @@ public class WoodPieces : Geometry
         this.mainCamera = mainCamera;
 
         placedOn = PlacedOn.FLOOR;
+
+        woodPieces = (GameObject)Resources.Load("Props/Geometry/Wood Pieces/Wood Pieces");
     }
 
 
     public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale, bool firstPlacing)
     {
-        Transform woodPieces = Object.Instantiate(world.interactives.FindChild("Wood Pieces"), pos, Quaternion.Euler(rot)) as Transform;
+        woodPieces = GameObject.Instantiate(woodPieces, pos, Quaternion.Euler(rot)) as GameObject;
 
         // Head atributes
         woodPieces.name = "Wood Pieces";

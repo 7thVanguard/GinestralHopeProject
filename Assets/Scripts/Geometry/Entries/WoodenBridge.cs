@@ -3,6 +3,10 @@ using System.Collections;
 
 public class WoodenBridge : Geometry 
 {
+    GameObject woodenBridge;
+
+
+
     public override void Init(World world, Player player, MainCamera mainCamera)
     {
         this.world = world;
@@ -10,6 +14,8 @@ public class WoodenBridge : Geometry
         this.mainCamera = mainCamera;
 
         placedOn = PlacedOn.FLOOR;
+
+        woodenBridge = (GameObject)Resources.Load("Props/Geometry/Wooden Bridge/Wooden Bridge");
     }
 
 
@@ -22,7 +28,7 @@ public class WoodenBridge : Geometry
             pos += player.playerObj.transform.forward * 2.5f;
         }
 
-        Transform woodenBridge = Transform.Instantiate(world.geometry.FindChild("Wooden Bridge"), pos, Quaternion.Euler(rot)) as Transform;
+        woodenBridge = GameObject.Instantiate(woodenBridge, pos, Quaternion.Euler(rot)) as GameObject;
 
         woodenBridge.name = "Wooden Bridge 6m";
         woodenBridge.tag = "Geometry";

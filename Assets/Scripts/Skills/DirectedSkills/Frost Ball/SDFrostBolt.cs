@@ -3,11 +3,17 @@ using System.Collections;
 
 public class SDFrostBolt : SkillDirected
 {
+    GameObject frostBolt;
+
+
+
     public override void Init(World world, Player player, MainCamera mainCamera, Skill skill)
     {
         base.world = world;
         base.player = player;
         base.mainCamera = mainCamera;
+
+        frostBolt = (GameObject)Resources.Load("Props/Skills/Frost Ball/Frost Ball");
 
         // Global
         ID = "Frost Bolt";
@@ -26,18 +32,17 @@ public class SDFrostBolt : SkillDirected
     }
 
 
-    public override void CastDirected(GameObject frostBall, Vector3 origin, bool launchedByPlayer)
+    public override void CastDirected(GameObject frostBolt, Vector3 origin, bool launchedByPlayer)
     {
         // Create the object
-        Transform frostBallTransform = Object.Instantiate(world.skills.FindChild("Frost Bolt")) as Transform;
-        frostBall = frostBallTransform.gameObject;
-        frostBall.name = "Frost Bolt";
+        frostBolt = GameObject.Instantiate(this.frostBolt) as GameObject;
+        frostBolt.name = "Frost Bolt";
 
         // Call base function
-        base.CastDirected(frostBall, origin, launchedByPlayer);
+        base.CastDirected(frostBolt, origin, launchedByPlayer);
 
         // Call next function
-        FireDirected(frostBall, base.originPosition, base.targetPosition, base.objectDirection, objectSpeed);
+        FireDirected(frostBolt, base.originPosition, base.targetPosition, base.objectDirection, objectSpeed);
     }
 
 

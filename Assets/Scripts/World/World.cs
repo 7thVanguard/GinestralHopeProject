@@ -13,16 +13,6 @@ public class World
     // GameObjects
     public GameObject worldObj;
 
-
-    // Prefabs
-    public Transform character;
-    public Transform geometry;
-    public Transform interactives;
-    public Transform skills;
-    public Transform enemies;
-    public Transform effects;
-
-
     // Control Variables
     public GameObject geometryController = new GameObject();
     public GameObject interactivesController = new GameObject();
@@ -48,21 +38,11 @@ public class World
     public GUISkin GHSkin;
 
 
-    public World(GameObject world, Transform prefabss, Material atlas, GUISkin GHSkin)
+    public World(GameObject world, Material atlas, GUISkin GHSkin)
     {
-        GameObject prefabs = (GameObject)Resources.Load("Props/Prefabs Controller");
-
         this.worldObj = world;
         this.GHSkin = GHSkin;
         this.atlas = atlas;
-
-        // Prefabs relative
-        character = prefabs.transform.FindChild("Characters");
-        geometry = prefabs.transform.FindChild("Geometry");
-        interactives = prefabs.transform.FindChild("Interactives");
-        skills = prefabs.transform.FindChild("Skills");
-        enemies = prefabs.transform.FindChild("Enemies");
-        effects = prefabs.transform.FindChild("Effects");
 
         Init();
 

@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Torch : Geometry
 {
+    GameObject torch;
+
+
+
     public override void Init(World world, Player player, MainCamera mainCamera)
     {
         this.world = world;
@@ -10,12 +14,14 @@ public class Torch : Geometry
         this.mainCamera = mainCamera;
 
         placedOn = PlacedOn.WALL;
+
+        torch = (GameObject)Resources.Load("Props/Geometry/Torch/Torch");
     }
 
 
     public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale, bool firstPlacing)
     {
-        Transform torch = Object.Instantiate(world.interactives.FindChild("Torch"), pos, Quaternion.Euler(rot)) as Transform;
+        torch = GameObject.Instantiate(torch, pos, Quaternion.Euler(rot)) as GameObject;
 
         // Head atributes
         torch.name = "Torch";

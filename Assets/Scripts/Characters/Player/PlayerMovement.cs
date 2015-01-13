@@ -8,6 +8,7 @@ public class PlayerMovement
     private Player player;
     private MainCamera mainCamera;
 
+    private GameObject ringMarker;
     private Vector3 objectiveDirection;
     private Vector3 interpolateDirection;
 
@@ -17,6 +18,8 @@ public class PlayerMovement
         this.world = world;
         this.player = player;
         this.mainCamera = mainCamera;
+
+        ringMarker = (GameObject)Resources.Load("Particle Systems/Clouds Sight/Ring Marker/Ring Marker");
     }
 
 
@@ -149,9 +152,9 @@ public class PlayerMovement
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            GameObject effect = Object.Instantiate(world.effects.FindChild("Ring Marker"),
-                                                    new Vector3(player.targetPosition.x, mainCamera.raycast.point.y + 0.01f, player.targetPosition.y),
-                                                    Quaternion.identity) as GameObject;
+            GameObject effect = Object.Instantiate(ringMarker,
+                                        new Vector3(player.targetPosition.x, mainCamera.raycast.point.y + 0.01f, player.targetPosition.y),
+                                        Quaternion.identity) as GameObject;
         }
     }
 

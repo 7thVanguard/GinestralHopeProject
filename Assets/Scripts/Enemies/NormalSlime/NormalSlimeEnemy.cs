@@ -3,11 +3,17 @@ using System.Collections;
 
 public class NormalSlimeEnemy : Enemy
 {
+    GameObject slime;
+
+
+
     public override void Init(World world, Player player, MainCamera mainCamera, Enemy enemy)
     {
         this.world = world;
         this.player = player;
         this.mainCamera = mainCamera;
+
+        slime = (GameObject)Resources.Load("Props/Enemies/Normal Slime/Normal Slime");
 
         ID = "Normal Slime";
         level = 1;
@@ -18,20 +24,18 @@ public class NormalSlimeEnemy : Enemy
 
     public override GameObject Place(Vector3 pos)
     {
-        Transform enemy = world.enemies.FindChild("NormalSlime");
-
-        enemy = Object.Instantiate(enemy, pos, Quaternion.identity) as Transform;
-        enemy.position += new Vector3(0.5f, enemy.localScale.y / 2, 0.5f);
+        slime = GameObject.Instantiate(slime, pos, Quaternion.identity) as GameObject;
+        slime.transform.position += new Vector3(0.5f, slime.transform.localScale.y / 2, 0.5f);
 
         // Head atributes
-        enemy.name = "Normal Slime";
-        enemy.transform.parent = world.enemiesController.transform;
+        slime.name = "Normal Slime";
+        slime.transform.parent = world.enemiesController.transform;
 
         // Components
-        enemy.gameObject.AddComponent<EnemyComponent>();
-        enemy.gameObject.AddComponent<NormalSlimeEnemyBehaviour>();
-        enemy.gameObject.GetComponent<NormalSlimeEnemyBehaviour>().Init(player, mainCamera, life);
+        slime.gameObject.AddComponent<EnemyComponent>();
+        slime.gameObject.AddComponent<NormalSlimeEnemyBehaviour>();
+        slime.gameObject.GetComponent<NormalSlimeEnemyBehaviour>().Init(player, mainCamera, life);
 
-        return enemy.gameObject;
+        return slime.gameObject;
     }
 }

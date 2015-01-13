@@ -3,11 +3,17 @@ using System.Collections;
 
 public class SDFireMine : SkillDirected 
 {
+    GameObject fireMine;
+
+
+
     public override void Init(World world, Player player, MainCamera mainCamera, Skill skill)
     {
         base.world = world;
         base.player = player;
         base.mainCamera = mainCamera;
+
+        fireMine = (GameObject)Resources.Load("Props/Skills/Fire Mine/Fire Mine");
 
         // Global
         ID = "Fire Mine";
@@ -29,8 +35,7 @@ public class SDFireMine : SkillDirected
     public override void CastDirected(GameObject mineBall, Vector3 origin, bool launchedByPlayer)
     {
         // Create the object
-        Transform mineBallTransform = Object.Instantiate(world.skills.FindChild("Fireball2")) as Transform;
-        mineBall = mineBallTransform.gameObject;
+        mineBall = GameObject.Instantiate(this.fireMine) as GameObject;
         mineBall.name = "Fire Mine";
 
         // Call base function

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DimensionalMarket : Interactive
 {
-    private Transform dimensionalMarket;
+    GameObject dimensionalMarket;
 
     public override void Init(World world, Player player, MainCamera mainCamera, Interactive gadget)
     {
@@ -13,20 +13,20 @@ public class DimensionalMarket : Interactive
 
         placedOn = PlacedOn.NONE;
 
-        dimensionalMarket = world.interactives.FindChild("Dimensional Market").transform;
+        dimensionalMarket = (GameObject)Resources.Load("Props/Interactives/Dimensional Market/Dimensional Market");
     }
 
 
     public override void Place(string ID, Vector3 pos, Vector3 rot, bool firstPlacing)
     {
-        dimensionalMarket = Object.Instantiate(dimensionalMarket, pos, Quaternion.Euler(rot)) as Transform;
+        dimensionalMarket = GameObject.Instantiate(dimensionalMarket, pos, Quaternion.Euler(rot)) as GameObject;
 
         // Head atributes
         dimensionalMarket.name = "Dimensional Market";
         dimensionalMarket.tag = "Interactive";
 
-        dimensionalMarket.localScale = Vector3.one;
-        dimensionalMarket.parent = world.interactivesController.transform;
+        dimensionalMarket.transform.localScale = Vector3.one;
+        dimensionalMarket.transform.parent = world.interactivesController.transform;
 
         // Assign component
         dimensionalMarket.gameObject.AddComponent<DimensionalMarketBehaviour>();

@@ -5,9 +5,6 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour 
 {
     // Inspector variables
-    // Prefabs
-    public Transform prefabs;
-
     // Materials
     public Material mineAtlas;
 
@@ -42,7 +39,7 @@ public class GameManager : MonoBehaviour
 
 
         //+ Object Init
-        Global.world = new World(gameObject, prefabs, mineAtlas, GHSkin);
+        Global.world = new World(gameObject, mineAtlas, GHSkin);
         Global.player = new Player(Global.world);
         Global.mainCamera = new MainCamera();
         Global.sun = new Sun(Global.player);

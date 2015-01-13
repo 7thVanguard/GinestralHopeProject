@@ -44,9 +44,8 @@ public class Player
     public void Init(World world)
     {
         //+ Player creation
-        Transform character = Object.Instantiate(world.character.FindChild("Player")) as Transform;
-
-        playerObj = character.gameObject;
+        GameObject character = (GameObject)Resources.Load("Props/Characters/Player");
+        playerObj = GameObject.Instantiate(character) as GameObject;
 
         // Head atributes
         playerObj.name = "Player";
@@ -59,10 +58,7 @@ public class Player
 
         // Player components creation
         controller = playerObj.GetComponent<CharacterController>();
-        playerObj.AddComponent<PlayerComponent>();
-
-        // Component variables
-        playerObj.GetComponent<CharacterController>().slopeLimit = 46;
+        controller.slopeLimit = 46;
 
         //+ Player initializations
         playerObj.GetComponent<PlayerComponent>().Init(this);

@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Bomb : Geometry 
 {
+    GameObject bomb;
+
+
+
     public override void Init(World world, Player player, MainCamera mainCamera)
     {
         this.world = world;
@@ -10,6 +14,8 @@ public class Bomb : Geometry
         this.mainCamera = mainCamera;
 
         placedOn = PlacedOn.FLOOR;
+
+        bomb = (GameObject)Resources.Load("Props/Geometry/Bomb/Bomb");
     }
 
 
@@ -17,7 +23,7 @@ public class Bomb : Geometry
     {
         if (GameFlow.selectedInteractive == "Bomb" || GameFlow.gameMode != GameFlow.GameMode.PLAYER)
         {
-            Transform bomb = Object.Instantiate(world.interactives.FindChild("Bomb"), pos, Quaternion.identity) as Transform;
+            bomb = GameObject.Instantiate(bomb, pos, Quaternion.identity) as GameObject;
 
             // Head atributes
             bomb.name = "Bomb";
@@ -26,8 +32,8 @@ public class Bomb : Geometry
 
             // Set transforms
             bomb.transform.position = new Vector3(pos.x, pos.y, pos.z);
-            bomb.gameObject.AddComponent<BombBehaviour>();
-            bomb.gameObject.GetComponent<BombBehaviour>().Init(world);
+            bomb.AddComponent<BombBehaviour>();
+            bomb.GetComponent<BombBehaviour>().Init(world);
         }
     }
 }

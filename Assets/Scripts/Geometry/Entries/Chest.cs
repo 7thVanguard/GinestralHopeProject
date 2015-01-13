@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Chest : Geometry 
 {
+    GameObject chest;
+
+
+
     public override void Init(World world, Player player, MainCamera mainCamera)
     {
         this.world = world;
@@ -10,18 +14,20 @@ public class Chest : Geometry
         this.mainCamera = mainCamera;
 
         placedOn = PlacedOn.FLOOR;
+
+
     }
 
 
     public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale, bool firstPlacing)
     {
-        Transform chest = Object.Instantiate(world.interactives.FindChild("Chest"), pos, Quaternion.Euler(rot)) as Transform;
+        //Transform chest = Object.Instantiate(world.interactives.FindChild("Chest"), pos, Quaternion.Euler(rot)) as Transform;
 
-        // Head atributes
-        chest.name = "Chest";
-        chest.tag = "Geometry";
+        //// Head atributes
+        //chest.name = "Chest";
+        //chest.tag = "Geometry";
 
-        chest.transform.localScale = scale;
-        chest.transform.parent = world.geometryController.transform;
+        //chest.transform.localScale = scale;
+        //chest.transform.parent = world.geometryController.transform;
     }
 }

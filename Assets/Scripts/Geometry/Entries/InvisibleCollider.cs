@@ -3,7 +3,7 @@ using System.Collections;
 
 public class InvisibleCollider : Geometry
 {
-    Transform invisibleCollider;
+    GameObject invisibleCollider;
 
 
     public override void Init(World world, Player player, MainCamera mainCamera)
@@ -14,13 +14,13 @@ public class InvisibleCollider : Geometry
 
         placedOn = PlacedOn.AIR;
 
-        invisibleCollider = world.geometry.FindChild("Invisible Collider");
+        invisibleCollider = (GameObject)Resources.Load("Props/Geometry/Invisible Collider/Invisible Collider");
     }
 
 
     public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale, bool firstPlacing)
     {
-        invisibleCollider = Object.Instantiate(invisibleCollider, pos, Quaternion.Euler(rot)) as Transform;
+        invisibleCollider = Object.Instantiate(invisibleCollider, pos, Quaternion.Euler(rot)) as GameObject;
 
         // Head atributes
         invisibleCollider.name = "Invisible Collider";

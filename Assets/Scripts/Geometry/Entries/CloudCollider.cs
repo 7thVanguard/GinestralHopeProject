@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CloudCollider : Geometry
 {
-    Transform cloudCollider;
+    GameObject cloudCollider;
 
 
     public override void Init(World world, Player player, MainCamera mainCamera)
@@ -14,13 +14,13 @@ public class CloudCollider : Geometry
 
         placedOn = PlacedOn.AIR;
 
-        cloudCollider = world.geometry.FindChild("Cloud Collider");
+        cloudCollider = (GameObject)Resources.Load("Props/Geometry/Cloud Collider/Cloud Collider");
     }
 
 
     public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale, bool firstPlacing)
     {
-        cloudCollider = Object.Instantiate(cloudCollider, pos, Quaternion.Euler(rot)) as Transform;
+        cloudCollider = GameObject.Instantiate(cloudCollider, pos, Quaternion.Euler(rot)) as GameObject;
 
         // Head atributes
         cloudCollider.name = "Cloud Collider";

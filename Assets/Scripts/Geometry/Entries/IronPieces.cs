@@ -3,6 +3,10 @@ using System.Collections;
 
 public class IronPieces : Geometry 
 {
+    GameObject ironPieces;
+
+
+
     public override void Init(World world, Player player, MainCamera mainCamera)
     {
         this.world = world;
@@ -10,12 +14,14 @@ public class IronPieces : Geometry
         this.mainCamera = mainCamera;
 
         placedOn = PlacedOn.FLOOR;
+
+        ironPieces = (GameObject)Resources.Load("Props/Geometry/Iron Pieces/Iron Pieces");
     }
 
 
     public override void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale, bool firstPlacing)
     {
-        Transform ironPieces = Object.Instantiate(world.interactives.FindChild("Iron Pieces"), pos, Quaternion.Euler(rot)) as Transform;
+        ironPieces = GameObject.Instantiate(ironPieces, pos, Quaternion.Euler(rot)) as GameObject;
 
         // Head atributes
         ironPieces.name = "Iron Pieces";
