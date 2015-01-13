@@ -48,19 +48,21 @@ public class World
     public GUISkin GHSkin;
 
 
-    public World(GameObject world, Transform prefabs, Material atlas, GUISkin GHSkin)
+    public World(GameObject world, Transform prefabss, Material atlas, GUISkin GHSkin)
     {
+        GameObject prefabs = (GameObject)Resources.Load("Props/Prefabs Controller");
+
         this.worldObj = world;
         this.GHSkin = GHSkin;
         this.atlas = atlas;
 
         // Prefabs relative
-        character = prefabs.FindChild("Characters");
-        geometry = prefabs.FindChild("Geometry");
-        interactives = prefabs.FindChild("Interactives");
-        skills = prefabs.FindChild("Skills");
-        enemies = prefabs.FindChild("Enemies");
-        effects = prefabs.FindChild("Effects");
+        character = prefabs.transform.FindChild("Characters");
+        geometry = prefabs.transform.FindChild("Geometry");
+        interactives = prefabs.transform.FindChild("Interactives");
+        skills = prefabs.transform.FindChild("Skills");
+        enemies = prefabs.transform.FindChild("Enemies");
+        effects = prefabs.transform.FindChild("Effects");
 
         Init();
 

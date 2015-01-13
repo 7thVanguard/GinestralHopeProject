@@ -5,7 +5,7 @@ public static class GameFlow
 {
     // Game in play
     public enum RunningGame { GINESTRAL_HOPE, CLOUDS_SIGHT, PLANNED_DREAM }
-    public static RunningGame runningGame = RunningGame.PLANNED_DREAM;
+    public static RunningGame runningGame = RunningGame.GINESTRAL_HOPE;
 
     // Game States
     public enum GameState { MENU, GAME }
