@@ -35,9 +35,6 @@ public class DeveloperHUD
         {
             if (Input.GetKey(KeyCode.LeftControl))
             {
-                // Set wich atlas is in view
-                SelectAtlas();
-
                 // Draw textures
                 atlas = (Texture2D)GameFlow.selectedAtlas.mainTexture;
                 GUI.DrawTexture(new Rect(0, Screen.height - atlasLength, atlasLength, atlasLength), atlas);
@@ -65,33 +62,6 @@ public class DeveloperHUD
             return true;
         else
             return false;
-    }
-
-
-    private void SelectAtlas()
-    {
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            GameFlow.selectedAtlas = Global.G1;
-
-            // Destroy existing emiters
-            GameObject[] chunks = GameObject.FindGameObjectsWithTag("Chunk");
-            foreach (GameObject chunkObj in chunks)
-                GameObject.Destroy(chunkObj);
-
-            Global.world.Init();
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            GameFlow.selectedAtlas = Global.P1;
-
-            // Destroy existing emiters
-            GameObject[] chunks = GameObject.FindGameObjectsWithTag("Chunk");
-            foreach (GameObject chunkObj in chunks)
-                GameObject.Destroy(chunkObj);
-
-            Global.world.Init();
-        }
     }
 
 

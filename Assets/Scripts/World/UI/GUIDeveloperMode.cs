@@ -30,7 +30,7 @@ public class GUIDeveloperMode : MonoBehaviour
         worldInfo = transform.parent.FindChild("Developer Mode").FindChild("TXT World Info").gameObject;
 
         LightUI.SetActive(false);
-        VoxelUI.SetActive(false);
+        VoxelUI.SetActive(true);
         GeometryUI.SetActive(false);
         StructureUI.SetActive(false);
         InteractiveUI.SetActive(false);
