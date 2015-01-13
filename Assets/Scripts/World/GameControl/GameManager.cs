@@ -4,17 +4,6 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour 
 {
-    // Inspector variables
-    // Materials
-    public Material mineAtlas;
-
-    // Textures
-    public Texture2D developerAtlas;
-    
-    //GUI
-    public GUISkin GHSkin;
-
-    // End of inspector variables
     // Controllers
     private Dictionary<string, GameController> Controller;
 
@@ -39,13 +28,13 @@ public class GameManager : MonoBehaviour
 
 
         //+ Object Init
-        Global.world = new World(gameObject, mineAtlas, GHSkin);
+        Global.world = new World(gameObject);
         Global.player = new Player(Global.world);
         Global.mainCamera = new MainCamera();
         Global.sun = new Sun(Global.player);
 
         // post initialize
-        Global.world.worldObj.GetComponent<HUD>().Init(Global.player, mineAtlas, developerAtlas);           // Initialize HUD
+        Global.world.worldObj.GetComponent<HUD>().Init(Global.player);                                      // Initialize HUD
         Global.sun.lightSystemBehaviour.Init(Global.player, Global.sun.sunObj, Global.sun.lensFlare);       // Initialize Light System
         InventoryManager.Init();                                                                            // Initialize Inventory
 

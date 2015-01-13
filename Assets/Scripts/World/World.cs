@@ -30,19 +30,12 @@ public class World
 
 
     // Materials relative
-    public Material atlas;
     public float textureSize = 0.125f;
 
 
-    // GUI
-    public GUISkin GHSkin;
-
-
-    public World(GameObject world, Material atlas, GUISkin GHSkin)
+    public World(GameObject world)
     {
         this.worldObj = world;
-        this.GHSkin = GHSkin;
-        this.atlas = atlas;
 
         Init();
 
@@ -65,7 +58,7 @@ public class World
         for(int cx = 0; cx < chunkNumber.x; cx++)
             for(int cy = 0; cy < chunkNumber.y; cy++)
                 for (int cz = 0; cz < chunkNumber.z; cz++)
-                    chunk[cx, cy, cz] = new Chunk(new IntVector3(cx, cy, cz), atlas);
+                    chunk[cx, cy, cz] = new Chunk(new IntVector3(cx, cy, cz));
 
             // Instantiates and Fills the chunks.
         for(int cx = 0; cx < chunkNumber.x; cx++)

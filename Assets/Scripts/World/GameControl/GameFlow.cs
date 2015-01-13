@@ -37,10 +37,11 @@ public static class GameFlow
 
 
     // Selection
+    public static Material selectedAtlas = Global.G1;
+
     public static string selectedGeometry = "Wooden Bridge 6m";
     public static string selectedInteractive = "Wooden Plank";
     public static string selectedTerrain = "Grass";
-    public static string selectedAtlas = "P1";
     public static string selectedVoxel = "P1(0, 7)";
     public static string selectedEnemy = "Normal Slime";
 }

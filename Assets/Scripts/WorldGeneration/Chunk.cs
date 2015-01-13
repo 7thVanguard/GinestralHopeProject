@@ -8,10 +8,7 @@ public class Chunk
     public Voxel[, ,] voxel;        // Part of a chunk with no defined size
 
     // Identifiers
-    public IntVector3 numID;        // World identifier of every chunk. (Name of the chunk) and relative position
-
-    // Atlas material
-    private Material mat;           
+    public IntVector3 numID;        // World identifier of every chunk. (Name of the chunk) and relative position    
 
     // Lists
     private List<Vector3> Vertices;
@@ -34,13 +31,10 @@ public class Chunk
     public bool botLimit;
 
         
-    public Chunk(IntVector3 chunkNumber, Material material)
+    public Chunk(IntVector3 chunkNumber)
     {
         // Set the identifiers
         numID = chunkNumber;
-
-        // Keep the material in the chunk information
-        mat = material;
     }
 
 
@@ -61,7 +55,7 @@ public class Chunk
 
         // Chunk components
         chunkObject.AddComponent<MeshRenderer>();
-        chunkObject.renderer.material = mat;
+        chunkObject.renderer.material = GameFlow.selectedAtlas;
 
         // Initiates lists
         Vertices = new List<Vector3>();
@@ -81,7 +75,7 @@ public class Chunk
                 for (int z = 0; z < world.chunkSize.z; z++)
                 {
                     if (numID.y == 0 && y == 0)
-                        voxel[x, y, z] = new Voxel(world, new IntVector3(x, y, z), numID, "P1(0, 7)");
+                        voxel[x, y, z] = new Voxel(world, new IntVector3(x, y, z), numID, "(0, 7)");
                     else
                         voxel[x, y, z] = new Voxel(world, new IntVector3(x, y, z), numID, "Air");
                 }

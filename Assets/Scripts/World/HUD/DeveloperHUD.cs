@@ -3,6 +3,8 @@ using System.Collections;
 
 public class DeveloperHUD
 {
+    Texture2D atlas;
+
     private Vector2 mousePosition;
     private Vector2 textureSelection = new Vector2((Screen.height * 5 / 8) / 8, Screen.height * 3 / 8);
     private float lateralButtonSize = Screen.height * 6 / 50;
@@ -23,7 +25,7 @@ public class DeveloperHUD
     }
 
 
-    public void Update(Material mineAtlas, Texture2D developerAtlas)
+    public void Update()
     {
         // Set the mouse position in the same direction of the textures
         mousePosition = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
@@ -33,8 +35,12 @@ public class DeveloperHUD
         {
             if (Input.GetKey(KeyCode.LeftControl))
             {
+                // Set wich atlas is in view
+                SelectAtlas();
+
                 // Draw textures
-                GUI.DrawTexture(new Rect(0, Screen.height - atlasLength, atlasLength, atlasLength), mineAtlas.mainTexture);
+                atlas = (Texture2D)GameFlow.selectedAtlas.mainTexture;
+                GUI.DrawTexture(new Rect(0, Screen.height - atlasLength, atlasLength, atlasLength), atlas);
 
                 if (Input.GetKeyUp(KeyCode.Mouse0))
                 {
@@ -62,12 +68,39 @@ public class DeveloperHUD
     }
 
 
+    private void SelectAtlas()
+    {
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            GameFlow.selectedAtlas = Global.G1;
+
+            // Destroy existing emiters
+            GameObject[] chunks = GameObject.FindGameObjectsWithTag("Chunk");
+            foreach (GameObject chunkObj in chunks)
+                GameObject.Destroy(chunkObj);
+
+            Global.world.Init();
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            GameFlow.selectedAtlas = Global.P1;
+
+            // Destroy existing emiters
+            GameObject[] chunks = GameObject.FindGameObjectsWithTag("Chunk");
+            foreach (GameObject chunkObj in chunks)
+                GameObject.Destroy(chunkObj);
+
+            Global.world.Init();
+        }
+    }
+
+
     private void SelectTexture(Rect rect, Vector2 point)
     {
         int selectionX = (int)(point.x / (rect.width / 8));
         int selectionY = (int)((point.y - rect.y) / ((rect.height) / 8));
 
 
-        GameFlow.selectedVoxel = GameFlow.selectedAtlas + "(" + selectionX.ToString() + ", " + (7 - selectionY).ToString() + ")";
+        GameFlow.selectedVoxel = "(" + selectionX.ToString() + ", " + (7 - selectionY).ToString() + ")";
     }
 }

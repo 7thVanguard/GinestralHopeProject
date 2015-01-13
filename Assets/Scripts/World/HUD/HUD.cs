@@ -9,13 +9,6 @@ public class HUD : MonoBehaviour
     PlayerHUD playerHUD = new PlayerHUD();
     DeveloperHUD developerHUD = new DeveloperHUD();
 
-
-    // Developer mode
-    private Texture2D developerAtlas;
-
-    // Atlas
-    private Material mineAtlas;
-
     // gizmos
     public static Texture2D gizmoCircle;
     private Texture2D gizmoCross;
@@ -38,11 +31,9 @@ public class HUD : MonoBehaviour
     private Vector2 textureSelection = new Vector2((Screen.height * 5 / 8) / 8, Screen.height * 3 / 8);
 
 
-    public void Init(Player player, Material mineAtlas, Texture2D developerAtlas)
+    public void Init(Player player)
     {
         this.player = player;
-        this.mineAtlas = mineAtlas;
-        this.developerAtlas = developerAtlas;
 
         developerHUD.Init();
     }
@@ -107,7 +98,7 @@ public class HUD : MonoBehaviour
                 //++ Developer HUD
                 case GameFlow.GameMode.DEVELOPER:
                     {
-                        developerHUD.Update(mineAtlas, developerAtlas);
+                        developerHUD.Update();
                     }
                     break;
                 default:

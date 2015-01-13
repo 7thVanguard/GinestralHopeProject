@@ -12,7 +12,6 @@ public struct VoxelData
     public VoxelType type;
 
     public string name;
-    public string atlasName;
 
     public Vector2 topUVBegin;
     public Vector2 rightUVBegin;
@@ -41,25 +40,25 @@ public class VoxelsList
 
     public static void Init()
     {
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.TERRAIN, "P1(0, 7)", "P1",
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.TERRAIN, "(0, 7)",
                                     0, 7, false, 0, 5, false, 0, 5, false,
                                     0, 5, false, 0, 5, false, 0, 5, false,
                                     10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "P1(0, 6)", "P1",
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(0, 6)",
                                     0, 6, false, 0, 5, false, 0, 5, false,
                                     0, 5, false, 0, 5, false, 0, 5, false,
                                     10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "P1(1, 6)", "P1",
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(1, 6)",
                                     1, 6, false, 0, 5, false, 0, 5, false,
                                     0, 5, false, 0, 5, false, 0, 5, false,
                                     10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.CUBIC, "P1(0, 5)", "P1", 
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.CUBIC, "(0, 5)", 
                                     0, 5, false, 0, 5, false, 0, 5, false, 
                                     0, 5, false, 0, 5, false, 0, 5, false,
                                     10);
@@ -67,7 +66,7 @@ public class VoxelsList
     }
 
 
-    private static VoxelData InitVoxel(VoxelState state, VoxelType type, string name, string atlasName,
+    private static VoxelData InitVoxel(VoxelState state, VoxelType type, string name,
                                         int topX, float topY, bool topTrans, float rightX, float rightY, bool rightTrans,
                                         float frontX, float frontY, bool frontTrans, float leftX, float leftY, bool leftTrans,
                                         float backX, float backY, bool backTrans, float botX, float botY, bool botTrans,
@@ -79,7 +78,6 @@ public class VoxelsList
         voxel.type = type;
 
         voxel.name = name;
-        voxel.atlasName = atlasName;
 
         voxel.topUVBegin.x = topX * 0.125f;
         voxel.topUVBegin.y = topY * 0.125f;
