@@ -20,7 +20,7 @@ public class Player
 
     public float acceleration = 0.5f;
 
-    public float jumpInitialSpeed = 6;
+    public float jumpInitialSpeed = 8;
     public float jumpGravityMultiplier = 2.5f;
 
     public bool isMoving;

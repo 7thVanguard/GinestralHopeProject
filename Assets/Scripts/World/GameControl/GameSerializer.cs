@@ -459,10 +459,10 @@ public class GameSerializer
 
         // Load interactives
         foreach (InteractiveStruct interactive in InteractiveSave)
-        {
             Interactive.Dictionary[interactive.ID].Place(interactive.ID,
-                new Vector3(interactive.positionX, interactive.positionY, interactive.positionZ), new Vector3(interactive.rotationX, interactive.rotationY, interactive.rotationZ), false);
-        }
+                new Vector3(interactive.positionX, interactive.positionY, interactive.positionZ), 
+                new Vector3(interactive.rotationX, interactive.rotationY, interactive.rotationZ), false);
+
 
         //Reset interactives list
         InteractiveSave.Clear();

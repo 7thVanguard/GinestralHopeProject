@@ -35,6 +35,7 @@ public class GUIGHMainMenu : MonoBehaviour
         switch (GameFlow.runningGame)
         {
             case GameFlow.RunningGame.GINESTRAL_HOPE:
+                Global.world.worldObj.GetComponent<GameManager>().gameSerializer.Load(Global.world, Global.player, "NewGameGH");
                 break;
             case GameFlow.RunningGame.CLOUDS_SIGHT:
                 break;

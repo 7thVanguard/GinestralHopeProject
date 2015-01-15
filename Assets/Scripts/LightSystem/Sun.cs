@@ -5,18 +5,28 @@ public class Sun
 {
     public LightSystemBehaviour lightSystemBehaviour;
     public GameObject sunObj;
+    public Light light;
     public LensFlare lensFlare;
+
+    public Color lightColor;
+    public Color flareColor;
+
+    public float dayTime;
+    public float sunAngle;
+
+    public float intensity;
+    public float ambientLight;
 
 
     public Sun(Player player)
     {
         lightSystemBehaviour = new LightSystemBehaviour();
 
-        Init(player);
+        Init();
     }
 
 
-    private void Init(Player player)
+    private void Init()
     {
         // Sun
         sunObj = new GameObject();
@@ -31,11 +41,22 @@ public class Sun
 
         // Light components creation
         sunObj.AddComponent<Light>();
+        light = sunObj.GetComponent<Light>();
         sunObj.AddComponent<LensFlare>();
         lensFlare = sunObj.GetComponent<LensFlare>();
         lensFlare.flare = (Flare)Resources.Load("LightFlares/50mm Zoom");
         
-        sunObj.light.type = LightType.Directional;
-        sunObj.light.shadows = LightShadows.Hard;
+        light.type = LightType.Directional;
+        light.shadows = LightShadows.Hard;
+    }
+
+
+    public void Update()
+    {
+        Quaternion rotation = Quaternion.Euler(sunAngle, dayTime, 0);
+        sunObj.transform.position = rotation * (new Vector3(0, 0, -100));
+        sunObj.transform.rotation = rotation;
+
+
     }
 }

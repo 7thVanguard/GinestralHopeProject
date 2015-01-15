@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
 
             //+ Controllers
             activeController.Update();
-            Global.sun.lightSystemBehaviour.Update();
+            Global.sun.Update();
 
             if (Input.GetKeyUp(KeyCode.Escape))
             {
