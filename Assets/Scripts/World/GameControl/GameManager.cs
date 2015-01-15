@@ -137,6 +137,11 @@ public class GameManager : MonoBehaviour
                 gameSerializer.Save(Global.world, Global.player, saveName);
             else if (Input.GetKeyUp(KeyCode.F9))
                 gameSerializer.Load(Global.world, Global.player, saveName);
+            else if (Input.GetKeyUp(KeyCode.F10))
+            {
+                gameSerializer.Save(Global.world, Global.player, "Reload");
+                gameSerializer.Load(Global.world, Global.player, "Reload");
+            }
 
 
             //+ Controllers

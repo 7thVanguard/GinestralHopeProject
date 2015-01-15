@@ -3,6 +3,10 @@ using System.Collections;
 
 public static class EventsLib
 {
+    private static Color objectiveColor;
+
+
+
     public static void EraseVoxels(World world, IntVector3 firstPosition, IntVector3 secondPosition)
     {
         VoxelGenericFunctionality(world, "Air", firstPosition, secondPosition);
@@ -12,6 +16,20 @@ public static class EventsLib
     public static void FillWithVoxels(World world, string replacingVoxels, IntVector3 firstPosition, IntVector3 secondPosition)
     {
         VoxelGenericFunctionality(world, replacingVoxels, firstPosition, secondPosition);
+    }
+
+
+    public static void UpdateRenderades()
+    {
+        UpdateRenderades(objectiveColor);
+    }
+
+
+    public static void UpdateRenderades(Color color)
+    {
+        objectiveColor = color;
+
+        RenderSettings.ambientLight = RenderSettings.ambientLight = Color.Lerp(RenderSettings.ambientLight, objectiveColor, 0.005f);
     }
 
 
