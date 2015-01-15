@@ -3,25 +3,13 @@ using System.Collections;
 
 public class Sun
 {
-    public LightSystemBehaviour lightSystemBehaviour;
     public GameObject sunObj;
     public Light light;
     public LensFlare lensFlare;
 
-    public Color lightColor;
-    public Color flareColor;
-
-    public float dayTime;
-    public float sunAngle;
-
-    public float intensity;
-    public float ambientLight;
-
 
     public Sun(Player player)
     {
-        lightSystemBehaviour = new LightSystemBehaviour();
-
         Init();
     }
 
@@ -45,18 +33,11 @@ public class Sun
         sunObj.AddComponent<LensFlare>();
         lensFlare = sunObj.GetComponent<LensFlare>();
         lensFlare.flare = (Flare)Resources.Load("LightFlares/50mm Zoom");
-        
+
         light.type = LightType.Directional;
         light.shadows = LightShadows.Hard;
-    }
 
-
-    public void Update()
-    {
-        Quaternion rotation = Quaternion.Euler(sunAngle, dayTime, 0);
-        sunObj.transform.position = rotation * (new Vector3(0, 0, -100));
-        sunObj.transform.rotation = rotation;
-
-
+        sunObj.AddComponent<LightSystemBehaviour>();
+        sunObj.GetComponent<LightSystemBehaviour>().Init(Global.player, this, lensFlare);
     }
 }

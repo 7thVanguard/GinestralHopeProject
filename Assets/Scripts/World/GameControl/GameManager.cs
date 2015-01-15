@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GameManager : MonoBehaviour 
+public class GameManager : MonoBehaviour
 {
     // Controllers
     private Dictionary<string, GameController> Controller;
@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private Interactive interactive;
     private Geometry geometry;
     private Skill skill;
-    
+
 
     // Save
     public GameSerializer gameSerializer;
@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
 
         // post initialize
         Global.world.worldObj.GetComponent<HUD>().Init(Global.player);                                      // Initialize HUD
-        Global.sun.lightSystemBehaviour.Init(Global.player, Global.sun.sunObj, Global.sun.lensFlare);       // Initialize Light System
         InventoryManager.Init();                                                                            // Initialize Inventory
 
 
@@ -142,7 +141,6 @@ public class GameManager : MonoBehaviour
 
             //+ Controllers
             activeController.Update();
-            Global.sun.Update();
 
             if (Input.GetKeyUp(KeyCode.Escape))
             {

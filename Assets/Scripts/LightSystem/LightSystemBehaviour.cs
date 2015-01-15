@@ -1,49 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LightSystemBehaviour 
+public class LightSystemBehaviour : MonoBehaviour
 {
     private Player player;
-
-    private SunLightSystem sunLightSystem;
-    private FlareLightSystem flareLightSystem;
-    private RenderLightSystem renderLightSystem;
-    private CameraLightSystem cameraLightSystem;
-
-    protected GameObject sun;
+    private Sun sun;
     protected LensFlare lensFlare;
 
-    // DayNight cycle duration relative
-    protected const float dayDuration = 12000;
-    protected const float beginingTime = 11500;
+    public Color lightColor;
+    public Color flareColor;
 
-    // Season relative
-    protected const float maxSunAngle = 45;
-    protected const float maxIntensity = 0.9f;
-    protected const float minIntensity = 0;
+    public Color ambientLightColor;
 
-    // Changing variables
-    private float gameTime;
-    private float dayTime;
+    public Color backGroundColor;
+
+    public float intensity;
+
+    public bool update = false;
+    public bool setActual = false;
 
 
-    public void Init(Player player, GameObject sun, LensFlare lensFlare)
+    public void Init(Player player, Sun sun, LensFlare lensFlare)
     {
         this.player = player;
         this.sun = sun;
         this.lensFlare = lensFlare;
-
-        sunLightSystem = new SunLightSystem();
-        flareLightSystem = new FlareLightSystem();
-        renderLightSystem = new RenderLightSystem();
-        cameraLightSystem = new CameraLightSystem();
-
-        gameTime = 95;
     }
-	
 
 
-	public void Update ()
+
+    void Update()
     {
         // Developer auxiliar
         if (Input.GetKeyUp(KeyCode.L))
@@ -54,66 +40,31 @@ public class LightSystemBehaviour
                 sun.light.shadows = LightShadows.None;
         }
 
-        if (!GameFlow.pause)
+        if (update)
         {
-            // Time passing calculation
-            gameTime += Time.deltaTime;
-            dayTime = ((gameTime % dayDuration) / dayDuration) * 360;
-            dayTime = (dayTime + beginingTime) % 360;
+            sun.light.color = lightColor;
+            sun.light.intensity = intensity;
 
+            sun.lensFlare.color = flareColor;
 
-            if (dayTime < 90)
-            {
-                sunLightSystem.MidDay(player, sun, dayTime);
-                flareLightSystem.MidDay(lensFlare, dayTime);
-                renderLightSystem.MidDay(dayTime);
-                cameraLightSystem.MidDay(dayTime);
-            }
-            else if (dayTime < 180)
-            {
-                sunLightSystem.Noon(player, sun, dayTime);
-                flareLightSystem.Noon(lensFlare, dayTime);
-                renderLightSystem.Noon(dayTime);
-                cameraLightSystem.Noon(dayTime);
-            }
-            else if (dayTime < 270)
-            {
-                sunLightSystem.Night(player, sun, dayTime);
-                flareLightSystem.Night(lensFlare, dayTime);
-                renderLightSystem.Night(dayTime);
-                cameraLightSystem.Night(dayTime);
-            }
-            else
-            {
-                sunLightSystem.Sunrise(player, sun, dayTime);
-                flareLightSystem.Sunrise(lensFlare, dayTime);
-                renderLightSystem.Sunrise(dayTime);
-                cameraLightSystem.Sunrise(dayTime);
-            }
+            RenderSettings.ambientLight = ambientLightColor;
+
+            Camera.main.backgroundColor = backGroundColor;
+
+            update = false;
         }
-	}
 
+        if (setActual)
+        {
+            lightColor = sun.light.color;
+            intensity = sun.light.intensity;
 
-    public void SetSunRise()
-    {
-        gameTime = 0;
-    }
+            flareColor = sun.lensFlare.color;
 
+            ambientLightColor = RenderSettings.ambientLight;
+            backGroundColor = Camera.main.backgroundColor;
 
-    public void SetMidDay()
-    {
-        gameTime = dayDuration * 1 / 4;
-    }
-
-
-    public void SetNoon()
-    {
-        gameTime = dayDuration * 2 / 4;
-    }
-
-
-    public void SetNight()
-    {
-        gameTime = dayDuration * 3 / 4;
+            setActual = false;
+        }
     }
 }

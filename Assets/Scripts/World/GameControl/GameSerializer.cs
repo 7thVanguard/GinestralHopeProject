@@ -32,6 +32,40 @@ public struct ChunkStruct
 
 
 [System.Serializable]
+public struct SunStruct
+{
+    public float positionX;
+    public float positionY;
+    public float positionZ;
+    public float rotationX;
+    public float rotationY;
+    public float rotationZ;
+
+    public float lightColorR;
+    public float lightColorG;
+    public float lightColorB;
+    public float lightColorA;
+
+    public float flareColorR;
+    public float flareColorG;
+    public float flareColorB;
+    public float flareColorA;
+
+    public float ambientLightColorR;
+    public float ambientLightColorG;
+    public float ambientLightColorB;
+    public float ambientLightColorA;
+
+    public float backGroundColorR;
+    public float backGroundColorG;
+    public float backGroundColorB;
+    public float backGroundColorA;
+
+    public float intensity;
+}
+
+
+[System.Serializable]
 public struct VoxelStruct
 {
     public string name;
@@ -108,12 +142,13 @@ public class GameSerializer
 {
     private PlayerStruct playerStructSave;
     private ChunkStruct chunkStructSave;
+    private SunStruct sunStructSave;
     private VoxelStruct voxelStructSave;
-    private EmitterStruct emitterStruct;
-    private GeometryStruct geometryStruct;
-    private InteractiveStruct interactiveStruct;
-    private EnemyStruct enemyStruct;
-    private EventStruct eventStruct;
+    private EmitterStruct emitterStructSave;
+    private GeometryStruct geometryStructSave;
+    private InteractiveStruct interactiveStructSave;
+    private EnemyStruct enemyStructSave;
+    private EventStruct eventStructSave;
 
 
     private static List<VoxelStruct> VoxelSave;
@@ -186,7 +221,7 @@ public class GameSerializer
         bf.Serialize(file, playerStructSave);
 
 
-        //+ World
+        //+ Chunks
         chunkStructSave.chunkNumberX = world.chunkNumber.x;
         chunkStructSave.chunkNumberY = world.chunkNumber.y;
         chunkStructSave.chunkNumberZ = world.chunkNumber.z;
@@ -196,7 +231,38 @@ public class GameSerializer
 
         bf.Serialize(file, chunkStructSave);
 
+        //+ Sun
+        sunStructSave.positionX = Global.sun.sunObj.transform.position.x;
+        sunStructSave.positionY = Global.sun.sunObj.transform.position.y;
+        sunStructSave.positionZ = Global.sun.sunObj.transform.position.z;
+        sunStructSave.rotationX = Global.sun.sunObj.transform.eulerAngles.x;
+        sunStructSave.rotationY = Global.sun.sunObj.transform.eulerAngles.y;
+        sunStructSave.rotationZ = Global.sun.sunObj.transform.eulerAngles.z;
 
+        sunStructSave.lightColorR = Global.sun.light.color.r;
+        sunStructSave.lightColorG = Global.sun.light.color.g;
+        sunStructSave.lightColorB = Global.sun.light.color.b;
+        sunStructSave.lightColorA = Global.sun.light.color.a;
+
+        sunStructSave.flareColorR = Global.sun.lensFlare.color.r;
+        sunStructSave.flareColorG = Global.sun.lensFlare.color.g;
+        sunStructSave.flareColorB = Global.sun.lensFlare.color.b;
+        sunStructSave.flareColorA = Global.sun.lensFlare.color.a;
+
+        sunStructSave.ambientLightColorR = RenderSettings.ambientLight.r;
+        sunStructSave.ambientLightColorG = RenderSettings.ambientLight.g;
+        sunStructSave.ambientLightColorB = RenderSettings.ambientLight.b;
+        sunStructSave.ambientLightColorA = RenderSettings.ambientLight.a;
+
+        sunStructSave.backGroundColorR = Camera.main.backgroundColor.r;
+        sunStructSave.backGroundColorG = Camera.main.backgroundColor.g;
+        sunStructSave.backGroundColorB = Camera.main.backgroundColor.b;
+        sunStructSave.backGroundColorA = Camera.main.backgroundColor.a;
+
+        sunStructSave.intensity = Global.sun.light.intensity;
+        bf.Serialize(file, sunStructSave);
+
+        //+ Voxels
         bool firstVoxel = true;
 
         for (int cx = 0; cx < world.chunkNumber.x; cx++)
@@ -244,15 +310,15 @@ public class GameSerializer
 
         foreach (GameObject emitterObj in emittersInGame)
         {
-            emitterStruct.positionX = emitterObj.transform.position.x;
-            emitterStruct.positionY = emitterObj.transform.position.y;
-            emitterStruct.positionZ = emitterObj.transform.position.z;
-            emitterStruct.intensity = emitterObj.light.intensity;
-            emitterStruct.range = emitterObj.light.range;
-            emitterStruct.r = emitterObj.light.color.r;
-            emitterStruct.g = emitterObj.light.color.g;
-            emitterStruct.b = emitterObj.light.color.b;
-            EmitterSave.Add(emitterStruct);
+            emitterStructSave.positionX = emitterObj.transform.position.x;
+            emitterStructSave.positionY = emitterObj.transform.position.y;
+            emitterStructSave.positionZ = emitterObj.transform.position.z;
+            emitterStructSave.intensity = emitterObj.light.intensity;
+            emitterStructSave.range = emitterObj.light.range;
+            emitterStructSave.r = emitterObj.light.color.r;
+            emitterStructSave.g = emitterObj.light.color.g;
+            emitterStructSave.b = emitterObj.light.color.b;
+            EmitterSave.Add(emitterStructSave);
         }
         bf.Serialize(file, EmitterSave);
         EmitterSave.Clear();
@@ -264,17 +330,17 @@ public class GameSerializer
 
         foreach (GameObject geometry in geometryInGame)
         {
-            geometryStruct.ID = geometry.name;
-            geometryStruct.positionX = geometry.transform.position.x;
-            geometryStruct.positionY = geometry.transform.position.y;
-            geometryStruct.positionZ = geometry.transform.position.z;
-            geometryStruct.rotationX = geometry.transform.eulerAngles.x;
-            geometryStruct.rotationY = geometry.transform.eulerAngles.y;
-            geometryStruct.rotationZ = geometry.transform.eulerAngles.z;
-            geometryStruct.scaleX = geometry.transform.localScale.x;
-            geometryStruct.scaleY = geometry.transform.localScale.y;
-            geometryStruct.scaleZ = geometry.transform.localScale.z;
-            GeometrySave.Add(geometryStruct);
+            geometryStructSave.ID = geometry.name;
+            geometryStructSave.positionX = geometry.transform.position.x;
+            geometryStructSave.positionY = geometry.transform.position.y;
+            geometryStructSave.positionZ = geometry.transform.position.z;
+            geometryStructSave.rotationX = geometry.transform.eulerAngles.x;
+            geometryStructSave.rotationY = geometry.transform.eulerAngles.y;
+            geometryStructSave.rotationZ = geometry.transform.eulerAngles.z;
+            geometryStructSave.scaleX = geometry.transform.localScale.x;
+            geometryStructSave.scaleY = geometry.transform.localScale.y;
+            geometryStructSave.scaleZ = geometry.transform.localScale.z;
+            GeometrySave.Add(geometryStructSave);
         }
         bf.Serialize(file, GeometrySave);
         GeometrySave.Clear();
@@ -286,14 +352,14 @@ public class GameSerializer
 
         foreach (GameObject interactive in interactivesInGame)
         {
-            interactiveStruct.ID = interactive.name;
-            interactiveStruct.positionX = interactive.transform.position.x;
-            interactiveStruct.positionY = interactive.transform.position.y;
-            interactiveStruct.positionZ = interactive.transform.position.z;
-            interactiveStruct.rotationX = interactive.transform.eulerAngles.x;
-            interactiveStruct.rotationY = interactive.transform.eulerAngles.y;
-            interactiveStruct.rotationZ = interactive.transform.eulerAngles.z;
-            InteractiveSave.Add(interactiveStruct);
+            interactiveStructSave.ID = interactive.name;
+            interactiveStructSave.positionX = interactive.transform.position.x;
+            interactiveStructSave.positionY = interactive.transform.position.y;
+            interactiveStructSave.positionZ = interactive.transform.position.z;
+            interactiveStructSave.rotationX = interactive.transform.eulerAngles.x;
+            interactiveStructSave.rotationY = interactive.transform.eulerAngles.y;
+            interactiveStructSave.rotationZ = interactive.transform.eulerAngles.z;
+            InteractiveSave.Add(interactiveStructSave);
         }
         bf.Serialize(file, InteractiveSave);
         InteractiveSave.Clear();
@@ -305,11 +371,11 @@ public class GameSerializer
 
         foreach (GameObject enemy in enemiesInGame)
         {
-            enemyStruct.ID = enemy.name;
-            enemyStruct.positionX = enemy.transform.position.x;
-            enemyStruct.positionY = enemy.transform.position.y;
-            enemyStruct.positionZ = enemy.transform.position.z;
-            EnemySave.Add(enemyStruct);
+            enemyStructSave.ID = enemy.name;
+            enemyStructSave.positionX = enemy.transform.position.x;
+            enemyStructSave.positionY = enemy.transform.position.y;
+            enemyStructSave.positionZ = enemy.transform.position.z;
+            EnemySave.Add(enemyStructSave);
         }
         bf.Serialize(file, EnemySave);
         EnemySave.Clear();
@@ -321,11 +387,11 @@ public class GameSerializer
 
         foreach (GameObject eventObj in eventsInGame)
         {
-            eventStruct.ID = eventObj.name;
-            eventStruct.positionX = eventObj.transform.position.x;
-            eventStruct.positionY = eventObj.transform.position.y;
-            eventStruct.positionZ = eventObj.transform.position.z;
-            EventSave.Add(eventStruct);
+            eventStructSave.ID = eventObj.name;
+            eventStructSave.positionX = eventObj.transform.position.x;
+            eventStructSave.positionY = eventObj.transform.position.y;
+            eventStructSave.positionZ = eventObj.transform.position.z;
+            EventSave.Add(eventStructSave);
         }
         bf.Serialize(file, EventSave);
         EventSave.Clear();
@@ -345,7 +411,7 @@ public class GameSerializer
         player.unlockedSkillFireBall = playerStructSave.unlockedSkillFireBall;
 
 
-        //+ World
+        //+ Chunks
         // Deserialize the chunk struct
         chunkStructSave = (ChunkStruct)bf.Deserialize(file);
         // ------------------------------------------------------------------------------- Converter
@@ -360,14 +426,30 @@ public class GameSerializer
             world.chunkSize.y = chunkStructSave.chunkSizeY;
             world.chunkSize.z = chunkStructSave.chunkSizeZ;
 
-            // Destroy existing emiters
+            // Destroy existing chunks
             GameObject[] chunks = GameObject.FindGameObjectsWithTag("Chunk");
             foreach (GameObject chunkObj in chunks)
                 GameObject.Destroy(chunkObj);
 
+            // Reset the world
             world.Init();
         }
 
+
+        //+ Sun
+        sunStructSave = (SunStruct)bf.Deserialize(file);
+
+        Global.sun.sunObj.transform.position = new Vector3(sunStructSave.positionX, sunStructSave.positionY, sunStructSave.positionZ);
+        Global.sun.sunObj.transform.eulerAngles = new Vector3(sunStructSave.rotationX, sunStructSave.rotationY, sunStructSave.rotationZ);
+
+        Global.sun.light.color = new Color(sunStructSave.lightColorR, sunStructSave.lightColorG, sunStructSave.lightColorB, sunStructSave.lightColorA);
+        Global.sun.lensFlare.color = new Color(sunStructSave.flareColorR, sunStructSave.flareColorG, sunStructSave.flareColorB, sunStructSave.flareColorA);
+        RenderSettings.ambientLight = new Color(sunStructSave.ambientLightColorR, sunStructSave.ambientLightColorG, sunStructSave.ambientLightColorB, sunStructSave.ambientLightColorA);
+        Camera.main.backgroundColor = new Color(sunStructSave.backGroundColorR, sunStructSave.backGroundColorG, sunStructSave.backGroundColorB, sunStructSave.backGroundColorA);
+
+        Global.sun.light.intensity = sunStructSave.intensity;
+
+        //+ Voxels
         // Deserialize the voxels list
         VoxelSave = (List<VoxelStruct>)bf.Deserialize(file);
 
@@ -396,7 +478,7 @@ public class GameSerializer
 
                                         world.chunk[cx, cy, cz].voxel[x, y, z] =
                                             new Voxel(world, new IntVector3(x, y, z), new IntVector3(cx, cy, cz), VoxelSave[listPosition].name);
-                                    }   
+                                    }
                                 }
 
 
@@ -440,7 +522,7 @@ public class GameSerializer
         // Load gadgets
         foreach (GeometryStruct geometry in GeometrySave)
             Geometry.Dictionary[geometry.ID].Place(geometry.ID,
-                new Vector3(geometry.positionX, geometry.positionY, geometry.positionZ), 
+                new Vector3(geometry.positionX, geometry.positionY, geometry.positionZ),
                 new Vector3(geometry.rotationX, geometry.rotationY, geometry.rotationZ),
                 new Vector3(geometry.scaleX, geometry.scaleY, geometry.scaleZ), false);
 
@@ -460,7 +542,7 @@ public class GameSerializer
         // Load interactives
         foreach (InteractiveStruct interactive in InteractiveSave)
             Interactive.Dictionary[interactive.ID].Place(interactive.ID,
-                new Vector3(interactive.positionX, interactive.positionY, interactive.positionZ), 
+                new Vector3(interactive.positionX, interactive.positionY, interactive.positionZ),
                 new Vector3(interactive.rotationX, interactive.rotationY, interactive.rotationZ), false);
 
 

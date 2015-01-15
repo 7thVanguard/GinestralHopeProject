@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class GUIDeveloperMode : MonoBehaviour 
+public class GUIDeveloperMode : MonoBehaviour
 {
     private GameObject LightUI;
     private GameObject VoxelUI;
@@ -165,25 +165,25 @@ public class GUIDeveloperMode : MonoBehaviour
     //+ Light
     public void SunRiseButton()
     {
-        Global.sun.lightSystemBehaviour.SetSunRise();
+        //Global.sun.lightSystemBehaviour.SetSunRise();
     }
 
 
     public void MidDayButton()
     {
-        Global.sun.lightSystemBehaviour.SetMidDay();
+        //Global.sun.lightSystemBehaviour.SetMidDay();
     }
 
 
     public void EveningButton()
     {
-        Global.sun.lightSystemBehaviour.SetNoon();
+        //Global.sun.lightSystemBehaviour.SetNoon();
     }
 
 
     public void NightButton()
     {
-        Global.sun.lightSystemBehaviour.SetNight();
+        //Global.sun.lightSystemBehaviour.SetNight();
     }
 
 
