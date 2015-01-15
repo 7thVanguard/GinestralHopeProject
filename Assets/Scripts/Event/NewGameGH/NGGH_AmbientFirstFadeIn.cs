@@ -30,8 +30,6 @@ public class NGGH_AmbientFirstFadeIn : MonoBehaviour
             timeCounter -= Time.deltaTime;
             if (timeCounter < 0)
                 active = false;
-
-            Debug.Log("");
         }
     }
 
