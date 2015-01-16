@@ -1,0 +1,47 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class NGGH_AmbientSecondFadeOut : MonoBehaviour 
+{
+    World world;
+
+    private Color ambient = new Color(5 / 255f, 5 / 255f, 5 / 255f, 1);
+
+    private float timeCounter = 0;
+    private bool active;
+
+
+    void Start()
+    {
+        BoxCollider boxCollider;
+        boxCollider = gameObject.AddComponent<BoxCollider>();
+        boxCollider.size = new Vector3(11, 13, 0.2f);
+        boxCollider.isTrigger = true;
+        this.world = gameObject.GetComponent<EventComponent>().world;
+        Transform.Destroy(gameObject.GetComponent<EventComponent>());
+    }
+
+
+    void Update()
+    {
+        if (active)
+        {
+            EventsLib.UpdateRenderades();
+            timeCounter -= Time.deltaTime;
+            if (timeCounter < 0)
+                active = false;
+        }
+    }
+
+
+    void OnTriggerStay(Collider other)
+    {
+        if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
+            if (other.tag == "Player")
+            {
+                EventsLib.UpdateRenderades(ambient);
+                timeCounter = 5;
+                active = true;
+            }
+    }
+}
