@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NGGH_FirstDoorOpen : MonoBehaviour
+public class NGGH_SecondDoorOpen : MonoBehaviour
 {
     World world;
 
@@ -23,13 +23,13 @@ public class NGGH_FirstDoorOpen : MonoBehaviour
 
         RaycastHit impact;
 
-        if (Physics.Raycast(new Vector3(4.5f, 2.5f, 18f), new Vector3(0, 0, 1), out impact, 5))
+        if (Physics.Raycast(new Vector3(24.5f, 11.5f, 18f), new Vector3(0, 0, 1), out impact, 5))
             firstDoor = impact.transform.gameObject;
-        if (Physics.Raycast(new Vector3(6.5f, 2.5f, 18f), new Vector3(0, 0, 1), out impact, 5))
+        if (Physics.Raycast(new Vector3(26.5f, 11.5f, 18f), new Vector3(0, 0, 1), out impact, 5))
             secondDoor = impact.transform.gameObject;
 
-        firstDoorObjectivePosition = new Vector3(1.5f, 2.5f, 20.5f);
-        secondDoorObjectivePosition = new Vector3(9.5f, 2.5f, 20.5f);
+        firstDoorObjectivePosition = new Vector3(21.5f, 11.5f, 20.5f);
+        secondDoorObjectivePosition = new Vector3(29.5f, 11.5f, 20.5f);
     }
 
 

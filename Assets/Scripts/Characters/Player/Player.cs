@@ -5,7 +5,10 @@ public class Player
 {
     public GameObject playerObj;
     public CharacterController controller;
-    //public Light light;
+    public GameObject pointLight;
+    public GameObject spotLight;
+    public Light pointLightLight;
+    public Light spotLightLight;
 
     // Statistics
     public float maxLife = 20;
@@ -65,6 +68,32 @@ public class Player
 
         targetPosition.x = playerObj.transform.position.x;
         targetPosition.y = playerObj.transform.position.z;
+
+        // Lights
+        pointLight = new GameObject();
+        spotLight = new GameObject();
+
+        pointLight.transform.name = "Point Light";
+        spotLight.transform.name = "Spot Light";
+
+        pointLight.transform.parent = playerObj.transform;
+        spotLight.transform.parent = playerObj.transform;
+
+        pointLight.transform.localPosition = Vector3.zero;
+        spotLight.transform.localPosition = Vector3.zero;
+
+        pointLightLight = pointLight.AddComponent<Light>();
+        spotLightLight = spotLight.AddComponent<Light>();
+
+        pointLightLight.type = LightType.Point;
+        spotLightLight.type = LightType.Spot;
+
+        pointLightLight.range = 3;
+        spotLightLight.range = 35;
+        spotLightLight.spotAngle = 32;
+
+        pointLightLight.intensity = 1;
+        spotLightLight.intensity = 2.5f;
     }
 
 }

@@ -18,6 +18,7 @@ public class LightSystemBehaviour : MonoBehaviour
 
     public bool update = false;
     public bool setActual = false;
+    public bool facePlayer = false;
 
 
     public void Init(Player player, Sun sun, LensFlare lensFlare)
@@ -65,6 +66,11 @@ public class LightSystemBehaviour : MonoBehaviour
             backGroundColor = Camera.main.backgroundColor;
 
             setActual = false;
+        }
+
+        if (facePlayer)
+        {
+            sun.sunObj.transform.LookAt(Global.player.playerObj.transform);
         }
     }
 }

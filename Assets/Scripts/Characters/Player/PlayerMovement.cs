@@ -73,7 +73,19 @@ public class PlayerMovement
             // Assign movement
             player.controller.Move(interpolateDirection * Time.deltaTime);
         }
-        
+
+        if (RenderSettings.ambientLight.r < 25 / 255f)
+        {
+            player.pointLight.SetActive(true);
+            player.spotLight.SetActive(true);
+
+            player.spotLight.transform.LookAt(mainCamera.raycast.point);
+        }
+        else
+        {
+            player.pointLight.SetActive(false);
+            player.spotLight.SetActive(false);
+        }
     }
 
 
