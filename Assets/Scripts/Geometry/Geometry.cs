@@ -10,79 +10,16 @@ public class Geometry
     protected Player player;
     protected MainCamera mainCamera;
 
-    public static Dictionary<string, Geometry> Dictionary;
 
-    // Variables
-    public PlacedOn placedOn;
-
-
-    public virtual void Init(World world, Player player, MainCamera mainCamera)
+    public static void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale)
     {
-        this.world = world;
-        this.player = player;
-        this.mainCamera = mainCamera;
-
-        Dictionary = new Dictionary<string, Geometry>();
-
-        //+ Geometry
-        Geometry geometry;
-
-        // Wooden Bridge 6m
-        geometry = new WoodenBridge();
-        geometry.Init(world, player, mainCamera);
-        Dictionary.Add("Wooden Bridge 6m", geometry);
-
-        // Torch
-        geometry = new Torch();
-        geometry.Init(world, player, mainCamera);
-        Dictionary.Add("Torch", geometry);
-
-        // Altar
-        geometry = new Altar();
-        geometry.Init(world, player, mainCamera);
-        Dictionary.Add("Altar", geometry);
-
-        // Brazier
-        geometry = new Brazier();
-        geometry.Init(world, player, mainCamera);
-        Dictionary.Add("Brazier", geometry);
-
-        // Fire Gem
-        geometry = new FireGem();
-        geometry.Init(world, player, mainCamera);
-        Dictionary.Add("Fire Gem", geometry);
-
-        // Chest
-        geometry = new Chest();
-        geometry.Init(world, player, mainCamera);
-        Dictionary.Add("Chest", geometry);
-
-        // Wood Pieces
-        geometry = new WoodPieces();
-        geometry.Init(world, player, mainCamera);
-        Dictionary.Add("Wood Pieces", geometry);
-
-        // Iron Pieces
-        geometry = new IronPieces();
-        geometry.Init(world, player, mainCamera);
-        Dictionary.Add("Iron Pieces", geometry);
-
-        // Invisible collider
-        geometry = new InvisibleCollider();
-        geometry.Init(world, player, mainCamera);
-        Dictionary.Add("Invisible Collider", geometry);
-
-        // Cloud collider
-        geometry = new CloudCollider();
-        geometry.Init(world, player, mainCamera);
-        Dictionary.Add("Cloud Collider", geometry);
-
-        geometry = Dictionary["Wooden Bridge 6m"];
-    }
-
-
-    public virtual void Place(string ID, Vector3 pos, Vector3 rot, Vector3 scale, bool firstPlacing)
-    {
-
+        GameObject geometryObj = new GameObject();
+        geometryObj.name = ID;
+        geometryObj.tag = "Geometry";
+        geometryObj.transform.position = pos;
+        geometryObj.transform.eulerAngles = rot;
+        geometryObj.transform.localScale = scale;
+        geometryObj.transform.parent = Global.world.geometryController.transform;
+        geometryObj.AddComponent<GeometryComponent>();
     }
 }
