@@ -13,10 +13,6 @@ public class NGGH_AmbientSecondFadeIn : MonoBehaviour
 
     void Start()
     {
-        BoxCollider boxCollider;
-        boxCollider = gameObject.AddComponent<BoxCollider>();
-        boxCollider.size = new Vector3(11, 13, 0.2f);
-        boxCollider.isTrigger = true;
         this.world = gameObject.GetComponent<EventComponent>().world;
         Transform.Destroy(gameObject.GetComponent<EventComponent>());
     }
@@ -26,7 +22,7 @@ public class NGGH_AmbientSecondFadeIn : MonoBehaviour
     {
         if (active)
         {
-            EventsLib.UpdateRenderades();
+            
             timeCounter -= Time.deltaTime;
             if (timeCounter < 0)
                 active = false;
@@ -39,7 +35,7 @@ public class NGGH_AmbientSecondFadeIn : MonoBehaviour
         if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
             if (other.tag == "Player")
             {
-                EventsLib.UpdateRenderades(ambient);
+                
                 timeCounter = 5;
                 active = true;
             }

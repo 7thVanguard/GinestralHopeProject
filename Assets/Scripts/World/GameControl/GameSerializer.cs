@@ -133,6 +133,9 @@ public struct EventStruct
     public float positionX;
     public float positionY;
     public float positionZ;
+    public float colliderScaleX;
+    public float colliderScaleY;
+    public float colliderScaleZ;
 }
 
 
@@ -346,8 +349,8 @@ public class GameSerializer
         GeometrySave.Clear();
 
 
-        //+ Gadgets
-        // Find all gadgets in game
+        //+ Interactives
+        // Find all interactives in game
         GameObject[] interactivesInGame = GameObject.FindGameObjectsWithTag("Interactive");
 
         foreach (GameObject interactive in interactivesInGame)
@@ -391,6 +394,9 @@ public class GameSerializer
             eventStructSave.positionX = eventObj.transform.position.x;
             eventStructSave.positionY = eventObj.transform.position.y;
             eventStructSave.positionZ = eventObj.transform.position.z;
+            eventStructSave.colliderScaleX = eventObj.GetComponent<BoxCollider>().size.x;
+            eventStructSave.colliderScaleY = eventObj.GetComponent<BoxCollider>().size.y;
+            eventStructSave.colliderScaleZ = eventObj.GetComponent<BoxCollider>().size.z;
             EventSave.Add(eventStructSave);
         }
         bf.Serialize(file, EventSave);
@@ -578,7 +584,8 @@ public class GameSerializer
 
         // Load events
         foreach (EventStruct eventObj in EventSave)
-            Event.Place(world, player, eventObj.ID, new Vector3(eventObj.positionX, eventObj.positionY, eventObj.positionZ));
+            Event.Place(world, player, eventObj.ID, new Vector3(eventObj.positionX, eventObj.positionY, eventObj.positionZ),
+                                                    new Vector3(eventObj.colliderScaleX, eventObj.colliderScaleY, eventObj.colliderScaleZ));
 
         // Reset events list
         EventSave.Clear();

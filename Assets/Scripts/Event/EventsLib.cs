@@ -3,98 +3,33 @@ using System.Collections;
 
 public static class EventsLib
 {
+    //+ Ambient
     private static Color objectiveColor;
-
-
-
-    public static void EraseVoxels(World world, IntVector3 firstPosition, IntVector3 secondPosition)
+    public static void SetRenderambient(Color color) 
+    { 
+        objectiveColor = color; 
+    }
+    public static void UpdateRenderambient()
     {
-        VoxelGenericFunctionality(world, "Air", firstPosition, secondPosition);
+        RenderSettings.ambientLight = RenderSettings.ambientLight = Color.Lerp(RenderSettings.ambientLight, objectiveColor, 0.005f); 
     }
 
 
-    public static void FillWithVoxels(World world, string replacingVoxels, IntVector3 firstPosition, IntVector3 secondPosition)
+    //+ Doors
+    private static GameObject door1;
+    private static GameObject door2;
+    private static Vector3 objectivePosition1;
+    private static Vector3 objectivePosition2;
+    public static void SetDoorOpenDoubleSlider(GameObject firstDoor, Vector3 firstDoorObjectivePosition, GameObject secondDoor, Vector3 secondDoorObjectivePosition)
     {
-        VoxelGenericFunctionality(world, replacingVoxels, firstPosition, secondPosition);
+        door1 = firstDoor;
+        door2 = secondDoor;
+        objectivePosition1 = firstDoorObjectivePosition;
+        objectivePosition2 = secondDoorObjectivePosition;
     }
-
-
-    public static void UpdateRenderades()
+    public static void UpdateDoorOpenDoubleSlider()
     {
-        UpdateRenderades(objectiveColor);
-    }
-
-
-    public static void UpdateRenderades(Color color)
-    {
-        objectiveColor = color;
-
-        RenderSettings.ambientLight = RenderSettings.ambientLight = Color.Lerp(RenderSettings.ambientLight, objectiveColor, 0.005f);
-    }
-
-
-    private static void VoxelGenericFunctionality(World world, string replacingVoxels, IntVector3 firstPosition, IntVector3 secondPosition)
-    {
-        Chunk chunk = null;
-        Voxel voxel = null;
-
-        IntVector3 initPos, endPos;
-        IntVector3 chunkInitPos, chunkEndPos;
-
-        // Initialize
-        initPos = new IntVector3();
-        endPos = new IntVector3();
-
-        // Organizing the voxel positions
-        initPos.x = Mathf.Min(firstPosition.x, secondPosition.x);
-        endPos.x = Mathf.Max(firstPosition.x, secondPosition.x);
-        initPos.y = Mathf.Min(firstPosition.y, secondPosition.y);
-        endPos.y = Mathf.Max(firstPosition.y, secondPosition.y);
-        initPos.z = Mathf.Min(firstPosition.z, secondPosition.z);
-        endPos.z = Mathf.Max(firstPosition.z, secondPosition.z);
-
-        // Organizing the chunk positions
-        chunkInitPos = new IntVector3(initPos.x / world.chunkSize.x, initPos.y / world.chunkSize.y, initPos.z / world.chunkSize.z);
-        chunkEndPos = new IntVector3(endPos.x / world.chunkSize.x, endPos.y / world.chunkSize.y, endPos.z / world.chunkSize.z);
-
-        // Lower limit of the chunk
-        if (initPos.x % world.chunkSize.x == 0)
-            chunkInitPos.x--;
-        if (initPos.y % world.chunkSize.y == 0)
-            chunkInitPos.y--;
-        if (initPos.z % world.chunkSize.z == 0)
-            chunkInitPos.z--;
-
-        // Lower limit of the chunk
-        if (endPos.x % world.chunkSize.x == world.chunkSize.x - 1)
-            chunkEndPos.x++;
-        if (endPos.y % world.chunkSize.y == world.chunkSize.y - 1)
-            chunkEndPos.y++;
-        if (endPos.z % world.chunkSize.z == world.chunkSize.z - 1)
-            chunkEndPos.z++;
-
-
-        // Destroy chunks
-        for (int x = initPos.x; x <= endPos.x; x++)
-            for (int y = initPos.y; y <= endPos.y; y++)
-                for (int z = initPos.z; z <= endPos.z; z++)
-                {
-                    if (VoxelLib.GetVoxelWithPositionIfExists(world, new IntVector3(x, y, z), ref chunk, ref voxel))
-                    {
-                        world.chunk[chunk.numID.x, chunk.numID.y, chunk.numID.z].voxel[voxel.numID.x, voxel.numID.y, voxel.numID.z] =
-                                new Voxel(world, new IntVector3(voxel.numID.x, voxel.numID.y, voxel.numID.z),
-                                new IntVector3(chunk.numID.x, chunk.numID.y, chunk.numID.z), replacingVoxels);
-                    }
-                }
-
-
-        // Reset chunks
-        for (int x = chunkInitPos.x; x <= chunkEndPos.x; x++)
-            for (int y = chunkInitPos.y; y <= chunkEndPos.y; y++)
-                for (int z = chunkInitPos.z; z <= chunkEndPos.z; z++)
-                {
-                    if (ChunkLib.ChunkExists(world, new IntVector3(x, y, z)))
-                        world.chunksToReset.Add(new IntVector3(x, y, z));
-                }
+        door1.transform.position = Vector3.Slerp(door1.transform.position, objectivePosition1, 0.02f);
+        door2.transform.position = Vector3.Slerp(door2.transform.position, objectivePosition2, 0.02f);
     }
 }

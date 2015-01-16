@@ -11,10 +11,6 @@ public class NGGH_FirstLightsOn : MonoBehaviour
 
     void Start()
     {
-        BoxCollider boxCollider;
-        boxCollider = gameObject.AddComponent<BoxCollider>();
-        boxCollider.size = new Vector3(0.2f, 12, 11);
-        boxCollider.isTrigger = true;
         this.world = gameObject.GetComponent<EventComponent>().world;
         Transform.Destroy(gameObject.GetComponent<EventComponent>());
 

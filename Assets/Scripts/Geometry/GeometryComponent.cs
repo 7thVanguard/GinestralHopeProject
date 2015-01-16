@@ -16,7 +16,10 @@ public class GeometryComponent : MonoBehaviour
             GameObject geometry = GameObject.Instantiate((GameObject)Resources.Load("Props/Geometry/" + this.name + "/" + this.name), 
                                                         transform.position, Quaternion.Euler(transform.eulerAngles)) as GameObject;
             geometry.transform.localScale = transform.localScale;
+
             geometry.name = this.name;
+            geometry.tag = "Geometry";
+            geometry.transform.parent = Global.world.geometryController.transform;
 
             GameObject.Destroy(this.gameObject);
         }
