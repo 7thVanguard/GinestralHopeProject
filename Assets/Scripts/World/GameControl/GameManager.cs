@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     // Main control classes
     private Enemy enemy;
     private Interactive interactive;
-    private Geometry geometry;
     private Skill skill;
 
 
@@ -68,15 +67,9 @@ public class GameManager : MonoBehaviour
         enemy = new Enemy();
         enemy.Init(Global.world, Global.player, Global.mainCamera, enemy);
 
-
-        //+ Geometries Init
-        geometry = new Geometry();
-        geometry.Init(Global.world, Global.player, Global.mainCamera);
-
-        //+ Gadgets Init
+        //+ Interactives Init
         interactive = new Interactive();
         interactive.Init(Global.world, Global.player, Global.mainCamera, interactive);
-
 
         //+ Skills Init
         skill = new Skill();
