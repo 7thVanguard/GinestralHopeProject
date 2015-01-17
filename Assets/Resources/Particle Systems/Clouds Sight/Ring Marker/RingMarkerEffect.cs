@@ -5,7 +5,7 @@ public class RingMarkerEffect : MonoBehaviour
 {
     private float timeCounter = 1.2f;       // Time till destruction
 
-	void Update () 
+	void Update() 
     {
         timeCounter -= Time.deltaTime;
 

@@ -36,6 +36,19 @@ public class GameManager : MonoBehaviour
         Global.world.worldObj.GetComponent<HUD>().Init(Global.player);                                      // Initialize HUD
         InventoryManager.Init();                                                                            // Initialize Inventory
 
+        // Vertical Light
+        Global.verticalLight = new GameObject();
+
+        Global.verticalLight.name = "Vertical Light";
+
+        Global.verticalLight.transform.position = Vector3.zero;
+        Global.verticalLight.transform.eulerAngles = new Vector3(90, 0, 0);
+
+        Global.verticalLight.AddComponent<Light>();
+        Global.verticalLight.GetComponent<Light>().type = LightType.Directional;
+        Global.verticalLight.GetComponent<Light>().color = Color.white;
+        Global.verticalLight.GetComponent<Light>().intensity = 0.1f;
+
 
         //+ Controllers Init
         Controller = new Dictionary<string, GameController>();

@@ -7,6 +7,8 @@ public static class Global
     public static Player player;
     public static MainCamera mainCamera;
 
+    public static GameObject verticalLight;
+
     public static Sun sun;
 
     public static Material G1 = (Material)Resources.Load("Atlas/Terrain Atlas/GHAtlas1Mat");

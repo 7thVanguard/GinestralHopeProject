@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Core
-  m_Shader: {fileID: 4800000, guid: 79c8e83054f3f4a4b966864a6812dfce, type: 3}
+  m_Name: GreenOrbGlowMat
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,33 +17,14 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: f60fd0ae4629688409b04cca573f4668, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _BumpMap
-        second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _InvFade
-        second: 3
-      data:
-        first:
-          name: _BumpAmt
-        second: 10
-      data:
-        first:
-          name: _ColorStrength
         second: 1
-      data:
-        first:
-          name: _CutOutLightCore
-        second: .5
     m_Colors:
       data:
         first:
@@ -52,4 +33,4 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .882352948, g: .735144973, b: .655276835, a: .501960814}
+        second: {r: .191176474, g: 1, b: .196754515, a: .156862751}
