@@ -28,8 +28,8 @@ public class NGGH_SecondDoorOpen : MonoBehaviour
         if (Physics.Raycast(new Vector3(26.5f, 11.5f, 18f), new Vector3(0, 0, 1), out impact, 5))
             secondDoor = impact.transform.gameObject;
 
-        firstDoorObjectivePosition = new Vector3(21.5f, 11.5f, 20.5f);
-        secondDoorObjectivePosition = new Vector3(29.5f, 11.5f, 20.5f);
+        firstDoorObjectivePosition = new Vector3(23.5f, 9.5f, 20.5f);
+        secondDoorObjectivePosition = new Vector3(27.5f, 9.5f, 20.5f);
     }
 
 

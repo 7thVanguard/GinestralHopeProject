@@ -297,10 +297,10 @@ public class OrganicVoxel
 
 
             // UV
-            UV.Add(new Vector2(detVoxel.UVStartTop.x, detVoxel.UVStartTop.y + world.textureSize));
-            UV.Add(new Vector2(detVoxel.UVStartTop.x + world.textureSize, detVoxel.UVStartTop.y + world.textureSize));
-            UV.Add(new Vector2(detVoxel.UVStartTop.x + world.textureSize, detVoxel.UVStartTop.y));
-            UV.Add(new Vector2(detVoxel.UVStartTop.x, detVoxel.UVStartTop.y));
+            UV.Add(new Vector2(UVStart.x, UVStart.y + world.textureSize));
+            UV.Add(new Vector2(UVStart.x + world.textureSize, UVStart.y + world.textureSize));
+            UV.Add(new Vector2(UVStart.x + world.textureSize, UVStart.y));
+            UV.Add(new Vector2(UVStart.x, UVStart.y));
 
             Triangles.Add(vertexCount + 0);
             Triangles.Add(vertexCount + 2);

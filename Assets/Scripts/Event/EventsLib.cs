@@ -11,7 +11,7 @@ public static class EventsLib
     }
     public static void UpdateRenderambient()
     {
-        RenderSettings.ambientLight = RenderSettings.ambientLight = Color.Lerp(RenderSettings.ambientLight, objectiveColor, 0.005f); 
+        RenderSettings.ambientLight = RenderSettings.ambientLight = Color.Lerp(RenderSettings.ambientLight, objectiveColor, 0.005f);
     }
 
 

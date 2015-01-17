@@ -28,8 +28,8 @@ public class NGGH_ThirdDoorClose : MonoBehaviour
         if (Physics.Raycast(new Vector3(20.5f, 24.5f, 14.5f), new Vector3(1, 0, 0), out impact, 5))
             secondDoor = impact.transform.gameObject;
 
-        firstDoorObjectivePosition = new Vector3(22.5f, 24.5f, 12.5f);
-        secondDoorObjectivePosition = new Vector3(22.5f, 24.5f, 14.5f);
+        firstDoorObjectivePosition = new Vector3(22.5f, 22.5f, 13.5f);
+        secondDoorObjectivePosition = new Vector3(22.5f, 22.5f, 13.5f);
     }
 
 
@@ -51,10 +51,12 @@ public class NGGH_ThirdDoorClose : MonoBehaviour
     {
         if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
             if (other.tag == "Player")
+            {
                 EventsLib.SetRenderambient(ambient);
-        EventsLib.SetDoorOpenDoubleSlider(firstDoor, firstDoorObjectivePosition, secondDoor, secondDoorObjectivePosition);
+                EventsLib.SetDoorOpenDoubleSlider(firstDoor, firstDoorObjectivePosition, secondDoor, secondDoorObjectivePosition);
 
-        timeCounter = 10;
-        active = true;
+                timeCounter = 10;
+                active = true;
+            }
     }
 }
