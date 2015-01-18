@@ -34,14 +34,8 @@ public class Player
     // Animation
     public int damageAnimTime = 5;
 
-    //+ Unlocks
-
-    // Levels
-
-    // Orbs
-
     // Skills
-    public bool unlockedSkillFireBall = true;
+    public bool unlockedSkillFireBall = false;
 
 
 
@@ -87,7 +81,7 @@ public class Player
         pointLight.transform.parent = playerObj.transform;
         spotLight.transform.parent = playerObj.transform;
 
-        pointLight.transform.localPosition = Vector3.zero;
+        pointLight.transform.localPosition = new Vector3(0, 0, -0.5f);
         spotLight.transform.localPosition = Vector3.zero;
 
         pointLightLight = pointLight.AddComponent<Light>();
@@ -96,7 +90,7 @@ public class Player
         pointLightLight.type = LightType.Point;
         spotLightLight.type = LightType.Spot;
 
-        pointLightLight.range = 3;
+        pointLightLight.range = 0.6f;
         spotLightLight.range = 35;
         spotLightLight.spotAngle = 32;
 
