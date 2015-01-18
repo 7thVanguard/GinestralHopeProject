@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class Voxel
 {
-
     public VoxelType type;
     public VoxelState state;
 

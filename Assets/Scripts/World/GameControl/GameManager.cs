@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         Global.verticalLight.AddComponent<Light>();
         Global.verticalLight.GetComponent<Light>().type = LightType.Directional;
         Global.verticalLight.GetComponent<Light>().color = Color.white;
-        Global.verticalLight.GetComponent<Light>().intensity = 0.1f;
+        Global.verticalLight.GetComponent<Light>().intensity = 0.0f;
 
 
         //+ Controllers Init
@@ -212,6 +212,9 @@ public class GameManager : MonoBehaviour
         Global.player.constructionDetection = 300;
 
         HUD.cubeMarker.SetActive(false);
+
+        // UI
+        GameGUI.developerMode.SetActive(false);
     }
 
 
@@ -223,6 +226,9 @@ public class GameManager : MonoBehaviour
         Global.player.constructionDetection = 300;
 
         HUD.cubeMarker.SetActive(false);
+
+        // UI
+        GameGUI.developerMode.SetActive(false);
     }
 
 
@@ -237,6 +243,9 @@ public class GameManager : MonoBehaviour
             HUD.cubeMarker.SetActive(true);
         else
             HUD.cubeMarker.SetActive(false);
+
+        // UI
+        GameGUI.developerMode.SetActive(true);
     }
 
 

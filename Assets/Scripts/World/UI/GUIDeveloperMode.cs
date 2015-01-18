@@ -17,7 +17,7 @@ public class GUIDeveloperMode : MonoBehaviour
     void Awake()
     {
         GameGUI.developerMode = transform.parent.FindChild("Developer Mode").gameObject;
-        GameGUI.developerMode.SetActive(true);
+        GameGUI.developerMode.SetActive(false);
 
         LightUI = transform.parent.FindChild("Developer Mode").FindChild("Light").gameObject;
         VoxelUI = transform.parent.FindChild("Developer Mode").FindChild("Voxel").gameObject;

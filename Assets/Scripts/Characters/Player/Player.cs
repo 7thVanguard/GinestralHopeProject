@@ -34,8 +34,16 @@ public class Player
     // Animation
     public int damageAnimTime = 5;
 
+    //+ Unlocks
+
+    // Levels
+
+    // Orbs
+
     // Skills
     public bool unlockedSkillFireBall = true;
+
+
 
 
     public Player(World world)
