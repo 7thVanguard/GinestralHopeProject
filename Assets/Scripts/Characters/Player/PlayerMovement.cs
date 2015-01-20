@@ -66,6 +66,8 @@ public class PlayerMovement
             {
                 if (Input.GetKey(KeyCode.Space))
                     objectiveDirection = new Vector3(objectiveDirection.x, player.jumpInitialSpeed, objectiveDirection.z);
+                else
+                    objectiveDirection.y = 0;
             }
             else
                 objectiveDirection += new Vector3(0, -GamePhysics.gravity * player.jumpGravityMultiplier, 0) * Time.deltaTime;

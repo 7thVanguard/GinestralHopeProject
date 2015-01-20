@@ -7,6 +7,7 @@ public class NGGH_SecondGreenOrb : MonoBehaviour
     GameObject greenOrb;
 
     private bool active;
+    private bool finished;
 
 
     void Start()
@@ -22,10 +23,12 @@ public class NGGH_SecondGreenOrb : MonoBehaviour
 
     void Update()
     {
-        if (active)
-        {
-
-        }
+        if (!finished)
+            if (active)
+            {
+                GameObject.Destroy(greenOrb);
+                finished = true;
+            }
     }
 
 

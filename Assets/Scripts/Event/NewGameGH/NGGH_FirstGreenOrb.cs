@@ -6,7 +6,10 @@ public class NGGH_FirstGreenOrb : MonoBehaviour
     World world;
     GameObject greenOrb;
 
+    private float timeCounter;
+
     private bool active;
+    private bool finished;
 
 
     void Start()
@@ -22,10 +25,10 @@ public class NGGH_FirstGreenOrb : MonoBehaviour
 
     void Update()
     {
-        if (active)
-        {
-
-        }
+        if (!finished)
+            if (active)
+                finished = (EventsLib.GoAroundPlayer(greenOrb));
+                    
     }
 
 

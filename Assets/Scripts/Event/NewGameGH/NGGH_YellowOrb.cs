@@ -4,9 +4,10 @@ using System.Collections;
 public class NGGH_YellowOrb : MonoBehaviour 
 {
     World world;
-    GameObject greenOrb;
+    GameObject yellowOrb;
 
     private bool active;
+    private bool finished;
 
 
     void Start()
@@ -14,18 +15,20 @@ public class NGGH_YellowOrb : MonoBehaviour
         this.world = gameObject.GetComponent<EventComponent>().world;
         Transform.Destroy(gameObject.GetComponent<EventComponent>());
 
-        greenOrb = GameObject.Instantiate((GameObject)Resources.Load("Particle Systems/Ginestral Hope/Yellow Orb/Yellow Orb")) as GameObject;
-        greenOrb.transform.parent = this.transform;
-        greenOrb.transform.localPosition = Vector3.zero;
+        yellowOrb = GameObject.Instantiate((GameObject)Resources.Load("Particle Systems/Ginestral Hope/Yellow Orb/Yellow Orb")) as GameObject;
+        yellowOrb.transform.parent = this.transform;
+        yellowOrb.transform.localPosition = Vector3.zero;
     }
 
 
     void Update()
     {
-        if (active)
-        {
-
-        }
+        if (!finished)
+            if (active)
+            {
+                GameObject.Destroy(yellowOrb);
+                finished = true;
+            }
     }
 
 

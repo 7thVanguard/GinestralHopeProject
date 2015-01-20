@@ -11,10 +11,11 @@ public class Emiter
 		emiterObj.tag = "Emiter";
 
 		emiterObj.AddComponent<Light>();
-		emiterObj.light.type = LightType.Point;
+		
 		emiterObj.transform.position = position;
         emiterObj.transform.parent = world.emitersController.transform;
 
+        emiterObj.light.type = LightType.Point;
 		emiterObj.light.intensity = intensity;
 		emiterObj.light.range = range;
 
