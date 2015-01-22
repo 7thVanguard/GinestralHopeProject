@@ -32,7 +32,7 @@ public class DeveloperInputController : AbstractInputsController
         {
             Debug.Log(" Impact point information");
             Debug.Log(mainCamera.raycast.transform.tag);
-            Debug.Log((int)mainCamera.raycast.point.x + " " + (int)mainCamera.raycast.point.y + " " + (int)mainCamera.raycast.point.z);
+            Debug.Log(mainCamera.raycast.point.x + " " + mainCamera.raycast.point.y + " " + mainCamera.raycast.point.z);
         }
 
         //++ Tool
