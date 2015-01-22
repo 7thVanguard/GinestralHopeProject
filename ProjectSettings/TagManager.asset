@@ -12,6 +12,7 @@ TagManager:
   - Geometry
   - Structure
   - Interactive
+  - Creation
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

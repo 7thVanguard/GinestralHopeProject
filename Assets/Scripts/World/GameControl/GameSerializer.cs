@@ -593,5 +593,10 @@ public class GameSerializer
 
         // Reset events list
         EventSave.Clear();
+
+        // Destroy existing emiters
+        GameObject[] creations = GameObject.FindGameObjectsWithTag("Creation");
+        foreach (GameObject creation in creations)
+            GameObject.Destroy(creation);
     }
 }
