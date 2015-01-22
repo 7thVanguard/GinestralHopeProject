@@ -15,6 +15,8 @@ public struct PlayerStruct
     public float rotationX;
     public float rotationY;
     public float rotationZ;
+    public float cameraObjective;
+    public float cameraAngleSight;
     public bool unlockedSkillFireBall;
 }
 
@@ -219,6 +221,8 @@ public class GameSerializer
         playerStructSave.rotationX = playerOnGame.transform.eulerAngles.x;
         playerStructSave.rotationY = playerOnGame.transform.eulerAngles.y;
         playerStructSave.rotationZ = playerOnGame.transform.eulerAngles.z;
+        playerStructSave.cameraObjective = Global.mainCamera.objectivePosition;
+        playerStructSave.cameraAngleSight = Global.mainCamera.angleSight;
         playerStructSave.unlockedSkillFireBall = player.unlockedSkillFireBall;
 
         bf.Serialize(file, playerStructSave);

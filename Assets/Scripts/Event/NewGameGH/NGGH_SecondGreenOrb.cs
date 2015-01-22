@@ -25,10 +25,7 @@ public class NGGH_SecondGreenOrb : MonoBehaviour
     {
         if (!finished)
             if (active)
-            {
-                GameObject.Destroy(greenOrb);
-                finished = true;
-            }
+                finished = (EventsLib.GoAroundPlayer(greenOrb));
     }
 
 

@@ -25,10 +25,7 @@ public class NGGH_YellowOrb : MonoBehaviour
     {
         if (!finished)
             if (active)
-            {
-                GameObject.Destroy(yellowOrb);
-                finished = true;
-            }
+                finished = (EventsLib.GoAroundPlayer(yellowOrb));
     }
 
 

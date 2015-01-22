@@ -65,6 +65,11 @@ public static class EventsLib
                             obj.transform.FindChild("Trail").GetComponent<ParticleSystem>().startSize * (distance / 3),
                             0.3f);
 
+            obj.transform.FindChild("Light").GetComponent<Light>().range =
+                            Mathf.Lerp(obj.transform.FindChild("Light").GetComponent<Light>().range,
+                            obj.transform.FindChild("Light").GetComponent<Light>().range * (distance / 3),
+                            0.03f);
+
             if (obj.transform.FindChild("Ball").GetComponent<ParticleSystem>().startSize < 0.35f)
                 obj.transform.FindChild("Glow").localScale = Vector3.zero;
         }
