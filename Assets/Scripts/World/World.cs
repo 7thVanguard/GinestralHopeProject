@@ -19,6 +19,7 @@ public class World
     public GameObject enemiesController = new GameObject();
     public GameObject eventsController = new GameObject();
     public GameObject emitersController = new GameObject();
+    public GameObject creationsController = new GameObject();
 
     public static bool gameLoaded = false;
     public static bool voxelsPrepared = false;
@@ -116,5 +117,10 @@ public class World
         emitersController.transform.eulerAngles = Vector3.zero;
         emitersController.transform.localScale = Vector3.one;
         emitersController.name = "Emitters Controller";
+
+        creationsController.transform.position = Vector3.zero;
+        creationsController.transform.eulerAngles = Vector3.zero;
+        creationsController.transform.localScale = Vector3.one;
+        creationsController.name = "Creations Controller";
     }
 }

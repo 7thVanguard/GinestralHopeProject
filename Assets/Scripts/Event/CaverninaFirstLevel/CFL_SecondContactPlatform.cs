@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CFL_FirstContactPlatform : MonoBehaviour 
+public class CFL_SecondContactPlatform : MonoBehaviour 
 {
-	void Start () 
+    void Start()
     {
         GameObject platform = (GameObject)Instantiate(Resources.Load("Props/Geometry/ContactPlatform/ContactPlatform")) as GameObject;
 
-        platform.transform.position = new Vector3(11.25f, 5.5f, 2.75f);
+        platform.transform.position = new Vector3(15f, 1f, 15);
         platform.transform.eulerAngles = Vector3.zero;
+        platform.transform.localScale = new Vector3(4.5f, 0.5f, 4);
         platform.transform.parent = Global.world.creationsController.transform;
 
         platform.GetComponent<ContactPlatformBehaviour>().initialPosition = platform.transform.position;
-        platform.GetComponent<ContactPlatformBehaviour>().endPosition = new Vector3(20.75f, 5.5f, 2.75f);
-	}
+        platform.GetComponent<ContactPlatformBehaviour>().endPosition = new Vector3(15f, 7.5f, 15);
+    }
 }
