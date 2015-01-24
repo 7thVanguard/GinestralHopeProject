@@ -36,8 +36,8 @@ public class DeveloperHUD
             if (Input.GetKey(KeyCode.LeftControl))
             {
                 // Draw textures
-                atlas = (Texture2D)GameFlow.selectedAtlas.mainTexture;
-                GUI.DrawTexture(new Rect(0, Screen.height - atlasLength, atlasLength, atlasLength), atlas);
+                Global.mainCamera.voxelsObj.SetActive(true);
+                //Global.mainCamera.voxelsObj.transform.localEulerAngles = new Vector3(30, Time.time * 100, 0);
 
                 if (Input.GetKeyUp(KeyCode.Mouse0))
                 {
@@ -52,6 +52,8 @@ public class DeveloperHUD
                         SelectTexture(new Rect(0, Screen.height - atlasLength, atlasLength, atlasLength), mousePosition);
                 }
             }
+            else
+                Global.mainCamera.voxelsObj.SetActive(false);
         }
     }
 

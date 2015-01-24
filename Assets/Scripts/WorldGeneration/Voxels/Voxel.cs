@@ -131,13 +131,14 @@ public class Voxel
             UVStartBack = VoxelsList.dictionary[hashName].backUVBegin;
             UVStartBot = VoxelsList.dictionary[hashName].botUVBegin;
 
-            blastResistance = 12;
             frontTransparent = VoxelsList.dictionary[hashName].frontTransparent;
             rightTransparent = VoxelsList.dictionary[hashName].rightTransparent;
             backTransparent = VoxelsList.dictionary[hashName].backTransparent;
             leftTransparent = VoxelsList.dictionary[hashName].leftTransparent;
             topTransparent = VoxelsList.dictionary[hashName].topTransparent;
             botTransparent = VoxelsList.dictionary[hashName].botTransparent;
+
+            blastResistance = VoxelsList.dictionary[hashName].blastResistance;
         }
     }
 }

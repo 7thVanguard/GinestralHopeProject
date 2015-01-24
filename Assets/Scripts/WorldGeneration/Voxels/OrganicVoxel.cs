@@ -257,8 +257,7 @@ public class OrganicVoxel
 
     private static bool NerbyTerrainCalculation(World world, int x, int y, int z)
     {
-        detChunk = chunk;
-        detVoxel = voxel;
+        bool varToReturn;
 
         VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, x, y, z);
         if (detVoxel.type == VoxelType.TERRAIN)
@@ -268,14 +267,20 @@ public class OrganicVoxel
                 VoxelLib.GetVoxel(world, ref detChunk, ref detVoxel, 0, 1, 0);
 
                 if (detVoxel.botTransparent)
-                    return false;
+                    varToReturn = false;
                 else
-                    return true;
+                    varToReturn = true;
             }
             else
-                return false;
+                varToReturn = false;
         }
-        return true;
+        else
+            varToReturn = true;
+
+        detChunk = chunk;
+        detVoxel = voxel;
+
+        return varToReturn;
     }
 
 
@@ -297,10 +302,10 @@ public class OrganicVoxel
 
 
             // UV
-            UV.Add(new Vector2(UVStart.x, UVStart.y + world.textureSize));
-            UV.Add(new Vector2(UVStart.x + world.textureSize, UVStart.y + world.textureSize));
             UV.Add(new Vector2(UVStart.x + world.textureSize, UVStart.y));
             UV.Add(new Vector2(UVStart.x, UVStart.y));
+            UV.Add(new Vector2(UVStart.x, UVStart.y + world.textureSize));
+            UV.Add(new Vector2(UVStart.x + world.textureSize, UVStart.y + world.textureSize));
 
             Triangles.Add(vertexCount + 0);
             Triangles.Add(vertexCount + 2);

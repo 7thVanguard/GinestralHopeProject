@@ -4,6 +4,7 @@ using System.Collections;
 public class MainCamera
 {
     public GameObject cameraObj;
+    public GameObject voxelsObj;
     public CharacterController controller;
 
 

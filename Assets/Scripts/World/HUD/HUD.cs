@@ -63,9 +63,12 @@ public class HUD : MonoBehaviour
                 GUI.DrawTexture(new Rect(Screen.width / 2 - gizmoCross.width / 2, Screen.height / 2 - gizmoCross.width / 2, gizmoCross.width, gizmoCross.height), gizmoCross);
 
             //+ Game bars
-            // Player Life Bar
-            GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200, 20), lifeBarBack);
-            GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200 * player.currentLife / player.maxLife, 20), lifeBar);
+            if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
+            {
+                // Player Life Bar
+                GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200, 20), lifeBarBack);
+                GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200 * player.currentLife / player.maxLife, 20), lifeBar);
+            }
 
             // Enemy life bar
             if (PlayerCombat.target != null)
