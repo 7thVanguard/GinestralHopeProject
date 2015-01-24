@@ -40,9 +40,9 @@ public class VoxelsList
 
     public static void Init()
     {
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.TERRAIN, "(0, 7)",
-                                    0, 7, false, 0, 5, false, 0, 5, false,
-                                    0, 5, false, 0, 5, false, 0, 5, false,
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(0, 7)",
+                                    4, 2, false, 6, 3, false, 6, 3, false,
+                                    6, 3, false, 6, 3, false, 6, 3, false,
                                     10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
@@ -58,7 +58,7 @@ public class VoxelsList
                                     10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.CUBIC, "(0, 5)", 
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.CUBIC, "(0, 5)",
                                     0, 5, false, 0, 5, false, 0, 5, false, 
                                     0, 5, false, 0, 5, false, 0, 5, false,
                                     10);
