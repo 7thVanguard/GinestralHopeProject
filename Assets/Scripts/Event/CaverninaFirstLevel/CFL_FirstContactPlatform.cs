@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CFL_FirstContactPlatform : MonoBehaviour 
 {
-	void Start () 
+	void Start ()
     {
         GameObject platform = (GameObject)Instantiate(Resources.Load("Props/Geometry/Platform Contact/Platform Contact")) as GameObject;
 
