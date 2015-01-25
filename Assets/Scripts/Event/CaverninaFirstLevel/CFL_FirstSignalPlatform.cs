@@ -15,7 +15,7 @@ public class CFL_FirstSignalPlatform : MonoBehaviour
             lever = impact.transform.parent.gameObject;
 
         // Spawn
-        platform = (GameObject)Instantiate(Resources.Load("Props/Geometry/SignalPlatform/SignalPlatform")) as GameObject;
+        platform = (GameObject)Instantiate(Resources.Load("Props/Geometry/Platform Signal/Platform Signal")) as GameObject;
 
         platform.transform.position = new Vector3(3f, 1f, 15f);
         platform.transform.eulerAngles = Vector3.zero;

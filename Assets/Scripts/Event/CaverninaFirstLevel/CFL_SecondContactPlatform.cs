@@ -5,7 +5,7 @@ public class CFL_SecondContactPlatform : MonoBehaviour
 {
     void Start()
     {
-        GameObject platform = (GameObject)Instantiate(Resources.Load("Props/Geometry/ContactPlatform/ContactPlatform")) as GameObject;
+        GameObject platform = (GameObject)Instantiate(Resources.Load("Props/Geometry/Platform Contact/Platform Contact")) as GameObject;
 
         platform.transform.position = new Vector3(15f, 1f, 15);
         platform.transform.eulerAngles = Vector3.zero;
