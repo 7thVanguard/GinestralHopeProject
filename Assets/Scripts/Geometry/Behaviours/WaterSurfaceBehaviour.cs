@@ -13,7 +13,7 @@ public class WaterSurfaceBehaviour : MonoBehaviour
         if (timeCounter >= 0.05f)
         {
             timeCounter = 0;
-            offset += 0.06125f;
+            offset += 0.0625f;
             if (offset >= 1)
                 offset -= 1;
         }
