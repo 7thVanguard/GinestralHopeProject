@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WaterSurfaceBehaviour : MonoBehaviour 
+public class WaterSurfaceStillBehaviour : MonoBehaviour 
 {
     float offset = 0;
     float timeCounter = 0;

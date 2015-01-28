@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Create90DegreesCurve : MonoBehaviour 
+public class Create90DegreesCurve : MonoBehaviour
 {
     // Parameters
     public Vector2 size = new Vector2(10, 10);
@@ -34,7 +34,7 @@ public class Create90DegreesCurve : MonoBehaviour
             {
                 Vertices.Add(new Vector3((y / divisions.y) * Mathf.Sin((90 * x / divisions.x) * Mathf.Deg2Rad), 0, 
                                         (y / divisions.y) * Mathf.Cos((90 * x / divisions.x) * Mathf.Deg2Rad)));
-                UV.Add(new Vector2(x / divisions.x, y / divisions.y));
+                UV.Add(new Vector2(y / divisions.y, x / divisions.x));
             }
 
 

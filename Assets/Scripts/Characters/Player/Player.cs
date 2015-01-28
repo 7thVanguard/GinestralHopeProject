@@ -90,9 +90,12 @@ public class Player
         pointLightLight.type = LightType.Point;
         spotLightLight.type = LightType.Spot;
 
+        pointLightLight.color = new Color(169, 143, 99, 255) / 255f;
+        spotLightLight.color = new Color(169, 143, 99, 255) / 255f;
+
         pointLightLight.range = 0.6f;
-        spotLightLight.range = 35;
-        spotLightLight.spotAngle = 32;
+        spotLightLight.range = 25;
+        spotLightLight.spotAngle = 90;
 
         pointLightLight.intensity = 1;
         spotLightLight.intensity = 2.5f;

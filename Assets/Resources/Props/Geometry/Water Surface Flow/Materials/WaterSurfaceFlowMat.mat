@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: WaterSurfaceMat
+  m_Name: WaterSurfaceFlowMat
   m_Shader: {fileID: 4800000, guid: 4fdd231bf48f30d41a8266da2485c6fc, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -17,8 +17,8 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 94b0254de78d79a4bb393f45854e995f, type: 3}
-          m_Scale: {x: 3, y: .1875}
+          m_Texture: {fileID: 2800000, guid: 43fe8e17b45718c4e8e6a2b3fa4d44f9, type: 3}
+          m_Scale: {x: 6, y: .1875}
           m_Offset: {x: 0, y: 0}
       data:
         first:
