@@ -1,6 +1,7 @@
 ﻿Shader "Palaui/Lava" {
 	Properties {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
+		_Alpha ("Alpha", float) = 0.8
 	}
 	
 	SubShader {
@@ -17,6 +18,7 @@
         	float4 color : COLOR;
       	};
       	sampler2D _MainTex;
+      	float _Alpha;
       	
       	
       	void vert (inout appdata_full v) 
@@ -32,6 +34,7 @@
       	void surf(Input IN, inout SurfaceOutput o) 
 		{
       		o.Albedo = tex2D (_MainTex, IN.uv_MainTex).rgb;
+      		o.Alpha = 1;
       	
       		float3 light = IN.color.rgb;
       		float sun = IN.color.a;
