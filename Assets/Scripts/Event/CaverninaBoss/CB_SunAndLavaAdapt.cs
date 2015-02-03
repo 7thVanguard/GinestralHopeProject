@@ -40,6 +40,6 @@ public class CB_SunAndLavaAdapt : MonoBehaviour
         Global.sun.sunObj.transform.position = new Vector3(20, Global.player.playerObj.transform.position.y + 20, 20);
 
         foreach (GameObject lavaSurface in lava)
-            lavaSurface.transform.position += new Vector3(0, Time.deltaTime, 0) / 10;
+            lavaSurface.transform.position += new Vector3(0, Time.deltaTime, 0) / 4.5f;
     }
 }
