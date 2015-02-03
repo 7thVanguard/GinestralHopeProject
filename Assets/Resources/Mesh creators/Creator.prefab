@@ -9,8 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 442276}
   - 114: {fileID: 11442276}
+  - 114: {fileID: 11404896}
   m_Layer: 0
-  m_Name: Curve creator
+  m_Name: Creator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,6 +29,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11404896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e34cae7d2e833d4eafafc7aec54cdb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 10, y: 10}
+  divisionsMultiplier: {x: 1, y: 1}
+  tiling: {x: 1, y: 1}
+  create: 0
 --- !u!114 &11442276
 MonoBehaviour:
   m_ObjectHideFlags: 1
