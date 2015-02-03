@@ -82,4 +82,12 @@ public static class EventsLib
         else
             return false;
     }
+    public static void FadeIm()
+    {
+
+    }
+    public static void FadeOff()
+    {
+
+    }
 }

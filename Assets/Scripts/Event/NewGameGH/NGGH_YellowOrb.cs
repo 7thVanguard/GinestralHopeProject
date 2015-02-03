@@ -26,6 +26,9 @@ public class NGGH_YellowOrb : MonoBehaviour
         if (!finished)
             if (active)
                 finished = (EventsLib.GoAroundPlayer(yellowOrb));
+
+        if (finished)
+            EventsLib.FadeIm();
     }
 
 
