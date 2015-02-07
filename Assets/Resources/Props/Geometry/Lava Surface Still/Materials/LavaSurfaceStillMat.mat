@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: LavaSurfaceStillMat
-  m_Shader: {fileID: 4800000, guid: 4fdd231bf48f30d41a8266da2485c6fc, type: 3}
+  m_Shader: {fileID: 4800000, guid: 7f065037b3f01a84abe3e17b0c059301, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
