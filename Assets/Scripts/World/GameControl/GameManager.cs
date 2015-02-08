@@ -167,6 +167,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        // Generic Update
+        GameMusic.Update();
+
 
         //+ Reset queue
         if (Global.world.chunksToReset.Count > 0)

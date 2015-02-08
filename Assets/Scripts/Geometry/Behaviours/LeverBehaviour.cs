@@ -26,6 +26,7 @@ public class LeverBehaviour : MonoBehaviour
                     {
                         emiting = !emiting;
                         keepPressed = true;
+                        transform.audio.Play();
                     }
                 }
                 else if (Input.GetKeyUp(KeyCode.E))
