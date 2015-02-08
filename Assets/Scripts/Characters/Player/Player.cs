@@ -81,8 +81,8 @@ public class Player
         pointLight.transform.parent = playerObj.transform;
         spotLight.transform.parent = playerObj.transform;
 
-        pointLight.transform.localPosition = new Vector3(0, 0, -0.5f);
-        spotLight.transform.localPosition = Vector3.zero;
+        pointLight.transform.localPosition = new Vector3(0.5f, 0, -0.6f);
+        spotLight.transform.localPosition = new Vector3(0.3f, 0, 0);
 
         pointLightLight = pointLight.AddComponent<Light>();
         spotLightLight = spotLight.AddComponent<Light>();
@@ -93,11 +93,11 @@ public class Player
         pointLightLight.color = new Color(169, 143, 99, 255) / 255f;
         spotLightLight.color = new Color(169, 143, 99, 255) / 255f;
 
-        pointLightLight.range = 0.6f;
+        pointLightLight.range = 1.5f;
         spotLightLight.range = 25;
         spotLightLight.spotAngle = 90;
 
-        pointLightLight.intensity = 1;
+        pointLightLight.intensity = 1f;
         spotLightLight.intensity = 2.5f;
     }
 

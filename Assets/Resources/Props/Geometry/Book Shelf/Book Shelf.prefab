@@ -10,10 +10,10 @@ GameObject:
   - 4: {fileID: 492718}
   - 33: {fileID: 3392718}
   - 23: {fileID: 2392718}
-  - 95: {fileID: 9592718}
+  - 65: {fileID: 6565384}
   m_Layer: 0
   m_Name: Book Shelf
-  m_TagString: Untagged
+  m_TagString: Geometry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,21 +57,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192718}
   m_Mesh: {fileID: 4300000, guid: 104e6f129164abd4a8361f6991a77cf5, type: 3}
---- !u!95 &9592718
-Animator:
-  serializedVersion: 3
+--- !u!65 &6565384
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 104e6f129164abd4a8361f6991a77cf5, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 2
+  m_Size: {x: 1.64443421, y: .696347117, z: 1.93935609}
+  m_Center: {x: 0, y: 0, z: .971623778}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

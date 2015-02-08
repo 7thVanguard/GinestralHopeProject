@@ -28,7 +28,7 @@ public class CameraMovement
 
     public void Update()
     {
-        if (GameFlow.gameState == GameFlow.GameState.GAME && GameFlow.onInterface == false)
+        if (GameFlow.gameState == GameFlow.GameState.GAME && !GameFlow.onInterface)
         {
             if (GameFlow.gameMode == GameFlow.GameMode.DEVELOPER)
             {
@@ -72,7 +72,10 @@ public class CameraMovement
                             else
                                 mainCamera.isMoving = false;
 
-                            mainCamera.distance = 3;
+                            if (mainCamera.objectiveDistance > mainCamera.maxDistance)
+                                mainCamera.objectiveDistance = mainCamera.maxDistance;
+                            else if (mainCamera.objectiveDistance < mainCamera.maxDistance && (mainCamera.isMoving || player.isMoving))
+                                mainCamera.objectiveDistance += 7.5f * Time.deltaTime;
 
                             Screen.lockCursor = true;
                         }
