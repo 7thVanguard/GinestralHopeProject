@@ -28,16 +28,46 @@ public class GameMusic
         }
     }
 
+
+    public static bool CheckFadeOut(Transform audioTransform)
+    {
+        if (audioTransform.audio.volume <= 0)
+            return true;
+        else
+        {
+            FadeOut(audioTransform);
+            return false;
+        }
+    }
+
     private static void FadeIn(Transform audioTransform)
     {
         if (audioTransform.audio.volume < 1)
             audioTransform.audio.volume += 0.2f * Time.deltaTime;
+
+        if (audioTransform.audio.volume >= 1)
+            fadingIn = false;
     }
 
 
     private static void FadeOut(Transform audioTransform)
     {
         if (audioTransform.audio.volume > 0)
-            audioTransform.audio.volume -= 0.2f * Time.deltaTime;
+            audioTransform.audio.volume -= 0.5f * Time.deltaTime;
+
+        if (audioTransform.audio.volume <= 0)
+            fadingOut = false;
+    }
+
+
+    public static void SelectClips(string saveName)
+    {
+        switch (saveName)
+        {
+            case "FirstCaverninaLevel":
+                break;
+            default:
+                break;
+        }
     }
 }

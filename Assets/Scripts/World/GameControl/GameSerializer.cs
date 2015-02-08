@@ -205,6 +205,9 @@ public class GameSerializer
 
             Desencrypter(world, player, bf, file);
             file.Close();
+
+            GameMusic.SelectClips(saveName);
+            GameMusic.fadingIn = true;
         }
     }
 
