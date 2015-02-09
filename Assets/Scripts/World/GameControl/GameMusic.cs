@@ -64,7 +64,23 @@ public class GameMusic
     {
         switch (saveName)
         {
-            case "FirstCaverninaLevel":
+            case "NewGameGH":
+                {
+                    Global.player.playerObj.transform.FindChild("MusicPlayer").audio.clip = (AudioClip)Resources.Load("Audio/OST/Gameplay/Cavern of Time");
+                    Global.player.playerObj.transform.FindChild("MusicPlayer").audio.Play();
+                }
+                break;
+            case "CaverninaFirstLevel":
+                {
+                    Global.player.playerObj.transform.FindChild("MusicPlayer").audio.clip = (AudioClip)Resources.Load("Audio/OST/Gameplay/The Land of Lament V2");
+                    Global.player.playerObj.transform.FindChild("MusicPlayer").audio.Play();
+                }
+                break;
+            case "CaverninaBoss":
+                {
+                    Global.player.playerObj.transform.FindChild("MusicPlayer").audio.clip = (AudioClip)Resources.Load("Audio/OST/Boss Stage/Rise of The Titans V2");
+                    Global.player.playerObj.transform.FindChild("MusicPlayer").audio.Play();
+                }
                 break;
             default:
                 break;
