@@ -28,8 +28,7 @@ public class NGGH_YellowOrb : MonoBehaviour
                 finished = (EventsLib.GoAroundPlayer(yellowOrb));
 
         if (finished)
-            if (GameMusic.CheckFadeOut(Global.player.playerObj.transform.FindChild("MusicPlayer")))
-                Global.world.worldObj.transform.GetComponent<GameManager>().gameSerializer.Load(Global.world, Global.player, "CaverninaFirstLevel");
+            Global.world.worldObj.transform.GetComponent<GameManager>().gameSerializer.Load(Global.world, Global.player, "CaverninaFirstLevel");
     }
 
 

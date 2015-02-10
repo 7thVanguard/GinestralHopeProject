@@ -207,6 +207,7 @@ public class GameSerializer
             file.Close();
 
             GameMusic.SelectClips(saveName);
+            Global.player.playerObj.transform.FindChild("MusicPlayer").audio.volume = 0;
             GameMusic.fadingIn = true;
         }
     }
