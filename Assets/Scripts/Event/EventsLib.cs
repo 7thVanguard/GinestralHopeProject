@@ -82,12 +82,30 @@ public static class EventsLib
         else
             return false;
     }
-    public static void FadeIm()
+    public static float FadeIn(float framesCounter, float framesCounterOnStay)
     {
+        if (framesCounter <= framesCounterOnStay)
+            framesCounter += 2 * Time.deltaTime;
+        else
+            framesCounter = framesCounterOnStay;
 
+        return framesCounter;
     }
-    public static void FadeOff()
+    public static float FadeOut(float framesCounter)
     {
+        if (framesCounter > 0)
+            framesCounter -= Time.deltaTime;
 
+        return framesCounter;
+    }
+    public static void DrawTutorial(Texture2D tutorial, float framesCounter)
+    {
+        if (framesCounter > 0 && !GameFlow.pause && GameFlow.gameState == GameFlow.GameState.GAME)
+        {
+            GUI.color = new Color(1, 1, 1, framesCounter);
+            GUI.DrawTextureWithTexCoords(new Rect(6 * Screen.width / 10, Screen.height / 6, 2.5f * Screen.width / 10, (2.5f * Screen.width / 10) * 1.4f),
+                tutorial, new Rect(0, 0, 1, 1));
+            GUI.color = new Color(1, 1, 1, 1);
+        }
     }
 }

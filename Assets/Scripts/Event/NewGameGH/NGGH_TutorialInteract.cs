@@ -6,7 +6,8 @@ public class NGGH_TutorialInteract : MonoBehaviour
     World world;
     Texture2D tutorial;
 
-    private bool active;
+    private float framesCounterOnStay = 1;
+    private float framesCounter = 0;
 
 
     void Start()
@@ -18,26 +19,22 @@ public class NGGH_TutorialInteract : MonoBehaviour
     }
 
 
+    void Update()
+    {
+        framesCounter = EventsLib.FadeOut(framesCounter);
+    }
+
+
     void OnTriggerStay(Collider other)
     {
         if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
             if (other.tag == "Player")
-                active = true;
-    }
-
-
-    void OnTriggerExit(Collider other)
-    {
-        if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
-            if (other.tag == "Player")
-                active = false;
+                framesCounter = EventsLib.FadeIn(framesCounter, framesCounterOnStay);
     }
 
 
     void OnGUI()
     {
-        if (active && !GameFlow.pause && GameFlow.gameState == GameFlow.GameState.GAME)
-            GUI.DrawTextureWithTexCoords(new Rect(6 * Screen.width / 10, Screen.height / 6, 2.5f * Screen.width / 10, (2.5f * Screen.width / 10) * 1.4f),
-                tutorial, new Rect(0, 0, 1, 1));
+        EventsLib.DrawTutorial(tutorial, framesCounter);
     }
 }
