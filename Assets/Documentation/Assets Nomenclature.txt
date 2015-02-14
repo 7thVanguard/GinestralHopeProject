@@ -1,0 +1,13 @@
+
+Assets
+
+Path for props
+	Assets/Resources/Props/Geometry/Name Of The Prop -> Name Of The Prop is a folder
+
+	Inside "Name Of The Prop" Folder
+		- Folder "Materials"
+			Material Name = "Name Of The Prop" + "Mat"
+		- Folder "Textures"
+			Texture Name = "Name Of The Prop"
+		- Folder "Mesh"
+		- Prefab of the prop

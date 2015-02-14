@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NGGH_TutorialMovement : MonoBehaviour
+public class NGGH_TutorialMultiJump : MonoBehaviour
 {
     World world;
     Texture2D tutorial;
@@ -15,7 +15,7 @@ public class NGGH_TutorialMovement : MonoBehaviour
         this.world = gameObject.GetComponent<EventComponent>().world;
         Transform.Destroy(gameObject.GetComponent<EventComponent>());
 
-        tutorial = (Texture2D)Resources.Load("GUI/Tutorial GUI/GUIMovementTutorial");
+        tutorial = (Texture2D)Resources.Load("GUI/Tutorial GUI/GUIMultiJumpTutorial");
     }
 
 
