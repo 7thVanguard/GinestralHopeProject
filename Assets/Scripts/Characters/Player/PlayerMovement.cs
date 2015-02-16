@@ -12,6 +12,8 @@ public class PlayerMovement
     private Vector3 objectiveDirection;
     private Vector3 interpolateDirection;
 
+    private int jumpAnimationCounter = 0;
+
 
     public PlayerMovement(World world, Player player, MainCamera mainCamera)
     {
@@ -65,12 +67,24 @@ public class PlayerMovement
             if (player.controller.isGrounded)
             {
                 if (Input.GetKey(KeyCode.Space))
+                {
                     objectiveDirection = new Vector3(objectiveDirection.x, player.jumpInitialSpeed, objectiveDirection.z);
+                }
                 else
                     objectiveDirection.y = 0;
+
+                // Set back the counter to 0 preventing the jump animation play for little air times
+                jumpAnimationCounter = 0;
             }
             else
+            {
                 objectiveDirection += new Vector3(0, -GamePhysics.gravity * player.jumpGravityMultiplier, 0) * Time.deltaTime;
+
+                // Jump animation activation
+                jumpAnimationCounter++;
+                if (jumpAnimationCounter >= 3)
+                    player.playerObj.animation.Play("Jump");
+            }
 
             // Assign movement
             player.controller.Move(interpolateDirection * Time.deltaTime);
@@ -102,6 +116,9 @@ public class PlayerMovement
             player.pointLight.SetActive(false);
             player.spotLight.SetActive(false);
         }
+
+        // Animation Control
+        player.playerObj.animation["Run"].speed = 1.1f;
     }
 
 
@@ -137,27 +154,70 @@ public class PlayerMovement
 
         // Assign a direction depending on the input introduced
         if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
+        {
             objectiveDirection = new Vector3(-root, objectiveDirection.y, root);
+
+            if (player.controller.isGrounded)
+                player.playerObj.animation.Play("Run");
+        }
         else if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
+        {
             objectiveDirection = new Vector3(root, objectiveDirection.y, root);
+
+            if (player.controller.isGrounded)
+                player.playerObj.animation.Play("Run");
+        }
         else if ((Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.A)))
+        {
             objectiveDirection = new Vector3(-root, objectiveDirection.y, -root);
+
+            if (player.controller.isGrounded)
+                player.playerObj.animation.Play("Run");
+        }
         else if ((Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.D)))
+        {
             objectiveDirection = new Vector3(root, objectiveDirection.y, -root);
+
+            if (player.controller.isGrounded)
+                player.playerObj.animation.Play("Run");
+        }
         else
         {
             if (Input.GetKey(KeyCode.D))
+            {
                 objectiveDirection = new Vector3(speed, objectiveDirection.y, 0);
+
+                if (player.controller.isGrounded)
+                    player.playerObj.animation.Play("Run");
+            }
             else if (Input.GetKey(KeyCode.A))
+            {
                 objectiveDirection = new Vector3(-speed, objectiveDirection.y, 0);
+
+                if (player.controller.isGrounded)
+                    player.playerObj.animation.Play("Run");
+            }
             else if (Input.GetKey(KeyCode.W))
+            {
                 objectiveDirection = new Vector3(0, objectiveDirection.y, speed);
+
+                if (player.controller.isGrounded)
+                    player.playerObj.animation.Play("Run");
+            }
             else if (Input.GetKey(KeyCode.S))
+            {
                 objectiveDirection = new Vector3(0, objectiveDirection.y, -speed);
+
+                if (player.controller.isGrounded)
+                    player.playerObj.animation.Play("Run");
+            }
             else
             {
                 objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
                 player.isMoving = false;
+
+                if (player.controller.isGrounded)
+                    player.playerObj.animation.Play("Idle");     
             }
         }
 
