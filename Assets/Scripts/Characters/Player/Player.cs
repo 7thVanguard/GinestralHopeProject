@@ -81,8 +81,8 @@ public class Player
         pointLight.transform.parent = playerObj.transform;
         spotLight.transform.parent = playerObj.transform;
 
-        pointLight.transform.localPosition = new Vector3(0.5f, 0, -0.6f);
-        spotLight.transform.localPosition = new Vector3(0.3f, 0, 0);
+        pointLight.transform.localPosition = new Vector3(0.5f, 0.8f, -0.6f);
+        spotLight.transform.localPosition = new Vector3(0.3f, 0.8f, 0);
 
         pointLightLight = pointLight.AddComponent<Light>();
         spotLightLight = spotLight.AddComponent<Light>();
