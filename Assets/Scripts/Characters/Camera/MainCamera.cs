@@ -17,6 +17,7 @@ public class MainCamera
     public Vector3 interpolatedPosition;
 
     public float angleSight;
+    public float playerRelativeHeight = 0.8f;
 
     public Vector3 position;
     public Vector3 previousPosition;

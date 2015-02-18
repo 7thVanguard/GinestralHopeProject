@@ -36,7 +36,7 @@ public class CameraMovement
                 mainCamera.objectiveDistance = 0;
 
                 // Camera aim depending on the player
-                mainCamera.offset = player.playerObj.transform.forward / 3 + Vector3.up / 2;
+                mainCamera.offset = player.playerObj.transform.forward / 3 + Vector3.up / 2 + Vector3.up * mainCamera.playerRelativeHeight;
 
                 // Mouse inputs
                 if (!Input.GetKey(KeyCode.LeftControl))
@@ -58,6 +58,7 @@ public class CameraMovement
                         {
                             mainCamera.offset = player.playerObj.transform.right * 0.5f +
                                                 player.playerObj.transform.forward * 0.3f +
+                                                Vector3.up * mainCamera.playerRelativeHeight +          // Adapt to the player pivot point
                                                 Vector3.up * (1 - mainCamera.angleSight / 45.0f);
 
                             // Mouse inputs
