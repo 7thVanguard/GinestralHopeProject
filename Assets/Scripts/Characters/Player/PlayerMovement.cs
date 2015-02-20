@@ -9,6 +9,7 @@ public class PlayerMovement
     private MainCamera mainCamera;
 
     private GameObject ringMarker;
+    private GameObject lookAtObjective;
     private Vector3 objectiveDirection;
     private Vector3 interpolateDirection;
 
@@ -22,6 +23,11 @@ public class PlayerMovement
         this.mainCamera = mainCamera;
 
         ringMarker = (GameObject)Resources.Load("Particle Systems/Clouds Sight/Ring Marker/Ring Marker");
+        lookAtObjective = new GameObject();
+        lookAtObjective.transform.parent = player.playerObj.transform;
+        lookAtObjective.transform.localPosition = Vector3.zero;
+        lookAtObjective.transform.localEulerAngles = Vector3.zero;
+        lookAtObjective.transform.localScale = Vector3.zero;
     }
 
 
@@ -83,17 +89,16 @@ public class PlayerMovement
                 // Jump animation activation
                 jumpAnimationCounter++;
                 if (jumpAnimationCounter >= 3)
-                    player.playerObj.animation.Play("Jump");
+                    Animation("Jump", false, true); 
             }
 
             // Assign movement
             player.controller.Move(interpolateDirection * Time.deltaTime);
         }
 
+        // Light lantern if it is too dark
         if (RenderSettings.ambientLight.r < 125 / 255f)
         {
-            
-
             if (RenderSettings.ambientLight.r < 25 / 255f)
                 player.pointLight.SetActive(true);
             else
@@ -101,6 +106,7 @@ public class PlayerMovement
 
             player.spotLight.SetActive(true);
 
+            // Lantern look at camera lerp
             Quaternion actualRotation;
             Quaternion lookAtRotation;
 
@@ -109,16 +115,19 @@ public class PlayerMovement
             lookAtRotation = player.spotLight.transform.rotation;
 
             player.spotLight.transform.rotation = Quaternion.Lerp(actualRotation, lookAtRotation, 0.5f);
+
+            // Intensity varies depending on darkness
             player.spotLight.light.intensity = Mathf.Pow(1 - RenderSettings.ambientLight.r, 3) * 2.5f;
         }
         else
         {
+            // Turn off the lantern when is not dark
             player.pointLight.SetActive(false);
             player.spotLight.SetActive(false);
         }
 
-        // Animation Control
-        player.playerObj.animation["Run"].speed = 1.1f;
+        // Animation speed Control
+        player.playerObj.transform.FindChild("Mesh").animation["Run"].speed = 1.1f;
     }
 
 
@@ -157,29 +166,25 @@ public class PlayerMovement
         {
             objectiveDirection = new Vector3(-root, objectiveDirection.y, root);
 
-            if (player.controller.isGrounded)
-                player.playerObj.animation.Play("Run");
+            Animation("Run", true, false); 
         }
         else if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
         {
             objectiveDirection = new Vector3(root, objectiveDirection.y, root);
 
-            if (player.controller.isGrounded)
-                player.playerObj.animation.Play("Run");
+            Animation("Run", true, false); 
         }
         else if ((Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.A)))
         {
             objectiveDirection = new Vector3(-root, objectiveDirection.y, -root);
 
-            if (player.controller.isGrounded)
-                player.playerObj.animation.Play("Run");
+            Animation("Run", true, false); 
         }
         else if ((Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.D)))
         {
             objectiveDirection = new Vector3(root, objectiveDirection.y, -root);
 
-            if (player.controller.isGrounded)
-                player.playerObj.animation.Play("Run");
+            Animation("Run", true, false); 
         }
         else
         {
@@ -187,42 +192,47 @@ public class PlayerMovement
             {
                 objectiveDirection = new Vector3(speed, objectiveDirection.y, 0);
 
-                if (player.controller.isGrounded)
-                    player.playerObj.animation.Play("Run");
+                Animation("Run", true, false); 
             }
             else if (Input.GetKey(KeyCode.A))
             {
                 objectiveDirection = new Vector3(-speed, objectiveDirection.y, 0);
 
-                if (player.controller.isGrounded)
-                    player.playerObj.animation.Play("Run");
+                Animation("Run", true, false); 
             }
             else if (Input.GetKey(KeyCode.W))
             {
                 objectiveDirection = new Vector3(0, objectiveDirection.y, speed);
 
-                if (player.controller.isGrounded)
-                    player.playerObj.animation.Play("Run");
+                Animation("Run", true, false); 
             }
             else if (Input.GetKey(KeyCode.S))
             {
                 objectiveDirection = new Vector3(0, objectiveDirection.y, -speed);
 
-                if (player.controller.isGrounded)
-                    player.playerObj.animation.Play("Run");
+                Animation("Run", true, false); 
             }
             else
             {
                 objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
                 player.isMoving = false;
 
-                if (player.controller.isGrounded)
-                    player.playerObj.animation.Play("Idle");     
+                Animation("Idle", true, false); 
             }
         }
 
+        // Set the objective direction depending on the camera rotation
         player.playerObj.transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
         objectiveDirection = player.playerObj.transform.TransformDirection(objectiveDirection);
+
+        // Player looking at movement direction
+        // objective
+        lookAtObjective.transform.LookAt(new Vector3(   objectiveDirection.x + player.playerObj.transform.position.x,
+                                                        player.playerObj.transform.position.y,
+                                                        objectiveDirection.z + player.playerObj.transform.position.z));
+        // Lerp to objective
+        player.playerObj.transform.FindChild("Mesh").rotation = Quaternion.Lerp(player.playerObj.transform.FindChild("Mesh").rotation,
+                                                                lookAtObjective.transform.rotation, 0.25f);
     }
 
 
@@ -240,6 +250,7 @@ public class PlayerMovement
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
+            // Instantiates a ring just one centimeter above the place clicked
             GameObject effect = Object.Instantiate(ringMarker,
                                         new Vector3(player.targetPosition.x, mainCamera.raycast.point.y + 0.01f, player.targetPosition.y),
                                         Quaternion.identity) as GameObject;
@@ -267,5 +278,21 @@ public class PlayerMovement
             objectiveDirection.x = 0;
             objectiveDirection.z = 0;
         }
+    }
+
+
+    private void Animation(string animationName, bool grounded, bool air)
+    {
+        if (grounded)
+        {
+            if (player.controller.isGrounded)
+                player.playerObj.transform.FindChild("Mesh").animation.CrossFade(animationName);
+        }
+        else if (air)
+        {
+            if (!player.controller.isGrounded)
+                player.playerObj.transform.FindChild("Mesh").animation.CrossFade(animationName);
+        }
+        else { }
     }
 }
