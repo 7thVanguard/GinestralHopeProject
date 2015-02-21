@@ -10,6 +10,9 @@ public class Player
     public Light pointLightLight;
     public Light spotLightLight;
 
+    public GameObject lookAtObjective;
+    public GameObject ringMarker;
+
     // Statistics
     public float maxLife = 20;
     public float currentLife = 20;
@@ -99,6 +102,16 @@ public class Player
 
         pointLightLight.intensity = 1f;
         spotLightLight.intensity = 2.5f;
+
+        // Objectives and particles
+        lookAtObjective = new GameObject();
+        lookAtObjective.name = "Player Look At Objective";
+        lookAtObjective.transform.parent = playerObj.transform;
+        lookAtObjective.transform.localPosition = Vector3.zero;
+        lookAtObjective.transform.localEulerAngles = Vector3.zero;
+        lookAtObjective.transform.localScale = Vector3.zero;
+
+        ringMarker = (GameObject)Resources.Load("Particle Systems/Clouds Sight/Ring Marker/Ring Marker");
     }
 
 }

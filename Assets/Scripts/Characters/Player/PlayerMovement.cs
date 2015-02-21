@@ -8,8 +8,7 @@ public class PlayerMovement
     private Player player;
     private MainCamera mainCamera;
 
-    private GameObject ringMarker;
-    private GameObject lookAtObjective;
+    
     private Vector3 objectiveDirection;
     private Vector3 interpolateDirection;
 
@@ -21,13 +20,6 @@ public class PlayerMovement
         this.world = world;
         this.player = player;
         this.mainCamera = mainCamera;
-
-        ringMarker = (GameObject)Resources.Load("Particle Systems/Clouds Sight/Ring Marker/Ring Marker");
-        lookAtObjective = new GameObject();
-        lookAtObjective.transform.parent = player.playerObj.transform;
-        lookAtObjective.transform.localPosition = Vector3.zero;
-        lookAtObjective.transform.localEulerAngles = Vector3.zero;
-        lookAtObjective.transform.localScale = Vector3.zero;
     }
 
 
@@ -163,76 +155,52 @@ public class PlayerMovement
 
         // Assign a direction depending on the input introduced
         if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.A)))
-        {
             objectiveDirection = new Vector3(-root, objectiveDirection.y, root);
-
-            Animation("Run", true, false); 
-        }
         else if ((Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.D)))
-        {
             objectiveDirection = new Vector3(root, objectiveDirection.y, root);
-
-            Animation("Run", true, false); 
-        }
         else if ((Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.A)))
-        {
             objectiveDirection = new Vector3(-root, objectiveDirection.y, -root);
-
-            Animation("Run", true, false); 
-        }
         else if ((Input.GetKey(KeyCode.S)) && (Input.GetKey(KeyCode.D)))
-        {
             objectiveDirection = new Vector3(root, objectiveDirection.y, -root);
-
-            Animation("Run", true, false); 
-        }
         else
         {
             if (Input.GetKey(KeyCode.D))
-            {
                 objectiveDirection = new Vector3(speed, objectiveDirection.y, 0);
-
-                Animation("Run", true, false); 
-            }
             else if (Input.GetKey(KeyCode.A))
-            {
                 objectiveDirection = new Vector3(-speed, objectiveDirection.y, 0);
-
-                Animation("Run", true, false); 
-            }
             else if (Input.GetKey(KeyCode.W))
-            {
                 objectiveDirection = new Vector3(0, objectiveDirection.y, speed);
-
-                Animation("Run", true, false); 
-            }
             else if (Input.GetKey(KeyCode.S))
-            {
                 objectiveDirection = new Vector3(0, objectiveDirection.y, -speed);
-
-                Animation("Run", true, false); 
-            }
             else
             {
                 objectiveDirection = new Vector3(0, objectiveDirection.y, 0);
                 player.isMoving = false;
-
-                Animation("Idle", true, false); 
             }
         }
 
-        // Set the objective direction depending on the camera rotation
-        player.playerObj.transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
-        objectiveDirection = player.playerObj.transform.TransformDirection(objectiveDirection);
-
         // Player looking at movement direction
-        // objective
-        lookAtObjective.transform.LookAt(new Vector3(   objectiveDirection.x + player.playerObj.transform.position.x,
-                                                        player.playerObj.transform.position.y,
-                                                        objectiveDirection.z + player.playerObj.transform.position.z));
-        // Lerp to objective
-        player.playerObj.transform.FindChild("Mesh").rotation = Quaternion.Lerp(player.playerObj.transform.FindChild("Mesh").rotation,
-                                                                lookAtObjective.transform.rotation, 0.25f);
+        if (player.isMoving)
+        {
+            // Set the objective direction depending on the camera rotation
+            player.playerObj.transform.eulerAngles = new Vector3(0, Camera.main.transform.eulerAngles.y, 0);
+            objectiveDirection = player.playerObj.transform.TransformDirection(objectiveDirection);
+
+            // objective
+            player.lookAtObjective.transform.LookAt(new Vector3(objectiveDirection.x + player.playerObj.transform.position.x,
+                                                            player.playerObj.transform.position.y,
+                                                            objectiveDirection.z + player.playerObj.transform.position.z));
+            // Lerp to objective
+            player.playerObj.transform.FindChild("Mesh").rotation = Quaternion.Lerp(player.playerObj.transform.FindChild("Mesh").rotation,
+                                                                    player.lookAtObjective.transform.rotation, 0.25f);
+        }
+
+
+        // Animation
+        if (player.isMoving)
+            Animation("Run", true, false); 
+        else
+            Animation("Idle", true, false); 
     }
 
 
@@ -251,7 +219,7 @@ public class PlayerMovement
         else if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             // Instantiates a ring just one centimeter above the place clicked
-            GameObject effect = Object.Instantiate(ringMarker,
+            GameObject effect = Object.Instantiate(player.ringMarker,
                                         new Vector3(player.targetPosition.x, mainCamera.raycast.point.y + 0.01f, player.targetPosition.y),
                                         Quaternion.identity) as GameObject;
         }
