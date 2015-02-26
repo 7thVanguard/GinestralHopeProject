@@ -37,32 +37,77 @@ public class VoxelsList
     public static Dictionary<string, VoxelData> dictionary = new Dictionary<string, VoxelData>();
     public static VoxelData selectedVoxel;
 
-
+	//Order: Top / Right / Front / Left / Back / Bot
     public static void Init()
     {
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(0, 0)",
-                                    4, 2, false, 3, 1, false, 3, 1, false,
-                                    3, 1, false, 3, 1, false, 6, 3, false,
+        //Dirt
+		selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(0, 0)",
+		                          0, 7, false, 0, 7, false, 0, 7, false,
+		                          0, 7, false, 0, 7, false, 0, 7, false,
                                     10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
+		//Rock
         selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(1, 0)",
-                                    0, 6, false, 0, 5, false, 0, 5, false,
-                                    0, 5, false, 0, 5, false, 0, 5, false,
+		                          0, 3, false, 0, 3, false, 0, 3, false,
+                                    0, 3, false, 0, 3, false, 0, 3, false,
                                     10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
+		//Grass
         selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(2, 0)",
-                                    1, 6, false, 1, 7, false, 1, 7, false,
-                                    1, 7, false, 1, 7, false, 0, 5, false,
+                                    1, 6, false, 1, 5, false, 1, 5, false,
+                                    1, 5, false, 1, 5, false, 1, 7, false,
                                     10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
-        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.CUBIC, "(3, 0)",
-                                    0, 5, false, 0, 5, false, 0, 5, false, 
-                                    0, 5, false, 0, 5, false, 0, 5, false,
+		//Gravel
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(3, 0)",
+                                    0, 3, false, 0, 3, false, 0, 3, false, 
+                                    0, 3, false, 0, 3, false, 0, 3, false,
                                     10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+		//StoneBrick
+		selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(4, 0)",
+		                          4, 6, false, 4, 6, false, 4, 6, false,
+		                          4, 6, false, 4, 6, false, 4, 6, false,
+		                          10);
+		dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+		//Wood Column
+		selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.CUBIC, "(5, 0)",
+		                          3, 1, false, 3, 1, false, 3, 1, false,
+		                          3, 1, false, 3, 1, false, 3, 1, false,
+		                          10);
+		dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+		//Wood Column Base
+		selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(6, 0)",
+		                          3, 0, false, 3, 0, false, 3, 0, false,
+		                          3, 0, false, 3, 0, false, 3, 0, false,
+		                          10);
+		dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+		//Tiles Brown
+		selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(7, 0)",
+		                          6, 6, false, 6, 6, false, 6, 6, false,
+		                          6, 6, false, 6, 6, false, 6, 6, false,
+		                          10);
+		dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+		//Tiles Grey
+		selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(0, 1)",
+		                          6, 7, false, 6, 7, false, 6, 7, false,
+		                          6, 7, false, 6, 7, false, 6, 7, false,
+		                          10);
+		dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+		selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(1, 1)",
+		                          4, 6, false, 4, 6, false, 4, 6, false,
+		                          4, 6, false, 4, 6, false, 4, 6, false,
+		                          10);
+		dictionary.Add(selectedVoxel.name, selectedVoxel);
     }
 
 
