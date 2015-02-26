@@ -14,4 +14,12 @@ public static class LevelUnlocks
     public static bool lvlCaverninaFirstLevelGreenOrb1 = false;
     public static bool lvlCaverninaFirstLevelGreenOrb2 = false;
     public static bool lvlCaverninaFirstLevelGreenOrb3 = false;
+
+
+    public static int TotalOrbsCollected()
+    {
+        int orbs = 0;
+
+        return orbs;
+    }
 }

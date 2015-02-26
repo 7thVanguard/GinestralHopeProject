@@ -77,6 +77,7 @@ public static class EventsLib
         if (Vector3.Distance(obj.transform.position, obj.transform.parent.position + new Vector3(0, 0.5f, 0)) < 0.1f)
         {
             GameObject.Destroy(obj);
+            Global.player.orbsCollected++;
             return true;
         }
         else

@@ -41,6 +41,8 @@ public class HUD : MonoBehaviour
 
 	void Awake () 
     {
+        playerHUD.Start();
+
         gizmoCross = TextureCreator.CreateCross(gizmoCross);
         gizmoCircle = TextureCreator.CreateCircle(gizmoCircle);
 
@@ -92,7 +94,7 @@ public class HUD : MonoBehaviour
                 //++ Player HUD
                 case GameFlow.GameMode.PLAYER:
                     {
-                        //playerHUD.Update(developerAtlas);
+                        playerHUD.Update();
                     }
                     break;
                 //++ GodMode HUD

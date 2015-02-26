@@ -206,9 +206,13 @@ public class GameSerializer
             Desencrypter(world, player, bf, file);
             file.Close();
 
+            // Music
             GameMusic.SelectClips(saveName);
             Global.player.playerObj.transform.FindChild("MusicPlayer").audio.volume = 0;
             GameMusic.fadingIn = true;
+
+            // Orbs
+            Global.player.orbsCollected = 0;
         }
     }
 

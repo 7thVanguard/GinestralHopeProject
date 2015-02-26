@@ -14,8 +14,9 @@ public class Player
     public GameObject ringMarker;
 
     // Statistics
-    public float maxLife = 20;
-    public float currentLife = 20;
+    public float maxLife = 3;
+    public float currentLife = 3;
+    public int orbsCollected = 0;
 
     // Movement
     public Vector2 targetPosition;
