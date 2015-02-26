@@ -121,10 +121,7 @@ public class GameManager : MonoBehaviour
                 activeController = Controller["DeveloperMode"];
                 PassToDeveloper();
             }
-
-            // Pause
-            if (Input.GetKeyUp(KeyCode.P))
-                GameFlow.pause = !GameFlow.pause;
+                
 
             // Save relative
             if (Input.GetKeyUp(KeyCode.F5))
@@ -144,10 +141,12 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Escape))
             {
                 if (!GameFlow.onInterface)
-                {
-                    GameFlow.gameState = GameFlow.GameState.MENU;
-                    GameGUI.GHMainMenu.SetActive(true);
-                }
+                    GameFlow.pause = !GameFlow.pause;
+
+                if(GameFlow.pause)
+                    GameGUI.GHPauseMenu.SetActive(true);
+                else
+                    GameGUI.GHPauseMenu.SetActive(false);
             }
 
             // Cursor control
