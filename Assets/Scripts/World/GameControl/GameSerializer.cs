@@ -484,15 +484,15 @@ public class GameSerializer
                                 {
                                     if (downCounter > 0)
                                     {
-                                        string name;
+                                        //string name;
 
-                                        if (VoxelSave[listPosition].name == "(2, 0)")
-                                            name = "(2, 1)";
-                                        else
-                                            name = VoxelSave[listPosition].name;
+                                        //if (VoxelSave[listPosition].name == "(2, 0)")
+                                        //    name = "(0, 0)";
+                                        //else
+                                        //    name = VoxelSave[listPosition].name;
 
                                         world.chunk[cx, cy, cz].voxel[x, y, z] =
-                                            new Voxel(world, new IntVector3(x, y, z), new IntVector3(cx, cy, cz), name);
+                                            new Voxel(world, new IntVector3(x, y, z), new IntVector3(cx, cy, cz), VoxelSave[listPosition].name);
 
                                         downCounter--;
                                     }
@@ -501,15 +501,15 @@ public class GameSerializer
                                         listPosition++;
                                         downCounter = VoxelSave[listPosition].number - 1;
 
-                                        string name;
+                                        //string name;
 
-                                        if (VoxelSave[listPosition].name == "(2, 0)")
-                                            name = "(2, 1)";
-                                        else
-                                            name = VoxelSave[listPosition].name;
+                                        //if (VoxelSave[listPosition].name == "(2, 0)")
+                                        //    name = "(0, 0)";
+                                        //else
+                                        //    name = VoxelSave[listPosition].name;
 
                                         world.chunk[cx, cy, cz].voxel[x, y, z] =
-                                            new Voxel(world, new IntVector3(x, y, z), new IntVector3(cx, cy, cz), name);
+                                            new Voxel(world, new IntVector3(x, y, z), new IntVector3(cx, cy, cz), VoxelSave[listPosition].name);
                                     }
                                 }
 
