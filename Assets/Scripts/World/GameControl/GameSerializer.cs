@@ -486,10 +486,8 @@ public class GameSerializer
                                     {
                                         //string name;
 
-                                        //if (VoxelSave[listPosition].name == "(0, 7)")
+                                        //if (VoxelSave[listPosition].name == "(2, 0)")
                                         //    name = "(0, 0)";
-                                        //else if (VoxelSave[listPosition].name == "(1, 6)")
-                                        //    name = "(2, 0)";
                                         //else
                                         //    name = VoxelSave[listPosition].name;
 
@@ -505,10 +503,8 @@ public class GameSerializer
 
                                         //string name;
 
-                                        //if (VoxelSave[listPosition].name == "(0, 7)")
+                                        //if (VoxelSave[listPosition].name == "(2, 0)")
                                         //    name = "(0, 0)";
-                                        //else if (VoxelSave[listPosition].name == "(1, 6)")
-                                        //    name = "(2, 0)";
                                         //else
                                         //    name = VoxelSave[listPosition].name;
 
@@ -557,9 +553,15 @@ public class GameSerializer
 
         // Load gadgets
         foreach (GeometryStruct geometry in GeometrySave)
-            Geometry.Place(geometry.ID, new Vector3(geometry.positionX, geometry.positionY, geometry.positionZ),
+        {
+            string name;
+            name = geometry.ID;
+            if (name == "Barrel")
+                name = "Wooden Barrel";
+            Geometry.Place(name, new Vector3(geometry.positionX, geometry.positionY, geometry.positionZ),
                                         new Vector3(geometry.rotationX, geometry.rotationY, geometry.rotationZ),
                                         new Vector3(geometry.scaleX, geometry.scaleY, geometry.scaleZ));
+        }
 
         //Reset gadgets list
         GeometrySave.Clear();
