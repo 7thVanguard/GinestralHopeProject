@@ -19,9 +19,7 @@ public class EditorObjExporter : ScriptableObject
     private static int uvOffset = 0;
 
 
-    //User should probably be able to change this. It is currently left as an excercise for
-    //the reader.
-    private static string targetFolder = "ExportedObj";
+    private static string targetFolder = "Exports";
 
 
     private static string MeshToString(MeshFilter mf, Dictionary<string, ObjMaterial> materialList)
