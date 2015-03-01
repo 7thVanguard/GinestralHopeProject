@@ -138,6 +138,12 @@ public class VoxelsList
                                   4, 4, false, 4, 4, false, 4, 4, false,
                                   10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(7, 1)",
+                                  3, 6, false, 0, 3, false, 0, 3, false,
+                                  0, 3, false, 0, 3, false, 0, 3, false,
+                                  10);
+        dictionary.Add(selectedVoxel.name, selectedVoxel);
     }
 
 

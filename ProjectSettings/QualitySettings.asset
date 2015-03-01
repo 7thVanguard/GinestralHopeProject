@@ -71,7 +71,7 @@ QualitySettings:
     shadowProjection: 1
     shadowCascades: 4
     shadowDistance: 256
-    blendWeights: 2
+    blendWeights: 4
     textureQuality: 0
     anisotropicTextures: 1
     antiAliasing: 0
@@ -139,4 +139,12 @@ QualitySettings:
     maximumLODLevel: 0
     particleRaycastBudget: 256
     excludedTargetPlatforms: []
-  m_PerPlatformDefaultQuality: {}
+  m_PerPlatformDefaultQuality:
+    Android: 0
+    BlackBerry: 0
+    FlashPlayer: 0
+    Standalone: 0
+    WP8: 0
+    Web: 0
+    Windows Store Apps: 0
+    iPhone: 0
