@@ -114,6 +114,30 @@ public class VoxelsList
                                   0, 3, false, 0, 3, false, 0, 3, false,
                                   10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.CUBIC, "(3, 1)",
+                                  1, 4, false, 1, 4, false, 1, 4, false,
+                                  1, 4, false, 1, 4, false, 1, 4, false,
+                                  10);
+        dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.CUBIC, "(4, 1)",
+                                  2, 4, false, 2, 4, false, 2, 4, false,
+                                  2, 4, false, 2, 4, false, 2, 4, false,
+                                  10);
+        dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.CUBIC, "(5, 1)",
+                                  3, 4, false, 3, 4, false, 3, 4, false,
+                                  3, 4, false, 3, 4, false, 3, 4, false,
+                                  10);
+        dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(6, 1)",
+                                  4, 4, false, 4, 4, false, 4, 4, false,
+                                  4, 4, false, 4, 4, false, 4, 4, false,
+                                  10);
+        dictionary.Add(selectedVoxel.name, selectedVoxel);
     }
 
 
@@ -325,7 +349,6 @@ public class VoxelsList
         GameObject voxels = new GameObject();
 
         voxels.AddComponent<MeshRenderer>();
-        voxels.renderer.material = GameFlow.selectedAtlas;
 
         // Create arrays with the information of the lists
         Vector3[] verticesVector = new Vector3[Vertices.Count];
@@ -361,6 +384,10 @@ public class VoxelsList
         voxels.GetComponent<MeshFilter>().mesh.triangles = trianglesVector;
 
         voxels.GetComponent<MeshFilter>().mesh.RecalculateNormals();
+
+        // Material
+        voxels.renderer.material = (Material)Resources.Load("Generic Materials/DefaultUnlitMat");
+        voxels.renderer.material.mainTexture = GameFlow.selectedAtlas.mainTexture;
 
         // To camera
         voxels.transform.localScale = Vector3.one / 25f;

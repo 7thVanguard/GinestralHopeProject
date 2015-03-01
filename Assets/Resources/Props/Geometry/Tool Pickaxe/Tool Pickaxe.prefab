@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 451688}
   - 33: {fileID: 3351688}
   - 23: {fileID: 2351688}
-  - 95: {fileID: 9551688}
+  - 65: {fileID: 6529916}
   m_Layer: 0
   m_Name: Tool Pickaxe
   m_TagString: Untagged
@@ -57,21 +57,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151688}
   m_Mesh: {fileID: 4300000, guid: 44e06067649550942897d89282630ad8, type: 3}
---- !u!95 &9551688
-Animator:
-  serializedVersion: 3
+--- !u!65 &6529916
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151688}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 44e06067649550942897d89282630ad8, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 2
+  m_Size: {x: .47201857, y: .0490175486, z: .737382829}
+  m_Center: {x: -.00578956306, y: -1.39698386e-08, z: .367766291}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

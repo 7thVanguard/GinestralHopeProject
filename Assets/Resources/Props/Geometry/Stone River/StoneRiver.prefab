@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 441276}
   - 33: {fileID: 3341276}
   - 23: {fileID: 2341276}
+  - 65: {fileID: 6571716}
   m_Layer: 0
   m_Name: StoneRiver
   m_TagString: Geometry
@@ -56,6 +57,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141276}
   m_Mesh: {fileID: 4300000, guid: 79327b6314a728a4eb091c7de4bda5ad, type: 3}
+--- !u!65 &6571716
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141276}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .317451894, y: .225036234, z: .115920216}
+  m_Center: {x: -.0100822374, y: -.0341752172, z: .0525625721}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

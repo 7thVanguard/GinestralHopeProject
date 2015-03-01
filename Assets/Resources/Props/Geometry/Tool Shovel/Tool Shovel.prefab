@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 473740}
   - 33: {fileID: 3373740}
   - 23: {fileID: 2373740}
-  - 95: {fileID: 9573740}
+  - 65: {fileID: 6596396}
   m_Layer: 0
   m_Name: Tool Shovel
   m_TagString: Untagged
@@ -57,21 +57,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173740}
   m_Mesh: {fileID: 4300000, guid: 50653af56170cee45b5eb0e54369e0a3, type: 3}
---- !u!95 &9573740
-Animator:
-  serializedVersion: 3
+--- !u!65 &6596396
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173740}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 50653af56170cee45b5eb0e54369e0a3, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 2
+  m_Size: {x: .177600101, y: .0952643976, z: .859697998}
+  m_Center: {x: 0, y: -.0307687335, z: .414903253}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

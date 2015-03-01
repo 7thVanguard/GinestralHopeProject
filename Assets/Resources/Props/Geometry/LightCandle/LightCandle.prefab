@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 469898}
   - 33: {fileID: 3369898}
   - 23: {fileID: 2369898}
-  - 95: {fileID: 9569898}
   m_Layer: 0
   m_Name: LightCandle
   m_TagString: Untagged
@@ -57,21 +56,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169898}
   m_Mesh: {fileID: 4300000, guid: 2ea00a61a32c5714e8df5e866e9d755e, type: 3}
---- !u!95 &9569898
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 169898}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 2ea00a61a32c5714e8df5e866e9d755e, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

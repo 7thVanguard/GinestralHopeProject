@@ -2419,7 +2419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0f7e8baeec19640a864c57f313afa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveName: NewGameGH
+  saveName: NewGameGHBuild
 --- !u!1 &731636591
 GameObject:
   m_ObjectHideFlags: 0

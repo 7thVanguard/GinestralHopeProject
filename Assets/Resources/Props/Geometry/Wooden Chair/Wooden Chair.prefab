@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 406022}
   - 33: {fileID: 3306022}
   - 23: {fileID: 2306022}
+  - 65: {fileID: 6587224}
   m_Layer: 0
   m_Name: Wooden Chair
   m_TagString: Geometry
@@ -56,6 +57,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106022}
   m_Mesh: {fileID: 4300000, guid: a33d75e92af34f545b40ec7495c7be95, type: 3}
+--- !u!65 &6587224
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106022}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .40173018, y: .422589481, z: .879871368}
+  m_Center: {x: .000606678426, y: .00704688579, z: .440545559}
 --- !u!95 &9506022
 Animator:
   serializedVersion: 3

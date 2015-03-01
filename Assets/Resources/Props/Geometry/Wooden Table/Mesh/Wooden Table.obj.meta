@@ -1,13 +1,15 @@
 fileFormatVersion: 2
-guid: adacd8f8094ac644db18313e44240f8d
+guid: 7516205229697f74ab4f41dc8680ffde
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Box001
+    100000: AccessoriesDesk
+    100002: //RootNode
+    400000: AccessoriesDesk
+    400002: //RootNode
+    2300000: AccessoriesDesk
+    3300000: AccessoriesDesk
+    4300000: AccessoriesDesk
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -28,7 +30,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

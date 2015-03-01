@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 499828}
   - 33: {fileID: 3399828}
   - 23: {fileID: 2399828}
-  - 95: {fileID: 9599828}
+  - 65: {fileID: 6536866}
   m_Layer: 0
   m_Name: Wooden Broken Plate
   m_TagString: Geometry
@@ -57,21 +57,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199828}
   m_Mesh: {fileID: 4300000, guid: b94f6e3faaa79164289eaa663773cd6c, type: 3}
---- !u!95 &9599828
-Animator:
-  serializedVersion: 3
+--- !u!65 &6536866
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199828}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b94f6e3faaa79164289eaa663773cd6c, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 2
+  m_Size: {x: .19508788, y: 1.794541, z: .0401973203}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

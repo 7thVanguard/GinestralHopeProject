@@ -13,7 +13,7 @@ GameObject:
   - 65: {fileID: 6579496}
   m_Layer: 0
   m_Name: Wooden Table
-  m_TagString: Geometry
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114712}
-  m_LocalRotation: {x: -.704416037, y: -.0616284087, z: -.0616284087, w: .704416037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -56,7 +56,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114712}
-  m_Mesh: {fileID: 4300000, guid: 0cc9d3beb52682c42989076b79fee27c, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 7516205229697f74ab4f41dc8680ffde, type: 3}
 --- !u!65 &6579496
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -67,8 +67,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.30014157, y: .87970078, z: .852271199}
-  m_Center: {x: -.00189346075, y: .0107385069, z: .426634848}
+  m_Size: {x: 1.20000005, y: .852999985, z: .682000041}
+  m_Center: {x: 0, y: .426499993, z: -.0109999925}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

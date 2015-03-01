@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 484332}
   - 33: {fileID: 3384332}
   - 23: {fileID: 2384332}
+  - 65: {fileID: 6586188}
   m_Layer: 0
   m_Name: Wooden Table Inkwell
   m_TagString: Geometry
@@ -56,6 +57,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 184332}
   m_Mesh: {fileID: 4300000, guid: 2ddd057724058c34dac6f4584a64986d, type: 3}
+--- !u!65 &6586188
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .0609197393, y: .0862526149, z: .0527580604}
+  m_Center: {x: .000495053828, y: .0415709764, z: -.000857450999}
 --- !u!95 &9584332
 Animator:
   serializedVersion: 3

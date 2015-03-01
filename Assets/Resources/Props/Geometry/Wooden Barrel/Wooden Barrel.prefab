@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 498792}
   - 33: {fileID: 3398792}
   - 23: {fileID: 2398792}
-  - 95: {fileID: 9598792}
+  - 65: {fileID: 6593622}
   m_Layer: 0
   m_Name: Wooden Barrel
   m_TagString: Geometry
@@ -57,21 +57,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198792}
   m_Mesh: {fileID: 4300000, guid: 11205274757a3fd48926d52c08828220, type: 3}
---- !u!95 &9598792
-Animator:
-  serializedVersion: 3
+--- !u!65 &6593622
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 198792}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 11205274757a3fd48926d52c08828220, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 2
+  m_Size: {x: .46053794, y: .43799758, z: .683636308}
+  m_Center: {x: 0, y: 7.4505806e-09, z: .341818154}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
