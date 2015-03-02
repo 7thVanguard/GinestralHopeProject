@@ -76,7 +76,7 @@ public class VoxelsList
 		dictionary.Add(selectedVoxel.name, selectedVoxel);
 
 		//Wood Column
-		selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.CUBIC, "(5, 0)",
+		selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(5, 0)",
 		                          3, 1, false, 3, 1, false, 3, 1, false,
 		                          3, 1, false, 3, 1, false, 3, 1, false,
 		                          10);
