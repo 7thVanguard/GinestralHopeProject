@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 414712}
   - 33: {fileID: 3314712}
   - 23: {fileID: 2314712}
+  - 65: {fileID: 6573824}
   m_Layer: 0
   m_Name: Wooden Table
   m_TagString: Geometry
@@ -56,6 +57,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 114712}
   m_Mesh: {fileID: 4300000, guid: a5d5d1b93b77a2d49a4eacdfd48c10e4, type: 3}
+--- !u!65 &6573824
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 114712}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.19999993, y: .852999866, z: .682000041}
+  m_Center: {x: 0, y: .426499933, z: -.0109999627}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
