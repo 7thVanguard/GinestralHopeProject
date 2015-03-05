@@ -1,0 +1,122 @@
+fileFormatVersion: 2
+guid: ae8641007833f0b41ab13a2fded7b6c8
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Book_Shelf
+    100002: Box
+    100004: Brazier
+    100006: Lamp
+    100008: LightCandle
+    100010: //RootNode
+    100012: Torch
+    100014: Vessel
+    100016: Wooden_Barrel
+    100018: Wooden_Chair
+    100020: Wooden_Fence
+    100022: Wooden_Plate
+    100024: Wooden_Table_Book
+    400000: Book_Shelf
+    400002: Box
+    400004: Brazier
+    400006: Lamp
+    400008: LightCandle
+    400010: //RootNode
+    400012: Torch
+    400014: Vessel
+    400016: Wooden_Barrel
+    400018: Wooden_Chair
+    400020: Wooden_Fence
+    400022: Wooden_Plate
+    400024: Wooden_Table_Book
+    2300000: Book_Shelf
+    2300002: Box
+    2300004: Brazier
+    2300006: Lamp
+    2300008: LightCandle
+    2300010: Torch
+    2300012: Vessel
+    2300014: Wooden_Barrel
+    2300016: Wooden_Chair
+    2300018: Wooden_Fence
+    2300020: Wooden_Plate
+    2300022: Wooden_Table_Book
+    3300000: Book_Shelf
+    3300002: Box
+    3300004: Brazier
+    3300006: Lamp
+    3300008: LightCandle
+    3300010: Torch
+    3300012: Vessel
+    3300014: Wooden_Barrel
+    3300016: Wooden_Chair
+    3300018: Wooden_Fence
+    3300020: Wooden_Plate
+    3300022: Wooden_Table_Book
+    4300000: Torch
+    4300002: Box
+    4300004: Wooden_Barrel
+    4300006: Wooden_Plate
+    4300008: Book_Shelf
+    4300010: Vessel
+    4300012: Wooden_Table_Book
+    4300014: Wooden_Chair
+    4300016: Lamp
+    4300018: Wooden_Fence
+    4300020: LightCandle
+    4300022: Brazier
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
