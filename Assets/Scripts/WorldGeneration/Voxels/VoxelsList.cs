@@ -176,8 +176,8 @@ public class VoxelsList
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
         selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(5, 2)",
-                                  0, 2, false, 0, 2, false, 0, 2, false,
-                                  0, 2, false, 0, 2, false, 0, 2, false,
+                                  0, 3, false, 0, 2, false, 0, 2, false,
+                                  0, 2, false, 0, 2, false, 0, 3, false,
                                   10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
@@ -203,6 +203,30 @@ public class VoxelsList
                                   7, 2, false, 7, 2, false, 7, 2, false,
                                   7, 2, false, 7, 2, false, 7, 2, false,
                                   10);
+        dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+        //Tiles Blue
+
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(2, 3)",
+                                  5, 7, false, 5, 7, false, 5, 7, false,
+                                  5, 7, false, 5, 7, false, 5, 7, false,
+                                  10);
+        dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+        //Tiles Blue (Small)
+
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(3, 3)",
+                          7, 6, false, 7, 6, false, 7, 6, false,
+                          7, 6, false, 7, 6, false, 7, 6, false,
+                          10);
+        dictionary.Add(selectedVoxel.name, selectedVoxel);
+
+        //Hexagonal Tile
+
+        selectedVoxel = InitVoxel(VoxelState.SOLID, VoxelType.ORGANIC, "(4, 3)",
+                          5, 6, false, 5, 6, false, 5, 6, false,
+                          5, 6, false, 5, 6, false, 5, 6, false,
+                          10);
         dictionary.Add(selectedVoxel.name, selectedVoxel);
 
     }
