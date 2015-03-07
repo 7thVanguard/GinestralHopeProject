@@ -89,31 +89,8 @@ public class PlayerMovement
         }
 
         // Light lantern if it is too dark
-        if (RenderSettings.ambientLight.r < 125 / 255f)
+        if (!player.lightsOn)
         {
-            if (RenderSettings.ambientLight.r < 25 / 255f)
-                player.pointLight.SetActive(true);
-            else
-                player.pointLight.SetActive(false);
-
-            player.spotLight.SetActive(true);
-
-            // Lantern look at camera lerp
-            Quaternion actualRotation;
-            Quaternion lookAtRotation;
-
-            actualRotation = player.spotLight.transform.rotation;
-            player.spotLight.transform.LookAt(mainCamera.raycast.point);
-            lookAtRotation = player.spotLight.transform.rotation;
-
-            player.spotLight.transform.rotation = Quaternion.Lerp(actualRotation, lookAtRotation, 0.5f);
-
-            // Intensity varies depending on darkness
-            player.spotLight.light.intensity = Mathf.Pow(1 - RenderSettings.ambientLight.r, 3) * 2.5f;
-        }
-        else
-        {
-            // Turn off the lantern when is not dark
             player.pointLight.SetActive(false);
             player.spotLight.SetActive(false);
         }

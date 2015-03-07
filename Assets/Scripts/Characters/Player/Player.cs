@@ -7,8 +7,10 @@ public class Player
     public CharacterController controller;
     public GameObject pointLight;
     public GameObject spotLight;
+
     public Light pointLightLight;
     public Light spotLightLight;
+    public bool lightsOn = false;
 
     public GameObject lookAtObjective;
     public GameObject ringMarker;

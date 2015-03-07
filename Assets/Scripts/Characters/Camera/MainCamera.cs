@@ -38,8 +38,7 @@ public class MainCamera
     public float distance;
     public float objectiveDistance;
     public float minDistance;
-    public float maxDistance
-        ;
+    public float maxDistance;
     public bool isMoving;
 
 

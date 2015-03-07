@@ -29,7 +29,7 @@ GameObject:
   - 64: {fileID: 6439760}
   m_Layer: 0
   m_Name: Broken Column
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +77,40 @@ GameObject:
   - 108: {fileID: 10819474}
   m_Layer: 0
   m_Name: Point light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &136066
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 436066}
+  - 65: {fileID: 6536066}
+  - 114: {fileID: 11436066}
+  m_Layer: 0
+  m_Name: FirstDoorOpen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &136068
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 436068}
+  - 65: {fileID: 6536068}
+  - 114: {fileID: 11436068}
+  m_Layer: 0
+  m_Name: FirstDoorClose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -270,7 +304,7 @@ GameObject:
   - 64: {fileID: 6497702}
   m_Layer: 0
   m_Name: LightCandle
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,7 +322,7 @@ GameObject:
   - 64: {fileID: 6497704}
   m_Layer: 0
   m_Name: Wooden_Fence
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,7 +340,7 @@ GameObject:
   - 64: {fileID: 6497706}
   m_Layer: 0
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -324,7 +358,7 @@ GameObject:
   - 64: {fileID: 6497708}
   m_Layer: 0
   m_Name: DoorFrame
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -342,7 +376,7 @@ GameObject:
   - 64: {fileID: 6497712}
   m_Layer: 0
   m_Name: Wooden_Table_Feather
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,7 +394,7 @@ GameObject:
   - 64: {fileID: 6497714}
   m_Layer: 0
   m_Name: Geometry
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -378,7 +412,7 @@ GameObject:
   - 64: {fileID: 6497716}
   m_Layer: 0
   m_Name: Wooden_Fence_Half_Broken
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -411,7 +445,7 @@ GameObject:
   - 64: {fileID: 6497718}
   m_Layer: 0
   m_Name: Wooden_Table_Desk
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -429,7 +463,7 @@ GameObject:
   - 64: {fileID: 6497720}
   m_Layer: 0
   m_Name: Vessel
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -447,7 +481,7 @@ GameObject:
   - 64: {fileID: 6497722}
   m_Layer: 0
   m_Name: StonePile
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -465,7 +499,7 @@ GameObject:
   - 64: {fileID: 6497724}
   m_Layer: 0
   m_Name: Wooden_Plate
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -483,7 +517,7 @@ GameObject:
   - 64: {fileID: 6497726}
   m_Layer: 0
   m_Name: Wooden_Table
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -501,7 +535,7 @@ GameObject:
   - 64: {fileID: 6497728}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -519,7 +553,7 @@ GameObject:
   - 64: {fileID: 6497730}
   m_Layer: 0
   m_Name: Wooden_Broken_Plate
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -537,7 +571,7 @@ GameObject:
   - 64: {fileID: 6497732}
   m_Layer: 0
   m_Name: Tool_Pickaxe
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,7 +589,7 @@ GameObject:
   - 64: {fileID: 6497734}
   m_Layer: 0
   m_Name: Wooden_Table_Inkwell
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -573,7 +607,7 @@ GameObject:
   - 64: {fileID: 6497736}
   m_Layer: 0
   m_Name: Brazier
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -591,7 +625,7 @@ GameObject:
   - 64: {fileID: 6497738}
   m_Layer: 0
   m_Name: Wooden_Table_Book
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -609,7 +643,7 @@ GameObject:
   - 64: {fileID: 6497740}
   m_Layer: 0
   m_Name: Wooden_Barrel
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -627,7 +661,7 @@ GameObject:
   - 64: {fileID: 6497742}
   m_Layer: 0
   m_Name: Torch
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -645,7 +679,7 @@ GameObject:
   - 64: {fileID: 6497744}
   m_Layer: 0
   m_Name: Tool_Shovel
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -663,7 +697,7 @@ GameObject:
   - 64: {fileID: 6497748}
   m_Layer: 0
   m_Name: Wooden_Chair
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -681,7 +715,7 @@ GameObject:
   - 64: {fileID: 6497750}
   m_Layer: 0
   m_Name: Wooden_Table_Parchment
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -699,7 +733,7 @@ GameObject:
   - 64: {fileID: 6497752}
   m_Layer: 0
   m_Name: Book_Shelf
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -717,7 +751,7 @@ GameObject:
   - 64: {fileID: 6497754}
   m_Layer: 0
   m_Name: Wooden_Table_Paper
-  m_TagString: Untagged
+  m_TagString: Chunk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -828,6 +862,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 499200}
   m_RootOrder: 8
+--- !u!4 &436066
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5, y: 2, z: 20.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 445758}
+  m_RootOrder: 0
+--- !u!4 &436068
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.5, y: 3, z: 10.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 445758}
+  m_RootOrder: 1
 --- !u!4 &445754
 Transform:
   m_ObjectHideFlags: 1
@@ -863,7 +921,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 436066}
+  - {fileID: 436068}
   m_Father: {fileID: 497756}
   m_RootOrder: 4
 --- !u!4 &445760
@@ -1484,7 +1544,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: dbf13387349d3fb409abdd8ca88d776b, type: 2}
+  - {fileID: 2100000, guid: ea06a17ff4ea0884d9ffbef60bded0e7, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -2392,6 +2452,30 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300028, guid: 20bcbb109bcdb2149b11db009c9b0525, type: 3}
+--- !u!65 &6536066
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136066}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 3, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6536068
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6545754
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2635,9 +2719,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: 1, g: .871881366, b: .429606408, a: 1}
+  m_Color: {r: 1, g: .771842599, b: .429606438, a: 1}
   m_Intensity: 2
-  m_Range: 20
+  m_Range: 15
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -2740,9 +2824,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: 1, g: .871881366, b: .429606408, a: 1}
+  m_Color: {r: 1, g: .771842599, b: .429606438, a: 1}
   m_Intensity: 2
-  m_Range: 20
+  m_Range: 15
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -2801,6 +2885,40 @@ Light:
   m_ShadowAngle: 0
   m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11436066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987e4f6f56e20b04d9a1d2bc75a63058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstDoor: {fileID: 0}
+  secondDoor: {fileID: 0}
+  firstDoorObjectivePosition: {x: -2, y: 0, z: 0}
+  secondDoorObjectivePosition: {x: 2, y: 0, z: 0}
+  ambient: {r: .290196091, g: .309803933, b: .223529413, a: 1}
+  activeOnEnter: 0
+--- !u!114 &11436068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987e4f6f56e20b04d9a1d2bc75a63058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstDoor: {fileID: 0}
+  secondDoor: {fileID: 0}
+  firstDoorObjectivePosition: {x: 0, y: 0, z: 0}
+  secondDoorObjectivePosition: {x: 0, y: 0, z: 0}
+  ambient: {r: .169687778, g: .176470578, b: .146626294, a: 1}
+  activeOnEnter: 1
 --- !u!160 &16045754
 InteractiveCloth:
   m_ObjectHideFlags: 1

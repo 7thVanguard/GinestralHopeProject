@@ -35,7 +35,24 @@ public class GUIGHMainMenu : MonoBehaviour
         switch (GameFlow.runningGame)
         {
             case GameFlow.RunningGame.GINESTRAL_HOPE:
-                Global.world.worldObj.GetComponent<GameManager>().gameSerializer.Load(Global.world, Global.player, "NewGameGH");
+                {
+                    //Global.world.worldObj.GetComponent<GameManager>().gameSerializer.Load(Global.world, Global.player, "NewGameGH");
+
+                    Global.mainCamera.cameraObj.camera.renderingPath = RenderingPath.DeferredLighting;
+
+                    foreach (Transform child in Global.world.worldObj.transform)
+                        GameObject.Destroy(child.gameObject);
+
+                    GameObject.Destroy(Global.world.geometryController);
+                    GameObject.Destroy(Global.world.eventsController);
+                    GameObject.Destroy(Global.world.interactivesController);
+                    GameObject.Destroy(Global.world.enemiesController);
+                    GameObject.Destroy(Global.world.emitersController);
+
+                    Global.player.playerObj.transform.position = new Vector3(34.5f, 1, 17);
+                    Global.player.playerObj.transform.eulerAngles = new Vector3(0, 160, 0);
+
+                }
                 break;
             case GameFlow.RunningGame.CLOUDS_SIGHT:
                 break;

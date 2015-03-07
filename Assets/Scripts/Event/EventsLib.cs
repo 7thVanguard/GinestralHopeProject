@@ -29,8 +29,8 @@ public static class EventsLib
     }
     public static void UpdateDoorOpenDoubleSlider()
     {
-        door1.transform.position = Vector3.Slerp(door1.transform.position, objectivePosition1, 0.02f);
-        door2.transform.position = Vector3.Slerp(door2.transform.position, objectivePosition2, 0.02f);
+        door1.transform.localPosition = Vector3.Slerp(door1.transform.localPosition, objectivePosition1, 0.02f);
+        door2.transform.localPosition = Vector3.Slerp(door2.transform.localPosition, objectivePosition2, 0.02f);
     }
 
 
@@ -64,11 +64,6 @@ public static class EventsLib
                             Mathf.Lerp(obj.transform.FindChild("Trail").GetComponent<ParticleSystem>().startSize,
                             obj.transform.FindChild("Trail").GetComponent<ParticleSystem>().startSize * (distance / 3),
                             0.3f);
-
-            obj.transform.FindChild("Light").GetComponent<Light>().range =
-                            Mathf.Lerp(obj.transform.FindChild("Light").GetComponent<Light>().range,
-                            obj.transform.FindChild("Light").GetComponent<Light>().range * (distance / 3),
-                            0.03f);
 
             if (obj.transform.FindChild("Ball").GetComponent<ParticleSystem>().startSize < 0.35f)
                 obj.transform.FindChild("Glow").localScale = Vector3.zero;

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GRL_DoorDouble : MonoBehaviour 
+public class GRL_DoorController : MonoBehaviour 
 {
     World world;
 
@@ -16,13 +16,6 @@ public class GRL_DoorDouble : MonoBehaviour
 
     private float timeCounter = 0;
     private bool active;
-
-
-    void Start()
-    {
-        this.world = gameObject.GetComponent<EventComponent>().world;
-        Transform.Destroy(gameObject.GetComponent<EventComponent>());
-    }
 
 
     void Update()
