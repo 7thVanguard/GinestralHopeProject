@@ -47,7 +47,7 @@ public class GRL_DoorController : MonoBehaviour
                 }
                 else
                 {
-                    if (Input.GetKeyUp(KeyCode.E))
+                    if (Input.GetKey(KeyCode.E))
                     {
                         EventsLib.SetRenderambient(ambient);
                         EventsLib.SetDoorOpenDoubleSlider(firstDoor, firstDoorObjectivePosition, secondDoor, secondDoorObjectivePosition);
