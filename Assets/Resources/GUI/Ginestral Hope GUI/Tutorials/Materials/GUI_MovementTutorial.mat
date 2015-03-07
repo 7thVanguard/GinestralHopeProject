@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: GUI_MovementTutorial
-  m_Shader: {fileID: 4800000, guid: 8a27df8ff0d69634e8b6b4c99c1b534b, type: 3}
+  m_Shader: {fileID: 4800000, guid: 8c2858d5c233cc647a232d9a526525ce, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
