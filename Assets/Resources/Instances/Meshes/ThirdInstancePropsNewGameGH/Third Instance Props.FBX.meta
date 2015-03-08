@@ -1,0 +1,137 @@
+fileFormatVersion: 2
+guid: d54c81483b5651d4a977947b47560e57
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Book_Shelf
+    100002: Box
+    100004: Lamp
+    100006: MineCart
+    100008: Portrait2
+    100010: Rail_Broken
+    100012: StonePile
+    100014: //RootNode
+    100016: Tool_Shovel
+    100018: Torch
+    100020: Wooden_Barrel
+    100022: Wooden_Broken_Plate
+    100024: Wooden_Chair
+    100026: Wooden_Fence_Broken
+    100028: Wooden_Plate
+    100030: Wooden_Table
+    400000: Book_Shelf
+    400002: Box
+    400004: Lamp
+    400006: MineCart
+    400008: Portrait2
+    400010: Rail_Broken
+    400012: StonePile
+    400014: //RootNode
+    400016: Tool_Shovel
+    400018: Torch
+    400020: Wooden_Barrel
+    400022: Wooden_Broken_Plate
+    400024: Wooden_Chair
+    400026: Wooden_Fence_Broken
+    400028: Wooden_Plate
+    400030: Wooden_Table
+    2300000: Book_Shelf
+    2300002: Box
+    2300004: Lamp
+    2300006: MineCart
+    2300008: Portrait2
+    2300010: Rail_Broken
+    2300012: StonePile
+    2300014: Tool_Shovel
+    2300016: Torch
+    2300018: Wooden_Barrel
+    2300020: Wooden_Broken_Plate
+    2300022: Wooden_Chair
+    2300024: Wooden_Fence_Broken
+    2300026: Wooden_Plate
+    2300028: Wooden_Table
+    3300000: Book_Shelf
+    3300002: Box
+    3300004: Lamp
+    3300006: MineCart
+    3300008: Portrait2
+    3300010: Rail_Broken
+    3300012: StonePile
+    3300014: Tool_Shovel
+    3300016: Torch
+    3300018: Wooden_Barrel
+    3300020: Wooden_Broken_Plate
+    3300022: Wooden_Chair
+    3300024: Wooden_Fence_Broken
+    3300026: Wooden_Plate
+    3300028: Wooden_Table
+    4300000: MineCart
+    4300002: StonePile
+    4300004: Tool_Shovel
+    4300006: Wooden_Barrel
+    4300008: Wooden_Fence_Broken
+    4300010: Wooden_Broken_Plate
+    4300012: Box
+    4300014: Rail_Broken
+    4300016: Torch
+    4300018: Wooden_Table
+    4300020: Book_Shelf
+    4300022: Wooden_Chair
+    4300024: Portrait2
+    4300026: Wooden_Plate
+    4300028: Lamp
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

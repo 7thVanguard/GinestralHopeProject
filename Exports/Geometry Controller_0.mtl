@@ -1,15 +1,4 @@
 
-newmtl TorchMat
-Ka  0.6 0.6 0.6
-Kd  0.6 0.6 0.6
-Ks  0.9 0.9 0.9
-d  1.0
-Ns  0.0
-illum 2
-map_Kd Torch.png
-
-
-
 newmtl 02 - Default
 Ka  0.6 0.6 0.6
 Kd  0.6 0.6 0.6
@@ -32,14 +21,36 @@ illum 2
 
 
 
-newmtl BoxMat
+newmtl MineCartMat
 Ka  0.6 0.6 0.6
 Kd  0.6 0.6 0.6
 Ks  0.9 0.9 0.9
 d  1.0
 Ns  0.0
 illum 2
-map_Kd Box.jpg
+map_Kd MineCart.jpg
+
+
+
+newmtl StonePile
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd StonePile.png
+
+
+
+newmtl ToolPickShovelMat
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd ToolPickShovel.png
 
 
 
@@ -54,6 +65,17 @@ map_Kd WoodenBarrel.jpg
 
 
 
+newmtl WoodenFenceMat
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd WoodenFence.png
+
+
+
 newmtl WoodenPlatesMat
 Ka  0.6 0.6 0.6
 Kd  0.6 0.6 0.6
@@ -62,6 +84,39 @@ d  1.0
 Ns  0.0
 illum 2
 map_Kd WoodenPlate.png
+
+
+
+newmtl BoxMat
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd Box.jpg
+
+
+
+newmtl RailMat
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd Rail.jpg
+
+
+
+newmtl TorchMat
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd Torch.png
 
 
 
@@ -87,17 +142,6 @@ map_Kd BookShelf.jpg
 
 
 
-newmtl Vasija_Textura
-Ka  0.6 0.6 0.6
-Kd  0.6 0.6 0.6
-Ks  0.9 0.9 0.9
-d  1.0
-Ns  0.0
-illum 2
-map_Kd Vessel.jpg
-
-
-
 newmtl WoodenChairMat
 Ka  0.6 0.6 0.6
 Kd  0.6 0.6 0.6
@@ -109,6 +153,17 @@ map_Kd WoodenChair.jpg
 
 
 
+newmtl Portrait1
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd Portrait1.jpg
+
+
+
 newmtl LampMat
 Ka  0.6 0.6 0.6
 Kd  0.6 0.6 0.6
@@ -117,38 +172,5 @@ d  1.0
 Ns  0.0
 illum 2
 map_Kd Lamp.jpg
-
-
-
-newmtl WoodenFenceMat
-Ka  0.6 0.6 0.6
-Kd  0.6 0.6 0.6
-Ks  0.9 0.9 0.9
-d  1.0
-Ns  0.0
-illum 2
-map_Kd WoodenFence.png
-
-
-
-newmtl LightCandleMat
-Ka  0.6 0.6 0.6
-Kd  0.6 0.6 0.6
-Ks  0.9 0.9 0.9
-d  1.0
-Ns  0.0
-illum 2
-map_Kd LightCandle.png
-
-
-
-newmtl BrazierMat
-Ka  0.6 0.6 0.6
-Kd  0.6 0.6 0.6
-Ks  0.9 0.9 0.9
-d  1.0
-Ns  0.0
-illum 2
-map_Kd Brazier.jpg
 
 
