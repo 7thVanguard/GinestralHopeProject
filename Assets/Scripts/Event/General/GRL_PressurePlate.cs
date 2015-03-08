@@ -21,27 +21,13 @@ public class GRL_PressurePlate : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
-        {
-            if (other.transform.GetComponent<CharacterController>().isGrounded)
-            {
-                other.transform.parent = transform.parent;
-                emitting = true;
-            }
-            else
-            {
-                other.transform.parent = null;
-                emitting = false;
-            }
-        }
+            emitting = true;
     }
 
 
     void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
-        {
-            other.transform.parent = null;
             emitting = false;
-        }
     }
 }

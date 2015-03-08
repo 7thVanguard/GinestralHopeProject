@@ -8,6 +8,7 @@ public class GRL_SignalPlatform : MonoBehaviour
 
     public GameObject emitter;
 
+    private float speed = 0;
     private bool emitting;
 
 
@@ -17,26 +18,22 @@ public class GRL_SignalPlatform : MonoBehaviour
             emitting = emitter.GetComponent<GRL_PressurePlate>().emitting;
 
         if (emitting)
-            transform.parent.position = Vector3.Lerp(transform.parent.position, activePosition, 0.05f);
+            transform.parent.position = GamePhysics.BoundedLerp(transform.parent.position, activePosition, ref speed, 0.1f, 0.1f);
         else
-            transform.parent.position = Vector3.Lerp(transform.parent.position, nonActivePosition, 0.05f);
+            transform.parent.position = GamePhysics.BoundedLerp(transform.parent.position, nonActivePosition, ref speed, 0.1f, 0.1f);
     }
 
 
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
-        {
-            other.transform.parent = transform.parent;
-        }
+            other.transform.parent = transform;
     }
 
 
     void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
-        {
             other.transform.parent = null;
-        }
     }
 }

@@ -95,6 +95,8 @@ public class PlayerMovement
             player.spotLight.SetActive(false);
         }
 
+        // Controls
+
         // Animation speed Control
         player.playerObj.transform.FindChild("Mesh").animation["Run"].speed = 1.1f;
     }
