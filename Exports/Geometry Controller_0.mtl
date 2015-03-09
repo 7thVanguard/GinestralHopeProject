@@ -1,37 +1,4 @@
 
-newmtl 02 - Default
-Ka  0.6 0.6 0.6
-Kd  0.6 0.6 0.6
-Ks  0.9 0.9 0.9
-d  1.0
-Ns  0.0
-illum 2
-
-
-
-
-newmtl 01 - Default
-Ka  0.6 0.6 0.6
-Kd  0.6 0.6 0.6
-Ks  0.9 0.9 0.9
-d  1.0
-Ns  0.0
-illum 2
-
-
-
-
-newmtl MineCartMat
-Ka  0.6 0.6 0.6
-Kd  0.6 0.6 0.6
-Ks  0.9 0.9 0.9
-d  1.0
-Ns  0.0
-illum 2
-map_Kd MineCart.jpg
-
-
-
 newmtl StonePile
 Ka  0.6 0.6 0.6
 Kd  0.6 0.6 0.6
@@ -40,39 +7,6 @@ d  1.0
 Ns  0.0
 illum 2
 map_Kd StonePile.png
-
-
-
-newmtl ToolPickShovelMat
-Ka  0.6 0.6 0.6
-Kd  0.6 0.6 0.6
-Ks  0.9 0.9 0.9
-d  1.0
-Ns  0.0
-illum 2
-map_Kd ToolPickShovel.png
-
-
-
-newmtl WoodenBarrelMat
-Ka  0.6 0.6 0.6
-Kd  0.6 0.6 0.6
-Ks  0.9 0.9 0.9
-d  1.0
-Ns  0.0
-illum 2
-map_Kd WoodenBarrel.jpg
-
-
-
-newmtl WoodenFenceMat
-Ka  0.6 0.6 0.6
-Kd  0.6 0.6 0.6
-Ks  0.9 0.9 0.9
-d  1.0
-Ns  0.0
-illum 2
-map_Kd WoodenFence.png
 
 
 
@@ -87,25 +21,25 @@ map_Kd WoodenPlate.png
 
 
 
-newmtl BoxMat
+newmtl 02 - Default
 Ka  0.6 0.6 0.6
 Kd  0.6 0.6 0.6
 Ks  0.9 0.9 0.9
 d  1.0
 Ns  0.0
 illum 2
-map_Kd Box.jpg
 
 
 
-newmtl RailMat
+
+newmtl BrokenColumnMat
 Ka  0.6 0.6 0.6
 Kd  0.6 0.6 0.6
 Ks  0.9 0.9 0.9
 d  1.0
 Ns  0.0
 illum 2
-map_Kd Rail.jpg
+map_Kd BrokenColumn.jpg
 
 
 
@@ -120,14 +54,25 @@ map_Kd Torch.png
 
 
 
-newmtl WoodenTableMat
+newmtl 01 - Default
 Ka  0.6 0.6 0.6
 Kd  0.6 0.6 0.6
 Ks  0.9 0.9 0.9
 d  1.0
 Ns  0.0
 illum 2
-map_Kd WoodenTable.png
+
+
+
+
+newmtl BoxMat
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd Box.jpg
 
 
 
@@ -142,6 +87,50 @@ map_Kd BookShelf.jpg
 
 
 
+newmtl Vasija_Textura
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd Vessel.jpg
+
+
+
+newmtl ToolPickShovelMat
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd ToolPickShovel.png
+
+
+
+newmtl WoodenTableMat
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd WoodenTable.png
+
+
+
+newmtl BrazierMat
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd Brazier.jpg
+
+
+
 newmtl WoodenChairMat
 Ka  0.6 0.6 0.6
 Kd  0.6 0.6 0.6
@@ -153,14 +142,47 @@ map_Kd WoodenChair.jpg
 
 
 
-newmtl Portrait1
+newmtl WoodenBarrelMat
 Ka  0.6 0.6 0.6
 Kd  0.6 0.6 0.6
 Ks  0.9 0.9 0.9
 d  1.0
 Ns  0.0
 illum 2
-map_Kd Portrait1.jpg
+map_Kd WoodenBarrel.jpg
+
+
+
+newmtl LightCandleMat
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd LightCandle.png
+
+
+
+newmtl DoorGridMat
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd DoorGrid.jpg
+
+
+
+newmtl WoodenFenceMat
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd WoodenFence.png
 
 
 
@@ -172,5 +194,27 @@ d  1.0
 Ns  0.0
 illum 2
 map_Kd Lamp.jpg
+
+
+
+newmtl DrainMat
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd Drain.jpg
+
+
+
+newmtl WaterSurfaceStillMat (Instance)
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd water_still.png
 
 

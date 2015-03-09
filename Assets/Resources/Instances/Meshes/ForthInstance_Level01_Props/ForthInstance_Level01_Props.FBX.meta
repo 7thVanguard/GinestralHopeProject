@@ -1,0 +1,117 @@
+fileFormatVersion: 2
+guid: 9a7ddea3ef2e4fe4f8f443a434ae4e39
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Barrel
+    100002: Box
+    100004: Drain_Grating
+    100006: Drain_Vertical_Bars
+    100008: //RootNode
+    100010: Frame Door
+    100012: Ortoedric_Half_Door
+    100014: StonePile
+    100016: Torch
+    100018: Vessel
+    100020: Water_Surface_Still
+    100022: Wooden_Broken_Plate
+    400000: Barrel
+    400002: Box
+    400004: Drain_Grating
+    400006: Drain_Vertical_Bars
+    400008: //RootNode
+    400010: Frame Door
+    400012: Ortoedric_Half_Door
+    400014: StonePile
+    400016: Torch
+    400018: Vessel
+    400020: Water_Surface_Still
+    400022: Wooden_Broken_Plate
+    2300000: Barrel
+    2300002: Box
+    2300004: Drain_Grating
+    2300006: Drain_Vertical_Bars
+    2300008: Frame Door
+    2300010: Ortoedric_Half_Door
+    2300012: StonePile
+    2300014: Torch
+    2300016: Vessel
+    2300018: Water_Surface_Still
+    2300020: Wooden_Broken_Plate
+    3300000: Barrel
+    3300002: Box
+    3300004: Drain_Grating
+    3300006: Drain_Vertical_Bars
+    3300008: Frame Door
+    3300010: Ortoedric_Half_Door
+    3300012: StonePile
+    3300014: Torch
+    3300016: Vessel
+    3300018: Water_Surface_Still
+    3300020: Wooden_Broken_Plate
+    4300000: StonePile
+    4300002: Wooden_Broken_Plate
+    4300004: Ortoedric_Half_Door
+    4300006: Torch
+    4300008: Vessel
+    4300010: Drain_Vertical_Bars
+    4300012: Drain_Grating
+    4300014: Water_Surface_Still
+    4300016: Frame Door
+    4300018: Barrel
+    4300020: Box
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
