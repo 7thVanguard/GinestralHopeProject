@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class LeverBehaviour : MonoBehaviour 
+public class GRL_Lever : MonoBehaviour 
 {
-    public bool locked = false;
+    public List<GameObject> List = new List<GameObject>();
+
     public bool emiting = false;
-    
     private bool keepPressed = false;
 
 
     void Start()
     {
-        transform.FindChild("Pull").localRotation = Quaternion.Euler(315, 0, 0);
+        if (emiting)
+            transform.FindChild("Pull").localRotation = Quaternion.Euler(45, 0, 0);
+        else
+            transform.FindChild("Pull").localRotation = Quaternion.Euler(315, 0, 0);
     }
 
 
@@ -33,9 +37,19 @@ public class LeverBehaviour : MonoBehaviour
 
 
             if (emiting)
+            {
                 transform.FindChild("Pull").localRotation = Quaternion.Lerp(transform.FindChild("Pull").localRotation, Quaternion.Euler(45, 0, 0), 0.1f);
+
+                foreach (GameObject go in List)
+                    go.SetActive(true);
+            }
             else
+            {
                 transform.FindChild("Pull").localRotation = Quaternion.Lerp(transform.FindChild("Pull").localRotation, Quaternion.Euler(315, 0, 0), 0.1f);
+
+                foreach (GameObject go in List)
+                    go.SetActive(false);
+            }
         }
     }
 
@@ -45,5 +59,10 @@ public class LeverBehaviour : MonoBehaviour
         if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
             if (other.tag == "Player")
                 keepPressed = false;
+
+        if (emiting)
+            transform.FindChild("Pull").localRotation = Quaternion.Euler(45, 0, 0);
+        else
+            transform.FindChild("Pull").localRotation = Quaternion.Euler(315, 0, 0);
     }
 }
