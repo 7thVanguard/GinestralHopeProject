@@ -382,7 +382,7 @@ GameObject:
   - 65: {fileID: 6531674}
   - 114: {fileID: 11431674}
   m_Layer: 0
-  m_Name: FirstGreenOrb
+  m_Name: SecondGreenOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
