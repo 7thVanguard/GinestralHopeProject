@@ -19,8 +19,12 @@ Material:
         second:
           m_Texture: {fileID: 2800000, guid: eee84b4879b19f442ae56bb12b1cc4f2, type: 3}
           m_Scale: {x: .0625, y: .125}
-          m_Offset: {x: .25, y: .375}
+          m_Offset: {x: 0, y: .875}
     m_Floats:
+      data:
+        first:
+          name: _InvFade
+        second: 2.54839277
       data:
         first:
           name: _ColorStrength
@@ -37,10 +41,6 @@ Material:
         first:
           name: _CutOutLightCore
         second: 0
-      data:
-        first:
-          name: _InvFade
-        second: 2.54839277
     m_Colors:
       data:
         first:
