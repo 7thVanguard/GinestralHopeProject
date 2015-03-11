@@ -6,9 +6,10 @@ public class GRL_ConstantPlatform : MonoBehaviour
     public Vector3 initialPosition;
     public Vector3 endPosition;
     public float duration;
+    public bool toEndPos = false;
 
-    private float interpolation = 0;
-    private bool toEndPos = false;
+    private float interpolation;
+    
 
 
     void Sttart()
