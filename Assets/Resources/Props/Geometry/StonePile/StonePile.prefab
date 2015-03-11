@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 464970}
   - 33: {fileID: 3364970}
   - 23: {fileID: 2364970}
+  - 64: {fileID: 6464482}
   - 65: {fileID: 6588484}
   m_Layer: 0
   m_Name: StonePile
@@ -57,9 +58,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164970}
   m_Mesh: {fileID: 4300000, guid: aad251fd72bc1674b87317dea41207c9, type: 3}
+--- !u!64 &6464482
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: aad251fd72bc1674b87317dea41207c9, type: 3}
 --- !u!65 &6588484
 BoxCollider:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164970}
