@@ -1084,6 +1084,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &163280
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 463280}
+  - 65: {fileID: 6563280}
+  - 114: {fileID: 11463280}
+  m_Layer: 0
+  m_Name: ThirdDoorOpen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &169804
 GameObject:
   m_ObjectHideFlags: 1
@@ -1391,6 +1408,7 @@ Transform:
   m_Children:
   - {fileID: 483942}
   - {fileID: 495036}
+  - {fileID: 463280}
   m_Father: {fileID: 436206}
   m_RootOrder: 5
 --- !u!4 &404480
@@ -1997,6 +2015,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 451826}
   m_RootOrder: 0
+--- !u!4 &463280
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163280}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 22.5, y: -13.5, z: 24.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 401348}
+  m_RootOrder: 2
 --- !u!4 &469804
 Transform:
   m_ObjectHideFlags: 1
@@ -3144,6 +3174,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .300000012, y: .300000012, z: .711283922}
   m_Center: {x: .000902101398, y: 0, z: .355641961}
+--- !u!65 &6563280
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163280}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 3, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6569804
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -3613,6 +3655,23 @@ MonoBehaviour:
   - .5
   beginDelay: 1.5
   damage: 1
+--- !u!114 &11463280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987e4f6f56e20b04d9a1d2bc75a63058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstDoor: {fileID: 0}
+  secondDoor: {fileID: 0}
+  firstDoorObjectivePosition: {x: -2, y: 0, z: 0}
+  secondDoorObjectivePosition: {x: 2, y: 0, z: 0}
+  ambient: {r: .568683147, g: .602941155, b: .452205867, a: 1}
+  activeOnEnter: 0
 --- !u!114 &11469804
 MonoBehaviour:
   m_ObjectHideFlags: 1

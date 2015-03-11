@@ -63,7 +63,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 407132}
   m_Layer: 0
-  m_Name: Door Portal
+  m_Name: 2nd Door Portal
   m_TagString: Geometry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 431150}
   m_Layer: 0
-  m_Name: Door Portal
+  m_Name: 3rd Door Portal
   m_TagString: Geometry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 431152}
   m_Layer: 0
-  m_Name: Door Portal
+  m_Name: 1st Door Portal
   m_TagString: Geometry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
