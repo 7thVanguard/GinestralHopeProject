@@ -60,6 +60,17 @@ ModelImporter:
     4300016: Frame Door
     4300018: Barrel
     4300020: Box
+    6400000: Barrel
+    6400002: Box
+    6400004: Drain_Grating
+    6400006: Drain_Vertical_Bars
+    6400008: Frame Door
+    6400010: Ortoedric_Half_Door
+    6400012: StonePile
+    6400014: Torch
+    6400016: Vessel
+    6400018: Water_Surface_Still
+    6400020: Wooden_Broken_Plate
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -82,7 +93,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: .00999999978
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

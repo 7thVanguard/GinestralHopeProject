@@ -1,0 +1,134 @@
+fileFormatVersion: 2
+guid: 2a18d57706fb19045a166169de7b3adb
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Box
+    100004: Brazier
+    100006: Lamp
+    100008: LampPost
+    100010: Plant
+    100012: Plant_Grass
+    100014: StonePile
+    100016: Tool_Pickaxe
+    100018: Wooden_Barrel
+    100020: Wooden_Broken_Plate
+    100022: Wooden_Plate
+    100024: Wooden_Table_Desk
+    400000: //RootNode
+    400002: Box
+    400004: Brazier
+    400006: Lamp
+    400008: LampPost
+    400010: Plant
+    400012: Plant_Grass
+    400014: StonePile
+    400016: Tool_Pickaxe
+    400018: Wooden_Barrel
+    400020: Wooden_Broken_Plate
+    400022: Wooden_Plate
+    400024: Wooden_Table_Desk
+    2300000: Box
+    2300002: Brazier
+    2300004: Lamp
+    2300006: LampPost
+    2300008: Plant
+    2300010: Plant_Grass
+    2300012: StonePile
+    2300014: Tool_Pickaxe
+    2300016: Wooden_Barrel
+    2300018: Wooden_Broken_Plate
+    2300020: Wooden_Plate
+    2300022: Wooden_Table_Desk
+    3300000: Box
+    3300002: Brazier
+    3300004: Lamp
+    3300006: LampPost
+    3300008: Plant
+    3300010: Plant_Grass
+    3300012: StonePile
+    3300014: Tool_Pickaxe
+    3300016: Wooden_Barrel
+    3300018: Wooden_Broken_Plate
+    3300020: Wooden_Plate
+    3300022: Wooden_Table_Desk
+    4300000: Tool_Pickaxe
+    4300002: Wooden_Table_Desk
+    4300004: Plant
+    4300006: Plant_Grass
+    4300008: Lamp
+    4300010: Wooden_Barrel
+    4300012: Box
+    4300014: StonePile
+    4300016: Wooden_Broken_Plate
+    4300018: LampPost
+    4300020: Brazier
+    4300022: Wooden_Plate
+    6400000: Box
+    6400002: Brazier
+    6400004: Lamp
+    6400006: LampPost
+    6400008: Plant
+    6400010: Plant_Grass
+    6400012: StonePile
+    6400014: Tool_Pickaxe
+    6400016: Wooden_Barrel
+    6400018: Wooden_Broken_Plate
+    6400020: Wooden_Plate
+    6400022: Wooden_Table_Desk
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
