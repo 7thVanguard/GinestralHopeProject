@@ -38,6 +38,7 @@ public class GUIGHMainMenu : MonoBehaviour
                 {
                     //Global.world.worldObj.GetComponent<GameManager>().gameSerializer.Load(Global.world, Global.player, "NewGameGH");
 
+                    // World preparation
                     Global.mainCamera.cameraObj.camera.renderingPath = RenderingPath.DeferredLighting;
 
                     foreach (Transform child in Global.world.worldObj.transform)
@@ -49,9 +50,22 @@ public class GUIGHMainMenu : MonoBehaviour
                     GameObject.Destroy(Global.world.enemiesController);
                     GameObject.Destroy(Global.world.emitersController);
 
+                    // Player
                     Global.player.playerObj.transform.position = new Vector3(34.5f, 1, 17);
                     Global.player.playerObj.transform.eulerAngles = new Vector3(0, 160, 0);
 
+                    // Camera
+                    Global.mainCamera.cameraObj.camera.backgroundColor = new Color32(255, 166, 71, 255);
+
+                    // Sun
+                    Global.sun.sunObj.transform.position = new Vector3(13, 30, 100);
+                    Global.sun.sunObj.transform.eulerAngles = new Vector3(14.59f, 171, 1.1f);
+                    Global.sun.sunObj.transform.light.color = new Color32(230, 174, 71, 255);
+                    Global.sun.lensFlare.color = new Color32(255, 141, 0, 255);
+                    Global.sun.sunObj.transform.light.color = new Color32(230, 174, 71, 255);
+
+                    // Renderer
+                    RenderSettings.ambientLight = new Color32(43, 45, 37, 255);
                 }
                 break;
             case GameFlow.RunningGame.CLOUDS_SIGHT:
