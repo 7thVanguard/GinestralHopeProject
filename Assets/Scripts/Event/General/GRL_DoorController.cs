@@ -73,7 +73,8 @@ public class GRL_DoorController : MonoBehaviour
     void OnGUI()
     {
         if (!activeOnEnter)
-            if (inTrigger)
-                EventsLib.DrawInteractivity();
+            if (!active)
+                if (inTrigger)
+                    EventsLib.DrawInteractivity();
     }
 }
