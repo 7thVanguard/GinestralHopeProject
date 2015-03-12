@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 409120}
   - 65: {fileID: 6509120}
+  - 114: {fileID: 11473886}
   m_Layer: 0
   m_Name: EndGame
   m_TagString: Untagged
@@ -553,6 +554,7 @@ GameObject:
   - 33: {fileID: 3359172}
   - 23: {fileID: 2359172}
   - 114: {fileID: 11459172}
+  - 64: {fileID: 6466048}
   m_Layer: 0
   m_Name: Fire Gem
   m_TagString: Untagged
@@ -570,6 +572,7 @@ GameObject:
   - 4: {fileID: 465380}
   - 33: {fileID: 3365380}
   - 23: {fileID: 2365380}
+  - 64: {fileID: 6466050}
   m_Layer: 0
   m_Name: Altar
   m_TagString: Untagged
@@ -1358,12 +1361,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159172}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: .452735662, y: -.267092347, z: .0290573295}
-  m_LocalScale: {x: .00499999989, y: .00499999849, z: .00999999698}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 45.2735672, y: 2.90573645, z: 26.7092361}
+  m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children: []
-  m_Father: {fileID: 474068}
-  m_RootOrder: 13
+  m_Father: {fileID: 476620}
+  m_RootOrder: 5
 --- !u!4 &465380
 Transform:
   m_ObjectHideFlags: 1
@@ -1609,7 +1612,6 @@ Transform:
   - {fileID: 474046}
   - {fileID: 474044}
   - {fileID: 465380}
-  - {fileID: 459172}
   m_Father: {fileID: 474042}
   m_RootOrder: 2
 --- !u!4 &474070
@@ -1639,6 +1641,7 @@ Transform:
   - {fileID: 425620}
   - {fileID: 425618}
   - {fileID: 425616}
+  - {fileID: 459172}
   m_Father: {fileID: 474042}
   m_RootOrder: 3
 --- !u!4 &496770
@@ -2193,6 +2196,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 174070}
   m_Mesh: {fileID: 4300000, guid: 6422bed4fbbae8d49a3e4d887f5edf94, type: 3}
+--- !u!64 &6466048
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: fe018634dc031b841b2cf0b5c5a13e09, type: 3}
+--- !u!64 &6466050
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 165380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: e7c952252a89d974fa22753ce9f93994, type: 3}
 --- !u!64 &6474042
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -2632,6 +2661,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b34a473b547abf4abfa1acca7d9bcb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11473886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd74cf7e0e738b4ca48ae0cb3106d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!198 &19825602
