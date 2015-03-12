@@ -1112,7 +1112,7 @@ GameObject:
   - 65: {fileID: 6595036}
   - 114: {fileID: 11483942}
   m_Layer: 0
-  m_Name: SpawnFourthInstance
+  m_Name: DespawnFourthInstance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3828,7 +3828,7 @@ MonoBehaviour:
   secondDoor: {fileID: 0}
   firstDoorObjectivePosition: {x: -2, y: 0, z: 0}
   secondDoorObjectivePosition: {x: 2, y: 0, z: 0}
-  ambient: {r: .568683147, g: .602941155, b: .452205867, a: 1}
+  ambient: {r: .405496061, g: .448529422, b: .375973195, a: 1}
   activeOnEnter: 0
 --- !u!114 &11469804
 MonoBehaviour:
@@ -3846,7 +3846,7 @@ MonoBehaviour:
   - {fileID: 147946}
   - {fileID: 147944}
   - {fileID: 151826}
-  emiting: 1
+  emitting: 0
 --- !u!114 &11483942
 MonoBehaviour:
   m_ObjectHideFlags: 1

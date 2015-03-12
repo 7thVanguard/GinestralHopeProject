@@ -6,13 +6,13 @@ public class GRL_Lever : MonoBehaviour
 {
     public List<GameObject> List = new List<GameObject>();
 
-    public bool emiting = false;
+    public bool emitting = false;
     private bool keepPressed = false;
 
 
     void Start()
     {
-        if (emiting)
+        if (emitting)
             transform.FindChild("Pull").localRotation = Quaternion.Euler(45, 0, 0);
         else
             transform.FindChild("Pull").localRotation = Quaternion.Euler(315, 0, 0);
@@ -27,7 +27,7 @@ public class GRL_Lever : MonoBehaviour
             {
                 if (!keepPressed)
                 {
-                    emiting = !emiting;
+                    emitting = !emitting;
                     keepPressed = true;
                     transform.audio.Play();
                 }
@@ -36,7 +36,7 @@ public class GRL_Lever : MonoBehaviour
                 keepPressed = false;
 
 
-            if (emiting)
+            if (emitting)
             {
                 transform.FindChild("Pull").localRotation = Quaternion.Lerp(transform.FindChild("Pull").localRotation, Quaternion.Euler(45, 0, 0), 0.1f);
 
@@ -60,7 +60,7 @@ public class GRL_Lever : MonoBehaviour
             if (other.tag == "Player")
                 keepPressed = false;
 
-        if (emiting)
+        if (emitting)
             transform.FindChild("Pull").localRotation = Quaternion.Euler(45, 0, 0);
         else
             transform.FindChild("Pull").localRotation = Quaternion.Euler(315, 0, 0);

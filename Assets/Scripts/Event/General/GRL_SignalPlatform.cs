@@ -3,24 +3,36 @@ using System.Collections;
 
 public class GRL_SignalPlatform : MonoBehaviour 
 {
+    public GameObject emitter;
     public Vector3 activePosition;
     public Vector3 nonActivePosition;
+    public float duration;
+    public bool toEndPos = false;
 
-    public GameObject emitter;
+    private float interpolation;
 
-    private float speed = 0;
-    private bool emitting;
+
+    void Sttart()
+    {
+        if (duration < 1)
+            duration = 1;
+    }
 
 
     void Update()
     {
         if (emitter.GetComponent<GRL_PressurePlate>() != null)
-            emitting = emitter.GetComponent<GRL_PressurePlate>().emitting;
+            toEndPos = emitter.GetComponent<GRL_PressurePlate>().emitting;
+        else if (emitter.GetComponent<GRL_Lever>() != null)
+            toEndPos = emitter.GetComponent<GRL_Lever>().emitting;
 
-        if (emitting)
-            transform.parent.position = GamePhysics.BoundedLerp(transform.parent.position, activePosition, ref speed, 0.1f, 0.1f);
+        if (toEndPos)
+            interpolation += Time.deltaTime / duration;
         else
-            transform.parent.position = GamePhysics.BoundedLerp(transform.parent.position, nonActivePosition, ref speed, 0.1f, 0.1f);
+            interpolation -= Time.deltaTime / duration;
+
+        interpolation = Mathf.Clamp(interpolation, 0, 1);
+        transform.position = Vector3.Slerp(nonActivePosition, activePosition, interpolation);
     }
 
 

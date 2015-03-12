@@ -2824,9 +2824,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 933a4d203dd0f4a45bfc6da1ee8cc87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emitter: {fileID: 195536}
   activePosition: {x: 21, y: .75, z: 22.5}
   nonActivePosition: {x: 21, y: 9.5, z: 22.5}
-  emitter: {fileID: 195536}
+  duration: 0
+  toEndPos: 0
 --- !u!198 &19822634
 ParticleSystem:
   m_ObjectHideFlags: 1
