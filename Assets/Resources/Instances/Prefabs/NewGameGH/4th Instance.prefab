@@ -877,6 +877,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &126244
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 426244}
+  - 65: {fileID: 6526244}
+  - 114: {fileID: 11426244}
+  m_Layer: 0
+  m_Name: ThirdGreenOrb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &134272
 GameObject:
   m_ObjectHideFlags: 1
@@ -2362,6 +2379,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 460628}
   m_RootOrder: 1
+--- !u!4 &426244
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126244}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.12400007, y: 23.9360008, z: 19.2730007}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 460628}
+  m_RootOrder: 4
 --- !u!4 &434272
 Transform:
   m_ObjectHideFlags: 1
@@ -2711,6 +2740,7 @@ Transform:
   - {fileID: 424342}
   - {fileID: 434272}
   - {fileID: 441516}
+  - {fileID: 426244}
   m_Father: {fileID: 466864}
   m_RootOrder: 5
 --- !u!4 &466864
@@ -4310,6 +4340,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: .400000006, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &6526244
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6534272
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -5211,6 +5253,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   spawn: 1
+--- !u!114 &11426244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8122654625cdc499b544d48604af01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11434272
 MonoBehaviour:
   m_ObjectHideFlags: 1

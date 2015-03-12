@@ -17,6 +17,8 @@ public class GRL_DoorController : MonoBehaviour
     private float timeCounter = 0;
     private bool active;
 
+    private bool inTrigger = false;
+
 
     void Update()
     {
@@ -34,6 +36,8 @@ public class GRL_DoorController : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
+        inTrigger = true;
+
         if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
             if (other.tag == "Player")
             {
@@ -57,5 +61,19 @@ public class GRL_DoorController : MonoBehaviour
                     }
                 }
             }
+    }
+
+
+    void OnTriggerExit()
+    {
+        inTrigger = false;
+    }
+
+
+    void OnGUI()
+    {
+        if (!activeOnEnter)
+            if (inTrigger)
+                EventsLib.DrawInteractivity();
     }
 }

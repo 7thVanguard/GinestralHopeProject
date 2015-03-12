@@ -60,34 +60,34 @@ public class HUD : MonoBehaviour
     {
         if (GameFlow.gameState == GameFlow.GameState.GAME)
         {
-            //+ Gizmos
-            if (!(GameFlow.runningGame == GameFlow.RunningGame.CLOUDS_SIGHT && GameFlow.gameMode != GameFlow.GameMode.DEVELOPER))
-                GUI.DrawTexture(new Rect(Screen.width / 2 - gizmoCross.width / 2, Screen.height / 2 - gizmoCross.width / 2, gizmoCross.width, gizmoCross.height), gizmoCross);
+            ////+ Gizmos
+            //if (!(GameFlow.runningGame == GameFlow.RunningGame.CLOUDS_SIGHT && GameFlow.gameMode != GameFlow.GameMode.DEVELOPER))
+            //    GUI.DrawTexture(new Rect(Screen.width / 2 - gizmoCross.width / 2, Screen.height / 2 - gizmoCross.width / 2, gizmoCross.width, gizmoCross.height), gizmoCross);
 
-            //+ Game bars
-            if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
-            {
-                // Player Life Bar
-                GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200, 20), lifeBarBack);
-                GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200 * player.currentLife / player.maxLife, 20), lifeBar);
-            }
+            ////+ Game bars
+            //if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
+            //{
+            //    // Player Life Bar
+            //    GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200, 20), lifeBarBack);
+            //    GUI.DrawTexture(new Rect(Screen.width / 8, Screen.height / 1.1f, 200 * player.currentLife / player.maxLife, 20), lifeBar);
+            //}
 
-            // Enemy life bar
-            if (PlayerCombat.target != null)
-            {
-                GUI.DrawTexture(new Rect(Screen.width * 7 / 8, Screen.height / 2, Screen.width * 0.9f / 8, 15), lifeBarBack);
-                GUI.DrawTexture(new Rect(Screen.width * 7 / 8, Screen.height / 2,
-                    (Screen.width * 0.9f / 8) * (PlayerCombat.target.GetComponent<EnemyComponent>().life / PlayerCombat.target.GetComponent<EnemyComponent>().maxLife), 15), lifeBar);
-            }
+            //// Enemy life bar
+            //if (PlayerCombat.target != null)
+            //{
+            //    GUI.DrawTexture(new Rect(Screen.width * 7 / 8, Screen.height / 2, Screen.width * 0.9f / 8, 15), lifeBarBack);
+            //    GUI.DrawTexture(new Rect(Screen.width * 7 / 8, Screen.height / 2,
+            //        (Screen.width * 0.9f / 8) * (PlayerCombat.target.GetComponent<EnemyComponent>().life / PlayerCombat.target.GetComponent<EnemyComponent>().maxLife), 15), lifeBar);
+            //}
 
 
-            //+ Skills casting
-            if (CombatToolsManager.casting)
-            {
-                GUI.DrawTexture(new Rect(Screen.width * 3 / 8 - 3, Screen.height * 4 / 5 - 10, Screen.width * 2 / 8 + 6, 20), lifeBarBack);
-                GUI.DrawTexture(new Rect(Screen.width * 3 / 8, Screen.height * 4 / 5 - 7,
-                    (Screen.width * 2 / 8) * (CombatToolsManager.actualCastingTime / CombatToolsManager.totalCastingTime), 14), lifeBar);
-            }
+            ////+ Skills casting
+            //if (CombatToolsManager.casting)
+            //{
+            //    GUI.DrawTexture(new Rect(Screen.width * 3 / 8 - 3, Screen.height * 4 / 5 - 10, Screen.width * 2 / 8 + 6, 20), lifeBarBack);
+            //    GUI.DrawTexture(new Rect(Screen.width * 3 / 8, Screen.height * 4 / 5 - 7,
+            //        (Screen.width * 2 / 8) * (CombatToolsManager.actualCastingTime / CombatToolsManager.totalCastingTime), 14), lifeBar);
+            //}
 
             switch (GameFlow.gameMode)
             {

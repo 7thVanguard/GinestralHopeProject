@@ -8,7 +8,7 @@ public static class GameFlow
     public static RunningGame runningGame = RunningGame.GINESTRAL_HOPE;
 
     // Game States
-    public enum GameState { MENU, GAME }
+    public enum GameState { LOGO, MENU, GAME }
     public static GameState gameState = GameState.MENU;
 
 

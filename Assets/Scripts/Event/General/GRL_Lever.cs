@@ -8,6 +8,7 @@ public class GRL_Lever : MonoBehaviour
 
     public bool emitting = false;
     private bool keepPressed = false;
+    private bool inTrigger = false;
 
 
     void Start()
@@ -21,6 +22,8 @@ public class GRL_Lever : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
+        inTrigger = true;
+
         if (other.tag == "Player")
         {
             if (Input.GetKey(KeyCode.E))
@@ -56,6 +59,8 @@ public class GRL_Lever : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+        inTrigger = false;
+
         if (GameFlow.gameMode == GameFlow.GameMode.PLAYER)
             if (other.tag == "Player")
                 keepPressed = false;
@@ -64,5 +69,12 @@ public class GRL_Lever : MonoBehaviour
             transform.FindChild("Pull").localRotation = Quaternion.Euler(45, 0, 0);
         else
             transform.FindChild("Pull").localRotation = Quaternion.Euler(315, 0, 0);
+    }
+
+
+    void OnGUI()
+    {
+        if (inTrigger)
+            EventsLib.DrawInteractivity();
     }
 }

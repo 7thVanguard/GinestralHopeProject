@@ -104,4 +104,9 @@ public static class EventsLib
             GUI.color = new Color(1, 1, 1, 1);
         }
     }
+    public static void DrawInteractivity()
+    {
+        GUI.DrawTextureWithTexCoords(new Rect(Screen.width * 2 / 3, Screen.height / 2 - 30, 60, 60), (Texture2D)Resources.Load("GUI/Ginestral Hope GUI/Interactivity"),
+            new Rect(0, 0, 1, 1));
+    }
 }

@@ -10,6 +10,7 @@ public class NGGH_ThirdInstanceWagon : MonoBehaviour
 
     private bool animationDone = false;     
     private bool ready;                     // When ready to pick up the light
+    private bool inTrigger = false;
 	
 
 	void Start() 
@@ -34,6 +35,8 @@ public class NGGH_ThirdInstanceWagon : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
+        inTrigger = true;
+
         if (other.tag == "Player")
         {
             if (Input.GetKey(KeyCode.E))
@@ -54,5 +57,18 @@ public class NGGH_ThirdInstanceWagon : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    void OnTriggerExit(Collider other)
+    {
+        inTrigger = false;
+    }
+
+
+    void OnGUI()
+    {
+        if (inTrigger)
+            EventsLib.DrawInteractivity();
     }
 }
