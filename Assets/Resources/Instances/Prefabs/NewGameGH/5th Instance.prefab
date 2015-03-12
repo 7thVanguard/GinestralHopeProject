@@ -236,6 +236,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &126890
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 426890}
+  - 65: {fileID: 6526890}
+  - 114: {fileID: 11426890}
+  m_Layer: 0
+  m_Name: AmbientLightChange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &134444
 GameObject:
   m_ObjectHideFlags: 1
@@ -812,7 +829,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 426890}
   m_Father: {fileID: 474042}
   m_RootOrder: 5
 --- !u!4 &410174
@@ -994,6 +1012,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 476620}
   m_RootOrder: 1
+--- !u!4 &426890
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126890}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 34.7999992, y: 17.6499996, z: 8}
+  m_LocalScale: {x: 8.29786015, y: 11.8787165, z: .5}
+  m_Children: []
+  m_Father: {fileID: 410172}
+  m_RootOrder: 0
 --- !u!4 &434444
 Transform:
   m_ObjectHideFlags: 1
@@ -2068,6 +2098,18 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300012, guid: 2a18d57706fb19045a166169de7b3adb, type: 3}
+--- !u!65 &6526890
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126890}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9574042
 Animator:
   serializedVersion: 3
@@ -2282,6 +2324,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf7214339d89ba4dbd1a7d40dffd6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11426890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 126890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd22cfca06e860d40a569f167ff8dea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ambient: {r: .412116736, g: .544117689, b: .360077888, a: 0}
 --- !u!114 &11434466
 MonoBehaviour:
   m_ObjectHideFlags: 1
