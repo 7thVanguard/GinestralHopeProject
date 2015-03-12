@@ -24,7 +24,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 193404}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -37.7941017, y: .712599993, z: -2.68210006}
+  m_LocalPosition: {x: 45.2529984, y: 3.21700001, z: 26.7049999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -69,12 +69,12 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 3
     startSpeed:
-      scalar: .119999997
+      scalar: .370000005
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: .32432434
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -84,7 +84,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .416666687
+          value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -186,7 +186,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: .0500000007
+      scalar: .400000006
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -201,7 +201,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: .199999988
+          value: .25
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -248,7 +248,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 4
-    radius: .00999999978
+    radius: .0799999982
     angle: 0
     length: 5
     boxX: 1
@@ -261,7 +261,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 100
+      scalar: 30
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1066,10 +1066,10 @@ ParticleSystemRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_MaxParticleSize: .5
   m_CameraVelocityScale: 0
-  m_VelocityScale: 0
+  m_VelocityScale: 1
   m_LengthScale: 1
   m_SortingFudge: 0
   m_NormalDirection: 1
