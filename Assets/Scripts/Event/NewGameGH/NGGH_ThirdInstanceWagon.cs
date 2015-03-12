@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class NGGH_ThirdInstanceWagon : MonoBehaviour 
+public class NGGH_ThirdInstanceWagon : MonoBehaviour
 {
     private Animation animator;
     private float counter = 0;
@@ -49,7 +49,7 @@ public class NGGH_ThirdInstanceWagon : MonoBehaviour
                 {
                     GameObject lamp = transform.parent.FindChild("Lamp").gameObject;
                     lamp.transform.parent = Global.player.playerObj.transform.FindChild("Mesh");
-                    lamp.transform.localPosition = new Vector3(0.3f, 0.8f, 0);
+                    lamp.transform.localPosition = new Vector3(0.3f, 0.5f, 0);
                     Destroy(transform.GetComponent<NGGH_ThirdInstanceWagon>());
                 }
             }
